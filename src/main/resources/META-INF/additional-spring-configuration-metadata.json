@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "attach_upload_max",
+    "type": "java.lang.String",
+    "description": "A description for 'attach_upload_max'"
+  },
+  {
+    "name": "attach_file_ext",
+    "type": "java.lang.String",
+    "description": "A description for 'attach_file_ext'"
+  },
+  {
+    "name": "attach_movie_ext",
+    "type": "java.lang.String",
+    "description": "A description for 'attach_movie_ext'"
+  },
+  {
+    "name": "attach_upload_path",
+    "type": "java.lang.String",
+    "description": "A description for 'attach_upload_path'"
+  },
+  {
+    "name": "attach_upload_url",
+    "type": "java.lang.String",
+    "description": "A description for 'attach_upload_url'"
+  },
+  {
+    "name": "attach_img_ext",
+    "type": "java.lang.String",
+    "description": "A description for 'attach_img_ext'"
+  }
+]}

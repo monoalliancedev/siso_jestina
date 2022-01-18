@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.BrandBannerMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="BBannerMap" type="com.jt.domain.BrandBannerDTO">
+	<result property="gubun" column="gubun" />
+	<result property="lang" column="lang" />
+	<result property="contents" column="contents" />
+	<result property="linkKr" column="link_kr" />
+	<result property="linkKrOutYn" column="link_kr_out_yn" />
+	<result property="imgKrSeq" column="img_kr_seq" />
+	<result property="moimgKrSeq" column="moimg_kr_seq" />
+	<result property="admId" column="adm_id" />
+	</resultMap>
+ 
+<!--##################################################################### -->
+
+	
+	
+	<!-- 리스트 -->
+	<select id="list" parameterType="com.jt.domain.BrandBannerDTO" resultMap="BBannerMap">
+		SELECT * FROM tb_jt_brand_banner where 1
+		   AND gubun= #{gubun}
+		   AND lang= #{lang}
+		ORDER BY seq DESC LIMIT 1;
+	</select> 
+	
+	<!-- 파일정보 수정 -->
+	<update id="fileUpdate" parameterType="com.jt.util.ParameterMap">
+        UPDATE tb_jt_brand_banner 
+		<if test='key.equals("0")'> SET img_kr_seq = #{keyValue} </if>
+	    <if test='key.equals("1")'> SET moimg_kr_seq = #{keyValue}  </if>
+	    WHERE seq = #{bseq}
+    </update>
+    
+    <!-- 브랜드베너 등록 및 수정 -->
+	<insert id="BBannerProc" parameterType="com.jt.domain.BrandBannerDTO">
+        REPLACE INTO tb_jt_brand_banner 
+		SET  gubun = #{gubun} 
+	        ,link_kr = #{linkKr} 
+	        ,link_kr_out_yn = #{linkKrOutYn} 
+	        ,img_kr_seq = #{imgKrSeq}
+	        ,moimg_kr_seq = #{moimgKrSeq}
+	        ,adm_id = #{admId}
+	        ,lang = #{lang}
+			,contents = #{contents}
+			<if test='seq>0'>
+			,seq = #{seq}
+			</if>
+    </insert>
+    
+    
+	
+	
+	
+	
+	<select id="FrontSelect" parameterType="com.jt.util.ParameterMap" resultType="com.jt.domain.FrontBannerDTO">
+    SELECT seq, contents
+    	 , link_kr as linkUrl, link_kr_out_yn as linkOutYn
+    	 , (select save_filename from tb_files f1 where f1.seq=b.img_kr_seq) as imgUrl
+		 , (select save_filename from tb_files f2 where f2.seq=b.moimg_kr_seq) as moimgUrl
+	  FROM tb_jt_brand_banner b 
+	 WHERE gubun= #{gubun}
+	   AND lang= #{lang}
+	 ORDER BY seq DESC LIMIT 1;
+	</select>
+	
+	 
+</mapper>
+
+

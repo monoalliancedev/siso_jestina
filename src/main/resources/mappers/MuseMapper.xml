@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.MuseMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="MuseMap" type="com.jt.domain.MuseDTO">
+	<result property="seq" column="seq" />
+	<result property="lang" column="lang" />
+	<result property="regdate" column="regdate" />
+	<result property="museYear" column="muse_year" />
+	<result property="isntYn" column="isnt_yn" />
+	<result property="nameKr" column="name_kr" />
+	<result property="nameEn" column="name_en" />
+	<result property="nameCn" column="name_cn" />
+	<result property="cateKr" column="cate_kr" />
+	<result property="cateEn" column="cate_en" />
+	<result property="cateCn" column="cate_cn" />
+	<result property="imgKrSeqs" column="img_kr_seqs" />
+	<result property="imgEnSeqs" column="img_en_seqs" />
+	<result property="imgCnSeqs" column="img_cn_seqs" />
+	<result property="linkKr" column="link_kr" />
+	<result property="linkKrOutYn" column="link_kr_out_yn" />
+	<result property="linkEn" column="link_en" />
+	<result property="linkEnOutYn" column="link_en_out_yn" />
+	<result property="linkCn" column="link_cn" />
+	<result property="linkCnOutYn" column="link_cn_out_yn" />
+	<result property="admId" column="adm_id" />
+	</resultMap>
+	  
+	  
+<!--##################################################################### -->
+
+	<!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		<if test='keyIsnt != null and !keyIsnt.equals("")'> <!-- 언어 -->
+		AND lang <![CDATA[ LIKE '%${keyIsnt}%' ]]>  
+		</if>
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("year")'> <!-- 뮤즈년도 -->
+			AND muse_year <![CDATA[ LIKE '%${keyword}%' ]]> 
+			</if>
+			<if test='key.equals("name")'> <!-- 뮤즈이름 -->
+			AND (
+				name_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR
+				name_en <![CDATA[ LIKE '%${keyword}%' ]]> OR
+				name_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			)
+			</if>
+			<if test='key.equals("all")'> <!-- 전체 -->
+			AND ( 
+				muse_year <![CDATA[ LIKE '%${keyword}%' ]]> OR
+				name_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR
+				name_en <![CDATA[ LIKE '%${keyword}%' ]]> OR
+				name_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			)
+			</if>	
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+	
+<!--##################################################################### -->
+
+	<!-- 검색 총 갯수 -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_muse where 1
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_muse where 1
+	</select>
+	
+	<!-- 최근 반영된 Seq -->
+    <select id="maxSeq" resultType="int">
+		SELECT max(seq) as c FROM tb_jt_muse where 1
+	</select>
+	
+	<!-- 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="MuseMap">
+		SELECT * FROM tb_jt_muse where 1
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	<!-- 파일정보 수정 -->
+	<update id="fileUpdate" parameterType="com.jt.util.ParameterMap">
+        UPDATE tb_jt_muse 
+		<if test='key.equals("0")'> SET img_kr_seqs = #{keyValue} </if>
+	    <if test='key.equals("1")'> SET img_en_seqs = #{keyValue}  </if>
+	    <if test='key.equals("2")'> SET img_cn_seqs = #{keyValue}  </if>
+	    WHERE seq = #{bseq}
+    </update>
+    
+    <!-- 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_muse WHERE seq = #{seq}
+    </delete>
+    
+    <!-- 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="MuseMap">
+        SELECT * FROM tb_jt_muse WHERE seq = #{seq}
+    </select>
+    
+    <!-- 게시여부 바꾸기 -->
+    <select id="isntChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_muse SET isnt_yn=#{isntYn} WHERE seq=#{seq}
+	</select> 
+	
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int">
+		<![CDATA[ SELECT count(*) FROM tb_jt_muse WHERE isnt_yn='Y' ]]>
+	</select>
+	
+	<!-- 등록 및 수정 -->
+	<insert id="insertAndUpdate" parameterType="com.jt.domain.MuseDTO">
+        REPLACE INTO tb_jt_muse 
+		SET lang = #{lang} 
+	        ,muse_year = #{museYear}
+	        ,isnt_yn = #{isntYn}
+	        ,name_kr = #{nameKr}
+	        ,name_en = #{nameEn}
+	        ,name_cn = #{nameCn}
+	        ,cate_kr = #{cateKr}
+	        ,cate_en = #{cateEn}
+	        ,cate_cn = #{cateCn}
+	        ,img_kr_seqs = #{imgKrSeqs}
+	        ,img_en_seqs = #{imgEnSeqs}
+	        ,img_cn_seqs = #{imgCnSeqs}
+	        ,link_kr = #{linkKr} 
+	        ,link_kr_out_yn = #{linkKrOutYn} 
+	        ,link_en = #{linkEn}
+	        ,link_en_out_yn = #{linkEnOutYn}
+	        ,link_cn = #{linkCn}
+	        ,link_cn_out_yn = #{linkCnOutYn}
+	        ,adm_id = #{admId}
+	        <if test='seq>0'>
+			,seq = #{seq}
+			</if>
+	        <include refid="regdateUpdate" />
+    </insert>
+    
+    
+    
+    
+    
+    
+    <!-- Front 리스트 -->
+	<select id="Frontlist" parameterType="com.jt.util.ParameterMap"  resultType="com.jt.domain.FrontMuseDTO">
+		SELECT seq,muse_year as museYear  
+			<if test='lang== "KR"'>
+			 , name_kr as name, cate_kr as cate
+			 , link_kr as linkUrl, link_kr_out_yn as linkOutYn 
+			</if>
+			<if test='lang== "EN"'>
+			 , name_en as name, cate_en as cate
+			 , link_en as linkUrl, link_en_out_yn as linkOutYn 
+			</if>
+			<if test='lang== "CN"'>
+			 , name_cn as name, cate_cn as cate
+			 , link_cn as linkUrl, link_cn_out_yn as linkOutYn 
+			</if>
+		FROM tb_jt_muse 
+				WHERE isnt_yn='Y' 
+				  AND lang <![CDATA[ LIKE '%${lang}%' ]]>
+				  AND muse_year=${museYear}
+				ORDER BY muse_year DESC, regdate DESC, seq DESC
+	</select>
+	<!-- Front Year -->
+	<select id="FrontYearlist" parameterType="String" resultType="String">
+		SELECT muse_year FROM tb_jt_muse 
+				WHERE isnt_yn='Y' AND lang <![CDATA[ LIKE '%${lang}%' ]]>
+				GROUP BY muse_year
+				ORDER BY muse_year DESC
+	</select>  
+    
+	
+</mapper>

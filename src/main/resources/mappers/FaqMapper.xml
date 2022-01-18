@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.FaqMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="FaqMap" type="com.jt.domain.FaqDTO">
+	<result property="seq" column="seq" />
+	<result property="regdate" column="regdate" />
+	<result property="isntYn" column="isnt_yn" />
+	<result property="question" column="question" />
+	<result property="answer" column="answer" />
+	<result property="admId" column="adm_id" />
+	</resultMap>
+	
+<!--##################################################################### -->
+
+	<!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("question")'>
+			AND question <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("answer")'>
+			AND answer <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>			
+			<if test='key.equals("all")'> <!-- 전체 -->
+			AND ( question <![CDATA[ LIKE '%${keyword}%' ]]> OR answer <![CDATA[ LIKE '%${keyword}%' ]]> )
+			</if>	
+		</if>
+		<if test='keyIsnt.equals("Y")'>
+			AND isnt_yn='${keyIsnt}'
+		</if>
+		
+		
+		
+		
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+	
+	
+	
+<!--##################################################################### -->	
+	
+	<!-- FAQ 총 갯수 -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_faq where 1
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_jt_faq where 1
+	</select>
+	
+
+	<!-- FAQ 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="FaqMap">
+		SELECT * FROM tb_jt_faq where 1
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	
+	<!-- FAQ 등록 -->
+	<insert id="insert" parameterType="com.jt.domain.FaqDTO">
+        INSERT INTO tb_jt_faq 
+		SET isnt_yn = #{isntYn}
+		  , question = #{question}
+		  , answer = #{answer}
+		  , adm_id = #{admId}
+	      <include refid="regdateUpdate" />
+	</insert>
+	
+	<!-- FAQ 수정 -->
+	<update id="update" parameterType="com.jt.domain.FaqDTO">
+        UPDATE tb_jt_faq 
+        SET isnt_yn = #{isntYn}
+          , question = #{question}
+	      , answer = #{answer}
+	      , adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+        WHERE seq = #{seq}
+    </update>
+
+	<!-- FAQ 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_faq WHERE seq = #{seq}
+    </delete>
+    
+	<!-- FAQ 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="FaqMap">
+        SELECT * FROM tb_jt_faq WHERE seq = #{seq}
+    </select>
+	    
+    <!-- 
+	<![CDATA[    
+		SELECT * 
+		,(SELECT seq  FROM tb_jt_faq WHERE seq < #{seq} ORDER BY seq desc LIMIT 1) AS prevSeq 
+		,(SELECT seq  FROM tb_jt_faq WHERE seq > #{seq} ORDER BY seq LIMIT 1) AS nextSeq 
+		FROM tb_jt_faq WHERE seq =#{seq}
+		]]>        
+    </select>
+	-->
+	
+	<!-- 게시여부 바꾸기 -->
+    <select id="isntChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_faq SET isnt_yn=#{isntYN} WHERE seq=#{seq}
+	</select> 
+	
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int">
+		<![CDATA[ SELECT count(*) FROM tb_jt_faq WHERE isnt_yn='Y']]>
+	</select>
+
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.AdmMapper">
+
+    <insert id="insertAdm" parameterType="com.jt.domain.AdmDTO">
+        INSERT INTO tb_adm VALUES(
+        #{adm_id}
+        ,#{adm_pw}
+        ,#{adm_name}
+        ,#{isAccountNonexpired}
+        ,#{isAccountNonLocked} 
+        ,#{isCredentialsNonExpired} 
+        ,#{isEnabled}
+        ,#{hp}
+        ,#{email}        
+        ,now()
+		)
+    </insert>
+    
+    <update id="updateAdm" parameterType="com.jt.domain.AdmDTO">
+        UPDATE tb_adm SET adm_name = #{adm_name}
+        <if test='adm_pw != null and !adm_pw.equals("")'>
+        ,adm_pw = #{adm_pw}
+        </if>
+        ,hp = #{hp}
+        ,email = #{email}
+        
+        WHERE adm_id = #{adm_id}
+    </update>
+    
+    <delete id="deleteAdm" parameterType="String">
+        DELETE FROM tb_adm WHERE adm_id = #{adm_id}
+    </delete>
+
+   
+    <select id="selectAdm" parameterType="String" resultType="com.jt.domain.AdmDTO">
+        SELECT * FROM tb_adm WHERE adm_id = #{adm_id}
+    </select>
+    
+	<select id="selectAdmList" parameterType="com.jt.util.ParameterMap" resultType="com.jt.domain.AdmDTO">
+		SELECT * FROM tb_adm where 1
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("adm_id")'>
+			AND adm_id <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("adm_name")'>
+			AND adm_name <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>			
+		</if>
+		order by regdate desc limit ${pg_start} AND ${pg_end} 
+	</select> 
+
+	<select id="selectAdmCount" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT count(*) as c FROM tb_adm where 1
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("adm_id")'>
+			AND adm_id <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("adm_name")'>
+			AND adm_name <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>			
+		</if>		 
+	</select> 
+
+
+	<select id="insertAdmAuthority"  parameterType="String" >
+		INSERT INTO tb_adm_role(adm_id, authority_name)values(#{adm_id}, #{authority_name})
+	</select>    
+
+	<select id="getAdmAuthorites" parameterType="String" resultType="String">
+		SELECT authority_name FROM tb_adm_role WHERE adm_id=#{adm_id}
+	</select>    
+    
+</mapper>

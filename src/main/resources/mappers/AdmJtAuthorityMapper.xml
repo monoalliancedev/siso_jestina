@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.AdmJtAuthorityMapper">
+
+	<!-- 권한 존재여부 -->
+	<select id="count" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT count(*) as c FROM tb_jt_adm_authority where adm_id = #{admId} and menu_code = #{menuCode}
+	</select>
+
+	<!-- 권한 등록 -->
+	<insert id="insertAdmJtAuth" parameterType="com.jt.util.ParameterMap">
+        INSERT INTO tb_jt_adm_authority set adm_id = #{adm_id}, menu_code = #{menu_code}	
+    </insert>
+	
+	<!-- 권한 삭제(all, 총 관리자 코드는 제외) -->
+	<insert id="deleteAdmJtAuth" parameterType="String">
+        DELETE FROM tb_jt_adm_authority WHERE adm_id=#{adm_id}	
+    </insert>
+    <!-- DELETE FROM tb_jt_adm_authority WHERE adm_id=#{adm_id} and menu_code != "manager" -->
+    
+	<!-- 권한 목록 -->
+	<select id="selectAdmJtAuth" parameterType="String" resultType="String">
+	SELECT menu_code FROM tb_jt_adm_authority WHERE adm_id=#{adm_id}		
+	</select> 
+	
+	 
+
+
+</mapper>

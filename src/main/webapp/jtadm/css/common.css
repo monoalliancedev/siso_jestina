@@ -1,0 +1,51 @@
+﻿@charset "utf-8";
+html,body{overflow-x:hidden;overflow-y:auto}
+/*Header*/
+header{width:100%;height:90px;position:fixed;background:#fff;left:0;top:0;z-index:15}
+header .logo{position:absolute;left:70px;top:50%;transform:translateY(-50%);z-index:10}
+header .logo a{display:block;line-height:0}
+header .link{position:absolute;right:70px;top:50%;transform:translateY(-50%);z-index:10}
+header .link a{display:inline-block;vertical-align:middle}
+header a.lang{color:#767676;position:relative;padding:0 10px;float:left;margin-top:14px}
+header a.lang::before{content:'';width:1px;height:2px;background:#e0e0e0;position:absolute;left:0;top:7px}
+header a.lang::after{content:'';width:1px;height:2px;background:#e0e0e0;position:absolute;right:0;top:7px}
+header a.lang:first-child::before{display:none}
+header a.lang:nth-child(3)::after{display:none}
+header a.lang.on{color:#101010;font-weight:500}
+header a.lang:hover{color:#101010}
+header a.mall{margin-left:10px;line-height:38px;font-weight:500;border:1px solid #e0e0e0;border-radius:30px;width:120px;text-align:center}
+header a.mall i{vertical-align:middle;display:inline-block;width:17px;height:12px;background:url(/jtadm/images/common/icon_crown.svg) no-repeat center center;margin-top:-4px;margin-right:10px}
+header a.mall:hover{border-color:#101010;color:#fff;background:#101010}
+header a.mall:hover i{background:url(/jtadm/images/common/icon_crown_w.svg) no-repeat center center}
+header .menuBG{width:100%;height:100vh;position:fixed;left:0;top:0;background:rgba(0,0,0,0.5);z-index:8;display:none}
+
+/*Menu*/
+nav{width:100%;height:90px;position:absolute;left:0;top:0;z-index:9;background:#fff;text-align:center;overflow:hidden}
+nav .menuList{display:inline-block;position:relative;z-index:8;}
+nav dl{float:left}
+nav dt a{display:block;padding:0 45px;line-height:90px;position:relative;font-weight:500}
+nav dt a::after{content:'';width:0;height:2px;position:absolute;left:50%;transform: translateX(-50%);bottom:0;background:#101010;transition:all .3s;-webkit-transition:all .3s;}
+nav dt a.on::after{content:'';width:100%;height:2px;position:absolute;left:50%;transform: translateX(-50%);bottom:0;background:#101010}
+nav dt a:hover::after{width: 100%;}
+nav dd{display:block;padding-top:48px}
+nav dd a{display:block;margin-bottom:15px}
+nav dd a span{display:inline-block;line-height:27px;color:#505050;position:relative}
+nav dd a span::after{content:'';width:0;height:2px;position:absolute;left:50%;transform: translateX(-50%);bottom:0;background:#101010;transition:all .3s;-webkit-transition:all .3s;}
+nav dd a:hover span{color:#101010}
+nav dd a:hover span::after{width:100%;}
+nav .bgLine{width:0;height:1px;background:#e0e0e0;position:absolute;left:50%;transform: translateX(-50%);top:89px;z-index:7;transition:all .3s;-webkit-transition:all .3s;}
+nav .menuList:hover + .bgLine{width:100%;}
+/*Common(Layout)*/
+#container{width:100%;display:inline-block;position:relative}
+section{width:100%;display:inline-block;position:relative}
+/*Footer*/
+footer{width:100%;padding:58px 70px 40px 70px;background:#101010;position:relative;text-align:center}
+footer article{width:1520px;display:inline-block;text-align:left}
+footer .cmpyInfo{padding-bottom:25px;width:100%;position:relative;border-bottom:1px solid #1d1d1d}
+footer .cmpyInfo li{display:inline-block;color:#767676;line-height:25px;position:relative;padding-right:10px;margin-right:6px}
+footer .cmpyInfo li::after{content:'';width:1px;height:8px;background:#1d1d1d;right:0;top:50%;transform:translateY(-50%);position:absolute}
+footer .cmpyInfo li.adr{display:block;padding:0;margin:0}
+footer .cmpyInfo li.adr::after{display:none}
+footer a.contact{width:88px;line-height:34px;background:#292929;color:#767676;right:0;bottom:29px;position:absolute;text-align:center}
+footer a.goTop{width:68px;height:68px;position:absolute;right:70px;bottom:40px;text-indent:-9999px;background:#292929 url(/jtadm/images/common/icon_gotop.svg) no-repeat center center}
+footer .copyright{color:#505050;line-height:60px}

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.StoreMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="StoreMap" type="com.jt.domain.StoreDTO">
+	<result property="seq" column="seq" />
+	<result property="lang" column="lang" />
+	<result property="tel" column="tel" />
+	<result property="regdate" column="regdate" />
+	<result property="addr1Kr" column="addr1_kr" />
+	<result property="addr2Kr" column="addr2_kr" />
+	<result property="addr1En" column="addr1_en" />
+	<result property="addr2En" column="addr2_en" />
+	<result property="addr1Cn" column="addr1_cn" />
+	<result property="addr2Cn" column="addr2_cn" />
+	<result property="storeKr" column="store_kr" />
+	<result property="storeEn" column="store_en" />
+	<result property="storeCn" column="store_cn" />
+	<result property="gubun" column="gubun" />
+	<result property="value1" column="value1" />
+	<result property="value2" column="value2" />
+	<result property="value3" column="value3" />
+	<result property="admId" column="adm_id" />
+	<result property="sortIdx" column="sort_idx" />
+	</resultMap>
+<!--##################################################################### -->
+
+	<!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		<if test='keyword != null and !keyword.equals("")'>
+			AND (
+				store_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR 
+				store_en <![CDATA[ LIKE '%${keyword}%' ]]> OR 
+				store_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			)
+		</if>
+		<if test='keyIsnt != null and !keyIsnt.equals("")'>
+			AND lang <![CDATA[ LIKE '%${keyIsnt}%' ]]>
+		</if>
+		<if test='keyValue1 != null and !keyValue1.equals("")'>
+			AND value1 = #{keyValue1}
+		</if>
+		<if test='keyValue2 != null and !keyValue2.equals("")'>
+			AND value2 = #{keyValue2}
+		</if>
+		<if test='keyValue3 != null and !keyValue3.equals("")'>
+			AND value3 = #{keyValue3} 
+		</if>
+		<if test='keyGubun != null and !keyGubun.equals("")'>
+			AND gubun = #{keyGubun} 
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+
+<!--##################################################################### -->	
+
+	
+	<!-- Store 검색 총 갯수 -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_store where 1 and gubun=#{keyGubun}
+		<include refid="search" />
+	</select>
+	
+	<!-- Store 총 갯수 -->
+    <select id="totalCount" parameterType="String" resultType="int">
+		SELECT count(*) as c FROM tb_jt_store where 1 and gubun=#{gubun}
+	</select>
+	
+	<!-- Store 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="StoreMap">
+		SELECT * FROM tb_jt_store where 1
+		<include refid="search" />
+		ORDER BY sort_idx DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+
+	<!-- Store 등록 -->
+	<insert id="insertAndUpdate" parameterType="com.jt.domain.StoreDTO">
+        REPLACE INTO tb_jt_store 
+		SET lang = #{lang}
+		  , gubun = #{gubun}
+		  , tel = #{tel}
+		  , addr1_kr = #{addr1Kr}
+		  , addr2_kr = #{addr2Kr}
+		  , addr1_en = #{addr1En}
+		  , addr2_en = #{addr2En}
+		  , addr1_cn = #{addr1Cn}
+		  , addr2_cn = #{addr2Cn}
+		  , store_kr = #{storeKr}
+		  , store_en = #{storeEn}
+		  , store_cn = #{storeCn}
+		  , value1 = #{value1}
+		  , value2 = #{value2}
+		  , value3 = #{value3}
+		  , adm_id = #{admId}
+		  
+		  <choose>
+	        <when test='seq>0'>
+	        ,seq = #{seq}
+	        ,sort_idx = #{sortIdx}
+	        </when>
+	        <otherwise>
+	        ,sort_idx = (SELECT IFNULL(MAX(b.sort_idx) + 1, 1) FROM tb_jt_store b WHERE b.gubun=#{gubun}) 
+	        </otherwise>
+          </choose>
+        	
+        	
+        	
+	      <include refid="regdateUpdate" />
+	</insert>
+	
+	<!-- Store 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_store WHERE seq = #{seq}
+    </delete>
+	
+	<!-- Store 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="StoreMap">
+        SELECT * FROM tb_jt_store WHERE seq = #{seq}
+    </select>
+    
+    
+    <!-- 위로 이동 키값 -->
+    <select id="UpSelect" parameterType="com.jt.util.ParameterMap"  resultMap="StoreMap">
+        SELECT seq, sort_idx FROM tb_jt_store 
+         WHERE sort_idx > #{sortIdx} and gubun=#{gubun}
+         <include refid="search" />
+         ORDER BY sort_idx ASC,seq ASC LIMIT 1;
+    </select>
+    <!-- 아래로 이동 키값 -->
+    <select id="DownSelect" parameterType="com.jt.util.ParameterMap"  resultMap="StoreMap">
+        SELECT seq, sort_idx FROM tb_jt_store 
+         WHERE sort_idx <![CDATA[<]]> #{sortIdx}  and gubun=#{gubun}
+         <include refid="search" />
+         ORDER BY sort_idx DESC,seq DESC LIMIT 1;
+    </select>
+    
+    <!-- 정렬순서 바꾸기 -->
+    <select id="sortChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_store SET sort_idx=#{sortIdx} where seq=#{seq};
+	</select> 
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.UploadFileMapper">
+
+    <insert id="insert" parameterType="com.jt.domain.UploadFileDTO">
+        INSERT INTO tb_files set pseq = #{pseq}
+        ,gubun = #{gubun}
+        ,filename = #{filename}
+        ,save_filename = #{save_filename}
+        ,file_size = #{file_size}
+        ,regdate = now()
+		
+    </insert>
+    
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_files WHERE seq = #{seq}
+    </delete>
+    
+    <select id="list" parameterType="com.jt.util.ParameterMap" resultType="com.jt.domain.UploadFileDTO">
+		SELECT * FROM tb_files where 1
+		and pseq = #{pseq}
+		and gubun = #{gubun}
+		order by regdate desc 
+	</select> 
+    
+    <update id="update_pseq" parameterType="com.jt.util.ParameterMap">
+		update tb_files set pseq=#{pseq} where pseq = #{tmp_seq}		 
+	</update>
+    
+    
+    
+    
+    
+    
+
+	<update id="update_file_size" parameterType="com.jt.util.ParameterMap">
+		update tb_files set file_size=#{file_size} where seq = #{seq}		 
+	</update> 
+
+	<update id="update_save_filename" parameterType="com.jt.util.ParameterMap">
+		update tb_files set save_filename=#{save_filename} where seq = #{seq}		 
+	</update> 
+
+    <select id="select" parameterType="int" resultType="com.jt.domain.UploadFileDTO">
+        SELECT * FROM tb_files WHERE seq = #{seq}
+    </select>
+
+    <select id="one" parameterType="int" resultType="com.jt.domain.UploadFileDTO">
+        SELECT * FROM tb_files WHERE pseq = #{seq} order by seq desc limit 1
+    </select>
+   
+	
+
+	<select id="all_list" parameterType="com.jt.util.ParameterMap" resultType="com.jt.domain.UploadFileDTO">
+		SELECT * FROM tb_files where 1 order by regdate desc 
+	</select> 
+
+	<select id="count" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT count(*) as c FROM tb_files where 1
+		and pseq = #{pseq}
+		order by regdate desc 
+	</select> 
+
+	<select id="lastSeq" resultType="int">	
+		SELECT seq FROM tb_files ORDER BY seq DESC LIMIT 1
+	</select> 
+</mapper>

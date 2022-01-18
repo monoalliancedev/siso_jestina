@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.AdmJtMapper">
+
+    <!-- 중복되는 동적 SQL문에 대한 처리 -->
+	<sql id="search">
+		<!-- 동적 SQL구문 -->
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			
+			<if test='key.equals("adm_id")'>
+			AND adm_id <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("adm_name")'>
+			AND adm_name <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>	
+			<if test='key.equals("department")'>
+			AND department <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("all")'>
+			AND ( adm_id <![CDATA[ LIKE '%${keyword}%' ]]> OR adm_name <![CDATA[ LIKE '%${keyword}%' ]]> OR department <![CDATA[ LIKE '%${keyword}%' ]]>)
+			</if>	
+				
+		</if>
+	</sql>
+	
+	
+	
+	
+	<!-- 관리자 목록 -->
+	<select id="selectAdmList" parameterType="com.jt.domain.SearchDTO" resultType="com.jt.domain.AdmDTO">
+		SELECT * FROM tb_adm where 1
+		<include refid="search" />
+		order by regdate desc limit ${pg_start}, ${pg_rows} 
+	</select> 
+	
+	<!-- 관리자 검색 총 갯수 -->
+	<select id="selectCnt" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_adm where 1
+		<include refid="search" />
+	</select> 
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_adm where 1
+	</select>
+	
+	<!-- 
+    ,#{isAccountNonexpired}
+        ,#{isAccountNonLocked} 
+        ,#{isCredentialsNonExpired} 
+        ,#{isEnabled}
+    -->
+	<!-- 회원관리 > 팝업 등록 -->
+    <insert id="insertPopAdm" parameterType="com.jt.domain.AdmDTO">
+        INSERT INTO tb_adm VALUES(
+        #{adm_id}
+        ,#{adm_pw}
+        ,#{adm_name}
+        ,1
+        ,1 
+        ,1 
+        ,1
+        ,#{hp}
+        ,#{email}    
+        ,#{department}    
+        <choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,#{regdate}    
+	        </when>
+	        <otherwise>
+	        ,DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+		)
+    </insert>
+    
+    <!-- 회원관리 > ROLL 등록 -->
+    <select id="insertAdmAuthority"  parameterType="String" >
+		INSERT INTO tb_adm_role(adm_id, authority_name)values(#{adm_id}, 'ROLL_ADMIN')
+	</select>    
+    
+	<!-- 회원관리 > 수정할 정보 받아오기 -->
+	<select id="selectPopAdm" parameterType="String" resultType="com.jt.domain.AdmDTO">
+        SELECT * FROM tb_adm WHERE adm_id = #{adm_id}
+    </select>
+    
+    <!-- 회원관리 > 팝업 수정 -->
+	<update id="updatePop2Adm" parameterType="com.jt.domain.AdmDTO">
+        UPDATE tb_adm 
+        SET adm_name = #{adm_name}
+	        <if test='adm_pw != null and !adm_pw.equals("")'>
+    	    ,adm_pw = #{adm_pw}
+        	</if>
+          , hp = #{hp}
+          , department = #{department}
+          
+          <choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        , regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        , regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+          </choose>
+        
+        WHERE adm_id = #{adm_id}
+    </update>
+    
+    <!-- MyPage 정보수정(부서 추가 필요) -->
+	<update id="updatePopAdm" parameterType="com.jt.domain.AdmDTO">
+        UPDATE tb_adm 
+        SET department = #{department}
+          , hp = #{hp}
+        <if test='adm_pw != null and !adm_pw.equals("")'>
+    	    ,adm_pw = #{adm_pw}
+        </if>
+        WHERE adm_id = #{adm_id}
+    </update>
+    
+    <!-- 회원관리 > 삭제 -->
+    <delete id="deleteAdm" parameterType="String">
+        DELETE FROM tb_adm WHERE adm_id = #{adm_id}
+    </delete>
+    
+    <!-- 회원관리 > ROLL 삭제 -->
+    <delete id="deleteAdmAuthority" parameterType="String">
+        DELETE FROM tb_adm_role WHERE adm_id = #{adm_id}
+    </delete>
+    
+   	<!-- 회원로그인 > ROLL authority_name 받아오기 -->
+    <select id="getAdmAuthorites" parameterType="String" resultType="String">
+		SELECT authority_name FROM tb_adm_role WHERE adm_id=#{adm_id}
+	</select>  
+	
+	
+	
+	
+	
+	
+	
+	<insert id="insertAdm" parameterType="com.jt.domain.AdmDTO">
+        INSERT INTO tb_adm VALUES(
+        #{adm_id}
+        ,#{adm_pw}
+        ,#{adm_name}
+        ,1
+        ,1
+        ,1
+        ,1
+        ,#{hp}
+        ,#{email}      
+        ,#{department}      
+        ,now()
+		)
+    </insert>
+    
+    <update id="updateAdm" parameterType="com.jt.domain.AdmDTO">
+        UPDATE tb_adm SET adm_name = #{adm_name}
+        <if test='adm_pw != null and !adm_pw.equals("")'>
+        ,adm_pw = #{adm_pw}
+        </if>
+        ,hp = #{hp}
+        ,email = #{email}
+        ,department = #{department}
+
+        WHERE adm_id = #{adm_id}
+    </update>
+    
+    <select id="selectAdm" parameterType="String" resultType="com.jt.domain.AdmDTO">
+        SELECT * FROM tb_adm WHERE adm_id = #{adm_id}
+    </select>
+    
+	<select id="selectAdmCount" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT count(*) as c FROM tb_adm where 1
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("adm_id")'>
+			AND adm_id <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("adm_name")'>
+			AND adm_name <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>			
+		</if>		 
+	</select> 
+
+	  
+    
+</mapper>

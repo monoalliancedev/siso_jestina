@@ -1,0 +1,113 @@
+﻿@charset "utf-8";
+article{width:100%;display:inline-block;position:relative}
+/*메인배너*/
+.mainBanner{background:#000}
+.mainBanner .flex-viewport{overflow:hidden}
+.mainBanner .slides > li{position:relative;overflow:hidden}
+.mainBanner li.typeVideo video{opacity:0.4;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5}
+.mainBanner li.typeImage{background-position:center center;background-size:cover}
+.mainBanner li.typeImage .bg{width:100%;position:absolute;left:0;top:0;z-index:5;background:rgba(0,0,0,0.4)}
+.mainBanner li.typeImage img{opacity:0;width:100%;height:100%}
+.mainBanner li .tit{position:absolute;left:13%;top:50%;z-index:6}
+.mainBanner li .tit a{line-height:58px;font-weight:500;font-size:48px;color:#fff;letter-spacing:5px;display:inline-block}
+.mainBanner a.ctrlBtn{position:absolute;top:50%;transform:translateY(-50%);z-index:6}
+.mainBanner a.ctrlBtn.prev{left:70px}
+.mainBanner a.ctrlBtn.next{right:70px}
+.mainBanner .controller{position:absolute;z-index:6;left:13%;transform:translateY(-50%);top:50%;margin-top:50px;padding-right:30px}
+.mainBanner .controller > span{display:inline-block;color:#fff;font-weight:500;vertical-align:middle}
+.mainBanner .controller > ol{width:160px;height:1px;background:#767676;display:inline-block;vertical-align:middle}
+.mainBanner .controller > ol > li{float:left}
+.mainBanner .controller > ol > li a{width:100%;display:inline-block;height:1px;overflow:hidden;vertical-align:text-top}
+.mainBanner .controller > ol > li a span{width:0;height:1px;background:#fff;text-indent:-9999px;float:left}
+.mainBanner .controller > ol > li a.end span{width:100%}
+.mainBanner .controller > span.activeNO{float:left;margin-right:10px}
+.mainBanner .controller > span.totalNO{float:right;margin-left:10px}
+.mainBanner .scroll{position:absolute;color:#fff;right:20px;bottom:76px;z-index:10;font-weight:300;transform:rotate(-90deg);letter-spacing:2px;font-family:'Malgun Gothic'}
+.mainBanner .scroll img{margin-right:10px}
+.mainBanner .controller .flex-pauseplay{display:inline-block;position:absolute;right:0;line-height:0;vertical-align:middle;margin-top:2px}
+.mainBanner .controller .flex-pauseplay a{width:8px;height:12px;text-indent:-9999px;cursor:pointer;display:inline-block;background-position:center center}
+.mainBanner .controller a.flex-pause{background-image:url(/jtadm/images/icon_pause.svg)}
+.mainBanner .controller a.flex-play{background-image:url(/jtadm/images/icon_play.svg)}
+/*Brand소개*/
+.brandIntro{padding:100px 70px}
+.brandIntro article > div{display:inline-block;position:relative}
+.brandIntro .imgPhoto{width:49%;overflow:hidden;transition:all .5s;-webkit-transition:all .5s;}
+.brandIntro .imgPhoto img{width:100%}
+.brandIntro .prdPhoto{width:24.5%;overflow:hidden;background-repeat:no-repeat;background-position:center center;background-size:cover}
+.brandIntro .prdPhoto img{opacity:0}
+.brandIntro .info{height:100%;width:24.5%;background:#fafafa;vertical-align:top;position:relative;transition:all 1s;-webkit-transition:all 1s;}
+.brandIntro .info ul{width:100%;position:absolute;left:0;top:50%;transform:translateY(-50%);padding:0 6.5%}
+.brandIntro .info .cate{font-size:18px;color:#505050}
+.brandIntro .info .name{font-size:28px;font-weight:500;margin:20px 0 40px 0}
+.brandIntro .info .text{font-size:16px;color:#767676;line-height:1.5}
+.brandIntro .info .more{text-align:right;margin-top:80px}
+.brandIntro .info .more a{font-weight:500;color:#767676;display:inline-block;padding-bottom:5px;border-bottom:1px solid #767676}
+.brandIntro article:hover .info{background:#101010}
+.brandIntro article:hover .info .cate{color:#fff}
+.brandIntro article:hover .info .name{color:#fff}
+.brandIntro article:hover .info .text{color:#fff}
+.brandIntro article:hover .info .more a{color:#fff;border-bottom:1px solid #fff}
+.brandIntro .jewelry .prdPhoto{float:right}
+.brandIntro .jewelry .info{position:absolute;left:50%;top:0}
+.brandIntro .handbag{margin:10px 0}
+.brandIntro .handbag .info{float:left}
+.brandIntro .handbag .imgPhoto{position:absolute;left:50%;transform:translateX(-50%);top:0}
+.brandIntro .handbag .prdPhoto{float:right}
+.brandIntro .romanson .prdPhoto{float:left}
+.brandIntro .romanson .info{float:left;margin-left:1%}
+.brandIntro .romanson .imgPhoto{float:right}
+/*About J.ESTINA*/
+.aboutJestina{padding:0 70px}
+.aboutJestina article{display:table;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0}
+.aboutJestina article > div{display:table-cell}
+.aboutJestina .visual{width:45.5%}
+.aboutJestina .visual img{width:100%}
+.aboutJestina .textArea{position:relative}
+.aboutJestina .textArea > div{width:100%;position:absolute;left:0;top:35%;transform:translateY(-50%);text-align:center}
+.aboutJestina .textArea h6{font-size:18px;color:#505050;font-weight:400;opacity:0}
+.aboutJestina .textArea h5{font-size:48px;color:#101010;font-weight:500;text-transform:uppercase;opacity:0}
+.aboutJestina .textArea span{display:block;font-size:16px;color:#767676;line-height:1.6;padding-top:45px;position:relative;opacity:0}
+.aboutJestina .textArea span::before{content:'';width:18px;height:2px;background:#e0e0e0;position:absolute;top:0;left:50%;transform:translateX(-50%)}
+/*Latest*/
+.latestArea{padding:100px 70px 90px 70px}
+.latestArea .part{width:50%;float:left}
+.latestArea ul{width:47.7%;max-width:415px;vertical-align:middle;display:inline-block}
+.latestArea ul li{width:100%;display:inline-block;}
+.latestArea ul .photo{height:270px;overflow:hidden;position:relative}
+.latestArea ul .photo a{width:100%;height:100%}
+.latestArea ul .photo img{width:100%}
+.latestArea ul .cate{font-size:18px;color:#505050;margin:38px 0 28px 0}
+.latestArea ul .tit a{display:block;font-size:28px;font-weight:500;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.latestArea ul .text{margin-top:10px}
+.latestArea ul .text a{color:#767676;font-size:16px;line-height:1.2}
+.latestArea .news{margin-right:20px;float:right}
+.latestArea .rescruit{margin-left:20px}
+.latestArea .ir{float:right}
+/*Bottom Menu*/
+.bottomMenu{height:378px;background:#f9f9f9;padding-top:85px;text-align:center}
+.bottomMenu dl{display:inline-block;vertical-align:top;margin:0 80px}
+.bottomMenu dt{display:block;margin-bottom:25px}
+.bottomMenu dt a{display:block;font-weight:500;color:#000}
+.bottomMenu dd a{display:block;margin:6px 0;padding:5px 0;color:#505050}
+.bottomMenu dd a:hover{text-decoration:underline}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

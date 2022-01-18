@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.RecruitmentMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="RecruitmentMap" type="com.jt.domain.RecruitmentDTO">
+	<result property="isntYn" column="isnt_yn" />
+	<result property="jobField" column="job_field" />
+	<result property="careerIsnt" column="career_isnt" />
+	<result property="business" column="business" />
+	<result property="recruitFromDate" column="recruit_from_date" />
+	<result property="recruitToDate" column="recruit_to_date" />
+	<result property="recruitEnd" column="recruit_end" />
+	<result property="managerEmail1" column="manager_email1" />
+	<result property="managerEmail2" column="manager_email2" />
+	<result property="contents" column="contents" />
+	<result property="admId" column="adm_id" />
+	</resultMap>
+	
+<!--##################################################################### -->
+    
+    
+    <!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		
+		<if test='keyIsnt != null and !keyIsnt.equals("")'> <!-- 채용(신입N,경력Y,전체A) -->
+		AND career_isnt = #{keyIsnt}
+		</if>
+		
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("jobField")'> <!-- 모집부분 -->
+			AND job_field <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("business")'> <!-- 사업부분 -->
+			AND business <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>	
+			<if test='key.equals("contents")'> <!-- 내용 -->
+			AND contents <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("all")'> <!-- 전체 -->
+			AND ( job_field <![CDATA[ LIKE '%${keyword}%' ]]> OR business <![CDATA[ LIKE '%${keyword}%' ]]> OR contents <![CDATA[ LIKE '%${keyword}%' ]]> )
+			</if>	
+				
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+	
+<!--##################################################################### -->
+    
+	<!-- 채용공고 총 갯수 -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_recruitment where 1
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_jt_recruitment where 1
+	</select>
+	
+	<!-- 채용공고 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="RecruitmentMap">
+		SELECT * FROM tb_jt_recruitment where 1
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	<!-- 채용공고 등록 -->
+	<insert id="insert" parameterType="com.jt.domain.RecruitmentDTO">
+        INSERT INTO tb_jt_recruitment 
+		SET isnt_yn = #{isntYn} 
+	        ,job_field = #{jobField} 
+	        ,career_isnt = #{careerIsnt} 
+	        ,business = #{business} 
+	        ,recruit_from_date = #{recruitFromDate}
+	        ,recruit_to_date = #{recruitToDate}
+	        ,recruit_end = #{recruitEnd}
+	        ,manager_email1 = #{managerEmail1}
+	        ,manager_email2 = #{managerEmail2}
+	        ,contents = #{contents}
+	        ,adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+	        
+    </insert>
+    
+    <!-- 채용공고 수정 -->
+	<update id="update" parameterType="com.jt.domain.RecruitmentDTO">
+        UPDATE tb_jt_recruitment 
+        SET isnt_yn = #{isntYn}
+	        ,job_field = #{jobField}
+	        ,career_isnt = #{careerIsnt}
+	        ,business = #{business}
+	        ,recruit_from_date = #{recruitFromDate}
+	        ,recruit_to_date = #{recruitToDate}
+	        ,recruit_end = #{recruitEnd}
+	        ,manager_email1 = #{managerEmail1}
+	        ,manager_email2 = #{managerEmail2}
+	        ,contents = #{contents}
+	        ,adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+        WHERE seq = #{seq}
+    </update>
+    
+    <!-- 채용공고 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_recruitment WHERE seq = #{seq}
+    </delete>
+
+    <!-- 채용공고 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="RecruitmentMap">
+        SELECT * FROM tb_jt_recruitment WHERE seq = #{seq}
+    </select>
+    
+    <!-- 채용공고 최고Max값 -->
+    <select id="max_seq" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT max(seq) as c FROM tb_jt_recruitment where 1 
+	</select> 
+	
+	<!-- 채용공고 게시여부 바꾸기 -->
+    <select id="isntChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_recruitment SET isnt_yn=#{isntYN} WHERE seq=#{seq}
+	</select> 
+	
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int">
+		<![CDATA[ SELECT count(*) FROM tb_jt_recruitment WHERE isnt_yn='Y']]>
+	</select>
+	
+	
+	
+	
+	<!-- Front 채용공고 리스트--> 
+	<select id="FrontList" parameterType="String" resultMap="RecruitmentMap">
+		SELECT *  
+		  FROM tb_jt_recruitment
+		 WHERE isnt_yn = 'Y'
+				<if test='careerIsnt != null and !careerIsnt.equals("")'> 
+				AND career_isnt = #{careerIsnt}
+			   	</if>
+		 ORDER BY regdate DESC, seq DESC;
+	</select> 
+	<!-- Front 채용공고 Count --> 
+	<select id="FrontTotalCnt" resultType="int" parameterType="String">
+		SELECT count(career_isnt) as TotalCnt 
+		  FROM tb_jt_recruitment
+		 WHERE isnt_yn = 'Y'
+		   		<if test='careerIsnt != null and !careerIsnt.equals("")'>
+				AND career_isnt = #{careerIsnt}
+			   	</if>
+			   ;
+	</select> 
+    
+	
+	
+	<!-- Front 채용공고 리스트 
+	<select id="FrontList" parameterType="String" resultMap="RecruitmentMap">
+		SELECT t.* 
+		  FROM (
+				SELECT st.career_isnt, st.job_field, st.business,st.regdate,st.seq
+				     , st.recruit_from_date, st.recruit_end,  st.isnt_yn
+				     , IF(st.recruit_end='checked', DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 10 YEAR), '%Y-%m-%d'), st.recruit_to_date ) as recruit_to_date
+				  FROM tb_jt_recruitment st
+			  ) t
+		 WHERE t.recruit_from_date <![CDATA[<=]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+		   AND t.recruit_to_date <![CDATA[>=]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+		   AND t.isnt_yn = 'Y'
+				<if test='careerIsnt != null and !careerIsnt.equals("")'> 
+				AND t.career_isnt = #{careerIsnt}
+			   	</if>
+		 ORDER BY t.regdate DESC, t.seq DESC;
+	</select> 
+	// Front 채용공고 Count 
+	<select id="FrontTotalCnt" resultType="int" parameterType="String">
+		SELECT count(t.career_isnt) as TotalCnt 
+		  FROM (
+				SELECT st.career_isnt, st.job_field, st.business,st.regdate,st.seq
+				     , st.recruit_from_date, st.isnt_yn
+				     , IF(st.recruit_end='checked', DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 10 YEAR), '%Y-%m-%d'), st.recruit_to_date ) as recruit_to_date
+				  FROM tb_jt_recruitment st
+			  ) t
+		 WHERE t.recruit_from_date <![CDATA[<=]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+		   AND t.recruit_to_date <![CDATA[>=]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+		   AND t.isnt_yn = 'Y'
+		   		<if test='careerIsnt != null and !careerIsnt.equals("")'>
+				AND t.career_isnt = #{careerIsnt}
+			   	</if>
+			   ;
+	</select> 
+    -->
+
+
+	
+</mapper>

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.BannerMapper">
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="BannerMap" type="com.jt.domain.BannerDTO">
+	<result property="gubun" column="gubun" />
+	<result property="lang" column="lang" />
+	<result property="title" column="title" />
+	<result property="regdate" column="regdate" />
+	<result property="isntYn" column="isnt_yn" />
+	<result property="contents" column="contents" />
+	<result property="linkKr" column="link_kr" />
+	<result property="linkKrOutYn" column="link_kr_out_yn" />
+	<result property="linkEn" column="link_en" />
+	<result property="linkEnOutYn" column="link_en_out_yn" />
+	<result property="linkCn" column="link_cn" />
+	<result property="linkCnOutYn" column="link_cn_out_yn" />
+	<result property="imgKrSeq" column="img_kr_seq" />
+	<result property="imgEnSeq" column="img_en_seq" />
+	<result property="imgCnSeq" column="img_cn_seq" />
+	<result property="moimgKrSeq" column="moimg_kr_seq" />
+	<result property="moimgEnSeq" column="moimg_en_seq" />
+	<result property="moimgCnSeq" column="moimg_cn_seq" />
+	<result property="sortIdx" column="sort_idx" />
+	<result property="admId" column="adm_id" />
+	<result property="fileKRType" column="file_kr_type" />
+	<result property="fileENType" column="file_en_type" />
+	<result property="fileCNType" column="file_cn_type" />
+	</resultMap>
+ 
+ 	
+<!--##################################################################### -->
+
+	<!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		<if test='keyIsnt != null and !keyIsnt.equals("")'> <!-- 언어 -->
+		AND lang <![CDATA[ LIKE '%${keyIsnt}%' ]]>  
+		</if>
+		<if test='keyValue1 != null and !keyValue1.equals("")'> <!-- 게시여부 -->
+		AND isnt_yn = '${keyValue1}'  
+		</if>
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("title")'> <!-- 제목 -->
+			AND title <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("contents")'> <!-- 내용 -->
+			AND contents <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+			<if test='key.equals("all")'> <!-- 전체 -->
+			AND ( title <![CDATA[ LIKE '%${keyword}%' ]]> OR contents <![CDATA[ LIKE '%${keyword}%' ]]> )
+			</if>	
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+	
+<!--##################################################################### -->
+
+	<!-- 검색 총 갯수 -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_banner where 1
+		   AND gubun= #{keyGubun}
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_jt_banner where 1
+		   AND gubun= #{gubun}
+	</select>
+	
+	<!-- 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="BannerMap">
+		SELECT * FROM tb_jt_banner where 1
+		   AND gubun= #{keyGubun}
+		<include refid="search" />
+		ORDER BY sort_idx DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	<!-- 등록 -->
+	<insert id="insert" parameterType="com.jt.domain.BannerDTO">
+        INSERT INTO tb_jt_banner 
+		SET title = #{title}
+	        ,contents = #{contents}
+	        ,gubun = #{gubun} 
+	        <if test='lang != null and !lang.equals("")'>
+			,lang = #{lang}
+			</if>
+	        ,isnt_yn = #{isntYn}
+	        ,link_kr = #{linkKr} 
+	        ,link_kr_out_yn = #{linkKrOutYn} 
+	        ,link_en = #{linkEn}
+	        ,link_en_out_yn = #{linkEnOutYn}
+	        ,link_cn = #{linkCn}
+	        ,link_cn_out_yn = #{linkCnOutYn}
+	        ,img_kr_seq = #{imgKrSeq}
+	        ,img_en_seq = #{imgEnSeq}
+	        ,img_cn_seq = #{imgCnSeq}
+	        ,moimg_kr_seq = #{moimgKrSeq}
+	        ,moimg_en_seq = #{moimgEnSeq}
+	        ,moimg_cn_seq = #{moimgCnSeq}
+	        ,file_kr_type = #{fileKRType}
+	        ,file_en_type = #{fileENType}
+	        ,file_cn_type = #{fileCNType} 
+	        ,sort_idx = (SELECT IFNULL(MAX(b.sort_idx) + 1, 1) FROM tb_jt_banner b WHERE b.gubun=#{gubun} ) 
+	        ,adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+	</insert>
+    
+    
+ 	<!-- 수정 -->
+	<update id="update" parameterType="com.jt.domain.BannerDTO">
+        UPDATE tb_jt_banner 
+		SET title = #{title}
+	        ,contents = #{contents}
+	        ,gubun = #{gubun} 
+		    <if test='lang != null and !lang.equals("")'>
+			,lang = #{lang}
+			</if>
+            ,isnt_yn = #{isntYn}
+	        ,link_kr = #{linkKr} 
+	        ,link_kr_out_yn = #{linkKrOutYn} 
+	        ,link_en = #{linkEn}
+	        ,link_en_out_yn = #{linkEnOutYn}
+	        ,link_cn = #{linkCn}
+	        ,link_cn_out_yn = #{linkCnOutYn}
+	        ,img_kr_seq = #{imgKrSeq}
+	        ,img_en_seq = #{imgEnSeq}
+	        ,img_cn_seq = #{imgCnSeq}
+	        ,moimg_kr_seq = #{moimgKrSeq}
+	        ,moimg_en_seq = #{moimgEnSeq}
+	        ,moimg_cn_seq = #{moimgCnSeq}
+	        ,file_kr_type = #{fileKRType}
+	        ,file_en_type = #{fileENType}
+	        ,file_cn_type = #{fileCNType}
+	        ,adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+        WHERE seq = #{seq}
+    </update>
+ 
+    
+    <!-- 파일정보 수정 -->
+	<update id="fileUpdate" parameterType="com.jt.util.ParameterMap">
+        UPDATE tb_jt_banner 
+		<if test='key.equals("0")'> SET img_kr_seq = #{keyValue} </if>
+	    <if test='key.equals("1")'> SET moimg_kr_seq = #{keyValue}  </if>
+	    <if test='key.equals("2")'> SET img_en_seq = #{keyValue}  </if>
+	    <if test='key.equals("3")'> SET moimg_en_seq = #{keyValue}  </if>
+	    <if test='key.equals("4")'> SET img_cn_seq = #{keyValue}  </if>
+	    <if test='key.equals("5")'> SET moimg_cn_seq = #{keyValue}  </if>
+        WHERE seq = #{bseq}
+    </update>
+    
+    <!-- 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_banner WHERE seq = #{seq}
+    </delete>
+
+    <!-- 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="BannerMap">
+        SELECT * FROM tb_jt_banner WHERE seq = #{seq}
+    </select>
+    
+    <!-- 최고Max값 -->
+    <select id="max_seq" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT max(seq) as c FROM tb_jt_banner where 1 
+	</select> 
+	
+	<!-- 게시여부 바꾸기 -->
+    <select id="isntChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_banner SET isnt_yn=#{isntYN} WHERE seq=#{seq}
+	</select> 
+	
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int" parameterType="String">
+		<![CDATA[ SELECT count(*) FROM tb_jt_banner WHERE isnt_yn='Y' and gubun= #{gubun} ]]>
+	</select>
+	
+	<!-- 위로 이동 키값 -->
+    <select id="UpSelect" parameterType="com.jt.util.ParameterMap"  resultMap="BannerMap">
+        SELECT seq, sort_idx FROM tb_jt_banner 
+         WHERE sort_idx > #{sortIdx} and gubun=#{gubun}
+         <include refid="search" />
+         ORDER BY sort_idx ASC,seq ASC LIMIT 1;
+    </select>
+    <!-- 아래로 이동 키값 -->
+    <select id="DownSelect" parameterType="com.jt.util.ParameterMap"  resultMap="BannerMap">
+         
+        SELECT seq, sort_idx FROM tb_jt_banner 
+         WHERE sort_idx <![CDATA[<]]> #{sortIdx} and gubun=#{gubun}
+         <include refid="search" />
+         ORDER BY sort_idx DESC,seq DESC LIMIT 1;
+        
+    </select>
+    <!-- 정렬순서 바꾸기 -->
+    <select id="sortChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_banner SET sort_idx=#{sortIdx} where seq=#{seq} ;
+	</select> 
+	
+	
+	
+	
+	<!-- 메인브랜드베너 상세 -->
+    <select id="selectGubun" parameterType="String"  resultMap="BannerMap">
+        SELECT * FROM tb_jt_banner WHERE gubun = #{gubun} order by seq desc limit 1;
+    </select>
+    
+    <!-- 메인브랜드베너 등록 및 수정 -->
+	<insert id="MBBannerProc" parameterType="com.jt.domain.BannerDTO">
+        REPLACE INTO tb_jt_banner 
+		SET gubun = #{gubun} 
+	        ,isnt_yn = #{isntYn}
+	        ,link_kr = #{linkKr} 
+	        ,link_kr_out_yn = #{linkKrOutYn} 
+	        ,link_en = #{linkEn}
+	        ,link_en_out_yn = #{linkEnOutYn}
+	        ,link_cn = #{linkCn}
+	        ,link_cn_out_yn = #{linkCnOutYn}
+	        ,img_kr_seq = #{imgKrSeq}
+	        ,img_en_seq = #{imgEnSeq}
+	        ,img_cn_seq = #{imgCnSeq}
+	        ,moimg_kr_seq = #{moimgKrSeq}
+	        ,moimg_en_seq = #{moimgEnSeq}
+	        ,moimg_cn_seq = #{moimgCnSeq}
+	        ,adm_id = #{admId}
+	        <choose>
+	        <when test='seq>0'>
+	        ,seq = #{seq}
+			</when>
+	        <otherwise>
+	        ,sort_idx = (SELECT IFNULL(MAX(b.sort_idx) + 1, 1) FROM tb_jt_banner b WHERE b.gubun=#{gubun} ) 
+	        </otherwise>
+        	</choose>
+        	<include refid="regdateUpdate" />
+    </insert>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- 메인 : 메인배너 -->
+	<select id="MainBanner" parameterType="String" resultType="com.jt.domain.FrontBannerDTO">
+		SELECT seq, title, contents
+		
+		<if test='lang== "KR"'>
+		     , link_kr as linkUrl, link_kr_out_yn as linkOutYn, file_kr_type as fileType
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_kr_seq) as imgUrl
+		     , (select save_filename from tb_files f2 where f2.seq=b.moimg_kr_seq) as moimgUrl
+		</if>
+		<if test='lang== "EN"'>
+		     , link_en as linkUrl, link_en_out_yn as linkOutYn, file_en_type as fileType
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_en_seq) as imgUrl
+		     , (select save_filename from tb_files f2 where f2.seq=b.moimg_en_seq) as moimgUrl
+		</if>
+		<if test='lang== "CN"'>
+		     , link_cn as linkUrl, link_cn_out_yn as linkOutYn, file_cn_type as fileType
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_cn_seq) as imgUrl
+		     , (select save_filename from tb_files f2 where f2.seq=b.moimg_cn_seq) as moimgUrl
+		</if>
+
+		  FROM tb_jt_banner b 
+		 WHERE lang=#{lang}
+		   AND gubun= 'MainBanner'
+		   AND isnt_yn = 'Y'
+		ORDER BY sort_idx DESC, seq DESC 
+		LIMIT 1
+	</select> 
+		
+    <!-- 메인 : 메인 브랜드 배너 list(주얼리,가방,로만손)-->
+	<select id="MainBarndBanner" parameterType="com.jt.util.ParameterMap" resultType="com.jt.domain.FrontBannerDTO">
+		SELECT seq, title, contents
+		
+		<if test='lang== "KR"'>
+		     , link_kr as linkUrl, link_kr_out_yn as linkOutYn, file_kr_type as fileType
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_kr_seq) as imgUrl
+		     , (select save_filename from tb_files f2 where f2.seq=b.moimg_kr_seq) as moimgUrl
+		</if>
+		<if test='lang== "EN"'>
+		     , link_en as linkUrl, link_en_out_yn as linkOutYn, file_en_type as fileType
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_en_seq) as imgUrl
+		     , (select save_filename from tb_files f2 where f2.seq=b.moimg_en_seq) as moimgUrl
+		</if>
+		<if test='lang== "CN"'>
+		     , link_cn as linkUrl, link_cn_out_yn as linkOutYn, file_cn_type as fileType
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_cn_seq) as imgUrl
+		     , (select save_filename from tb_files f2 where f2.seq=b.moimg_cn_seq) as moimgUrl
+		</if>
+		  FROM tb_jt_banner b 
+		 WHERE gubun=#{gubun}
+		ORDER BY sort_idx DESC, seq DESC 
+		LIMIT 1
+	</select> 
+		
+	        
+            
+            
+            
+	        
+	
+    
+    
+   	
+</mapper>

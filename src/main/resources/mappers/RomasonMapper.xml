@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.RomasonMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="RomasonMap" type="com.jt.domain.RomasonDTO">
+	<result property="seq" column="seq" />
+	<result property="regdate" column="regdate" />
+	<result property="categorySeq" column="category_seq" />
+	<result property="viewYn" column="view_yn" />
+	<result property="isntYn" column="isnt_yn" />
+	<result property="proName" column="pro_name" />
+	<result property="cateName" column="cate_name" />
+	<result property="proImg1Seq" column="pro_img1_seq" />
+	<result property="proImg2Seq" column="pro_img2_seq" />
+	<result property="proImg3Seq" column="pro_img3_seq" />
+	<result property="proImg4Seq" column="pro_img4_seq" />
+	<result property="proImg5Seq" column="pro_img5_seq" />
+	<result property="proSize" column="pro_size" />
+	<result property="proMeterial" column="pro_meterial" />
+	<result property="proGlass" column="pro_glass" />
+	<result property="proBand" column="pro_band" />
+	<result property="proWater" column="pro_water" />
+	<result property="sortIdx" column="sort_idx" />
+	<result property="admId" column="adm_id" />
+	<result property="preSeq" column="pre_seq" />
+	<result property="nextSeq" column="next_seq" />
+	</resultMap>
+  
+<!--##################################################################### -->
+
+	<!-- 중복되는 검색 SQL문에 대한 처리 (카테고리,제품명)-->
+	<sql id="search">
+		<if test='keyValue1 != null and !keyValue1.equals("")'>
+			AND category_seq = #{keyValue1}  
+		</if>
+		<if test='keyword != null and !keyword.equals("")'>
+			AND pro_name <![CDATA[ LIKE '%${keyword}%' ]]>
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+	
+<!--##################################################################### -->
+
+	<!-- 검색 총 갯수  -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_romason where 1
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_jt_romason where 1
+	</select>
+
+	<!-- 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="RomasonMap">
+		SELECT a.*
+		     , (SELECT t.cate_name FROM tb_jt_romason_category t WHERE t.seq=a.category_seq) AS cate_name 
+		  FROM tb_jt_romason a where 1
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	<!-- 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_romason WHERE seq = #{seq}
+    </delete>
+
+    <!-- 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="RomasonMap">
+        SELECT a.*
+			 , (SELECT b.cate_name FROM tb_jt_romason_category b where b.seq=a.category_seq) AS cate_name  
+          FROM tb_jt_romason a WHERE seq = #{seq}
+    </select>
+    
+    
+    
+    
+    
+    <!-- 게시여부 바꾸기 -->
+    <select id="isntChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_romason SET isnt_yn=#{isntYN} WHERE seq=#{seq}
+	</select> 
+	
+	<!-- 파일정보 수정 -->
+	<update id="fileUpdate" parameterType="com.jt.util.ParameterMap">
+        UPDATE tb_jt_romason 
+		<if test='key.equals("0")'> SET pro_img1_seq = #{keyValue} </if>
+	    <if test='key.equals("1")'> SET pro_img2_seq = #{keyValue}  </if>
+	    <if test='key.equals("2")'> SET pro_img3_seq = #{keyValue}  </if>
+	    <if test='key.equals("3")'> SET pro_img4_seq = #{keyValue}  </if>
+	    <if test='key.equals("4")'> SET pro_img5_seq = #{keyValue}  </if>
+	    WHERE seq = #{bseq}
+    </update>
+    <!-- 등록 및 수정 -->
+	<insert id="insertAndUpdate" parameterType="com.jt.domain.RomasonDTO">
+        REPLACE INTO tb_jt_romason 
+		SET category_seq = #{categorySeq}
+	        ,view_yn = #{viewYn} 
+	        ,isnt_yn = #{isntYn} 
+	        ,pro_name = #{proName}
+	        ,pro_img1_seq = #{proImg1Seq}
+	        ,pro_img2_seq = #{proImg2Seq}
+	        ,pro_img3_seq = #{proImg3Seq}
+	        ,pro_img4_seq = #{proImg4Seq}
+	        ,pro_img5_seq = #{proImg5Seq}
+	        ,pro_size = #{proSize}
+	        ,pro_meterial = #{proMeterial}
+	        ,pro_glass = #{proGlass}
+	        ,pro_band = #{proBand}
+	        ,pro_water = #{proWater}
+	        ,sort_idx = #{sortIdx}
+  	        ,adm_id = #{admId}
+	        <if test='seq>0'>
+			,seq = #{seq}
+			</if>
+	        <include refid="regdateUpdate" />
+    </insert>
+    
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int">
+		<![CDATA[ SELECT count(*) FROM tb_jt_romason WHERE isnt_yn='Y' ]]>
+	</select>
+	
+	
+	
+	
+	
+	<!-- Front NEW ARRIVALS(추천 신상품) 리스트 -->
+	<select id="FrontNewList" resultMap="RomasonMap">
+		SELECT a.*
+		     , (SELECT b.cate_name FROM tb_jt_romason_category b where b.seq=a.category_seq) AS cate_name 
+		  FROM tb_jt_romason a 
+		 WHERE view_yn='Y'
+		   AND isnt_yn='Y'
+		 ORDER BY regdate DESC, seq DESC 
+	</select> 
+	
+	<!-- Front 리스트 -->
+	<select id="FrontList" parameterType="int" resultMap="RomasonMap">
+		SELECT a.*
+		     , (SELECT b.cate_name FROM tb_jt_romason_category b where b.seq=a.category_seq) AS cate_name 
+		  FROM tb_jt_romason a 
+		 WHERE category_seq=#{category}  
+		   AND isnt_yn='Y'
+		 ORDER BY regdate DESC, seq DESC 
+	</select> 
+	
+	
+	<!-- Front 상세정보 -->
+    <select id="FrontSelect" parameterType="com.jt.util.ParameterMap"  resultMap="RomasonMap">
+        SELECT a.*
+			 , ( SELECT b.seq FROM tb_jt_romason b 
+			 	  WHERE b.regdate >= a.regdate 
+			 	    AND b.seq > a.seq
+			 	    AND isnt_yn='Y' 
+					<choose>
+						<when test="cateCode==0">
+						AND view_yn='Y'
+						</when>
+						<otherwise>
+						AND b.category_seq=a.category_seq 
+						</otherwise>
+					</choose>
+			 	  ORDER BY b.regdate ASC, b.seq ASC limit 1 ) 
+			   AS pre_seq
+			 , ( SELECT c.seq FROM tb_jt_romason c 
+			 	  WHERE c.regdate <![CDATA[<=]]> a.regdate 
+			 	    AND c.seq <![CDATA[<]]> a.seq
+			 	    AND isnt_yn='Y' 
+			 	    <choose>
+						<when test="cateCode==0">
+						AND view_yn='Y'
+						</when>
+						<otherwise>
+						AND c.category_seq=a.category_seq 
+						</otherwise>
+					</choose>
+			 	  ORDER BY c.regdate DESC, c.seq DESC limit 1 ) 
+			   AS next_seq		     
+			 , ( SELECT b.cate_name FROM tb_jt_romason_category b where b.seq=a.category_seq) 
+			   AS cate_name  
+          FROM tb_jt_romason a WHERE seq = #{code}
+    </select>
+</mapper>

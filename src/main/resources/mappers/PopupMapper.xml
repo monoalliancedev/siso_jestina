@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.PopupMapper">
+
+	<!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="PopupMap" type="com.jt.domain.PopupJtDTO">
+	<result property="lang" column="lang" />
+	<result property="title" column="title" />
+	<result property="regdate" column="regdate" />
+	<result property="isntYn" column="isnt_yn" />
+	<result property="linkKr" column="link_kr" />
+	<result property="linkKrOutYn" column="link_kr_out_yn" />
+	<result property="linkEn" column="link_en" />
+	<result property="linkEnOutYn" column="link_en_out_yn" />
+	<result property="linkCn" column="link_cn" />
+	<result property="linkCnOutYn" column="link_cn_out_yn" />
+	<result property="imgKrSeq" column="img_kr_seq" />
+	<result property="imgEnSeq" column="img_en_seq" />
+	<result property="imgCnSeq" column="img_cn_seq" />
+	<result property="admId" column="adm_id" />
+	<result property="fromDate" column="from_date" />
+	<result property="toDate" column="to_date" />
+	<result property="popscrollYn" column="popscroll_yn" />
+	<result property="winWidth" column="win_width" />
+	<result property="winHeight" column="win_height" />
+	<result property="winLeft" column="win_left" />
+	<result property="winTop" column="win_top" />
+	</resultMap>
+
+<!--##################################################################### -->
+
+	<!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		<if test='keyIsnt != null and !keyIsnt.equals("")'> <!-- 언어 -->
+		AND lang <![CDATA[ LIKE '%${keyIsnt}%' ]]>  
+		</if>
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("title") or key.equals("all")'> <!-- 제목 -->
+			AND title <![CDATA[ LIKE '%${keyword}%' ]]>
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+<!--##################################################################### -->
+
+	<!-- 총 갯수 SearchDTO에 gubun 추가해 주세요. -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_popup where 1
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_jt_popup where 1
+	</select>
+	
+	<!-- 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="PopupMap">
+		SELECT * FROM tb_jt_popup where 1
+		<include refid="search" />
+		ORDER BY seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select>
+	
+	<!-- 등록및 수정 -->
+	<insert id="insertAndUpdate" parameterType="com.jt.domain.PopupJtDTO">
+        REPLACE INTO tb_jt_popup 
+		SET title = #{title}
+	        <if test='lang != null and !lang.equals("")'>
+			,lang = #{lang}
+			</if>
+	        ,isnt_yn = #{isntYn}
+	        ,link_kr = #{linkKr} 
+	        ,link_kr_out_yn = #{linkKrOutYn} 
+	        ,link_en = #{linkEn}
+	        ,link_en_out_yn = #{linkEnOutYn}
+	        ,link_cn = #{linkCn}
+	        ,link_cn_out_yn = #{linkCnOutYn}
+	        ,img_kr_seq = #{imgKrSeq}
+	        ,img_en_seq = #{imgEnSeq}
+	        ,img_cn_seq = #{imgCnSeq}
+	        ,from_date = #{fromDate}
+	        ,to_date = #{toDate}
+	        ,popscroll_yn = #{popscrollYn}
+			,win_width = #{winWidth}
+	        ,win_height = #{winHeight}
+	        ,win_left = #{winLeft}
+	        ,win_top = #{winTop}
+	        ,adm_id = #{admId}
+	        <if test='seq>0'>
+			,seq = #{seq}
+			</if>
+			<include refid="regdateUpdate" />
+    </insert>
+	
+	
+	<!-- 파일정보 수정 -->
+	<update id="fileUpdatePopup" parameterType="com.jt.util.ParameterMap">
+        UPDATE tb_jt_popup 
+		<if test='key.equals("0")'> SET img_kr_seq = #{keyValue} </if>
+	    <if test='key.equals("1")'> SET img_en_seq = #{keyValue}  </if>
+	    <if test='key.equals("2")'> SET img_cn_seq = #{keyValue}  </if>
+        WHERE seq = #{bseq}
+    </update>
+	
+	<!-- 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_popup WHERE seq = #{seq}
+    </delete>
+
+    <!-- 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="PopupMap">
+        SELECT * FROM tb_jt_popup WHERE seq = #{seq}
+    </select>
+    
+    <!-- 게시여부 바꾸기 -->
+    <select id="isntChangePopup" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_popup SET isnt_yn=#{isntYN} WHERE seq=#{seq}
+	</select>
+	
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int">
+		<![CDATA[ SELECT count(*) FROM tb_jt_popup WHERE isnt_yn='Y' ]]>
+	</select>
+	
+
+</mapper>

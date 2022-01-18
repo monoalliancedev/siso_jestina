@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.BoardJtMapper">
+
+    <!-- DB 컬럼명과 DTO 클래스의 필드명 매핑작업 -->
+	<resultMap id="BoardJtMap" type="com.jt.domain.BoardJtDTO">
+	<result property="gubun" column="gubun" />
+	<result property="mainYn" column="main_yn" />
+	<result property="imgSeq" column="img_seq" />
+	<result property="file1Seq" column="file1_seq" />
+	<result property="file2Seq" column="file2_seq" />
+	<result property="file3Seq" column="file3_seq" />
+	<result property="file4Seq" column="file4_seq" />
+	<result property="lang" column="lang" />
+	<result property="regdate" column="regdate" />
+	<result property="isntYn" column="isnt_yn" />
+	<result property="titleKr" column="title_kr" />
+	<result property="titleEn" column="title_en" />
+	<result property="titleCn" column="title_cn" />
+	<result property="contentsKr" column="contents_kr" />
+	<result property="contentsEn" column="contents_en" />
+	<result property="contentsCn" column="contents_cn" />
+	<result property="admId" column="admId" />
+	</resultMap>
+	
+<!--##################################################################### -->
+    
+    
+    <!-- 중복되는 검색 SQL문에 대한 처리 -->
+	<sql id="search">
+		<if test='keyIsnt != null and !keyIsnt.equals("")'> <!-- 언어 -->
+		AND lang <![CDATA[ LIKE '%${keyIsnt}%' ]]>  
+		</if>
+		<if test='keyValue1 != null and !keyValue1.equals("")'> <!-- 게시여부 -->
+		AND isnt_yn = '${keyValue1}'  
+		</if>
+		<if test='keyValue2 != null and !keyValue2.equals("")'> <!-- 메인여부 -->
+		AND main_yn = '${keyValue2}'  
+		</if>
+		
+		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+			<if test='key.equals("title")'> <!-- 제목 -->
+			AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
+				OR  title_en <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR  title_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+				)
+			</if>
+			<if test='key.equals("contents")'> <!-- 내용 -->
+			AND ( contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			)
+			</if>
+			<if test='key.equals("all")'> <!-- 전체 -->
+			AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
+				OR title_en <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR title_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
+				OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]> 
+			)
+			</if>	
+		</if>
+	</sql>
+	
+	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
+	<sql id="regdateUpdate">
+		<choose>
+	        <when test='regdate != null and !regdate.equals("")'>
+	        ,regdate = #{regdate}
+	        </when>
+	        <otherwise>
+	        ,regdate = DATE_FORMAT(NOW(), '%Y-%m-%d')
+	        </otherwise>
+        </choose>
+	</sql>
+	
+<!--##################################################################### -->
+    
+	<!-- 총 갯수 SearchDTO에 gubun 추가해 주세요. -->
+    <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
+		SELECT count(*) as c FROM tb_jt_board where 1
+		   AND gubun= #{keyGubun}
+		<include refid="search" />
+	</select>
+	
+	<!-- 전체 총 갯수 -->
+    <select id="totalCount"  resultType="int">
+		SELECT count(*) as c FROM tb_jt_board where 1
+		   AND gubun= #{gubun}
+	</select>
+	
+	
+	
+	<!-- 리스트 -->
+	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="BoardJtMap">
+		SELECT * FROM tb_jt_board where 1
+		   AND gubun= #{keyGubun}
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	<!-- 등록 -->
+	<insert id="insert" parameterType="com.jt.domain.BoardJtDTO">
+        INSERT INTO tb_jt_board 
+		SET gubun = #{gubun} 
+	        ,main_yn = #{mainYn} 
+	        ,img_seq = #{imgSeq} 
+	        ,file1_seq = #{file1Seq} 
+	        ,file2_seq = #{file2Seq}
+	        ,file3_seq = #{file3Seq}
+	        ,file4_seq = #{file4Seq}
+	        ,lang = #{lang}
+	        ,isnt_yn = #{isntYn}
+	        ,title_kr = #{titleKr}
+	        ,title_en = #{titleEn}
+	        ,title_cn = #{titleCn}
+	        ,contents_kr = #{contentsKr}
+	        ,contents_en = #{contentsEn}
+	        ,contents_cn = #{contentsCn}
+	        ,adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+    </insert>
+    
+    <!-- 수정 -->
+	<update id="update" parameterType="com.jt.domain.BoardJtDTO">
+        UPDATE tb_jt_board 
+		SET gubun = #{gubun} 
+	        ,main_yn = #{mainYn} 
+	        ,img_seq = #{imgSeq} 
+	        ,file1_seq = #{file1Seq} 
+	        ,file2_seq = #{file2Seq}
+	        ,file3_seq = #{file3Seq}
+	        ,file4_seq = #{file4Seq}
+	        ,lang = #{lang}
+	        ,isnt_yn = #{isntYn}
+	        ,title_kr = #{titleKr}
+	        ,title_en = #{titleEn}
+	        ,title_cn = #{titleCn}
+	        ,contents_kr = #{contentsKr}
+	        ,contents_en = #{contentsEn}
+	        ,contents_cn = #{contentsCn}
+	        ,adm_id = #{admId}
+	        <include refid="regdateUpdate" />
+        WHERE seq = #{seq}
+    </update>
+    
+    <!-- 파일정보 수정 -->
+	<update id="fileUpdate" parameterType="com.jt.util.ParameterMap">
+        UPDATE tb_jt_board 
+		<if test='key.equals("0")'> SET img_seq = #{keyValue} </if>
+	    <if test='key.equals("1")'> SET file1_seq = #{keyValue}  </if>
+	    <if test='key.equals("2")'> SET file2_seq = #{keyValue}  </if>
+	    <if test='key.equals("3")'> SET file3_seq = #{keyValue}  </if>
+	    <if test='key.equals("4")'> SET file4_seq = #{keyValue}  </if>
+        WHERE seq = #{bseq}
+    </update>
+    
+    
+    <!-- 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM tb_jt_board WHERE seq = #{seq}
+    </delete>
+
+    <!-- 상세정보 -->
+    <select id="select" parameterType="int"  resultMap="BoardJtMap">
+        SELECT * FROM tb_jt_board WHERE seq = #{seq}
+    </select>
+    
+    <!-- 최고Max값 -->
+    <select id="max_seq" parameterType="com.jt.util.ParameterMap" resultType="int">
+		SELECT max(seq) as c FROM tb_jt_board where 1 
+	</select> 
+	
+	<!-- 게시여부 바꾸기 -->
+    <select id="isntChange" parameterType="com.jt.util.ParameterMap">
+		UPDATE tb_jt_board SET isnt_yn=#{isntYn} WHERE seq=#{seq}
+	</select> 
+	
+	<!-- 게시여부(Y) 갯수 -->
+    <select id="isntYCount" resultType="int">
+		<![CDATA[ SELECT count(*) FROM tb_jt_board WHERE isnt_yn='Y' and gubun=#{gubun}]]>
+	</select>
+	
+	
+	
+	<!-- 메인 뉴스 1개 -->
+    <select id="MainNews" parameterType="String" resultType="com.jt.domain.FrontBoardJtDTO">
+		SELECT seq
+		     , <if test='lang== "KR"'>
+				title_kr as title, contents_kr as contents 
+			   </if>
+			   <if test='lang== "EN"'>
+				title_en as title, contents_en as contents
+			   </if>
+			   <if test='lang== "CN"'>
+			    title_cn as title, contents_cn as contents
+			   </if>
+		  FROM tb_jt_board
+		 WHERE lang <![CDATA[ LIKE '%${lang}%' ]]>  
+		   AND isnt_yn = 'Y'
+		   AND main_yn = 'Y'
+		   AND gubun = 'news'
+		 ORDER BY regdate DESC, seq DESC 
+		 LIMIT 1   
+	</select>	 
+</mapper>
