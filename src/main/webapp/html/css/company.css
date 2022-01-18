@@ -188,7 +188,7 @@
 }
 @media all and (max-width:812px){
     /*공통*/
-    .company .topVisual{height:40rem;margin-bottom:0}
+    .company .topVisual{height:40rem;margin-bottom:0;background:url(/images/company_visual_m.jpg) no-repeat center center;background-size: cover;}
     .company .topText{padding-top:7.5rem}
     .company .topText::before{width:6rem;height:0.4rem}
     .company .topText h4{font-size:2.8rem}
