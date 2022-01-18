@@ -191,6 +191,9 @@ public class KrMainController {
 		return mv;
 	}
 	
+	
+	//테스트
+	
 	//-- 브랜드 뮤즈
 	@GetMapping(value="/brand/archive")
 	public ModelAndView archive() throws Throwable {
