@@ -21,14 +21,19 @@
 .talent .diagramInfo dd br{display:none}
 
 /*직무소개*/
-.duty article.tab{text-align:center;margin-bottom:76px}
-.duty .tab ul{display:inline-block}
-.duty .tab ul li{float:left;margin:0 20px;}
-.duty .tab a{font-size:20px;border-bottom:4px solid #fff;height:36px;display:inline-block;color:#767676}
-.duty .tab a.on{border-color:#101010;color:#101010}
-.duty .content{padding-bottom:200px}
+.duty .tabButton{text-align:center;margin-bottom:76px;position:relative}
+.duty .tabButton ol{display:inline-block}
+.duty .tabButton ol li{float:left;margin:0 20px;}
+.duty .tabButton ol a{font-size:20px;border-bottom:4px solid #fff;height:36px;display:inline-block;color:#767676;cursor:pointer}
+.duty .tabButton ol a.flex-active{border-color:#101010;color:#101010}
+.duty .tabButton > a{display:none}
+.duty .tabCtrl{display:none}
+.duty .content{padding-bottom:135px}
 .duty .infoText{text-align:center;font-size:16px;color:#767676;line-height:1.6;margin-bottom:95px}
+.duty .infoText br.mo{display:none}
 .duty .infoText h5{font-size:28px;font-weight:500;color:#101010;line-height:1;margin-bottom:13px}
+.duty .imgArea{text-align:center}
+.duty .flex-viewport{width:100%;overflow:hidden}
 .duty .tabData dl{width:100%;display:table;margin-bottom:100px}
 .duty .tabData dl:last-child{margin-bottom:0}
 .duty .tabData dt{width:550px;display:table-cell;vertical-align:middle}
@@ -39,9 +44,14 @@
 .duty .tabData li b:first-child{margin-right:9px;padding-right:10px;position:relative}
 .duty .tabData li b:first-child::after{content:'';width:1px;height:8px;background:#e0e0e0;position:absolute;right:0;top:50%;transform:translateY(-50%)}
 .duty .tabData li.tit{font-size:24px;font-weight:500;padding-left:25px;position:relative;margin:12px 0 26px 0;line-height:1.5}
+.duty .tabData li.tit br.mo{display:none}
 .duty .tabData li.tit::before{content:'';width:10px;height:9px;position:absolute;left:0;top:8px;background:url(/images/icon_quotes_left.svg) no-repeat}
 .duty .tabData li.tit::after{content:'';width:10px;height:9px;background:url(/images/icon_quotes_right.svg) no-repeat;display:inline-block;vertical-align:top;margin-left:10px;margin-top:9px}
 .duty .tabData li.text{font-size:16px;color:#767676;line-height:1.6}
+.duty .tabData li.text br.mo{display:none}
+.duty .tabData div.subTabData{border-top:1px solid #e0e0e0;padding-top:100px;margin-top:100px}
+.duty .tabData div.subTabData:first-child{padding-top:0;margin-top:0;border-top:none}
+.duty .tabData.marketing .imgArea{text-align:center;margin-top:5px}
 
 /*기업문화/복리후생*/
 .culture .content{padding-bottom:100px}
@@ -241,12 +251,18 @@
     .jobOpening .infoWrap .part3 li.img img{margin-left:0;margin-top:0;transform:translate(-50%,-50%);height:45px}
     .jobOpening.regist .infoWrap .part3 ul{margin:0;width:14.28%}
     .jobOpening.regist .infoWrap .part3 ul::after{right:0}
-    
     /*입사지원*/
     .application th{width:32.3%}
 }
 
 @media all and (max-width:1024px) {
+    /*직무소개*/
+    .duty .tab ul{width:812px}
+    .duty .tab ul li{margin:0 0.8%}
+    .duty .tabData li.text br.pc{display:none}
+    .duty .tabData li.tit span br.pc{display:none}
+    .duty .tabData dt{width:47%}
+    .duty .tabData dd{padding-left:5%}
     /*기업문화/복리후생*/
     .culture .welfare ul > li{width:33.33%}
     .culture .welfare ol li{display:block;text-align:center}
@@ -257,14 +273,12 @@
     .jobOpening .infoWrap .part3 ul:nth-child(4)::after{display:none}
     .jobOpening .infoWrap h4{font-size:25px}
     .jobOpening.regist .infoWrap .part3 ul{margin-right:0;margin-bottom:20px;width:25%}
-    .jobOpening.regist .infoWrap .part3 ul:nth-child(4)::after{display:block}
-    
+    .jobOpening.regist .infoWrap .part3 ul:nth-child(4)::after{display:block} 
     /*채용공고(목록)*/
     .jobOpening .listWrap li.tit{font-size:23px}
     .jobOpening .listWrap li.part{font-size:16px}
     .jobOpening .listWrap span.date{font-size:16px}
 }
-
 @media all and (max-width:812px) {
     /*인재상*/
     .talent .content > article{margin-top:10rem}
@@ -289,32 +303,46 @@
     .talent .diagramInfo dd br{display:block}
 
     /*직무소개*/
-    .duty article.tab{text-align:left;margin-bottom:5.8rem;padding-bottom:2rem;padding-left:4rem;overflow:hidden;white-space:nowrap;overflow-x:auto}
-    .duty .tab ul li{float:inherit;margin:0;display:inline-block;margin-left:5.5rem}
-    .duty .tab ul li:first-child{margin-left:0}
-    .duty .tab ul{padding-right:4rem}
-    .duty .tab a{font-size:3.4rem;border-bottom:0.4rem solid #fff;height:auto;padding-bottom:1.3rem}
+    .duty .tabButton{text-align:left;margin-bottom:5.8rem;padding:0 4rem;position:relative}
+    .duty .tabButton > a{display:block;height:4rem;position:absolute;top:50%;transform:translateY(-50%);z-index:5}
+    .duty .tabButton > a img{height:4rem}
+    .duty .tabButton > a.prev{left:4rem;height:5.2rem}
+    .duty .tabButton > a.next{right:4rem;height:5.2rem}
+    .duty .tabButton .buttons{width:100%;padding:0 4rem 0 8rem}
+    .duty .tabButton ol{width:100%;height:6rem;overflow-x:auto;overflow-y:hidden;text-align:left;white-space:nowrap;position:relative}
+    .duty .tabButton ol li{float:inherit;margin:0;padding-right:6rem;display:inline-block;position:absolute;top:0;left:0}
+    .duty .tabButton .buttons{position:relative}
+    .duty .tabButton .buttons::after{content:'';position:absolute;right:0;top:0;background:linear-gradient(90deg,transparent,#fff 100%);width:15rem;height:5.2rem}
+    .duty .tabButton ol a{font-size:3.4rem;border-bottom:0.4rem solid #fff;height:5.2rem}
+    .duty .tabButton ol a.flex-active{border-bottom:0.4rem solid #101010}
     .duty .content{padding-bottom:10rem}
     .duty .infoText{font-size:2.4rem;margin-bottom:9.3rem}
     .duty .infoText h5{font-size:2.8rem;margin-bottom:2.8rem}
-    .duty .infoText br{display:none}
+    .duty .infoText br.pc{display:none}
+    .duty .infoText br.mo{display:block}
+    .duty .imgArea img{width:100%}
+    .duty .tabData{display:block!important}
     .duty .tabData dl{width:100%;display:block;margin-bottom:9.3rem}
     .duty .tabData dt{width:100%;display:block}
     .duty .tabData dd{width:100%;display:block;padding-left:0;padding-top:3.8rem;text-align:center}
+    .duty .tabData li{text-align:left}
     .duty .tabData li b{font-size:2.4rem}
     .duty .tabData li b:first-child{margin-right:2rem;padding-right:2rem}
     .duty .tabData li b:first-child::after{width:1px;height:1.8rem}
     .duty .tabData li.tit{font-size:2.8rem;padding-left:0;position:relative;margin:2rem 0 2.6rem 0;line-height:1.2}
-    .duty .tabData li.tit br{display:none}
-    .duty .tabData li.tit span{display:block}
+    .duty .tabData li.tit br.pc{display:none}
+    .duty .tabData li.tit br.mo{display:block}
+    .duty .tabData li.tit span{display:block;text-indent:-2.8rem;padding-left:2.8rem}
     .duty .tabData li.tit::before{display:none}
     .duty .tabData li.tit::after{display:none}
     .duty .tabData li.tit span::before,
     .duty .tabData li.tit span::after{content:'';width:1.2rem;height:0.9rem;background-size:0.9rem;display:inline-block;vertical-align:top;margin-right:1.6rem;margin-top:0.5rem}
-    .duty .tabData li.tit span::before{background:url(/images/icon_quotes_left.svg) no-repeat;margin-right:1.6rem}
-    .duty .tabData li.tit span::after{background:url(/images/icon_quotes_right.svg) no-repeat;margin-left:1.6rem}
+    .duty .tabData li.tit span::before{background:url(/images/icon_quotes_left.svg) no-repeat;margin-right:1.6rem;background-size:0.9rem}
+    .duty .tabData li.tit span::after{background:url(/images/icon_quotes_right.svg) no-repeat;margin-left:1.6rem;background-size:0.9rem}
     .duty .tabData li.text{font-size:2.4rem}
-    .duty .tabData li.text br{display:none}
+    .duty .tabData li.text br.pc{display:none}
+    .duty .tabData li.text br.mo{display:block}
+    .duty .tabData div.subTabData{padding-top:10rem;margin-top:10rem}
     /*기업문화/복리후생*/
     .culture .content{padding-bottom:16.5rem}
     .culture .content > article > h3{font-size:2.8rem}
@@ -369,7 +397,7 @@
     .jobOpening .detailWrap .box2 ol li{font-size:2.4rem}
     .jobOpening .detailWrap .box2 ol li:first-child{margin-right:1.9rem;padding-right:1.9rem}
     .jobOpening .detailWrap .box2 ol li:first-child::after{height:1.8rem}
-    .jobOpening .detailWrap .box2 b{margin-left:12px}
+    .jobOpening .detailWrap .box2 b{margin-left:0.5rem}
     .jobOpening .infoWrap{padding:0}
     .jobOpening .infoWrap h4{font-size:2.8rem}
     .jobOpening .infoWrap h4 span{font-size:1.8rem;margin-left:1.5rem;margin-top:0.6rem}
