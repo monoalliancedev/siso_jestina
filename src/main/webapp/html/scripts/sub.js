@@ -183,7 +183,7 @@ $(document).ready(function () {
         /*News*/
         if ($('#container').hasClass('bbs')) {
             var dep2Menu = $('nav dl:nth-child(6) dd').html();
-            $('.location .dep1').text('STORE');
+            $('.location .dep1').text('NEWS');
             $('.location .dep2List').append(dep2Menu);
             $('nav .menuList dl:nth-child(6) dt a').addClass('inPage');
             $('.mobileGNB .moMenuList dl:nth-child(6) dt a').addClass('inPage');
