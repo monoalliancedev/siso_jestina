@@ -75,7 +75,7 @@
 .business .info .logo img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .business .info .table{padding-left:88px}
 .business .info table{border-top:1px solid #101010}
-.business .info th{width:180px;height:64px;text-align:left;border-bottom:1px solid #e0e0e0;font-size:16px;font-weight:500}
+.business .info th{width:180px;height:64px;text-align:left;border-bottom:1px solid #e0e0e0;font-size:16px;font-weight:500;padding-left:30px}
 .business .info td{border-bottom:1px solid #e0e0e0;font-size:16px;color:#505050}
 
 /*BI*/

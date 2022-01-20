@@ -103,6 +103,7 @@
 
 /*ARCHIVE*/
 .archive{overflow:hidden}
+.archive .location li:first-child a{background: url(/images/common/icon_home_w.svg) no-repeat;}
 .archive .content{padding-bottom:0}
 .archive .yearWrap{display:none}
 .archive .yearWrap:first-child{display:block}
