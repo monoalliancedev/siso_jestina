@@ -81,61 +81,12 @@ LoadingWithMask();
             </section>
 <script>
 function jt_load(code) {
-
-	$.ajax({
-
-		type: "GET",
-		url:"/brand/romansonInfo?cateCode="+code,
-		dataType:"json",
-		success:function(data){
-
-			var files_isKey = "";
-
-			//-- 상품리스트
-			$("#prolist").children().remove();
-			$.each(data.list, function(k,v) {
-				
-				var files_html = "";
-				files_html += "<a href='romansonView?code="+ v.seq + "&cateCode="+ data.cateCode + "'>";
-				files_html += "<div class='photo'><img src='/UploadFiles/"+ data.fileFolder + "/"+ v.fileViewName[0] + "'/></div>";
-				files_html += "<div class='name'>"+ v.proName + "</div>";
-				files_html += "<div class='cate'>"+ v.cateName + "</div>";
-				files_html += "</a>";
-				$("#prolist").append("<li>"+files_html+"</li>");
-			});
-
-			//-- 카테고리 리스트
-			$("#catelist").children().remove();
-			if(data.cateCode==0) 
-				var cate_html = "<a href='javascript:jt_load(0)' class='on'>NEW ARRIVALS</a>";
-			else
-				var cate_html = "<a href='javascript:jt_load(0)'>NEW ARRIVALS</a>";
-
-			$.each(data.categoryList, function(k,v) {
-				if(v.seq==data.cateCode) 
-					cate_html += "<a href=\"javascript:jt_load('" + v.seq + "')\" class='on'>" + v.cateName + "</a>";
-				else
-					cate_html += "<a href=\"javascript:jt_load('" + v.seq + "')\" >" + v.cateName + "</a>";
-			});
-			$("#catelist").append(" "+cate_html+" "); //카테고리 목록 
-			var onListText = $('.romanson .topText dd a.on').text(); //선택된 카테고리 view
-	        $('.romanson .topText dt i').text(onListText);
-
-	      	//-- 카테고리 이전/다음
-	      	$('#catepre').html("");
-	      	$('#catecur').html("");
-	      	$('#catenex').html("");
-	      	$('#catepre').html("<a href=\"javascript:jt_load('" + data.PreSeq + "')\" class='prevPrd'><span>" + data.PreCateName + "</span><img src='/images/icon_brand_romanson_prev.svg'/></a>");
-	      	$('#catecur').html("" + data.CateName + "");
-	      	$('#catenex').html("<a href=\"javascript:jt_load('" + data.NextSeq + "')\" class='nextPrd'><span>" + data.NextCateName + "</span><img src='/images/icon_brand_romanson_next.svg'/></a>");
-			
-		},
-		error:function(xhr, status, errorThrown){
-			//alert(status);
-			//alert("2222222222");
-		}
-	});
-	
+	if(code) {
+		document.location.href = "./romanson?cateCode="+code;
+	}else{
+		document.location.href = "./romanson";
+	}
+	return fasle;	
 }
 </script>
            
@@ -151,8 +102,11 @@ function jt_load(code) {
                 <article class="topText">
                     <dl>
                         <dt><span><b>ROMANSON</b><i></i></span></dt>
-                        <dd id=catelist>
-                        	
+                        <dd>
+                        	<a href="#" id="jt_load_" onclick="jt_load('')" <c:if test="${cateCode eq '' || cateCode eq null}"> class="on"</c:if> >NEW ARRIVALS</a>
+	                        <c:forEach var="categoryList" items="${categoryList}" varStatus="status">
+		                    <a href="#" id="jt_load_${categoryList.seq}" onclick="jt_load('${categoryList.seq}')" <c:if test="${cateCode eq categoryList.seq}"> class="on"</c:if> >${categoryList.cateName}</a>
+		                    </c:forEach>
 	                    </dd>
                     </dl>
                     <span class="text">
@@ -165,17 +119,29 @@ function jt_load(code) {
                 <!--//Top Text-->
                 <!--Controller-->
                 <article class="controller">
-                    <div id=catelistview>
-                        <span id=catepre></span>
-						<div class="nowPrd" id=catecur></span></div>
-						<span id=catenex></span>
+                    <div>
+                        <a href="romanson?cateCode=${frontCate.preSeq}" class="prevPrd"><span>${frontCate.preCateName}</span><img src="/images/icon_brand_romanson_prev.svg"/> </a>
+						<div class="nowPrd">${frontCate.cateName}</div>
+						<a href="romanson?cateCode=${frontCate.nextSeq}" class="nextPrd"><span>${frontCate.nextCateName}</span><img src="/images/icon_brand_romanson_next.svg"/></a>
                     </div>
                 </article>
                 <!--//Controller-->
                     
                 <!--Product List-->
                 <article class="productList">
-                    <ul id='prolist'></ul>
+                    <ul>
+                        <c:forEach var="list" items="${list}" varStatus="status">
+                        <!--Set-->
+                        <li>
+                            <a href="romansonView?code=${list.seq}&cateCode=${cateCode}">
+                                <div class="photo"><img src="/UploadFiles/${fileFolder}/${list.fileViewName[0]}"/></div>
+                                <div class="name">${list.proName}</div>
+                                <div class="cate">${list.cateName}</div>
+                            </a>
+                        </li>
+                        <!--//Set-->
+                        </c:forEach>
+                    </ul>
                 </article>
                 <!--//Product List-->
             </section>
@@ -183,7 +149,6 @@ function jt_load(code) {
         <%@ include file="/WEB-INF/views/kr/common/html.footer.jsp" %>
     </div>
 <script>
-jt_load(0);
 closeLoadingWithMask();
 </script>
 </body>

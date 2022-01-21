@@ -28,5 +28,5 @@ public interface  CategoryMapper {
 	CategoryDTO UpSelect(ParameterMap param);
 	CategoryDTO DownSelect(ParameterMap param);
 	
-	List<CategoryDTO> FrontSelect(int seq);
+	
 }

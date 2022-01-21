@@ -58,6 +58,41 @@
                         <div class="bg">&nbsp;</div>
                     </li>
                     </c:if>
+                    
+                    
+                    <li class="typeVideo">
+                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
+                        <div class="bg">&nbsp;</div>
+                        <video muted loop>
+                            <source src="video/visual1.mp4" type="video/mp4">
+                        </video>
+                        <img src="/images/sample/mo_main_banner1.jpg" class="forMobile"/>
+                    </li>
+                    <li class="typeImage">
+                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
+                        <img src="/images/sample/main_banner.jpg" class="forPC"/>
+                        <img src="/images/sample/mo_main_banner2.jpg" class="forMobile"/>
+                        <div class="bg">&nbsp;</div>
+                    </li>
+                    <li class="typeVideo">
+                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
+                        <div class="bg">&nbsp;</div>
+                        <video muted loop>
+                            <source src="video/visual1.mp4" type="video/mp4">
+                        </video>
+                        <img src="/images/sample/mo_main_banner1.jpg" class="forMobile"/>
+                    </li>
+                    <li class="typeImage">
+                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
+                        <img src="/images/sample/main_banner.jpg" class="forPC"/>
+                        <img src="/images/sample/mo_main_banner2.jpg" class="forMobile"/>
+                        <div class="bg">&nbsp;</div>
+                    </li>
+                    
+                    
+                    
+                    
+                    
                 </ul>
                 <div class="controller"><span class="activeNO"></span><span class="totalNO"></span></div>
                 <a href="#" title="이전배너" class="ctrlBtn prev"><img src="/images/icon_ban_arrow_left.svg"/></a>

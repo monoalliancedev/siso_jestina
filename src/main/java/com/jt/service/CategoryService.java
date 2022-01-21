@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.jt.domain.CategoryDTO;
+import com.jt.domain.FrontCategoryDTO;
 import com.jt.domain.SearchDTO;
 import com.jt.util.ParameterMap;
 
@@ -26,6 +27,6 @@ public interface CategoryService {
 	public void sortChange(ParameterMap param);
 	
 	
-	public List<CategoryDTO> FrontSelect(int cateSeq);
+	public FrontCategoryDTO FrontSelect(int seq);
 	
 }

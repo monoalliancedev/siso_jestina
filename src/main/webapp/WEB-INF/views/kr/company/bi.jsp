@@ -43,7 +43,6 @@
                     </div>
                 </article>
                 <article class="colorInfo">
-                    <h6>Color 소개</h6>
                     <div>
                         <span class="box">J.ESTINA PINK<b>PANTONE&nbsp;&nbsp;&nbsp;176 C</b></span>
                         <ul>

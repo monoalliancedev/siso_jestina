@@ -39,22 +39,21 @@
                             <a href="/recruit/recruitCulture"><span>기업문화/복리후생</span></a>
                             <a href="/recruit/recruit"><span>채용공고</span></a>
                             <a href="/recruit/recruitResources"><span>인재풀등록</span></a>
-                            <!-- application 입사지원 -->
                         </dd>
                     </dl>
                     <dl>
                         <dt><a href="#">IR</a></dt>
                         <dd>
-                            <a href="#"><span>주가정보</span></a>
-                            <a href="#"><span>공시정보</span></a>
-                            <a href="#"><span>공고</span></a>
+                            <a href="/ir/infor1"><span>주가정보</span></a>
+                            <a href="/ir/infor2"><span>공시정보</span></a>
+                            <a href="/ir/notice"><span>공고</span></a>
                         </dd>
                     </dl>
                     <dl>
                         <dt><a href="#">NEWS</a></dt>
                         <dd>
-                            <a href="#"><span>공지사항</span></a>
-                            <a href="#"><span>뉴스</span></a>
+                            <a href="/news/gongji"><span>공지사항</span></a>
+                            <a href="/news/news"><span>뉴스</span></a>
                         </dd>
                     </dl>
                 </div>

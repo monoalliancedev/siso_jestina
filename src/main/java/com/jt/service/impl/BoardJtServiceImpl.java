@@ -228,7 +228,6 @@ public class BoardJtServiceImpl implements BoardJtService {
 		return board;
 	}
 	
-	
 	@Override 
 	public int count(SearchDTO search) {
 		return boardJtMapper.count(search);
@@ -255,6 +254,76 @@ public class BoardJtServiceImpl implements BoardJtService {
 	@Override
 	public FrontBoardJtDTO MainNews(String lang) {
 		return boardJtMapper.MainNews(lang);
+	}
+	
+	//Front 리스트
+	@Override
+	public List<FrontBoardJtDTO> FrontList(SearchDTO search){
+		return boardJtMapper.FrontList(search);
+	}
+
+	//Front 상세보기
+	@Override
+	public FrontBoardJtDTO FrontSelect(int seq, String lang) {
+		
+		ParameterMap parm = new ParameterMap(true);
+		parm.put("lang", lang);
+		parm.put("seq", seq);
+		
+		FrontBoardJtDTO board = boardJtMapper.FrontSelect(parm);
+		UploadFileDTO fileDTO;
+		String[] fileName = new String[5]; 
+		String[] fileUrl = new String[5];
+		String[] fileSize = new String[5]; 
+		Integer[] fileSeqArray = new Integer[5];
+		
+		
+		fileSeqArray[0] = board.getImgSeq();
+		fileSeqArray[1] = board.getFile1Seq();
+		fileSeqArray[2] = board.getFile2Seq();
+		fileSeqArray[3] = board.getFile3Seq();
+		fileSeqArray[4] = board.getFile4Seq();
+		
+		int fileCount=0;
+		long fileTotSize=0;
+		for(int i=0; i<5; i++) {
+			if(fileSeqArray[i] > 0) {
+				fileDTO = fileService.select(fileSeqArray[i]);
+				if(!ComUtils.isEmpty(fileDTO)) {
+					fileName[i] = fileDTO.getFilename();
+					fileUrl[i] = fileDTO.getSave_filename();
+					fileSize[i] = Long.toString(fileDTO.getFile_size());	
+					fileSeqArray[i] = fileSeqArray[i];
+					fileCount++;
+					fileTotSize = fileTotSize + fileDTO.getFile_size(); 
+					continue;
+				}	
+			}
+			fileName[i] = "";
+			fileSize[i] = "";
+			fileUrl[i] = "";
+			fileSeqArray[i] = 0;
+		}
+		
+		board.setFileViewName(fileName);
+		board.setFileViewUrl(fileUrl);
+		board.setFileViewSize(fileSize);
+		board.setFileViewSeq(fileSeqArray);
+		board.setFileCount(fileCount);
+		board.setFileTotSize(fileTotSize);
+		
+		return board;
+	}
+
+	//이전값
+	@Override
+	public FrontBoardJtDTO FrontPreSelect(SearchDTO search) {
+		return boardJtMapper.FrontPreSelect(search);
+	}
+	//다음값
+	@Override
+	public FrontBoardJtDTO FrontNextSelect(SearchDTO search) {
+		return boardJtMapper.FrontNextSelect(search);
 	}
 	
 }

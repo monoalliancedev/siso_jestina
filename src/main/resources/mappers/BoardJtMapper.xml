@@ -37,30 +37,73 @@
 		<if test='keyValue2 != null and !keyValue2.equals("")'> <!-- 메인여부 -->
 		AND main_yn = '${keyValue2}'  
 		</if>
+		<if test='keyGubun != null and !keyGubun.equals("")'> <!-- 구분:뉴스,공지사항,공고 -->
+		AND gubun = '${keyGubun}'  
+		</if>
 		
-		<if test='key != null and !key.equals("") and keyword != null and !keyword.equals("")'>
+		
+		<if test='!keyword.equals("") and keyword != null'> <!-- 검색어 있을때 -->
 			<if test='key.equals("title")'> <!-- 제목 -->
-			AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
-				OR  title_en <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR  title_cn <![CDATA[ LIKE '%${keyword}%' ]]>
-				)
+				<choose>
+			        <when test='keyIsnt.equals("KR")'>
+			        	AND title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
+			        </when>
+			        <when test='keyIsnt.equals("EN")'>
+			        	AND title_en <![CDATA[ LIKE '%${keyword}%' ]]> 
+			        </when>
+			        <when test='keyIsnt.equals("CN")'>
+			        	AND title_cn <![CDATA[ LIKE '%${keyword}%' ]]> 
+			        </when>
+			        <otherwise>
+			        	AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
+							 OR  title_en <![CDATA[ LIKE '%${keyword}%' ]]>
+							 OR  title_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+						)
+			        </otherwise>
+	        	</choose>
 			</if>
 			<if test='key.equals("contents")'> <!-- 내용 -->
-			AND ( contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]>
-			)
+				<choose>
+			        <when test='keyIsnt.equals("KR")'>
+			        	AND contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
+			        </when>
+			        <when test='keyIsnt.equals("EN")'>
+			        	AND contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
+			        </when>
+			        <when test='keyIsnt.equals("CN")'>
+			        	AND contents_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			        </when>
+			        <otherwise>
+			        	AND ( contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
+							OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
+							OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+						)
+					</otherwise>
+	        	</choose>
 			</if>
 			<if test='key.equals("all")'> <!-- 전체 -->
-			AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
-				OR title_en <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR title_cn <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
-				OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]> 
-			)
-			</if>	
-		</if>
+				<choose>
+			        <when test='keyIsnt.equals("KR")'>
+			        	AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR contents_kr <![CDATA[ LIKE '%${keyword}%' ]]> )
+			        </when>
+			        <when test='keyIsnt.equals("EN")'>
+			        	AND ( title_en <![CDATA[ LIKE '%${keyword}%' ]]> OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]> )
+			        </when>
+			        <when test='keyIsnt.equals("CN")'>
+			        	AND ( title_cn <![CDATA[ LIKE '%${keyword}%' ]]> OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]> )
+			        </when>
+			        <otherwise>
+			        	AND ( title_kr <![CDATA[ LIKE '%${keyword}%' ]]> 
+							OR title_en <![CDATA[ LIKE '%${keyword}%' ]]>
+							OR title_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+							OR contents_kr <![CDATA[ LIKE '%${keyword}%' ]]>
+							OR contents_en <![CDATA[ LIKE '%${keyword}%' ]]>
+							OR contents_cn <![CDATA[ LIKE '%${keyword}%' ]]> 
+						)
+					</otherwise>
+	        	</choose>
+			</if>
+		</if>	
 	</sql>
 	
 	<!-- 중복되는 날짜 SQL문에 대한 처리  -->
@@ -80,7 +123,6 @@
 	<!-- 총 갯수 SearchDTO에 gubun 추가해 주세요. -->
     <select id="count" parameterType="com.jt.domain.SearchDTO" resultType="int">
 		SELECT count(*) as c FROM tb_jt_board where 1
-		   AND gubun= #{keyGubun}
 		<include refid="search" />
 	</select>
 	
@@ -90,12 +132,9 @@
 		   AND gubun= #{gubun}
 	</select>
 	
-	
-	
 	<!-- 리스트 -->
 	<select id="list" parameterType="com.jt.domain.SearchDTO" resultMap="BoardJtMap">
 		SELECT * FROM tb_jt_board where 1
-		   AND gubun= #{keyGubun}
 		<include refid="search" />
 		ORDER BY regdate DESC, seq DESC 
 		LIMIT ${pg_start} , ${pg_rows}
@@ -185,18 +224,43 @@
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 중복되는 View 처리  -->
+	<sql id="FrontSearchSelect">
+		<if test='keyIsnt== "KR"'>
+			, title_kr as title, contents_kr as contents 
+		</if>
+		<if test='keyIsnt== "EN"'>
+			, title_en as title, contents_en as contents
+		</if>
+		<if test='keyIsnt== "CN"'>
+			, title_cn as title, contents_cn as contents
+		</if>
+	</sql>
+	<sql id="FrontLangSelect">
+		<if test='lang== "KR"'>
+			, title_kr as title, contents_kr as contents 
+		</if>
+		<if test='lang== "EN"'>
+			, title_en as title, contents_en as contents
+		</if>
+		<if test='lang== "CN"'>
+			, title_cn as title, contents_cn as contents
+		</if>
+	</sql>
+	
 	<!-- 메인 뉴스 1개 -->
     <select id="MainNews" parameterType="String" resultType="com.jt.domain.FrontBoardJtDTO">
-		SELECT seq
-		     , <if test='lang== "KR"'>
-				title_kr as title, contents_kr as contents 
-			   </if>
-			   <if test='lang== "EN"'>
-				title_en as title, contents_en as contents
-			   </if>
-			   <if test='lang== "CN"'>
-			    title_cn as title, contents_cn as contents
-			   </if>
+		SELECT seq 
+		       <include refid="FrontLangSelect" />
 		  FROM tb_jt_board
 		 WHERE lang <![CDATA[ LIKE '%${lang}%' ]]>  
 		   AND isnt_yn = 'Y'
@@ -205,4 +269,65 @@
 		 ORDER BY regdate DESC, seq DESC 
 		 LIMIT 1   
 	</select>	 
+	
+	<!-- Front 리스트 -->
+	<select id="FrontList" parameterType="com.jt.domain.SearchDTO" resultType="com.jt.domain.FrontBoardJtDTO">
+		SELECT seq, regdate, img_seq as imgSeq
+             , file1_seq as file1Seq, file2_seq as file2Seq,file3_seq as file3Seq, file4_seq as file4Seq 
+             , (select save_filename from tb_files where seq = tb.img_seq) as imgUrl 
+		       <include refid="FrontSearchSelect" />
+		 FROM tb_jt_board tb where 1
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT ${pg_start} , ${pg_rows}
+	</select> 
+	
+	<!-- Front 상세정보 -->
+    <select id="FrontSelect" parameterType="com.jt.util.ParameterMap"  resultType="com.jt.domain.FrontBoardJtDTO">
+        SELECT seq, regdate, img_seq as imgSeq
+             , file1_seq as file1Seq, file2_seq as file2Seq,file3_seq as file3Seq, file4_seq as file4Seq  
+		       <include refid="FrontLangSelect" />
+	    FROM tb_jt_board WHERE seq = #{seq}
+    </select>
+    
+    <!-- Front 이전값 -->
+	<select id="FrontPreSelect" parameterType="com.jt.domain.SearchDTO" resultType="com.jt.domain.FrontBoardJtDTO">
+		SELECT seq, regdate
+		       <include refid="FrontSearchSelect" />
+		 FROM tb_jt_board where 1
+		  AND seq >  ${keySeq}
+		<include refid="search" />
+		ORDER BY regdate ASC, seq ASC 
+		LIMIT 1
+	</select> 
+    
+   <!-- Front 이후값 -->
+	<select id="FrontNextSelect" parameterType="com.jt.domain.SearchDTO" resultType="com.jt.domain.FrontBoardJtDTO">
+		SELECT seq, regdate
+		       <include refid="FrontSearchSelect" />
+		 FROM tb_jt_board where 1
+		  AND seq <![CDATA[ < ]]>  ${keySeq}
+		<include refid="search" />
+		ORDER BY regdate DESC, seq DESC 
+		LIMIT 1
+	</select>  
+    
+    
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </mapper>

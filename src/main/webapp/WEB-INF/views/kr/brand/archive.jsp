@@ -47,15 +47,17 @@
                                 <c:if test="${file.save_filename ne ''}">
 			                        <c:if test="${muse.linkOutYn eq 'Y'}">
 				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
+				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forMobile"/></a>
 				                    </c:if>
 				        			<c:if test="${muse.linkOutYn eq 'C'}">
 				        			<a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
+				        		    <a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forMobile"/></a>
 				        		    </c:if>
 				                    <c:if test="${muse.linkOutYn eq 'N'}">
 				        			<img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/>
+				        		    <img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forMobile"/>
 				        		    </c:if>
 				                </c:if>
-				                <!-- img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/ -->
                             </li>
                             <!--//for(이미지 루프)-->
                             </c:forEach>

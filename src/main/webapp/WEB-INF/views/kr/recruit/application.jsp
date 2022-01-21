@@ -83,12 +83,15 @@ function Jt_submit() {
 			return;	     
 		}
 	}
-	*/
+	
 
 	if(confirm("지원 하시겠습니까?")) {
 		f.action = "MailSend";
 		f.submit();
-	}
+	}*/
+	f.action = "MailSend";
+	f.submit();
+
 }  
 </script>
 </head>
@@ -99,6 +102,7 @@ function Jt_submit() {
         <script type="text/javascript" src="/scripts/recruit.js"></script>
         <script type="text/javascript" src="/scripts/jquery.MultiFile.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/recruit.css" />
+        
         <div id="container" class="sub recruit application">
             <!--Top Common-->
             <section class="subTop">
@@ -142,8 +146,6 @@ function Jt_submit() {
                                         따라서 아래 개인정보 제공에 대해 동의하지 않는 경우 채용 전형에 지원이 제한될 수 있습니다.
                                     </div>
                                     <h5>3. 수집하는 개인정보 항목 및 수집/이용 목적</h5>
-                                    
-                                    
                                     <table>
                                         <tr>
                                             <th>구분</th>
@@ -206,7 +208,7 @@ function Jt_submit() {
 									        </c:when>
 									        <c:otherwise>
 									        	<select class="select" name="recruit">
-	                                            <option value="">모집분야 선택</option>
+	                                            <option value="모집분야">모집분야 선택</option>
 	                                            <c:forEach var="list" items="${recruitList}" varStatus="status">
 	                                            	<c:if test="${(list.recruitEnd eq 'checked') || (toDay<=list.recruitToDate)}">
 	                                            		<option value="${list.seq}">${list.jobField}</option>
@@ -217,11 +219,11 @@ function Jt_submit() {
 									     </c:choose>
                                     </dd>
                                     <dt>이름<span>*</span></dt>
-                                    <dd><input type="text" name="name" class="enterField" placeholder="이름"/></dd>
+                                    <dd><input type="text" name="name" value="김은정" class="enterField" placeholder="이름"/></dd>
                                     <dt>핸드폰 번호<span>*</span></dt>
-                                    <dd><input type="text" name="hp" class="enterField" placeholder="ex) 000-0000-0000"/></dd>
+                                    <dd><input type="text" name="hp" value="010-9264-6071" class="enterField" placeholder="ex) 000-0000-0000"/></dd>
                                     <dt>이메일 주소<span>*</span></dt>
-                                    <dd><input type="text" name="email" class="enterField" placeholder="ex) email@email.com"/></dd>
+                                    <dd><input type="text" name="email" value="kejgogogo@naver.com" class="enterField" placeholder="ex) email@email.com"/></dd>
                                     <dt>첨부파일<span>*</span></dt>
                                     <dd class="addFile">
                                         <div class="addWrap">
@@ -235,7 +237,7 @@ function Jt_submit() {
                                         <p class="ment">※ 첨부파일은 워드, 엑셀, PPT, PDF 파일만 첨부 가능합니다.</p>
                                     </dd>
                                     <dt>지원사유</dt>
-                                    <dd><textarea placeholder="지원사유" name="contents"></textarea></dd>
+                                    <dd><textarea placeholder="지원사유" name="contents">지원사유지원사유지원사유지원사유지원사유</textarea></dd>
                                 </dl>
                             </td>
                         </tr>

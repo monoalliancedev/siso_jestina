@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.jt.domain.AdmDTO;
 import com.jt.domain.CategoryDTO;
+import com.jt.domain.FrontCategoryDTO;
 import com.jt.domain.SearchDTO;
 import com.jt.mapper.CategoryMapper;
 import com.jt.service.CategoryService;
@@ -141,9 +142,38 @@ public class CategoryServiceImpl implements CategoryService {
 		
 		
 		@Override
-		public List<CategoryDTO> FrontSelect(int seq) {
-			System.out.println("##################");
-			return categoryMapper.FrontSelect(seq);
+		public FrontCategoryDTO FrontSelect(int seq) {
 			
+			FrontCategoryDTO frontCateDTO = new FrontCategoryDTO();
+			//System.out.println("##################");
+			
+			//-- 현재값
+			CategoryDTO currCategory = categoryMapper.select(seq); 
+			frontCateDTO.setSeq(currCategory.getSeq());
+			frontCateDTO.setCateName(currCategory.getCateName());
+			
+			ParameterMap param = new ParameterMap();
+			param.put("sortIdx", currCategory.getSortIdx());
+			System.out.println("1. ###########"+currCategory.getSortIdx());
+			
+			//-- 이전값
+			CategoryDTO preCategory = categoryMapper.UpSelect(param);
+			if(preCategory==null) {
+				frontCateDTO.setPreSeq(0);
+				frontCateDTO.setPreCateName("");
+			}else {
+				frontCateDTO.setPreSeq(preCategory.getSeq());
+				frontCateDTO.setPreCateName(preCategory.getCateName());
+			}
+			
+			CategoryDTO nextCategory = categoryMapper.DownSelect(param); //다음값
+			if(nextCategory==null) {
+				frontCateDTO.setNextSeq(0);
+				frontCateDTO.setNextCateName("");
+			}else {
+				frontCateDTO.setNextSeq(nextCategory.getSeq());
+				frontCateDTO.setNextCateName(nextCategory.getCateName());
+			}
+			return frontCateDTO;
 		}
 }

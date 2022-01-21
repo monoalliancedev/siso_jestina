@@ -7,11 +7,18 @@
 <head>
 <%@ include file="/WEB-INF/views/kr/common/html.head.jsp" %>
 <script>
+//view 
+function Jt_submit(seq) {
+	var f = document.moveForm;
+	f.seq.value = seq;
+	f.action = "gongjiView";
+	f.submit();
+}
 //페이징 이동
 function goPage(cpage){
 	var f = document.searchForm;
 	f.cpage.value = cpage;
-	f.action = "domestic";
+	f.action = "gongji";
 	f.submit();
 }
 </script>
@@ -20,10 +27,10 @@ function goPage(cpage){
     <div id="wrap">
         <%@ include file="/WEB-INF/views/kr/common/headerAndMenu.jsp" %>
         <script type="text/javascript" src="/scripts/sub.js"></script>
-        <script type="text/javascript" src="/scripts/store.js"></script>
+        <script type="text/javascript" src="/scripts/bbs.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/commBoard.css" />
-        <link rel="stylesheet" type="text/css" href="/css/store.css" />
-        <div id="container" class="sub store domestic">
+        <link rel="stylesheet" type="text/css" href="/css/bbs.css" />
+        <div id="container" class="sub bbs notice">
             <!--Top Common-->
             <section class="subTop">
                 <article>
@@ -35,65 +42,45 @@ function goPage(cpage){
                     <h3 class="pageTitle"></h3>
                 </article>
             </section>
-            <ul class="storeTab">
-                <li><a href="#" class="on">국내</a></li>
-                <li><a href="overseas">해외</a></li>
-            </ul>
             <!--//Top Common-->
             <section class="content">
                 <article>
-<form name="searchForm" id="searchForm" method="get" class="boardSearch">
+<form name="searchForm" id="searchForm" method="get" action="" class="boardSearch">
 <input type="hidden" name="seq" />
 <input type="hidden" name="cpage" value="1" />
 
-                        <span class="total">TOTAL <b><fmt:formatNumber value="${totalCount}" pattern="#,###" /></b></span>
-                        <select class="select shop" name="keyValue3">
-                            <option value="">매장구분</option>
-                            <c:forEach var="store" items="${storeList}">
-							<option value="${store[0]}" <c:if test="${page.keyValue3 eq store[0]}">selected</c:if>>${store[1]}</option>
-							</c:forEach>
-                        </select>
-                        <select class="select area" name="keyValue1">
-                           	<option value="">지역선택</option>
-                            <c:forEach var="area" items="${areaList}">
-							<option value="${area[0]}" <c:if test="${page.keyValue1 eq area[0]}">selected</c:if>>${area[1]}</option>
-							</c:forEach>
-                        </select>
+                        <span class="total">TOTAL <b><fmt:formatNumber value="${page.total_rows}" pattern="#,###" /></b></span>
+                        <select class="select" name="key">
+	                        <option value="all" <c:if test="${page.key eq 'all'}">selected</c:if>>전체</option>
+	                        <option value="title" <c:if test="${page.key eq 'title'}">selected</c:if>>제목</option>
+	                        <option value="contents" <c:if test="${page.key eq 'contents'}">selected</c:if>>내용</option>
+                    	</select>
                         <div class="searchWord">
                             <input type="text" name="keyword" value="${page.keyword}" placeholder="검색어를 입력하세요"/>
                             <button type="submit"><img src="/images/common/icon_search_zoom.svg" alt="검색"/></button>
                         </div>
-                    </form>
+</form>
                 </article>
                 <article class="commBoardList">
                     <table>
                         <colgroup>
-                            <col width="5.72%">
-                            <col width="17.2%">
-                            <col width="9.9%">
-                            <col width="19.59%">
+                            <col width="12.5%">
                             <col width="*">
-                            <col width="13.12%">
+                            <col width="16%">
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>지역</th>
-                                <th>브랜드</th>
-                                <th>매장구분</th>
-                                <th>매장명</th>
-                                <th>주소</th>
-                                <th>전화번호</th>
+                                <th>NO</th>
+                                <th>제목</th>
+                                <th>등록일자</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="list" items="${list}" varStatus="status">
                             <tr>
-                                <td class="area">${list.value1}</td>
-                                <td class="brand">${list.value2}</td>
-                                <td class="shop">${list.value3}</td>
-                                <td class="name">${list.storeKr}</td>
-                                <td class="address">${list.addr1Kr} ${list.addr2Kr}</td>
-                                <td class="tel"><a href="tel:${list.tel}">${list.tel}</a></td>
+                                <td class="no">${page.total_rows - page.pg_start - status.count + 1}</td>
+                                <td class="title alLeft"><a href="#" onclick="Jt_submit(${list.seq})">${list.title}</a></td>
+                                <td class="date">${list.regdate}</td>
                             </tr>
                             </c:forEach>
                         </tbody>
@@ -108,3 +95,12 @@ function goPage(cpage){
     </div>
 </body>
 </html>
+<form name="moveForm" id="moveForm" method="post">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+<input type="hidden" name="seq"/>
+
+<input type="hidden" name="cpage" value="${page.cpage}" />
+<input type="hidden" name="key" value="${page.key}">
+<input type="hidden" name="keyword" value="${page.keyword}">
+<input type="hidden" name="total_rows" value="${page.total_rows}" />
+</form>

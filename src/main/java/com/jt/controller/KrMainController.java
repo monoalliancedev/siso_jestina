@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +21,9 @@ import com.jt.domain.CategoryDTO;
 import com.jt.domain.FaqDTO;
 import com.jt.domain.FrontBannerDTO;
 import com.jt.domain.FrontBoardJtDTO;
+import com.jt.domain.FrontCategoryDTO;
 import com.jt.domain.FrontMuseDTO;
+import com.jt.domain.MailUploadDTO;
 import com.jt.domain.RecruitmentDTO;
 import com.jt.domain.RomasonDTO;
 import com.jt.domain.SearchDTO;
@@ -37,6 +42,7 @@ import com.jt.service.UploadFileService;
 import com.jt.util.ComUtils;
 import com.jt.util.Constants;
 import com.jt.util.FrontPaging;
+import com.jt.util.MailSender;
 import com.jt.util.Paging;
 import com.jt.util.ParameterMap;
 
@@ -74,6 +80,12 @@ public class KrMainController {
 	
 	@Autowired
 	FaqService faqService;
+	
+	//@Autowired
+	//JavaMailSender javaMailSender;
+	
+	
+	
 	
 	private static final String SiteLang= "KR";
 		
@@ -145,34 +157,76 @@ public class KrMainController {
 	@GetMapping(value="/brand/romanson")
 	public ModelAndView romasonList(String cateCode) throws Throwable {
 		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cateCode", ComUtils.StrToInt(cateCode)); //카테고리키값
+		mv.setViewName("/kr/brand/romansonList");
+		return mv;
+	}
+	
+	@GetMapping(value="/brand/romansonInfo")
+	public @ResponseBody String romasonList(int cateCode) throws Throwable{
+		
+		//int cateSeq = ComUtils.StrToInt(cateCode);
+		int cateSeq =cateCode;
+		
 		//카테고리정보(이전,다음)
-		List<CategoryDTO> cateInfo = new ArrayList<>();
+		//List<CategoryDTO> cateInfo = new ArrayList<>();
+		FrontCategoryDTO frontCate = new FrontCategoryDTO();
+		
 		//상품리스트
 		List<RomasonDTO> proList = new ArrayList<>(); 
 		//카테고리리스트,첫카테고리선택
 		List<CategoryDTO> cateList = categoryService.categoryList();
 		
-		 
-		if(ComUtils.objToStr(cateCode).equals("")) {
-			//NEW ARRIVALS(추천 신상품)
-			proList = romasonService.FrontNewList();
-			cateInfo.add(cateList.get(0)); //다음카테고리
-		}else{
-			int cateSeq = Integer.parseInt(cateCode); 	
-			proList = romasonService.FrontList(cateSeq);
-			cateInfo = categoryService.FrontSelect(cateSeq);
-		}
+		
+		//이전,다음
+		//NEW ARRIVALS(추천 신상품)
+		if(cateSeq==0) {
+			frontCate.setSeq(0); //현재카테고리
+			frontCate.setCateName("NEW ARRIVALS");
+			frontCate.setPreSeq(0); //이전카테고리 : 없음
+			frontCate.setPreCateName("");
+			frontCate.setNextSeq(cateList.get(0).getSeq()); //다음카테고리 : 첫카테고리
+			frontCate.setNextCateName(cateList.get(0).getCateName());
 
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("fileFolder", "Product"); //상품폴더
-		mv.addObject("cateCode", cateCode); //카테고리키값
-		mv.addObject("cateInfo", cateInfo); //카테고리이전,다음정보
-		mv.addObject("categoryList", cateList); //카테고리 리스트
-		mv.addObject("list", proList); //상품리스트
-		mv.setViewName("/kr/brand/romansonList");
-		return mv;
+			proList = romasonService.FrontNewList();
+		}else{
+			
+			frontCate = categoryService.FrontSelect(cateSeq);
+			
+			if(cateSeq==cateList.get(0).getSeq()) { //첫번째 카테고리일때
+				frontCate.setPreSeq(0); 	//이전카테고리 : NEW ARRIVALS
+				frontCate.setPreCateName("NEW ARRIVALS");
+			}
+
+			proList = romasonService.FrontList(cateSeq);
+		}
+		
+		JSONObject jsonData = new JSONObject();
+		
+		jsonData.put("rs", "Y");
+		jsonData.put("fileFolder", "Product"); //상품폴더
+		jsonData.put("cateCode", cateCode); //카테고리키값
+		jsonData.put("list", proList); //상품리스트
+		jsonData.put("categoryList", cateList); //카테고리 리스트
+		//jsonData.put("frontCate", frontCate); //카테고리이전,다음정보
+		jsonData.put("Seq", frontCate.getSeq());
+		jsonData.put("CateName", frontCate.getCateName()); 
+		jsonData.put("PreSeq", frontCate.getPreSeq()); 
+		jsonData.put("PreCateName", frontCate.getPreCateName()); 
+		jsonData.put("NextSeq", frontCate.getNextSeq()); 
+		jsonData.put("NextCateName", frontCate.getNextCateName()); 
+
+		return jsonData.toString();		
+		
 	}
 	
+	
+	
+	
+	
+	
+
 	//-- 브랜드 로만손 제품 상세정보
 	@GetMapping(value="/brand/romansonView")
 	public ModelAndView romansonView(String code,String cateCode) throws Throwable {
@@ -190,9 +244,6 @@ public class KrMainController {
 		mv.setViewName("/kr/brand/romansonView");
 		return mv;
 	}
-	
-	
-	//테스트
 	
 	//-- 브랜드 뮤즈
 	@GetMapping(value="/brand/archive")
@@ -369,6 +420,7 @@ public class KrMainController {
 			
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("toDay", ComUtils.getCurDate("ymd")); 
+		mv.addObject("code", code); 
 		mv.addObject("totCntA", totCntA); 
 		mv.addObject("totCntY", totCntY); 
 		mv.addObject("totCntN", totCntN); 
@@ -439,6 +491,56 @@ public class KrMainController {
 		return mv;
 	}
 	
+	
+	
+	
+	
+	
+	//-- recruit / 입사지원 메일보내기
+	@PostMapping(value = "/recruit/MailSend")
+	public ModelAndView MailSend(MailUploadDTO mailUpload) throws Throwable {
+
+		
+		MailSender mailSender = new MailSender();
+		mailSender.sendMail();
+		
+		
+		System.out.println("##############");
+		/*
+		System.out.println("### Email : " + mailUpload.getEmail());
+		System.out.println("### Name : " + mailUpload.getName());
+		System.out.println("### Contents : " + mailUpload.getContents());
+		
+		List<MultipartFile> fileList = mailUpload.getUploadFile();
+		
+		
+		MimeMessage message= javaMailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, true);
+		helper.setTo(mailUpload.getEmail());
+		helper.setSubject(mailUpload.getRecruit()+mailUpload.getName());
+		helper.setText(mailUpload.getContents());
+		*/
+		
+		/*
+		for(MultipartFile aFile : fileList) {
+			System.out.println("### OriginalFilename : " + aFile.getOriginalFilename());
+			
+			FileSystemResource file = new FileSystemResource(new File(aFile.getOriginalFilename()));
+			helper.addAttachment(aFile.getOriginalFilename(), file);
+		}	
+		
+		javaMailSender.send(message);
+		*/
+		
+
+		ModelAndView mv = new ModelAndView();
+		//mv.setViewName("/kr/recruit/application");
+		mv.setViewName("redirect:/recruit/application");
+		
+		return mv;
+	
+	}
+	
 	//-- 회사 정보
 	@GetMapping(value="/company/vision")
 	public String vision() {
@@ -467,505 +569,227 @@ public class KrMainController {
 	
 	
 	
-	/*
-	@Autowired
-	BoardService boardService;
+	//IR : 주가정보 ///ir/infor1
+	@GetMapping(value="/ir/infor1")
+	public String infor1() {
+		return "kr/ir/infor1";
+	}
+	//IR : 공시정보 ///ir/infor2
+	@GetMapping(value="/ir/infor2")
+	public String infor2() {
+		return "kr/ir/infor2";
+	}
 
-	@Autowired
-	BoardMapper boardMapper;
-
-	@Autowired
-	DocService docService;
-	@Autowired
-	UploadFileService fileService;
-
-	@Autowired
-	DocMapper docMapper;
-
-	@Autowired
-	CapitalService capitalService;
-
-	@Autowired
-	CapitalMapper capitalMapper;
-
-	@Autowired
-	DvidendpaidService dvidendpaidService;
-
-	@Autowired
-	DvidendpaidMapper dvidendpaidMapper;
-
+	//NEWS : 공지사항 ///news/gongji
+	@RequestMapping(value="/news/gongji" , method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView gongji(@ModelAttribute("search") SearchDTO search) throws Throwable{
 	
-	
-	@Autowired
-	UploadFileMapper fileMapper;
-
-	
-	@GetMapping(value="/kr/company/ceo")
-	public String ceo() {
-		return "kr/company/ceo";
-	}
-
-	@GetMapping(value="/kr/company/philosophy")
-	public String philosophy() {
-		return "kr/company/philosophy";
-	}
-	
-	@GetMapping(value="/kr/company/subcompany")
-	public String subcompany() {
-		return "kr/company/subcompany";
-	}
-
-	@GetMapping(value="/kr/company/globalnetwork")
-	public String globalnetwork() {
-		return "kr/company/globalnetwork";
-	}
-	@GetMapping(value="/kr/company/management")
-	public String management() {
-		return "kr/company/management";
-	}
-	@GetMapping(value="/kr/company/organi")
-	public String organi() {
-		return "kr/company/organi";
-	}
-	@GetMapping(value="/kr/company/history")
-	public String history() {
-		return "kr/company/history";
-	}
-
-	@GetMapping(value="/kr/company/kiara")
-	public String kiara() {
-		return "kr/company/kiara";
-	}
-	
-	@GetMapping(value="/kr/manage/capital")	
-	public ModelAndView capital(HttpServletRequest request) throws Throwable {
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("lang", "kr");
-
+		String gubun = "alim";
+		search.setKeyGubun(gubun); //종류(공지사항)
+		search.setKeyIsnt(SiteLang); //언어
+		search.setKeyValue1("Y"); //게시여부
+		
+		search.setTotal_rows(boardJtService.count(search)); //search에 총 글수를 넣어준다. 
+		List<FrontBoardJtDTO> list = boardJtService.FrontList(search) ;
+		
+		//mv addObject
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("uploadUrl", uploadUrl);
-		
-		CapitalDTO capital = capitalService.one(map);
-		
-		String year = capital.getYear();
-		map.put("year", year);
-		mv.addObject("year", year);
-		
-		mv.addObject("capital", capital);
-
-		
-		String[] years = capitalService.years(map);
-		
-		mv.addObject("years", years);
-		
-		List<DvidendpaidDTO> dvidendpaid = dvidendpaidService.last5list(map);
-		mv.addObject("dvidendpaid", dvidendpaid);
-		
-		mv.setViewName("kr/manage/capital");
+		mv.addObject("list", list);		
+		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()			/* 전체 low수 */ 
+				, ComUtils.objToIntDef(search.getPg_rows(),10)  /* 페이지 당 레코드 수 => 없으면 10*/ 
+				, ComUtils.objToIntDef(search.getCpage(),1)		/* 현재 페이지 => 없으면 1 */
+				, 10
+				, "/images/common/icon_paging_prev.svg"
+				, "/images/common/icon_paging_next.svg"
+				, "/images/common/icon_paging_first.svg"
+				, "/images/common/icon_paging_last.svg"
+				, "goPage"));
+		mv.addObject("page", search) ;
+		mv.setViewName("/kr/news/gongji");
+	
 		return mv;
+		
 	}
 	
-	@GetMapping(value="/kr/manage/director_authority")
-	public String director_authority() {
-		return "kr/manage/director_authority";
-	}
-	@GetMapping(value="/kr/manage/director")
-	public String director() {
-		return "kr/manage/director";
-	}
-	@GetMapping(value="/kr/manage/director_commission")
-	public String director_commission() {
-		return "kr/manage/director_commission";
-	}
-	
-	@GetMapping(value="/kr/manage/article")
-	public ModelAndView article(HttpServletRequest request) throws Throwable {
-		String page = "article";
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("pseq", page);
-
+	//NEWS : 공지사항 상세보기
+	@PostMapping(value="/news/gongjiView")
+	public ModelAndView gongjiView(HttpServletRequest request
+								, @ModelAttribute("search") SearchDTO search) throws Throwable{
+		String gubun = "alim";
+		ParameterMap map = new ParameterMap( request );  // request
+		//-- 게시물 정보
+		String seq = ComUtils.objToStr(map.get("seq"));
+		FrontBoardJtDTO boardJtDTO = boardJtService.FrontSelect(Integer.parseInt(seq),SiteLang);
+		
+		search.setKeyGubun(gubun); //종류(공지사항)
+		search.setKeyIsnt(SiteLang); //언어
+		search.setKeyValue1("Y"); //게시여부
+		search.setKeySeq(Integer.parseInt(seq));
+		
+		//-- 이전글
+		FrontBoardJtDTO bTmp1 = boardJtService.FrontPreSelect(search);
+		if(bTmp1 != null) {
+			boardJtDTO.setPreSeq(bTmp1.getSeq());
+			boardJtDTO.setPreRegdate(bTmp1.getRegdate());
+			boardJtDTO.setPreTitle(bTmp1.getTitle());
+		}	
+				
+		//-- 다음글
+		FrontBoardJtDTO bTmp2 = boardJtService.FrontNextSelect(search);
+		if(bTmp2 != null) {
+			boardJtDTO.setNextSeq(bTmp2.getSeq());
+			boardJtDTO.setNextRegdate(bTmp2.getRegdate());
+			boardJtDTO.setNextTitle(bTmp2.getTitle());
+		}	
+		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", page);
-
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
-		
-		
-		DocDTO data = docService.select(page);
-		mv.addObject("data", data);
-		
-		mv.addObject("doc_data", ComUtils.Replace_Html_Repair(data.getContents()));
-		
-		mv.setViewName("kr/manage/article");
-		return mv;
-	}
-	
-	@GetMapping(value="/kr/manage/disclosure")
-	public String disclosure() {
-		return "kr/manage/disclosure";
-	}
-
-	
-
-	
-	@GetMapping(value="/kr/ir/ir_home")
-	public ModelAndView ir_home(HttpServletRequest request) throws Throwable {
-		ModelAndView mv = new ModelAndView();
-
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("bcode", "notice");		
-		int cpage = ComUtils.objToIntDef(map.get("cpage"), 1); // 현재 페이지
-		long totalRows = boardService.count(map); // 전체 게시글 수
-		int pg_rows = ComUtils.objToIntDef(map.get("pg_rows"), 5); // 페이지당 표시할 레코드 수.
-
-		PageDTO pageDto = new PageDTO(cpage, pg_rows, totalRows);
-		map.put("pg_start", pageDto.getPg_start());
-		map.put("pg_end", pg_rows);
-
-		List<BoardDTO> notice = boardService.list(map);
-		mv.addObject("notice", notice);
-
-		map.put("bcode", "manage");		
-		
-		totalRows = boardService.count(map); // 전체 게시글 수
-		pg_rows = ComUtils.objToIntDef(map.get("pg_rows"), 5); // 페이지당 표시할 레코드 수.
-
-		pageDto = new PageDTO(cpage, pg_rows, totalRows);
-		map.put("pg_start", pageDto.getPg_start());
-		map.put("pg_end", pg_rows);
-
-		List<BoardDTO> manage = boardService.list(map);
-		mv.addObject("manage", manage);
-		
-		
-		
-		//최근 파일
-		map.put("pg_start", 0);
-		map.put("pg_end", 1);
-		map.put("bcode", "annualreport");
-		List<BoardDTO> annualreport_files = boardService.list(map);
-		mv.addObject("annualreport_files", annualreport_files);
-
-		map.put("bcode", "presentation");
-		List<BoardDTO> presentation_files = boardService.list(map);
-		mv.addObject("presentation_files", presentation_files);
-
-		map.put("bcode", "fact_sheet");
-		List<BoardDTO> fact_sheet_files = boardService.list(map);
-		mv.addObject("fact_sheet_files", fact_sheet_files);
-
-		
-		
-		mv.setViewName("kr/ir/ir_home");
-		return mv;
-	}
-
-	@GetMapping(value="/kr/ir/notice")
-	public String notice() {
-		return "kr/ir/notice";
-	}	
-	@GetMapping(value="/kr/ir/notice_read")
-	public String notice_read() {
-		return "kr/ir/notice_read";
-	}
-	@GetMapping(value="/kr/ir/record")
-	public String record() {
-		return "kr/ir/record";
-	}	
-	@GetMapping(value="/kr/ir/record_read")
-	public String record_read() {
-		return "kr/ir/record_read";
-	}	
-	@GetMapping(value="/kr/ir/inspect")
-	public String inspect() {
-		return "kr/ir/inspect";
-	}	
-	@GetMapping(value="/kr/ir/inspect_read")
-	public String inspect_read() {
-		return "kr/ir/inspect_read";
-	}
-	@GetMapping(value="/kr/ir/manage_list")
-	public String manage_list() {
-		return "kr/ir/manage_list";
-	}	
-	@GetMapping(value="/kr/ir/manage_list_read")
-	public String manage_list_read() {
-		return "kr/ir/manage_list_read";
-	}	
-	@GetMapping(value="/kr/ir/announcement")
-	public String announcement() {
-		return "kr/ir/announcement";
-	}	
-	@GetMapping(value="/kr/ir/announcement_read")
-	public String announcement_read() {
-		return "kr/ir/announcement_read";
-	}	
-	@GetMapping(value="/kr/ir/regulations")
-	public ModelAndView regulations(HttpServletRequest request) throws Throwable {
-		String page = "regulations";
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("pseq", page);
-
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", page);
-
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
-		
-		
-		DocDTO data = docService.select(page);
-		mv.addObject("data", data);
-		
-		mv.addObject("doc_data", ComUtils.Replace_Html_Repair(data.getContents()));
-		
-		mv.setViewName("kr/ir/regulations");
-		return mv;		
-	}	
-	@GetMapping(value="/kr/ir/presentation")
-	public String presentation() {
-		return "kr/ir/presentation";
-	}	
-	@GetMapping(value="/kr/ir/presentation_read")
-	public String presentation_read() {
-		return "kr/ir/presentation_read";
-	}	
-	@GetMapping(value="/kr/ir/fact_sheet")
-	public String fact_sheet() {
-		return "kr/ir/fact_sheet";
-	}	
-	@GetMapping(value="/kr/ir/fact_sheet_read")
-	public String fact_sheet_read() {
-		return "kr/ir/fact_sheet_read";
-	}	
-	@GetMapping(value="/kr/ir/annualreport")
-	public String annualreport() {
-		return "kr/ir/annualreport";
-	}	
-	@GetMapping(value="/kr/ir/annualreport_read")
-	public String annualreport_read() {
-		return "kr/ir/annualreport_read";
-	}	
-
-	@GetMapping(value="/kr/ir/stock")
-	public ModelAndView stock(HttpServletRequest request) throws Throwable {
-		
-		ParameterMap map = new ParameterMap(request); // request
-		String gubun = ComUtils.objToStr(map.get("gubun"));
-		if (gubun.equals("")) gubun="A";
-		String d = ComUtils.objToStr(map.get("d"));
-		if (d.equals("")) d="365";
-
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("gubun", gubun);
-		mv.addObject("d", d);
-		mv.setViewName("kr/ir/stock");
-		return mv;		
-	}	
-		
-	
-	@GetMapping(value="/kr/ir/credit")
-	public String credit() {
-		return "kr/ir/credit";
-	}	
-	
-	@GetMapping(value = "/kr/ir/news_list")
-	public ModelAndView news_list(HttpServletRequest request) throws Throwable {
-
-		ModelAndView mv = new ModelAndView();
-		ParameterMap map = new ParameterMap(request); //request
-		
-		String searchStr = map.getString("searchStr");		
-		String NKEY = map.getString("NKEY");
-		String currentPage = map.getString("currentPage");
-		if (currentPage.equals("")) currentPage = "1";
-
-		mv.addObject("searchStr", searchStr);
-		mv.addObject("NKEY", NKEY);
-		mv.addObject("currentPage", currentPage);
-
-		mv.setViewName("/kr/ir/news_list");
-		return mv;
-	}
-	
-	@GetMapping(value = "/kr/ir/news_read")
-	public ModelAndView news_read(HttpServletRequest request) throws Throwable {
-
-		ModelAndView mv = new ModelAndView();
-		ParameterMap map = new ParameterMap(request); //request
-		
-		String searchStr = map.getString("searchStr");		
-		String NDATE = map.getString("NDATE");		
-		String NTITLE = map.getString("NTITLE");		
-		String NKEY = map.getString("NKEY");
-		String currentPage = map.getString("currentPage");
-		if (currentPage.equals("")) currentPage = "1";
-
-		mv.addObject("searchStr", searchStr);
-		mv.addObject("NDATE", NDATE);
-		mv.addObject("NTITLE", NTITLE);
-		mv.addObject("NKEY", NKEY);
-		mv.addObject("currentPage", currentPage);
-
-		mv.setViewName("/kr/ir/news_read");
-		return mv;
-	}	
-	
-
-	@GetMapping(value = "/kr/ir/news_paging")
-	public ModelAndView news_paging(HttpServletRequest request) throws Throwable {
-		ModelAndView mv = new ModelAndView();
-		ParameterMap map = new ParameterMap(request); // request
-		int totalRows = map.getInt("TOT_CNT");
-		int cpage = ComUtils.objToIntDef(map.get("currentPage"), 1); // 현재 페이지
-		int pg_rows = ComUtils.objToIntDef(map.get("pg_rows"), 10); // 페이지당 표시할 레코드 수.
-		mv.addObject("paging", Paging.ShowPageBar(totalRows, pg_rows, cpage, 10, "<img src='/images/common/first_page.png'/>","<img src='/images/common/last_page.png'/>","<img src='/images/common/first_page.png'/>","<img src='/images/common/last_page.png'/>", "goPage"));
-		mv.setViewName("/kr/ir/news_paging");
+		mv.addObject("board", boardJtDTO);
+		mv.addObject("fileFolder", gubun);
+		mv.setViewName("/kr/news/gongjiView");
 		return mv;
 	}
 		
-	
+	//NEWS : 뉴스 ///news/news
+	@RequestMapping(value="/news/news" , method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView news(@ModelAttribute("search") SearchDTO search) throws Throwable{
+		
+		String gubun = "news";
+		search.setKeyGubun(gubun); //종류(공지사항)
+		search.setKeyIsnt(SiteLang); //언어
+		search.setKeyValue1("Y"); //게시여부
 			
-	@GetMapping(value="/kr/sub/vision")
-	public String vision() {
-		return "kr/sub/vision";
-	}	
-	@GetMapping(value="/kr/sub/performance")
-	public String performance() {
-		return "kr/sub/performance";
-	}	
-	@GetMapping(value="/kr/sub/code_ethics")
-	public String code_ethics() {
-		return "kr/sub/code_ethics";
-	}	
-	
-	@GetMapping(value="/kr/sub/behavior")
-	public ModelAndView behavior(HttpServletRequest request) throws Throwable {
-		String page = "behavior";
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("pseq", page);
-
+		search.setTotal_rows(boardJtService.count(search)); //search에 총 글수를 넣어준다. 
+		List<FrontBoardJtDTO> list = boardJtService.FrontList(search) ;
+			
+		//mv addObject
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", page);
-
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
+		mv.addObject("list", list);		
+		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()			/* 전체 low수 */ 
+							, ComUtils.objToIntDef(search.getPg_rows(),10)  /* 페이지 당 레코드 수 => 없으면 10*/ 
+							, ComUtils.objToIntDef(search.getCpage(),1)		/* 현재 페이지 => 없으면 1 */
+							, 10
+							, "/images/common/icon_paging_prev.svg"
+							, "/images/common/icon_paging_next.svg"
+							, "/images/common/icon_paging_first.svg"
+							, "/images/common/icon_paging_last.svg"
+							, "goPage"));
+		mv.addObject("page", search) ;
+		mv.addObject("fileFolder", gubun);
+		mv.setViewName("/kr/news/news");
 		
-		
-		DocDTO data = docService.select(page);
-		mv.addObject("data", data);
-		
-		mv.addObject("doc_data", ComUtils.Replace_Html_Repair(data.getContents()));
-		
-		mv.setViewName("kr/sub/behavior");
-		return mv;		
-	}	
-	
-
-	@GetMapping(value="/kr/sub/operation")
-	public ModelAndView operation(HttpServletRequest request) throws Throwable {
-		String page = "operation";
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("pseq", page);
-
+		return mv;
+	}
+	//NEWS : news 상세보기
+	@PostMapping(value="/news/newsView")
+	public ModelAndView newsView(HttpServletRequest request
+								, @ModelAttribute("search") SearchDTO search) throws Throwable{
+		String gubun = "news";
+		ParameterMap map = new ParameterMap( request );  // request
+		//-- 게시물 정보
+		String seq = ComUtils.objToStr(map.get("seq"));
+		FrontBoardJtDTO boardJtDTO = boardJtService.FrontSelect(Integer.parseInt(seq),SiteLang);
+			
+		search.setKeyGubun(gubun); //종류(뉴스)
+		search.setKeyIsnt(SiteLang); //언어
+		search.setKeyValue1("Y"); //게시여부
+		search.setKeySeq(Integer.parseInt(seq));
+			
+		//-- 이전글
+		FrontBoardJtDTO bTmp1 = boardJtService.FrontPreSelect(search);
+		if(bTmp1 != null) {
+			boardJtDTO.setPreSeq(bTmp1.getSeq());
+			boardJtDTO.setPreRegdate(bTmp1.getRegdate());
+			boardJtDTO.setPreTitle(bTmp1.getTitle());
+		}	
+					
+		//-- 다음글
+		FrontBoardJtDTO bTmp2 = boardJtService.FrontNextSelect(search);
+		if(bTmp2 != null) {
+			boardJtDTO.setNextSeq(bTmp2.getSeq());
+			boardJtDTO.setNextRegdate(bTmp2.getRegdate());
+			boardJtDTO.setNextTitle(bTmp2.getTitle());
+		}	
+			
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", page);
-
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
-		
-		
-		DocDTO data = docService.select(page);
-		mv.addObject("data", data);
-		
-		mv.addObject("doc_data", ComUtils.Replace_Html_Repair(data.getContents()));
-		
-		mv.setViewName("kr/sub/operation");
-		return mv;		
-	}	
-
-	@GetMapping(value="/kr/sub/esg")
-	public String esg() {
-		return "kr/sub/esg";
-	}	
-
-	@GetMapping(value="/kr/util/private")
-	public ModelAndView private1(HttpServletRequest request) throws Throwable {
-		String page = "private";
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("pseq", page);
-
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", page);
-
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
-		
-		
-		DocDTO data = docService.select(page);
-		mv.addObject("data", data);
-		
-		mv.addObject("doc_data", ComUtils.Replace_Html_Repair(data.getContents()));
-		
-		mv.setViewName("kr/util/private");
-		return mv;		
-	}	
-
-	@GetMapping(value="/kr/util/private2")
-	public ModelAndView private2(HttpServletRequest request) throws Throwable {
-		
-		ModelAndView mv = new ModelAndView();
-
-		String bcode = "private2";
-		ParameterMap map = new ParameterMap(request); // request
-		int seq = map.getInt("seq");
-		
-		map.put("bcode", bcode);		
-		if (seq<= 0)  seq= boardService.max_seq(map);
-		map.put("seq", seq);
-		BoardDTO data = boardService.select(map);
-		
-		map.put("pseq", seq);
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
-		
-		mv.addObject("data", data);
-
-		mv.setViewName("kr/util/private2");
-		return mv;		
-	}	
-
-
-	@GetMapping(value="/kr/util/private3")
-	public ModelAndView private3(HttpServletRequest request) throws Throwable {
-		String page = "private3";
-		ParameterMap map = new ParameterMap(request); // request
-		map.put("pseq", page);
-
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", page);
-
-		List<UploadFileDTO> files = fileService.list(map);
-		mv.addObject("files", files);
-		
-		
-		DocDTO data = docService.select(page);
-		mv.addObject("data", data);
-		
-		mv.addObject("doc_data", ComUtils.Replace_Html_Repair(data.getContents()));
-		
-		mv.setViewName("kr/util/private3");
-		return mv;		
-	}	
-	
-	@GetMapping(value="/kr/recruitment/talent")
-	public String talent() {
-		return "kr/recruitment/talent";
+		mv.addObject("board", boardJtDTO);
+		mv.addObject("fileFolder", gubun);
+		mv.setViewName("/kr/news/newsView");
+		return mv;
 	}
 	
-	@GetMapping(value="/kr/contact/contact")
-	public String contact() {
-		return "kr/contact/contact";
+	
+	//IR : 공고 //notice
+	@RequestMapping(value="/ir/notice" , method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView notice(@ModelAttribute("search") SearchDTO search) throws Throwable{
+			
+		String gubun = "notice";
+		search.setKeyGubun(gubun); //종류(공고)
+		search.setKeyIsnt(SiteLang); //언어
+		search.setKeyValue1("Y"); //게시여부
+				
+		search.setTotal_rows(boardJtService.count(search)); //search에 총 글수를 넣어준다. 
+		List<FrontBoardJtDTO> list = boardJtService.FrontList(search) ;
+				
+		//mv addObject
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", list);		
+		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()			/* 전체 low수 */ 
+								, ComUtils.objToIntDef(search.getPg_rows(),10)  /* 페이지 당 레코드 수 => 없으면 10*/ 
+								, ComUtils.objToIntDef(search.getCpage(),1)		/* 현재 페이지 => 없으면 1 */
+								, 10
+								, "/images/common/icon_paging_prev.svg"
+								, "/images/common/icon_paging_next.svg"
+								, "/images/common/icon_paging_first.svg"
+								, "/images/common/icon_paging_last.svg"
+								, "goPage"));
+		mv.addObject("page", search) ;
+		mv.addObject("fileFolder", gubun);
+		mv.setViewName("/kr/ir/notice");
+			
+		return mv;
 	}
+	
+	//IR : 공고 상세보기
+	@PostMapping(value="/ir/noticeView")
+	public ModelAndView noticeView(HttpServletRequest request
+									, @ModelAttribute("search") SearchDTO search) throws Throwable{
+		String gubun = "notice";
+		ParameterMap map = new ParameterMap( request );  // request
+		//-- 게시물 정보
+		String seq = ComUtils.objToStr(map.get("seq"));
+		FrontBoardJtDTO boardJtDTO = boardJtService.FrontSelect(Integer.parseInt(seq),SiteLang);
+				
+		search.setKeyGubun(gubun); //종류(공고)
+		search.setKeyIsnt(SiteLang); //언어
+		search.setKeyValue1("Y"); //게시여부
+		search.setKeySeq(Integer.parseInt(seq));
+				
+		//-- 이전글
+		FrontBoardJtDTO bTmp1 = boardJtService.FrontPreSelect(search);
+		if(bTmp1 != null) {
+			boardJtDTO.setPreSeq(bTmp1.getSeq());
+			boardJtDTO.setPreRegdate(bTmp1.getRegdate());
+			boardJtDTO.setPreTitle(bTmp1.getTitle());
+		}	
+						
+		//-- 다음글
+		FrontBoardJtDTO bTmp2 = boardJtService.FrontNextSelect(search);
+		if(bTmp2 != null) {
+			boardJtDTO.setNextSeq(bTmp2.getSeq());
+			boardJtDTO.setNextRegdate(bTmp2.getRegdate());
+			boardJtDTO.setNextTitle(bTmp2.getTitle());
+		}	
+				
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", boardJtDTO);
+		mv.addObject("fileFolder", gubun);
+		mv.setViewName("/kr/ir/noticeView");
+		return mv;
+	}
+	
+	/*
+	
+
 	*/
 	@GetMapping(value="/sample")
 	public String s1111() {

@@ -33,9 +33,9 @@ function goPage(cpage){
                     <h3 class="pageTitle"></h3>
                     <article class="tab">
                         <ul>
-                            <li><a href="recruit" class="on">전체(<fmt:formatNumber value="${totCntA}" pattern="#,###" />)</a></li>
-                            <li><a href="recruit?code=Y">경력(<fmt:formatNumber value="${totCntY}" pattern="#,###" />)</a></li>
-                            <li><a href="recruit?code=N">신입(<fmt:formatNumber value="${totCntN}" pattern="#,###" />)</a></li>
+                            <li><a href="recruit" <c:if test="${code eq null}">class="on"</c:if>>전체(<fmt:formatNumber value="${totCntA}" pattern="#,###" />)</a></li>
+                            <li><a href="recruit?code=Y" <c:if test="${code eq 'Y'}">class="on"</c:if>>경력(<fmt:formatNumber value="${totCntY}" pattern="#,###" />)</a></li>
+                            <li><a href="recruit?code=N" <c:if test="${code eq 'N'}">class="on"</c:if>>신입(<fmt:formatNumber value="${totCntN}" pattern="#,###" />)</a></li>
                         </ul>
                     </article>
             <!--//Top Common-->

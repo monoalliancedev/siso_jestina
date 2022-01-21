@@ -78,7 +78,7 @@
     
     <!-- 위로 이동 키값 -->
     <select id="UpSelect" parameterType="int"  resultMap="CategoryMap">
-        SELECT seq, sort_idx FROM tb_jt_romason_category 
+        SELECT seq, sort_idx, cate_name FROM tb_jt_romason_category 
          WHERE sort_idx > #{sortIdx}
          <include refid="search" /> 
          ORDER BY sort_idx ASC,seq ASC LIMIT 1;
@@ -86,7 +86,7 @@
     
     <!-- 아래로 이동 키값 -->
     <select id="DownSelect" parameterType="int"  resultMap="CategoryMap">
-        SELECT seq, sort_idx FROM tb_jt_romason_category 
+        SELECT seq, sort_idx, cate_name FROM tb_jt_romason_category 
          WHERE sort_idx <![CDATA[<]]> #{sortIdx} 
          <include refid="search" />
          ORDER BY sort_idx DESC,seq DESC LIMIT 1;
@@ -132,24 +132,6 @@
 
 
 	
-	<!-- 프론트 : 카테고리 이전,다음 -->
-    <select id="FrontSelect" parameterType="int"  resultMap="CategoryMap">
-        select sort_idx, cate_name, seq, sort_idx from (
-	        (SELECT 1 as sort_idx, a.cate_name, a.seq
-	          FROM tb_jt_romason_category a, (select sort_idx from tb_jt_romason_category where seq=#{seq}) b 
-			 WHERE a.sort_idx > b.sort_idx
-			 ORDER BY a.sort_idx ASC,a.seq ASC LIMIT 1)
-	        UNION
-	        (SELECT 2 as sort_idx, cate_name, seq
-	          FROM tb_jt_romason_category 
-			 WHERE seq=#{seq})
-	        UNION
-	        (SELECT 3 as sort_idx, a.cate_name, a.seq
-	          FROM tb_jt_romason_category a, (select sort_idx from tb_jt_romason_category where seq=#{seq}) b 
-			 WHERE a.sort_idx <![CDATA[<]]> b.sort_idx
-			 ORDER BY a.sort_idx DESC,a.seq DESC LIMIT 1)
-		) tb 
-		order by sort_idx asc
-    </select>
+	
     
 </mapper>

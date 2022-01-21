@@ -110,7 +110,9 @@ public class UploadFileServiceImpl implements UploadFileService {
 	
 	@Override
 	public List<UploadFileDTO> list(ParameterMap param){
+		System.out.println("################");
 		return fileMapper.list(param);
+		
 		
 	}
 	

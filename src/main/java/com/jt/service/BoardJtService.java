@@ -28,5 +28,12 @@ public interface BoardJtService {
 	public int isntYCount(String gubun);
 	
 	public FrontBoardJtDTO MainNews(String lang);
+	public FrontBoardJtDTO FrontSelect(int seq, String lang);	
+	public List<FrontBoardJtDTO> FrontList(SearchDTO search); 
+	
+	FrontBoardJtDTO FrontPreSelect(SearchDTO search);	
+	FrontBoardJtDTO FrontNextSelect(SearchDTO search);	
+	
+	
 	
 }

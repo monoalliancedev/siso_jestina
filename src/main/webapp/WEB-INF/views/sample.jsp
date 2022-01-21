@@ -2,6 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -101,10 +106,10 @@
         </header>
         <!--//Header-->
         <script type="text/javascript" src="/scripts/sub.js"></script>
-        <script type="text/javascript" src="/scripts/recruit.js"></script>
-        <script type="text/javascript" src="/scripts/jquery.MultiFile.js"></script>
-        <link rel="stylesheet" type="text/css" href="/css/recruit.css" />
-        <div id="container" class="sub recruit application">
+        <script type="text/javascript" src="/scripts/brand.js"></script>
+        <script type="text/javascript" src="/scripts/jquery.flexslider.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/brand.css" />
+        <div id="container" class="sub brand archive">
             <!--Top Common-->
             <section class="subTop">
                 <article>
@@ -113,118 +118,82 @@
                         <li class="dep1"></li>
                         <li class="depmenu"><span class="now">&nbsp;</span><div class="dep2List"></div></li>
                     </ul>
-                    <h3 class="pageTitle"></h3>
                 </article>
             </section>
             <!--//Top Common-->
             <section class="content">
-                <form>
-                    <table>
-                        <tr>
-                            <th>개인정보 수집 및<br/>이용 동의</th>
-                            <td class="terms">
-                                <div class="roll">
-                                    <h5>입사 지원을 위한 개인정보 수집 및 이용동의 안내</h5>
-                                    <div class="text">
-                                        제이에스티나 채용홈페이지를 활용하여 채용을 실시하는 제이에스티나는 지원자의 개인정보를 중요시하며,<br/>
-                                        개인정보보호에 관한 법률을 준수하고 있습니다.<br/>
-                                        회사의 본 홈페이지를 통해 입사지원 서비스를 이용하시고자 할 경우 지원자로부터 아래와 같이 최소한의 범위로 개인정보를 수집하고 있습니다.<br/> 
-                                        지원자께서는 아래의 내용을 자세히 읽어 보시고, 모든 내용을 이해하신 후에 동의 여부를 결정해 주시기 바랍니다.
-                                    </div>
-                                    <h5>1. 개인정보 수집 및 이용주체</h5>
-                                    <div class="text">
-                                        제이에스티나 채용홈페이지의 인재풀 등록 통해 제출하는 지원서 및 각종 증빙서류는 지원자께서 지원서를 제출하는 회사에서 직접 수집/관리하며, 향후 지원서 관리책임은 채용회사에 있습니다.
-                                    </div>
-                                    <h5>2. 동의를 거부할 권리 및 동의 거부에 따른 불이익</h5>
-                                    <div class="text">
-                                        지원자는 아래 개인정보 제공 등에 관해 동의하지 않을 권리가 있습니다.<br/>
-                                        다만, 지원서를 통해 제공받는 정보는 회사의 채용 전형에 필수적인 항목으로 해당 정보를 제공받지 못할 경우 회사는 공정한 선발전형을 진행할 수 없습니다.<br/>
-                                        따라서 아래 개인정보 제공에 대해 동의하지 않는 경우 채용 전형에 지원이 제한될 수 있습니다.
-                                    </div>
-                                    <h5>3. 수집하는 개인정보 항목 및 수집/이용 목적</h5>
-                                    <table>
-                                        <tr>
-                                            <th>구분</th>
-                                            <th>수집항목</th>
-                                            <th>수집&middot;이용 목적</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="th" rowspan="2">필수</td>
-                                            <td>사진, 성명, 생년월일</td>
-                                            <td>인력풀 등록 서비스 이용에 따른 본인 식별 절차에 사용</td>
-                                        </tr>
-                                        <tr>
-                                            <td>성명, 주소, 전화번호(휴대폰), 이메일</td>
-                                            <td>채용관련 고지사항 전달 및 결과안내 등 의사소통 경로의 확보 등</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="th" rowspan="2">선택</td>
-                                            <td>최종학력(학교명), 최종경력(직장명), 이직사유, 직전/희망연봉, 자기소개 관련정보 등</td>
-                                            <td>상시채용 발생 시 채용적합성 판단 및 채용전형 시 근거자료 등 인력풀 활용</td>
-                                        </tr>
-                                        <tr>
-                                            <td>외국어 사항, 자격사항, 포상(수상)내역, 보훈여부(보훈대상자 채용 우대를 위한 정보 수집) 등</td>
-                                            <td>상시채용 발생 시 채용적합성 판단 및 채용전형 시 근거자료 등 인력풀 활용</td>
-                                        </tr>
-                                    </table>
-                                    <h5>4. 개인정보의 보유 및 이용기간</h5>
-                                    <ul>
-                                        <li>
-                                            <p>(1) 회사는 귀하의 동의를 받아 귀하의 개인정보를 귀하께 서비스를 제공한 기간 동안에 보유 및 이용합니다.<br/>그 보유 및 이용기간은 다음과 같습니다.</p>
-                                            <ol>
-                                                <li>
-                                                    <p>가. 입사지원서 및 각종 증빙서류</p>
-                                                    <span> - 인력풀 등록 및 채용공고 지원자(채용자) : 등록일로부터 1년 경과시까지 (향후 채용가능 자원 관리)</span>
-                                                    <span> - 채용공고 지원자(미채용자) : 채용전형 종료일까지</span>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                        <li>
-                                            <p>(2) 즉시 삭제요청 시 수집된 개인의 정보가 열람 또는 이용될 수 없도록 파기 처리 됩니다. 다만 서비스 이용과 관련된 민원/분쟁이 계속될 경우에는 민원/분쟁 해결 시까지 보유되고, 관계 법령에 특별한 규정이 있을 경우 관련 법령에 따라 보관됩니다.</p>
-                                        </li>
-                                    </ul>
+                <!--Year Set-->
+                <div class="yearWrap">
+                    <!--Category Set-->
+                    <div class="categoryWrap">
+                        <ul class="slides">
+                            <li>
+                                <div class="titleText">
+                                    <h5><span>2020</span>BRAND ARCHIVE</h5>
+                                    <h6>J.ESTINA<span>JEWERLY</span><img src="/images/icon_archive_x.svg"/>IU</h6>
                                 </div>
-                                <div class="checkBox"><input type="checkbox" id="terms1"/><i>&nbsp;</i><label for="terms1"><b>[선택]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
-                                <div class="checkBox"><input type="checkbox" id="terms2"/><i>&nbsp;</i><label for="terms2"><b>[선택]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>지원자 정보 입력</th>
-                            <td>
-                                <dl>
-                                    <dt>모집부분<span>*</span></dt>
-                                    <dd>
-                                        <select class="select">
-                                            <option>모집분야 선택</option>
-                                        </select>
-                                    </dd>
-                                    <dt>이름<span>*</span></dt>
-                                    <dd><input type="text" class="enterField" placeholder="이름"/></dd>
-                                    <dt>핸드폰 번호<span>*</span></dt>
-                                    <dd><input type="text" class="enterField" placeholder="ex) 000-0000-0000"/></dd>
-                                    <dt>이메일 주소<span>*</span></dt>
-                                    <dd><input type="text" class="enterField" placeholder="ex) email@email.com"/></dd>
-                                    <dt>첨부파일<span>*</span></dt>
-                                    <dd class="addFile">
-                                        <div class="addWrap">
-                                            <div class="fileField">
-                                                <input type="file" name="file_name" accept=".doc, .docx, .xls, .xlsx, .ppt, .pptx, .pdf, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/pdf"/>
-                                                <button type="button">파일첨부</button>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="docDown">입사지원서 다운로드</a>
-                                        <div class="viewWrap"></div>
-                                        <p class="ment">※ 첨부파일은 워드, 엑셀, PPT, PDF 파일만 첨부 가능합니다.</p>
-                                    </dd>
-                                    <dt>지원사유</dt>
-                                    <dd><textarea placeholder="지원사유"></textarea></dd>
-                                </dl>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="bottom_btn"><a href="#">지원하기</a></div>
-                </form>
+                                <img src="/images/sample/brand_archive_01.jpg" class="forPC"/>
+                                <img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//Category Set-->
+                </div>
+                <!--//Year Set-->
+                <!--Year Set-->
+                <div class="yearWrap">
+                    <!--Category Set-->
+                    <div class="categoryWrap">
+                        <ul class="slides">
+                            <li>
+                                <div class="titleText">
+                                    <h5><span>2021</span>BRAND ARCHIVE</h5>
+                                    <h6>J.ESTINA<span>JEWERLY</span><img src="/images/icon_archive_x.svg"/>IU</h6>
+                                </div>
+                                <img src="/images/sample/brand_archive_01.jpg" class="forPC"/>
+                                <img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/>
+                            </li>
+                            <li>
+                                <div class="titleText">
+                                    <h5><span>2021</span>BRAND ARCHIVE</h5>
+                                    <h6>J.ESTINA<span>JEWERLY</span><img src="/images/icon_archive_x.svg"/>IU</h6>
+                                </div>
+                                <img src="/images/sample/brand_archive_01.jpg" class="forPC"/>
+                                <img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//Category Set-->
+                    <!--Category Set-->
+                    <div class="categoryWrap">
+                        <ul class="slides">
+                            <li>
+                                <div class="titleText">
+                                    <h5><span>2021</span>BRAND ARCHIVE</h5>
+                                    <h6>J.ESTINA<span>BAG</span><img src="/images/icon_archive_x.svg"/>GO MINSI</h6>
+                                </div>
+                                <img src="/images/sample/brand_archive_02.jpg" class="forPC"/>
+                                <img src="/images/sample/brand_archive_02_mo.jpg" class="forMobile"/>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//Category Set-->
+                </div>
+                <!--//Year Set-->
+                
             </section>
+            <!--controller-->
+            <div class="controller">
+                <div class="btnWrap">
+                    <div class="prevYearList"></div>
+                    <a href="#" class="yearPrev"><img src="/images/icon_archive_arrow_prev.svg"/></a>
+                    <div class="yearList"><div class="list"></div></div>
+                    <a href="#" class="yearNext"><img src="/images/icon_archive_arrow_next.svg"/></a>
+                    <div class="nextYearList"></div>
+                </div>
+                <a href="#" class="moTop"><img src="/images/icon_archive_arrow_top.svg"/></a>
+            </div>
+            <!--//controller-->
         </div>
         <!--Footer-->
         <footer>

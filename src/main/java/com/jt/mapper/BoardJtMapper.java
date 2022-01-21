@@ -28,5 +28,11 @@ public interface  BoardJtMapper {
 	int isntYCount(String gubun);
 	
 	FrontBoardJtDTO MainNews(String lang);
+	FrontBoardJtDTO FrontSelect(ParameterMap param);	
+	List<FrontBoardJtDTO> FrontList(SearchDTO search); 
+	FrontBoardJtDTO FrontPreSelect(SearchDTO search);	
+	FrontBoardJtDTO FrontNextSelect(SearchDTO search);	
+	
+	
 	
 }

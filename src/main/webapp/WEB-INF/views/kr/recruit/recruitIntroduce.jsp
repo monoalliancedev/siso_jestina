@@ -31,7 +31,7 @@
                         <li><a href=".sales">SALES</a></li>
                         <li><a href=".marketing">MAKETING</a></li>
                         <li><a href=".merchandising">MERCHANDISING</a></li>
-                        <li><a href=".platformLogistic">FLATFORM/LOGISTIC</a></li>
+                        <li><a href=".platformLogistic">PLATFORM/LOGISTIC</a></li>
                         <li><a href=".management">MANAGEMENT</a></li>
                     </ul>
                 </article>

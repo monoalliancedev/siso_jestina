@@ -5,6 +5,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class SearchDTO extends Page2DTO{
 
+	private int keySeq;
 	private String key;
 	private String keyword;
 	private String keyIsnt;
@@ -20,6 +21,7 @@ public class SearchDTO extends Page2DTO{
 		this.keyIsnt = "";
 		this.keyGubun = "";
 	}
+	
 	
 	public String getKeyValue1() {
 		return keyValue1;
@@ -88,6 +90,16 @@ public class SearchDTO extends Page2DTO{
 				.build();
 			
 		return ucp.toUriString();
+	}
+
+
+	public int getKeySeq() {
+		return keySeq;
+	}
+
+
+	public void setKeySeq(int keySeq) {
+		this.keySeq = keySeq;
 	}
 }
 

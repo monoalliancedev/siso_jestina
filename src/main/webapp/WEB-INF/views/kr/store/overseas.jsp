@@ -118,7 +118,16 @@ function Jt_continent_change(obj) {
                             <tr>
                                 <td class="area">${list.value1}</td>
                                 <td class="nation">${list.value2}</td>
-                                <td class="name">${list.storeKr}<span></span></td>
+                                <td class="name">
+                                	<c:choose>
+			                            <c:when test="${list.value3 ne ''}">
+			                                <a href="mailto:${list.value3}">${list.storeKr}</a>
+			                            </c:when>
+			                            <c:otherwise>
+			                            	${list.storeKr}
+			                            </c:otherwise>
+	                            	</c:choose>
+                                </td>
                                 <td class="address">${list.addr1Kr} ${list.addr2Kr}</td>
                             </tr>
                             </c:forEach>

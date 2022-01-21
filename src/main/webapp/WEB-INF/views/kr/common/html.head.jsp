@@ -28,7 +28,7 @@
 	</script>
 
     <!-- favicon -->
-	<link rel="shortcut icon" href="http://romanson12.cafe24.com/jtfavicon.ico">
+	<link rel="shortcut icon" href="/jtfavicon.ico">
 	
 	<!-- J.ESTINA -->
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
@@ -37,6 +37,11 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css" />
     <script type="text/javascript" src="/scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/scripts/common.js"></script>
+    
+    
+    
+    
+    
     
     
     

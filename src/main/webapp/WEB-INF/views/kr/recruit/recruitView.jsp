@@ -70,7 +70,7 @@
                     </div>
                     <!--//Info-->
                     <div class="bottom_btn">
-                        <a href="#" class="list">목록</a>
+                        <a href="#" onclick="history.back()" class="list">목록</a>
                         <c:if test="${(recruit.recruitEnd eq 'checked') || (toDay<=recruit.recruitToDate)}">
                         	<a href="application?code=${code}" class="apply">지원하기</a>
                         </c:if>
