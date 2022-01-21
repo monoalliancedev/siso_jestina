@@ -36,3 +36,5 @@ build/
 
 
 *.mp4
+!**/src/main/webapp/UploadFiles/
+!**/src/main/webapp/video/
