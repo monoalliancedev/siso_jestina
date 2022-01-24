@@ -310,7 +310,17 @@ $(document).ready(function () {
             directionNav: true,
             animationLoop: false,
             controlNav: true,
-            slideshow: false
+            slideshow: false,
+            start: function () {
+                $('.archive .categoryWrap').each(function () {
+                    var objEA = $(this).find('.slides li').length;
+                    if (objEA == 1) {
+                        $(this).find('ul.flex-direction-nav').hide()
+                    } else {
+                        $(this).find('ul.flex-direction-nav').show()
+                    }
+                })
+            }
         });
     });
     $(window).resize(function () {

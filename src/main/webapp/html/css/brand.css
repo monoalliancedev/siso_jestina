@@ -7,6 +7,7 @@
 .brand .location li::after{background:url(/images/common/icon_location_arrow_w.svg) no-repeat}
 .brand .location li span.now{color:#fff}
 .brand .location li span.now::after{background:url(/images/common/icon_location_arrow2_w.svg) no-repeat}
+.brand .location li:first-child a{background: url(/images/common/icon_home_w.svg) no-repeat;}
 .brand .brandVisual{background-repeat:no-repeat;background-size:cover;padding-bottom:0}
 .brandVisual > article{position:relative}
 .brandVisual .textWrap{width:615px;position:absolute;left:0;top:45%;transform:translateY(-50%);color:#fff}
@@ -24,6 +25,7 @@
 .handbag .brandVisual .commImgArea img.forPC{width:0;height:0;opacity:0}
 .handbag .brandVisual .commImgArea img.forMobile{width:0;height:0;opacity:0}
 /*ROMANSON*/
+.romanson.brand .location li:first-child a{background: url(/images/common/icon_home.svg) no-repeat;}
 .romanson .content{padding-bottom:80px}
 .romanson .subTop{position:static}
 .romanson .location li{color:#767676}
@@ -103,7 +105,6 @@
 
 /*ARCHIVE*/
 .archive{overflow:hidden}
-.archive .location li:first-child a{background: url(/images/common/icon_home_w.svg) no-repeat;}
 .archive .content{padding-bottom:0}
 .archive .yearWrap{display:none}
 .archive .yearWrap:first-child{display:block}
