@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -24,11 +23,6 @@ import com.jt.util.ParameterMap;
 
 @Service
 public class BannerServiceImpl implements BannerService {
-	
-	@Value("${attach_upload_path}")
-	private String uploadRoot;
-	@Value("${attach_upload_url}")
-	private String uploadUrl;
 	
 	@Autowired
 	private BannerMapper bannerMapper;
@@ -366,7 +360,7 @@ public class BannerServiceImpl implements BannerService {
 				
 				
 				
-			public FrontBannerDTO MainBanner(String lang) {
+			public List<FrontBannerDTO> MainBanner(String lang) {
 				return bannerMapper.MainBanner(lang);
 			}
 			public FrontBannerDTO MainBarndBanner(ParameterMap param){

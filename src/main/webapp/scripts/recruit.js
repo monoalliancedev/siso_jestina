@@ -1,49 +1,44 @@
 $(document).ready(function () {
-    /*----------GNB & Location----------*/
-    function subLocation() {
-        if ($('#container').hasClass('recruit')) {
-            var dep2Menu = $('nav dl:nth-child(4) dd').html();
-            $('.location .dep1').text('RECRUIT');
-            $('.location .dep2List').append(dep2Menu);
-            $('nav .menuList dl:nth-child(4) dt a').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:nth-child(4) dt a').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:nth-child(4) dd').show();
-        };
-        if ($('#container').hasClass('recruit talent')) {
-            $('.location .now , .sub h3.pageTitle').text('인재상');
-            $('.location li .dep2List a').eq(0).addClass('on');
-            $('nav .menuList dl:nth-child(4) dd a:first-child').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(4) dd a:nth-child(1)').addClass('inPage');
-        };
-        if ($('#container').hasClass('recruit duty')) {
-            $('.location .now , .sub h3.pageTitle').text('직무소개');
-            $('.location li .dep2List a').eq(1).addClass('on');
-            $('nav .menuList dl:nth-child(4) dd a:nth-child(2)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(4) dd a:nth-child(2)').addClass('inPage');
-        };
-        if ($('#container').hasClass('recruit culture')) {
-            $('.location .now , .sub h3.pageTitle').text('기업문화/복리후생');
-            $('.location li .dep2List a').eq(2).addClass('on');
-            $('nav .menuList dl:nth-child(4) dd a:nth-child(3)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(4) dd a:nth-child(3)').addClass('inPage');
-        };
-        if ($('#container').hasClass('recruit jobOpening anncmnt')) {
-            $('.location .now , .sub h3.pageTitle').text('채용공고');
-            $('.location li .dep2List a').eq(3).addClass('on');
-            $('nav .menuList dl:nth-child(4) dd a:nth-child(4)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(4) dd a:nth-child(4)').addClass('inPage');
-        };
-        if ($('#container').hasClass('recruit jobOpening regist')) {
-            $('.location .now , .sub h3.pageTitle').text('인재풀 등록');
-            $('.location li .dep2List a').eq(4).addClass('on');
-            $('nav .menuList dl:nth-child(4) dd a:nth-child(5)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(4) dd a:nth-child(5)').addClass('inPage');
-        };
-        if ($('#container').hasClass('recruit application')) {
-            $('.location .now , .sub h3.pageTitle').text('입사지원');
-        };
-    };
-    subLocation();
+    /*----------직무소개----------*/
+    function dutyFun() {
+        $('.duty .tabDataWrap').flexslider({
+            animation: '',
+            directionNav: false,
+            animationLoop: false,
+            controlNav: true,
+            slideshow: false,
+            smoothHeight: true,
+            controlsContainer: '.duty .tabButton .buttons',
+            start: function () {
+                var tabEA = $('.tabDataWrap .tabData').length;
+                for (var i = 0; i < tabEA; i++) {
+                    var tabTitle = $('.tabDataWrap .tabData').eq(i).attr('data-tab');
+                    $('.tabButton ol li').eq(i).find('span').html(tabTitle);
+                }
+                $('.duty .tabButton ol li').each(function () {
+                    $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
+                });
+            },
+            after: function () {
+                var prevOffset = $('.duty .tabButton ol a.flex-active').parent('li').css('left');
+                $('.duty .tabButton .buttons ol').animate({ scrollLeft: prevOffset });
+            }
+        });
+    }
+    dutyFun();
+    $('.duty .tabButton > a.prev').click(function () {
+        $('.duty .tabDataWrap').flexslider('prev');
+        return false;
+    });
+    $('.duty .tabButton > a.next').click(function () {
+        $('.duty .tabDataWrap').flexslider('next');
+        return false;
+    });
+    $(window).resize(function () {
+        $('.duty .tabButton ol li').each(function () {
+            $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
+        })
+    })
     /*----------채용공고----------*/
     //목록 제목
     $('.recruit.jobOpening .listWrap li.tit').each(function () {

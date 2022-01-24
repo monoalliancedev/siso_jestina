@@ -40,7 +40,6 @@
                     </div>
                 </article>
                 <div class="commImgArea">
-                    <div class="commImgArea">
                     <c:if test="${brandBanner.imgUrl ne ''}">
                         <c:if test="${brandBanner.linkOutYn eq 'Y'}">
 	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
@@ -63,7 +62,6 @@
 	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
 	                    </c:if>
 	                </c:if>
-	                </div>
                 </div>
             </section>
             <section class="moTextWrap"></section>

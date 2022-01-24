@@ -29,6 +29,11 @@ import com.jt.util.ParameterMap;
 @Controller
 public class AdmBannerController {
 
+	//@Value("${attach_upload_path}")
+	//private String uploadRoot;
+	//@Value("${attach_upload_url}")
+	//private String uploadUrl;
+	
 	// 권한키값(메인배너관리,메인브랜드배너관리),redirect
 	private static final String authorityKey1 = "Mbanner";
 	private static final String authorityKey2 = "MBbanner";

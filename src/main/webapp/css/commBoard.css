@@ -15,6 +15,17 @@
 .commBoardList td{height:80px;text-align:center;border-bottom:1px solid #e0e0e0;font-size:16px;color:#505050;padding:0 15px;line-height:1.4}
 .commBoardList td a{color:#505050}
 .commBoardList td.alLeft{text-align:left}
+.commBoardList .typeGallery{width:100%;display:inline-block}
+.commBoardList .typeGallery > li{width:290px;float:left;margin-right:40px;margin-bottom:100px}
+.commBoardList .typeGallery > li:nth-child(4n){margin-right:0}
+.commBoardList .typeGallery ol{width:100%;}
+.commBoardList .typeGallery ol > li{width:100%;display:inline-block}
+.commBoardList .typeGallery li.thumb a{width:100%;height:200px;background-position:center center;background-repeat:no-repeat;background-size:cover;display:block;position:relative}
+.commBoardList .typeGallery li.thumb img{width:0;height:0;position:absolute;opacity:0}
+.commBoardList .typeGallery li.tit{margin:20px 0}
+.commBoardList .typeGallery li.tit a{font-size:18px;font-weight:500;line-height:1.4;display:block;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-ms-text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2;}
+.commBoardList .typeGallery li.date{font-size:16px;color:#505050}
+.commBoardList .typeGallery + .paging{margin-top:0}
 
 /*Common - Board - View*/
 .commBoardView .title{border-top:1px solid #101010;border-bottom:1px solid #bababa;padding:40px}
@@ -31,13 +42,14 @@
 .commBoardView .attachFile li a::before{content:'';width:18px;height:18px;position:absolute;left:0;top:50%;transform:translateY(-50%);background:url(/images/icon_ir_file.svg) no-repeat}
 .commBoardView .attachFile li span{color:#767676}
 .commBoardView .bbsText{padding:60px 0 110px 0;font-size:16px;color:#505050;line-height:1.6}
+.commBoardView .bbsText img{max-width:100%}
 .commBoardView .ctrl{border-top:1px solid #e0e0e0}
 .commBoardView .ctrl dl{border-bottom:1px solid #e0e0e0;width:100%;display:table;table-layout:fixed}
 .commBoardView .ctrl dt{display:table-cell;width:100px;text-align:center;font-size:16px;font-weight:500;padding:30px 0}
 .commBoardView .ctrl dd{display:table-cell;padding:30px 30px 30px 10px;position:relative}
 .commBoardView .ctrl dd a{font-size:16px;color:#505050;display:inline-block;width:calc(100% - 110px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
 .commBoardView .ctrl dd span{position:absolute;right:30px;top:50%;transform:translateY(-50%);color:#505050;font-size:16px}
-.commBoardView .buttons{text-align:center;margin:100px 0 80px 0}
+.commBoardView .buttons{text-align:center;margin-top:100px}
 .commBoardView .buttons a{display:inline-block;line-height:58px;border:1px solid #101010;border-radius:58px;width:160px;font-size:18px}
 .commBoardView .buttons a.typeWhite{background:#fff;color:#101010}
 
@@ -50,6 +62,16 @@
 .paging li a{display:block}
 .paging li.now span{display:inline-block;position:relative}
 .paging li.now span::after{content:'';width:100%;height:2px;background:#101010;position:absolute;left:0;bottom:-2px}
+
+@media all and (max-width:1280px) {
+    /*Common - Board - List*/
+    .commBoardList .typeGallery > li{margin-right:0;width:25%;text-align:center}
+    .commBoardList .typeGallery ol{width:95%;text-align:left;display:inline-block}
+}
+@media all and (max-width:1060px) {
+    /*Common - Board - List*/
+    .commBoardList .typeGallery > li{width:33.33%}
+}
 
 @media all and (max-width:812px) {
     /*Common - 검색/Total영역*/
@@ -68,7 +90,13 @@
     .commBoardList thead{display:none}
     .commBoardList td.no{display:none}
     .commBoardList tr{width:100%;display:inline-block;position:relative;border-bottom:1px solid #e0e0e0}
-
+    .commBoardList .typeGallery > li{width:100%;margin-right:0;margin-bottom:9.8rem}
+    .commBoardList .typeGallery ol{width:100%}
+    .commBoardList .typeGallery li.thumb a{height:40rem}
+    .commBoardList .typeGallery li.tit{margin:3.2rem 0 3.1rem 0}
+    .commBoardList .typeGallery li.tit a{font-size:2.8rem;line-height:1.2}
+    .commBoardList .typeGallery li.date{font-size:2.4rem}
+    .commBoardList .typeGallery > li:last-child{margin-bottom:8.9rem}
     /*Common - Board - View*/
     .commBoardView .title{padding:3.7rem 2rem}
     .commBoardView .title h5{font-size:2.8rem}
@@ -83,8 +111,9 @@
     .commBoardView .attachFile li span{font-size:2.2rem}
     .commBoardView .bbsText{padding:7.5rem 0 14rem 0;font-size:2.4rem}
     .commBoardView .ctrl dt{width:10rem;font-size:16px;padding:3.6rem 0;font-size:2.4rem}
-    .commBoardView .ctrl dd{padding:3.6rem 4rem}
-    .commBoardView .ctrl dd a{font-size:2.4rem}
+    .commBoardView .ctrl dd{padding:3.6rem 3.6rem 3.6rem 1.9rem}
+    .commBoardView .ctrl dd a{font-size:2.4rem;width:100%}
+    .commBoardView .ctrl dd span{display:none}
     .commBoardView .buttons{margin:8rem 0 7rem 0}
     .commBoardView .buttons a{line-height:8.5rem;border-radius:8.5rem;width:22rem;font-size:2.8rem}
     /*Common - Paging*/

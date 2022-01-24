@@ -1,41 +1,4 @@
 $(document).ready(function () {
-    /*----------GNB & Location----------*/
-    function subLocation() {
-        if ($('#container').hasClass('brand')) {
-            var dep2Menu = $('nav dl:nth-child(2) dd').html();
-            $('.location .dep1').text('BRAND');
-            $('.location .dep2List').append(dep2Menu);
-            $('nav .menuList dl:nth-child(2) dt a').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:nth-child(2) dt a').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:nth-child(2) dd').show();
-        };
-        if ($('#container').hasClass('brand jewelry')) {
-            $('.location .now').text('J.ESTINA JEWELRY');
-            $('.location li .dep2List a').eq(0).addClass('on');
-            $('nav .menuList dl:nth-child(2) dd a:first-child').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(2) dd a:first-child').addClass('inPage');
-        };
-        if ($('#container').hasClass('brand handbag')) {
-            $('.location .now').text('J.ESTINA HANDBAG');
-            $('.location li .dep2List a').eq(1).addClass('on');
-            $('nav .menuList dl:nth-child(2) dd a:nth-child(2)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(2) dd a:nth-child(2)').addClass('inPage');
-        };
-        if ($('#container').hasClass('brand romanson')) {
-            $('.location .now , .sub h3.pageTitle').text('ROMANSON');
-            $('.location li .dep2List a').eq(2).addClass('on');
-            $('nav .menuList dl:nth-child(2) dd a:nth-child(3)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(2) dd a:nth-child(3)').addClass('inPage');
-        };
-        if ($('#container').hasClass('brand archive')) {
-            $('.location .now').text('ARCHIVE');
-            $('.location li .dep2List a').eq(3).addClass('on');
-            $('nav .menuList dl:nth-child(2) dd a:nth-child(4)').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:nth-child(2) dd a:nth-child(4)').addClass('inPage');
-            $('footer').css('margin-top', '-1px')
-        };
-    };
-    subLocation();
     /*----------Common----------*/
     function brandCommFun() {
         var windowHT = $(window).height();
@@ -347,7 +310,17 @@ $(document).ready(function () {
             directionNav: true,
             animationLoop: false,
             controlNav: true,
-            slideshow: false
+            slideshow: false,
+            start: function () {
+                $('.archive .categoryWrap').each(function () {
+                    var objEA = $(this).find('.slides li').length;
+                    if (objEA == 1) {
+                        $(this).find('ul.flex-direction-nav').hide()
+                    } else {
+                        $(this).find('ul.flex-direction-nav').show()
+                    }
+                })
+            }
         });
     });
     $(window).resize(function () {

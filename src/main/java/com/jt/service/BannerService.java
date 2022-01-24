@@ -33,7 +33,7 @@ public interface BannerService {
 	
 	
 	
-	public FrontBannerDTO MainBanner(String lang);
+	public List<FrontBannerDTO> MainBanner(String lang);
 	public FrontBannerDTO MainBarndBanner(ParameterMap param);
 	
 	

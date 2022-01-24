@@ -37,7 +37,7 @@ public interface  BannerMapper {
 	BannerDTO DownSelect(ParameterMap param);
 	
 	
-	FrontBannerDTO MainBanner(String lang);
+	List<FrontBannerDTO> MainBanner(String lang);
 	FrontBannerDTO MainBarndBanner(ParameterMap param);
 	
 }
