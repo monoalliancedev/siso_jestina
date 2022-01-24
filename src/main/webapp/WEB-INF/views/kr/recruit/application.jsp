@@ -42,7 +42,6 @@ function deleteHtml(htmlTxt)
 function Jt_submit() { 
 	var f = document.processForm;
 
-	/*
 	if($("input:checkbox[id=terms1]").is(":checked")==false) {
 		alert("개인정보의 수집및 이용에 동의해주세요.");
 		$('#terms1').focus();
@@ -54,12 +53,13 @@ function Jt_submit() {
 		$('#terms2').focus();
 		return false;
 	}
-
+	
 	if(isBlank(f.recruit)) {
 		alert( "모집부분을 선택해주세요.");
 		f.recruit.focus();
 		return;
 	}
+	
 	if(isBlank(f.name)) {
 		alert( "이름을 입력해주세요.");
 		f.name.focus();
@@ -88,9 +88,7 @@ function Jt_submit() {
 	if(confirm("지원 하시겠습니까?")) {
 		f.action = "MailSend";
 		f.submit();
-	}*/
-	f.action = "MailSend";
-	f.submit();
+	}
 
 }  
 </script>
@@ -188,8 +186,8 @@ function Jt_submit() {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="checkBox"><input type="checkbox" id="terms1"/><i>&nbsp;</i><label for="terms1"><b>[선택]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
-                                <div class="checkBox"><input type="checkbox" id="terms2"/><i>&nbsp;</i><label for="terms2"><b>[선택]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
+                                <div class="checkBox"><input type="checkbox" id="terms1" checked/><i>&nbsp;</i><label for="terms1"><b>[선택]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
+                                <div class="checkBox"><input type="checkbox" id="terms2" checked/><i>&nbsp;</i><label for="terms2"><b>[선택]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
                             </td>
                         </tr>
                         <tr>
@@ -208,7 +206,7 @@ function Jt_submit() {
 									        </c:when>
 									        <c:otherwise>
 									        	<select class="select" name="recruit">
-	                                            <option value="모집분야">모집분야 선택</option>
+	                                            <option value="">모집분야 선택</option>
 	                                            <c:forEach var="list" items="${recruitList}" varStatus="status">
 	                                            	<c:if test="${(list.recruitEnd eq 'checked') || (toDay<=list.recruitToDate)}">
 	                                            		<option value="${list.seq}">${list.jobField}</option>

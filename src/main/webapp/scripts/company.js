@@ -1,46 +1,4 @@
 $(document).ready(function () {
-    /*----------GNB & Location----------*/
-    function subLocation() {
-        if ($('#container').hasClass('company')) {
-            var dep2Menu = $('nav dl:first-child dd').html();
-            $('.location .dep1').text('COMPANY');
-            $('.location .dep2List').append(dep2Menu);
-            $('nav .menuList dl:first-child dt a').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:first-child dt a').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:first-child dd').show();
-        };
-        if ($('#container').hasClass('company vision')) {
-            $('.location .now , .sub h3.pageTitle').text('비전');
-            $('.location li .dep2List a').eq(0).addClass('on');
-            $('nav .menuList dl:first-child dd a:first-child').addClass('inPage');
-            $('header .mobileGNB .moMenuList dl:first-child dd a:first-child').addClass('inPage');
-        };
-        if ($('#container').hasClass('company history')) {
-            $('.location .now , .sub h3.pageTitle').text('연혁');
-            $('.location li .dep2List a').eq(1).addClass('on');
-            $('nav .menuList dl:first-child dd a:nth-child(2)').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:first-child dd a:nth-child(2)').addClass('inPage');
-        };
-        if ($('#container').hasClass('company business')) {
-            $('.location .now , .sub h3.pageTitle').text('사업영역');
-            $('.location li .dep2List a').eq(2).addClass('on');
-            $('nav .menuList dl:first-child dd a:nth-child(3)').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:first-child dd a:nth-child(3)').addClass('inPage');
-        };
-        if ($('#container').hasClass('company identity')) {
-            $('.location .now , .sub h3.pageTitle').text('BI');
-            $('.location li .dep2List a').eq(3).addClass('on');
-            $('nav .menuList dl:first-child dd a:nth-child(4)').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:first-child dd a:nth-child(4)').addClass('inPage');
-        };
-        if ($('#container').hasClass('company contact')) {
-            $('.location .now , .sub h3.pageTitle').text('Contact');
-            $('.location li .dep2List a').eq(4).addClass('on');
-            $('nav .menuList dl:first-child dd a:nth-child(5)').addClass('inPage');
-            $('.mobileGNB .moMenuList dl:first-child dd a:nth-child(5)').addClass('inPage');
-        };
-    };
-    subLocation();
     /*----------연혁----------*/
     $('.history .yearSelectWrap dt').click(function () {
         $(this).toggleClass('on');

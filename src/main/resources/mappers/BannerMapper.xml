@@ -278,7 +278,6 @@
 		   AND gubun= 'MainBanner'
 		   AND isnt_yn = 'Y'
 		ORDER BY sort_idx DESC, seq DESC 
-		LIMIT 1
 	</select> 
 		
     <!-- 메인 : 메인 브랜드 배너 list(주얼리,가방,로만손)-->

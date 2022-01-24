@@ -1,6 +1,6 @@
 $(document).ready(function () {
     /*----------Main Banner----------*/
-    //ë°°ë„ˆì˜ì—­ Size
+    //¹è³Ê¿µ¿ª Size
     function mainBannerSize() {
         var windowHT = $(window).height();
         var headerHT = $('header').outerHeight();
@@ -9,7 +9,7 @@ $(document).ready(function () {
         $('.mainBanner li.typeVideo .bg').css('height', windowHT - headerHT);
         $('.mainBanner li.typeImage .bg').css('height', windowHT - headerHT);
     };
-    //íƒ€ì´í‹€ ìœ„ì¹˜
+    //Å¸ÀÌÆ² À§Ä¡
     function bannerTitlePos() {
         $('.mainBanner li .tit').each(function () {
             var titleHT = $(this).outerHeight();
@@ -97,7 +97,7 @@ $(document).ready(function () {
         };
     }
     ctrlAction();
-    //ì»¨íŠ¸ë¡¤ëŸ¬
+    //ÄÁÆ®·Ñ·¯
     $('.mainBanner a.ctrlBtn.prev').click(function () {
         $('.mainBanner').flexslider('prev');
         return false;
@@ -106,7 +106,7 @@ $(document).ready(function () {
         $('.mainBanner').flexslider('next');
         return false;
     });
-    //ëª¨ë°”ì¼ ë™ì˜ìƒì œê±°
+    //¸ğ¹ÙÀÏ µ¿¿µ»óÁ¦°Å
     $('.mainBanner li.typeVideo video').each(function () {
         var videoRoot = $(this).find('source').attr('src');
         $(this).append('<input type="hidden" value="' + videoRoot + '"/>');
@@ -117,7 +117,7 @@ $(document).ready(function () {
             $(this).find('source').attr('src', hiddenValue);
         }
     });
-    //ë™ì˜ìƒ ëª¨ë°”ì¼ìš© ì´ë¯¸ì§€
+    //µ¿¿µ»ó ¸ğ¹ÙÀÏ¿ë ÀÌ¹ÌÁö
     function mainBannerVideoType() {
         $('.mainBanner li.typeVideo').each(function () {
             var objSRCmobile = $(this).find('img.forMobile').attr('src');
@@ -125,7 +125,7 @@ $(document).ready(function () {
         });
     };
     mainBannerVideoType();
-    //ì´ë¯¸ì§€ íƒ€ì…
+    //ÀÌ¹ÌÁö Å¸ÀÔ
     function mainBannerImageType() {
         $('.mainBanner li.typeImage').each(function () {
             var objSRCpc = $(this).find('img.forPC').attr('src');
@@ -151,7 +151,7 @@ $(document).ready(function () {
         });
         ctrlAction();
     });
-    /*----------About Jã†ESTINA----------*/
+    /*----------About J¤ıESTINA----------*/
     $(window).scroll(function () {
         var headerHT = $('header').outerHeight()
         var mainBannerPos = $('.mainBanner').offset().top;
@@ -188,7 +188,7 @@ $(document).ready(function () {
             $('.aboutJestina .textArea span').stop().animate({ 'opacity': 0 });
         };
     });
-    /*----------Brand ì†Œê°œ----------*/
+    /*----------Brand ¼Ò°³----------*/
     $('.brandIntro .imgPhoto img').load(function () {
         function brandIntroObjSize() {
             $('.brandIntro article').each(function () {
@@ -266,7 +266,7 @@ $(document).ready(function () {
             $('.brandIntro .info .more a').stop().animate({'margin-right': '40px' });
         };
     });
-    /*----------Brand ì†Œê°œ(ëª¨ë°”ì¼)----------*/
+    /*----------Brand ¼Ò°³(¸ğ¹ÙÀÏ)----------*/
     $('.moBrandIntro .imgPhoto img').load(function () {
         function mobileProductFun() {
             $('.moBrandIntro .prdPhoto').each(function () {

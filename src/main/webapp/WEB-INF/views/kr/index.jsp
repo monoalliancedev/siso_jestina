@@ -17,31 +17,24 @@
             <!--Banner-->
             <section class="mainBanner">
                 <ul class="slides">
+        		<c:forEach var="mainBanner" items="${mainBannerList}" varStatus="status">	
         			<c:if test="${mainBanner.fileType eq 'video'}">
+        			<!-- 메인베너 영상 일때 -->
                     <li class="typeVideo">
-                        <div class="tit">
-                        <c:choose>
-                        	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
-                        		<a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>${mainBanner.contents}</a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		${mainBanner.contents}
-                        	</c:otherwise>
-                        </c:choose>
-        				</div>
+                        <div class="tit"><a href="#">${mainBanner.contents}</a></div>
                         <div class="bg">&nbsp;</div>
+                        <c:if test="${mainBanner.imgUrl ne ''}">
                         <video muted loop>
-                            <c:if test="${mainBanner.imgUrl ne ''}">
                             <source src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" type="video/mp4">
-                            </c:if>
                         </video>
+                        </c:if>
                         <c:if test="${mainBanner.moimgUrl ne ''}">
                         	<img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/>
                         </c:if>
                     </li>
                     </c:if>
-                    
-					<c:if test="${mainBanner.fileType eq 'image'}">
+        			<c:if test="${mainBanner.fileType eq 'image'}">
+					<!--  메인베너 이미지 일때 -->
 					<li class="typeImage">
                         <div class="tit">
                         <c:choose>
@@ -58,45 +51,13 @@
                         <div class="bg">&nbsp;</div>
                     </li>
                     </c:if>
-                    
-                    
-                    <li class="typeVideo">
-                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
-                        <div class="bg">&nbsp;</div>
-                        <video muted loop>
-                            <source src="video/visual1.mp4" type="video/mp4">
-                        </video>
-                        <img src="/images/sample/mo_main_banner1.jpg" class="forMobile"/>
-                    </li>
-                    <li class="typeImage">
-                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
-                        <img src="/images/sample/main_banner.jpg" class="forPC"/>
-                        <img src="/images/sample/mo_main_banner2.jpg" class="forMobile"/>
-                        <div class="bg">&nbsp;</div>
-                    </li>
-                    <li class="typeVideo">
-                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
-                        <div class="bg">&nbsp;</div>
-                        <video muted loop>
-                            <source src="video/visual1.mp4" type="video/mp4">
-                        </video>
-                        <img src="/images/sample/mo_main_banner1.jpg" class="forMobile"/>
-                    </li>
-                    <li class="typeImage">
-                        <div class="tit"><a href="#">Art Of Giving<br/>21WINTER COLLECTION</a></div>
-                        <img src="/images/sample/main_banner.jpg" class="forPC"/>
-                        <img src="/images/sample/mo_main_banner2.jpg" class="forMobile"/>
-                        <div class="bg">&nbsp;</div>
-                    </li>
-                    
-                    
-                    
-                    
-                    
+                </c:forEach>    
                 </ul>
                 <div class="controller"><span class="activeNO"></span><span class="totalNO"></span></div>
+<c:if test="${mainBannerList.size()>1}">	
                 <a href="#" title="이전배너" class="ctrlBtn prev"><img src="/images/icon_ban_arrow_left.svg"/></a>
                 <a href="#" title="다음배너" class="ctrlBtn next"><img src="/images/icon_ban_arrow_right.svg"/></a>
+</c:if>
                 <span class="scroll"><img src="/images/icon_main_ban_arrow.svg"/>Scroll</span>
             </section>
             <!--//Banner-->
@@ -197,19 +158,19 @@
                 <article>
                     <ul class="notice">
                         <li class="cate">News</li>
-                        <li class="tit"><a href="#">${mainNews.title}</a></li>
-                        <li class="text"><a href="#">${mainNews.contentsMain}</a></li>
-                        <li class="more"><a href="#">MORE</a></li>
+                        <li class="tit"><a href="/news/newsView?seq=${mainNews.seq}">${mainNews.title}</a></li>
+                        <li class="text"><a href="/news/newsView?seq=${mainNews.seq}">${mainNews.contentsMain}</a></li>
+                        <li class="more"><a href="/news/news">MORE</a></li>
                     </ul>
                     <ul class="news">
                         <li class="cate">Culture</li>
-                        <li class="tit"><a href="#">제이에스티나 기업문화 및 복리후생</a></li>
-                        <li class="text"><a href="#">제이에스티나의 기업문화 및 복리후생을 확인 할 수 있습니다.</a></li>
-                        <li class="more"><a href="#">MORE</a></li>
+                        <li class="tit"><a href="/recruit/recruitCulture">제이에스티나 기업문화 및 복리후생</a></li>
+                        <li class="text"><a href="/recruit/recruitCulture">제이에스티나의 기업문화 및 복리후생을 확인 할 수 있습니다.</a></li>
+                        <li class="more"><a href="/recruit/recruitCulture">MORE</a></li>
                     </ul>
                     <ul class="rescruit">
                         <li class="cate">Recruit</li>
-                        <li class="tit"><a href="#">제이에스티나 인재풀 등록</a></li>
+                        <li class="tit"><a href="/recruit/recruitResources">제이에스티나 인재풀 등록</a></li>
                         <li class="text"><a href="#">제이에스티나는 상시 지원할 수 있는 채용시스템을 운영하고 있습니다.</a></li>
                         <li class="more"><a href="#">MORE</a></li>
                     </ul>

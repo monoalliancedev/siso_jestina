@@ -34,6 +34,7 @@ import com.jt.service.BoardJtService;
 import com.jt.service.BrandBannerService;
 import com.jt.service.CategoryService;
 import com.jt.service.FaqService;
+import com.jt.service.MailSenderService;
 import com.jt.service.MuseService;
 import com.jt.service.RecruitmentService;
 import com.jt.service.RomasonService;
@@ -42,13 +43,11 @@ import com.jt.service.UploadFileService;
 import com.jt.util.ComUtils;
 import com.jt.util.Constants;
 import com.jt.util.FrontPaging;
-import com.jt.util.MailSender;
 import com.jt.util.Paging;
 import com.jt.util.ParameterMap;
 
 
 @Controller
-
 public class KrMainController {
 
 	@Autowired
@@ -81,8 +80,8 @@ public class KrMainController {
 	@Autowired
 	FaqService faqService;
 	
-	//@Autowired
-	//JavaMailSender javaMailSender;
+	@Autowired
+	MailSenderService mailSender;
 	
 	
 	
@@ -100,7 +99,7 @@ public class KrMainController {
 		FrontBoardJtDTO mainNews = boardJtService.MainNews(SiteLang);
 		
 		//메인배너
-		FrontBannerDTO mainBanner = bannerService.MainBanner(SiteLang);
+		List<FrontBannerDTO> mainBannerList = bannerService.MainBanner(SiteLang);
 
 		//메인브랜드 배너
 		map.put("gubun", "Jewerly");
@@ -112,7 +111,7 @@ public class KrMainController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mainNews", mainNews);
-		mv.addObject("mainBanner", mainBanner);
+		mv.addObject("mainBannerList", mainBannerList);
 		mv.addObject("mainBarndJ", mainBarndJ);
 		mv.addObject("mainBarndB", mainBarndB);
 		mv.addObject("mainBarndR", mainBarndR);
@@ -455,91 +454,6 @@ public class KrMainController {
 		return mv;
 	}
 	
-	//-- recruit / 인재풀등록
-	@GetMapping(value="/recruit/recruitResources")
-	public ModelAndView recruitResources() throws Throwable {
-
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/kr/recruit/recruitResources"); 
-		return mv;
-	}
-	
-	//-- recruit / 입사지원
-	@GetMapping(value="/recruit/application")
-	public ModelAndView application(String code) throws Throwable {
-
-		String recruitMode = "";
-		
-		String recruitJobField="";
-		if( code == null ) {
-			
-		}else {
-			RecruitmentDTO recruit = recruitService.select(Integer.parseInt(code));
-			recruitJobField = recruit.getJobField();
-		}
-		
-		//채용정보 리스트(전체정보)
-		List<RecruitmentDTO> recruitList = recruitService.FrontList(recruitMode) ;
-				
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("toDay", ComUtils.getCurDate("ymd")); 
-		mv.addObject("code", code);		
-		mv.addObject("recruitList", recruitList);		
-		mv.addObject("recruitJobField", recruitJobField);		
-		
-		mv.setViewName("/kr/recruit/application"); 
-		return mv;
-	}
-	
-	
-	
-	
-	
-	
-	//-- recruit / 입사지원 메일보내기
-	@PostMapping(value = "/recruit/MailSend")
-	public ModelAndView MailSend(MailUploadDTO mailUpload) throws Throwable {
-
-		
-		MailSender mailSender = new MailSender();
-		mailSender.sendMail();
-		
-		
-		System.out.println("##############");
-		/*
-		System.out.println("### Email : " + mailUpload.getEmail());
-		System.out.println("### Name : " + mailUpload.getName());
-		System.out.println("### Contents : " + mailUpload.getContents());
-		
-		List<MultipartFile> fileList = mailUpload.getUploadFile();
-		
-		
-		MimeMessage message= javaMailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message, true);
-		helper.setTo(mailUpload.getEmail());
-		helper.setSubject(mailUpload.getRecruit()+mailUpload.getName());
-		helper.setText(mailUpload.getContents());
-		*/
-		
-		/*
-		for(MultipartFile aFile : fileList) {
-			System.out.println("### OriginalFilename : " + aFile.getOriginalFilename());
-			
-			FileSystemResource file = new FileSystemResource(new File(aFile.getOriginalFilename()));
-			helper.addAttachment(aFile.getOriginalFilename(), file);
-		}	
-		
-		javaMailSender.send(message);
-		*/
-		
-
-		ModelAndView mv = new ModelAndView();
-		//mv.setViewName("/kr/recruit/application");
-		mv.setViewName("redirect:/recruit/application");
-		
-		return mv;
-	
-	}
 	
 	//-- 회사 정보
 	@GetMapping(value="/company/vision")
@@ -664,7 +578,7 @@ public class KrMainController {
 		//mv addObject
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);		
-		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()			/* 전체 low수 */ 
+		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()	/* 전체 low수 */ 
 							, ComUtils.objToIntDef(search.getPg_rows(),10)  /* 페이지 당 레코드 수 => 없으면 10*/ 
 							, ComUtils.objToIntDef(search.getCpage(),1)		/* 현재 페이지 => 없으면 1 */
 							, 10
@@ -786,6 +700,66 @@ public class KrMainController {
 		mv.setViewName("/kr/ir/noticeView");
 		return mv;
 	}
+	
+	
+	
+	
+	
+		//-- recruit / 인재풀등록
+		@GetMapping(value="/recruit/recruitResources")
+		public ModelAndView recruitResources() throws Throwable {
+
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("/kr/recruit/recruitResources"); 
+			return mv;
+		}
+		
+		//-- recruit / 입사지원
+		@GetMapping(value="/recruit/application")
+		public ModelAndView application(String code) throws Throwable {
+
+			String recruitMode = "";
+			
+			String recruitJobField="";
+			if( code == null ) {
+				
+			}else {
+				RecruitmentDTO recruit = recruitService.select(Integer.parseInt(code));
+				recruitJobField = recruit.getJobField();
+			}
+			
+			//채용정보 리스트(전체정보)
+			List<RecruitmentDTO> recruitList = recruitService.FrontList(recruitMode) ;
+					
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("toDay", ComUtils.getCurDate("ymd")); 
+			mv.addObject("code", code);		
+			mv.addObject("recruitList", recruitList);		
+			mv.addObject("recruitJobField", recruitJobField);		
+			
+			mv.setViewName("/kr/recruit/application"); 
+			return mv;
+		}
+		
+		
+		
+		
+		//-- recruit / 입사지원 메일보내기
+		@PostMapping(value = "/recruit/MailSend")
+		public ModelAndView MailSend(MailUploadDTO mailUpload) throws Throwable {
+
+			mailSender.SendMail(mailUpload);
+			
+			ModelAndView mv = new ModelAndView();
+			//mv.setViewName("/kr/recruit/application");
+			mv.setViewName("redirect:/recruit/application");
+			
+			return mv;
+		}
+		
+		
+		
+		
 	
 	/*
 	

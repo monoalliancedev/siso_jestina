@@ -2,11 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -106,10 +101,8 @@
         </header>
         <!--//Header-->
         <script type="text/javascript" src="/scripts/sub.js"></script>
-        <script type="text/javascript" src="/scripts/brand.js"></script>
-        <script type="text/javascript" src="/scripts/jquery.flexslider.js"></script>
-        <link rel="stylesheet" type="text/css" href="/css/brand.css" />
-        <div id="container" class="sub brand archive">
+        <script type="text/javascript" src="/scripts/company.js"></script>
+        <div id="container" class="sub company vision">
             <!--Top Common-->
             <section class="subTop">
                 <article>
@@ -118,82 +111,43 @@
                         <li class="dep1"></li>
                         <li class="depmenu"><span class="now">&nbsp;</span><div class="dep2List"></div></li>
                     </ul>
+                    <h3 class="pageTitle"></h3>
                 </article>
             </section>
             <!--//Top Common-->
+            <section class="topVisual"></section>
             <section class="content">
-                <!--Year Set-->
-                <div class="yearWrap">
-                    <!--Category Set-->
-                    <div class="categoryWrap">
-                        <ul class="slides">
-                            <li>
-                                <div class="titleText">
-                                    <h5><span>2020</span>BRAND ARCHIVE</h5>
-                                    <h6>J.ESTINA<span>JEWERLY</span><img src="/images/icon_archive_x.svg"/>IU</h6>
-                                </div>
-                                <img src="/images/sample/brand_archive_01.jpg" class="forPC"/>
-                                <img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/>
-                            </li>
+                <article>
+                    <div>
+                        <h4>VISION</h4>
+                        <p>빛나는 모든 순간을 함께 하는 <b>Global Lifestyle Creator</b></p>
+                    </div>
+                    <div>
+                        <h4>MISSION</h4>
+                        <p>- 우리는 패션, 문화, 예술을 융합한 <b>New Lifestyle</b>을<br/> <b>창조</b>함으로써 <b>세상을 더 행복하게 만듭니다.</b></p>
+                        <p>- 우리는 끊임없는 혁신을 통해 <b>고유의 문화적 가치를 창출</b>하고<br/> 이를 <b>전세계에 널리 알리겠습니다.</b></p>
+                    </div>
+                    <div>
+                        <h4>핵심가치</h4>
+                        <ul>
+                            <li><span class="icon"><img src="/images/company_icon_01.png"/></span></li>
+                            <li class="text"><span>창의성</span>Creativity</li>
+                        </ul>
+                        <ul>
+                            <li><span class="icon"><img src="/images/company_icon_02.png"/></span></li>
+                            <li class="text"><span>도전정신</span>Challenge</li>
+                        </ul>
+                        <ul>
+                            <li><span class="icon"><img src="/images/company_icon_03.png"/></span></li>
+                            <li class="text"><span>신뢰</span>Trust</li>
+                        </ul>
+                        <ul>
+                            <li><span class="icon"><img src="/images/company_icon_04.png"/></span></li>
+                            <li class="text"><span>신뢰</span>Trust</li>
                         </ul>
                     </div>
-                    <!--//Category Set-->
-                </div>
-                <!--//Year Set-->
-                <!--Year Set-->
-                <div class="yearWrap">
-                    <!--Category Set-->
-                    <div class="categoryWrap">
-                        <ul class="slides">
-                            <li>
-                                <div class="titleText">
-                                    <h5><span>2021</span>BRAND ARCHIVE</h5>
-                                    <h6>J.ESTINA<span>JEWERLY</span><img src="/images/icon_archive_x.svg"/>IU</h6>
-                                </div>
-                                <img src="/images/sample/brand_archive_01.jpg" class="forPC"/>
-                                <img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/>
-                            </li>
-                            <li>
-                                <div class="titleText">
-                                    <h5><span>2021</span>BRAND ARCHIVE</h5>
-                                    <h6>J.ESTINA<span>JEWERLY</span><img src="/images/icon_archive_x.svg"/>IU</h6>
-                                </div>
-                                <img src="/images/sample/brand_archive_01.jpg" class="forPC"/>
-                                <img src="/images/sample/brand_archive_01_mo.jpg" class="forMobile"/>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--//Category Set-->
-                    <!--Category Set-->
-                    <div class="categoryWrap">
-                        <ul class="slides">
-                            <li>
-                                <div class="titleText">
-                                    <h5><span>2021</span>BRAND ARCHIVE</h5>
-                                    <h6>J.ESTINA<span>BAG</span><img src="/images/icon_archive_x.svg"/>GO MINSI</h6>
-                                </div>
-                                <img src="/images/sample/brand_archive_02.jpg" class="forPC"/>
-                                <img src="/images/sample/brand_archive_02_mo.jpg" class="forMobile"/>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--//Category Set-->
-                </div>
-                <!--//Year Set-->
-                
+                </article>
             </section>
-            <!--controller-->
-            <div class="controller">
-                <div class="btnWrap">
-                    <div class="prevYearList"></div>
-                    <a href="#" class="yearPrev"><img src="/images/icon_archive_arrow_prev.svg"/></a>
-                    <div class="yearList"><div class="list"></div></div>
-                    <a href="#" class="yearNext"><img src="/images/icon_archive_arrow_next.svg"/></a>
-                    <div class="nextYearList"></div>
-                </div>
-                <a href="#" class="moTop"><img src="/images/icon_archive_arrow_top.svg"/></a>
-            </div>
-            <!--//controller-->
         </div>
         <!--Footer-->
         <footer>
