@@ -83,12 +83,12 @@ public class AdmPopupJtController {
 									, RedirectAttributes ra) throws Throwable{
 				
 			// ** 권한 여부에 따른 페이지 이동
-						ModelAndView mv = new ModelAndView();
-						if (admJtAuthService.getIsnt(authorityKey) == 0) { // 권한 없음
-							ra.addFlashAttribute("msg", "authorityKeyFalse");
-							mv.setViewName(authorityHome);
-							return mv;
-						}
+			ModelAndView mv = new ModelAndView();
+			if (admJtAuthService.getIsnt(authorityKey) == 0) { // 권한 없음
+				ra.addFlashAttribute("msg", "authorityKeyFalse");
+				mv.setViewName(authorityHome);
+				return mv;
+			}
 						
 			
 			String gubun="Mpopup";	

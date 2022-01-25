@@ -43,6 +43,25 @@ public class MailSenderServiceImpl implements MailSenderService {
 	@Value("${attach_upload_url}")
 	private String uploadUrl;
 	
+
+	@Value("${send_mail_smtp_host}")
+	private String MailSmtpHost;
+	@Value("${send_mail_port}")
+	private String MailPort;
+	@Value("${send_mail_id}")
+	private String MailID;
+	@Value("${send_mail_pw}")
+	private String MailPW;
+	@Value("${send_mail_sender}")
+	private String MailSender;
+	@Value("${send_mail_recipients}")
+	private String MailRecipients;
+
+	
+	
+	
+	
+	
 	@Autowired
 	UploadFileService fileService;
 	
@@ -53,10 +72,14 @@ public class MailSenderServiceImpl implements MailSenderService {
 	@Override
 	public boolean SendMail(MailUploadDTO mailUpload) throws UnsupportedEncodingException {
 		
-		String sender = "kejgogogo@naver.com"; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
-		String recipients = "kejgogogo@naver.com"; //받는 메일
+		//String sender = "recruit@jestina.com"; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
+		//String recipients = "kejgogogo@naver.com"; //받는 메일
+		String sender = MailSender; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
+		String recipients = MailRecipients; //받는 메일
 		String title = "입사신청서"; //메일제목
 		String mailText = ""; //메일내용(html)
+		
+		
 		
 		if(mailUpload.getRecruit()!=null && mailUpload.getRecruit()!="") {
 			RecruitmentDTO recruit = recruitService.select(Integer.parseInt(mailUpload.getRecruit()));
@@ -108,11 +131,22 @@ public class MailSenderServiceImpl implements MailSenderService {
 		//프로퍼티를 생성한다.
         Properties prop = new Properties();
         
+        prop.put("mail.smtp.host", MailSmtpHost);
+        prop.put("mail.smtp.port", MailPort);
+        prop.put("mail.smtp.auth","true");
+        
+        /*
+        prop.put("mail.smtp.host", "mail.jestina.com");
+        prop.put("mail.smtp.port", 25);
+        prop.put("mail.smtp.auth","true");
+        */
+        /*
         prop.put("mail.smtp.host", "smtp.naver.com");
         prop.put("mail.smtp.port", 587);
         prop.put("mail.smtp.auth", "true");
-        prop.put("mail.mime.charset","utf-8");
-        prop.put("mail.mime.encodefilname","true");
+        */
+        //prop.put("mail.mime.charset","utf-8");
+        //prop.put("mail.mime.encodefilname","true");
        
         
         //세션 인스턴스를 생성한다.
@@ -120,7 +154,9 @@ public class MailSenderServiceImpl implements MailSenderService {
     	{
     		public PasswordAuthentication getPasswordAuthentication()
     		{
-    			return new PasswordAuthentication("kejgogogo", "ab381016@#");
+    			//return new PasswordAuthentication("recruit@jestina.com", "jestina7547!!");
+    			//return new PasswordAuthentication("kejgogogo", "ab381016@#");
+    			return new PasswordAuthentication(MailID, MailPW);
     		}
     	});
                 

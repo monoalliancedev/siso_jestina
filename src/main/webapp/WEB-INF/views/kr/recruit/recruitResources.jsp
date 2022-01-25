@@ -7,6 +7,16 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/views/kr/common/html.head.jsp" %>
+<script>
+$(document).ready(function() {
+	<c:if test="${msg eq 'msgTrue'}">
+	alert("메일을 보냈습니다.");
+	</c:if>
+	<c:if test="${msg eq 'msgFalse'}">
+	alert("메일전송 실패.");
+	</c:if>
+});
+</script>
 </head>
 <body>
     <div id="wrap">

@@ -107,14 +107,5 @@ $(document).ready(function () {
             $('.popupWrap .imgArea a img').css('height', 'auto')
         }
     });
-    $('.popupWrap .close').click(function () {
-        $(this).parents('.popupData').hide();
-        $(this).parents('.popupData').addClass('closed');
-        var popupDataEA = $('.popupWrap .popupData').length;
-        var popupDataNoneEA = $('.popupWrap .popupData.closed').length;
-        if (popupDataEA == popupDataNoneEA) {
-            $('.popupWrap').hide();
-        }
-        return false;
-    })
+    
 });

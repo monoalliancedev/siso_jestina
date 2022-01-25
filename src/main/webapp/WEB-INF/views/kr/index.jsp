@@ -203,5 +203,112 @@
         </div>
         <%@ include file="/WEB-INF/views/kr/common/html.footer.jsp" %>
     </div>
+  
+<c:if test="${MainPopupList.size()>0}">    
+<script>
+//쿠키 가져오기 함수
+function getCookie(cName) {
+	
+	cName = cName + '=';
+	var cookieData = document.cookie;
+	var start = cookieData.indexOf(cName);
+	var cValue = '';
+	if(start != -1) {
+		start += cName.length;
+		var end = cookieData.indexOf(';', start);
+		if(end == -1) end = cookieData.length;
+		cValue = cookieData.substring(start, end);
+	}
+	return unescape(cValue);
+}
+//쿠키설정
+function setCookie( name, value, expiredays ){ 
+	var todayDate = new Date(); 
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+</script>
+
+<!--팝업-->
+<div class="popupWrap" style="display: none;">
+	
+	<c:forEach var="MainPopup" items="${MainPopupList}" varStatus="status">
+	<script>
+	function jt_pageMove${status.count}(linkKey) {
+		if(linkKey=="Y") { // 새창
+			window.open("${MainPopup.linkUrl}", "_blank", "");
+		}else if(linkKey=="C") { // 페이지 이동
+			location.href = "${MainPopup.linkUrl}";
+		}
+	}
+	</script>
+	<!--Set-->
+    <div class="popupData">
+        <div class="imgArea">
+        	<c:choose>
+            <c:when test="${MainPopup.linkUrl ne '' && (MainPopup.linkOutYn eq 'Y' || MainPopup.linkOutYn eq 'C')}">
+            	<a href="#" onclick="jt_pageMove${status.count}('${MainPopup.linkOutYn}')"><img src="/UploadFiles/Mpopup/${MainPopup.imgUrl}" alt="${MainPopup.title}"/></a>
+            </c:when>
+            <c:otherwise>
+            	<img src="/UploadFiles/Mpopup/${MainPopup.imgUrl}" alt="${MainPopup.title}"/>
+            </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="ctrl">
+            <div class="checkBox"><input type="checkbox" id="dayHide${status.count}"><i>&nbsp;</i><label for="dayHide${status.count}">하루 동안 보지 않기</label></div>
+            <a href="#" class="close">닫기 <img src="/images/popup_close.svg"/></a>
+        </div>
+    </div>
+    <!--//Set-->
+    </c:forEach>    
+</div>
+<!--//팝업-->
+<script></script>  
+<script>
+
+//팝업전체 div (모두 다시안보기일때 팝업div를 열지 않는다.) 
+var CookieIsCnt = 0;
+for (var i = 0; i < $('.popupWrap .popupData').length; i++) {
+	var cookieID = getCookie("popup"+(i+1)+"YN");
+	if (cookieID=="N") CookieIsCnt ++ ; //쿠키있어요.
+}
+if(CookieIsCnt<${MainPopupList.size()}) {
+	$('.popupWrap').show();	//팝업전체div
+}
+
+
+
+//개별 popup창 숨기기,보여주기
+for (var i = 0; i < $('.popupWrap .popupData').length; i++) {
+	var cookieID = getCookie("popup"+(i+1)+"YN");
+	if (cookieID=="N") { //쿠키있어요.(다시 팝업창을 열지 않기)
+		$('.popupWrap .popupData').eq(i).hide(); //i번째 숨김	
+	}else{
+		$('.popupWrap .popupData').eq(i).show(); //i번째 보여줌
+	}
+}
+
+//닫기버튼을 누를때 다시보지않기 클릭한 팝업은 쿠키값을 넣어준다.
+$('.popupWrap .close').click(function () {
+
+	<c:forEach var="MainPopup" items="${MainPopupList}" varStatus="stat">
+	if($('input:checkbox[id="dayHide${stat.count}"]').is(":checked") == true) {
+		setCookie( "popup${stat.count}YN", "N" , 1 ); 
+		//alert("${status.count}번째 팝업이 체크되어 있습니다.");
+	}
+	</c:forEach>   
+	
+    $(this).parents('.popupData').hide();
+    $(this).parents('.popupData').addClass('closed');
+    var popupDataEA = $('.popupWrap .popupData').length;
+    var popupDataNoneEA = $('.popupWrap .popupData.closed').length;
+    if (popupDataEA == popupDataNoneEA) {
+        $('.popupWrap').hide();
+    }
+    return false;
+})
+</script>
+</c:if>
+
 </body>
 </html>

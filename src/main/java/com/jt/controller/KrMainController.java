@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jt.domain.CategoryDTO;
 import com.jt.domain.FaqDTO;
@@ -23,6 +24,7 @@ import com.jt.domain.FrontBannerDTO;
 import com.jt.domain.FrontBoardJtDTO;
 import com.jt.domain.FrontCategoryDTO;
 import com.jt.domain.FrontMuseDTO;
+import com.jt.domain.FrontPopupJtDTO;
 import com.jt.domain.MailUploadDTO;
 import com.jt.domain.RecruitmentDTO;
 import com.jt.domain.RomasonDTO;
@@ -36,6 +38,7 @@ import com.jt.service.CategoryService;
 import com.jt.service.FaqService;
 import com.jt.service.MailSenderService;
 import com.jt.service.MuseService;
+import com.jt.service.PopupService;
 import com.jt.service.RecruitmentService;
 import com.jt.service.RomasonService;
 import com.jt.service.StoreService;
@@ -83,7 +86,8 @@ public class KrMainController {
 	@Autowired
 	MailSenderService mailSender;
 	
-	
+	@Autowired
+	PopupService popupService;
 	
 	
 	private static final String SiteLang= "KR";
@@ -108,6 +112,10 @@ public class KrMainController {
 		FrontBannerDTO mainBarndB = bannerService.MainBarndBanner(map);
 		map.put("gubun", "Romason");
 		FrontBannerDTO mainBarndR = bannerService.MainBarndBanner(map);
+
+		//메인팝업
+		List<FrontPopupJtDTO> MainPopupList = popupService.MainPopup(SiteLang) ;
+		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mainNews", mainNews);
@@ -115,7 +123,8 @@ public class KrMainController {
 		mv.addObject("mainBarndJ", mainBarndJ);
 		mv.addObject("mainBarndB", mainBarndB);
 		mv.addObject("mainBarndR", mainBarndR);
-
+		mv.addObject("MainPopupList", MainPopupList);
+		
 		mv.setViewName("/kr/index");
 		return mv;
 	}
@@ -594,7 +603,7 @@ public class KrMainController {
 		return mv;
 	}
 	//NEWS : news 상세보기
-	@PostMapping(value="/news/newsView")
+	@RequestMapping(value="/news/newsView" , method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView newsView(HttpServletRequest request
 								, @ModelAttribute("search") SearchDTO search) throws Throwable{
 		String gubun = "news";
@@ -746,13 +755,17 @@ public class KrMainController {
 		
 		//-- recruit / 입사지원 메일보내기
 		@PostMapping(value = "/recruit/MailSend")
-		public ModelAndView MailSend(MailUploadDTO mailUpload) throws Throwable {
+		public ModelAndView MailSend(MailUploadDTO mailUpload , RedirectAttributes ra) throws Throwable {
 
-			mailSender.SendMail(mailUpload);
+			if(mailSender.SendMail(mailUpload)) {
+				ra.addFlashAttribute("msg", "msgTrue"); //성공
+			}else {
+				ra.addFlashAttribute("msg", "msgFalse"); //실패
+			}
 			
 			ModelAndView mv = new ModelAndView();
-			//mv.setViewName("/kr/recruit/application");
-			mv.setViewName("redirect:/recruit/application");
+			mv.setViewName("redirect:/recruit/recruitResources");
+			//mv.setViewName("redirect:/recruit/application");
 			
 			return mv;
 		}

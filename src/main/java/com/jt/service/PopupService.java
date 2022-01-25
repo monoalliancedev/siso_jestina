@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.jt.domain.FrontPopupJtDTO;
 import com.jt.domain.PopupJtDTO;
 import com.jt.domain.SearchDTO;
 import com.jt.util.ParameterMap;
@@ -22,4 +23,9 @@ public interface PopupService {
 	public void fileDeletePopup(ParameterMap param);
 	
 	public int isntYCount(); //게시여부 Y 갯수
+	
+	
+	
+	//Front
+	public List<FrontPopupJtDTO> MainPopup(String lang);
 }

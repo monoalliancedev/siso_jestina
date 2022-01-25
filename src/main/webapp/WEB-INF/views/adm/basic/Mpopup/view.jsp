@@ -103,6 +103,7 @@ function Jt_submit2() {
 		f.toDate.focus();
 		return;
 	}
+	/*
 	if(isBlank(f.winWidth) || f.winWidth.value<=0) {
 		alert( "창크기를 설정해주세요.");
 		f.winWidth.focus();
@@ -123,6 +124,7 @@ function Jt_submit2() {
 		f.winTop.focus();
 		return;
 	}
+	*/
 
 	var ck = true;
 	// 체크된 체크박스의 value 값을 가지고 온다.
@@ -290,8 +292,9 @@ function Jt_fileDelete(seq,key){
                                     <label for="openN">N</label>
                                 </div>
                             </td>
-                            <th>팝업창 스크롤</th>
+                            <th><!-- 팝업창 스크롤 --></th>
                             <td>
+                                <!-- 
                                 <div class="radioButton">
                                     <input type="radio" name="popscrollYn" value="Y" id="scrollY" <c:if test="${popup.popscrollYn eq 'Y'}">checked</c:if>/>
                                     <i>&nbsp;</i>
@@ -302,8 +305,10 @@ function Jt_fileDelete(seq,key){
                                     <i>&nbsp;</i>
                                     <label for="scrollN">N</label>
                                 </div>
+                                 -->
                             </td>
                         </tr>
+                        <!-- 
                         <tr>
                             <th>창 크기<span class="colorRed">*</span></th>
                             <td>
@@ -316,6 +321,7 @@ function Jt_fileDelete(seq,key){
                                 <div class="sizePos"><b>Y</b><input type="text" name="winTop" value="${popup.winTop}" onkeypress="isNumber();" class="enterText" placeholder="상단 위치"/><b>px</b></div>
                             </td>
                         </tr>
+                         -->
                         <tr id=linkTrKR>
                             <th>링크주소 (KR)</th>
                             <td colspan="3" class="url">

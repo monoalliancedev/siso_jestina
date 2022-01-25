@@ -134,5 +134,31 @@
 		<![CDATA[ SELECT count(*) FROM tb_jt_popup WHERE isnt_yn='Y' ]]>
 	</select>
 	
-
+	
+	
+	
+	
+	
+	<!-- Front (main popup) 리스트 -->
+	<select id="MainPopup" parameterType="String" resultType="com.jt.domain.FrontPopupJtDTO">
+		SELECT title
+			<if test='lang== "KR"'>
+		     , link_kr as linkUrl, link_kr_out_yn as linkOutYn
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_kr_seq) as imgUrl
+		    </if>
+			<if test='lang== "EN"'>
+		     , link_en as linkUrl, link_en_out_yn as linkOutYn
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_en_seq) as imgUrl
+		    </if>
+			<if test='lang== "CN"'>
+		     , link_cn as linkUrl, link_cn_out_yn as linkOutYn
+		     , (select save_filename from tb_files f1 where f1.seq=b.img_cn_seq) as imgUrl
+		    </if>
+		  FROM tb_jt_popup b
+		 WHERE lang = #{lang}
+		   AND isnt_yn = 'Y'
+		   AND from_date <![CDATA[<]]> CURDATE() 
+		   AND to_date >= CURDATE()
+		 ORDER BY seq DESC 
+	</select>
 </mapper>

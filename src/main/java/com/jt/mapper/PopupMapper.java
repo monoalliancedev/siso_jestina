@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.jt.domain.FrontPopupJtDTO;
 import com.jt.domain.PopupJtDTO;
 import com.jt.domain.SearchDTO;
 import com.jt.util.ParameterMap;
@@ -24,5 +25,8 @@ public interface  PopupMapper {
 	void isntChangePopup(ParameterMap param);
 	void fileUpdatePopup(ParameterMap param);
 	
+	
+	//Front
+	public List<FrontPopupJtDTO> MainPopup(String lang);
 	
 }

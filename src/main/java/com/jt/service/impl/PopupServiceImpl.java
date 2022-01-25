@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.jt.domain.AdmDTO;
+import com.jt.domain.FrontPopupJtDTO;
 import com.jt.domain.PopupJtDTO;
 import com.jt.domain.SearchDTO;
 import com.jt.domain.UploadFileDTO;
@@ -199,9 +200,8 @@ public class PopupServiceImpl implements PopupService {
 	
 			
 	
-
-	
-	
-	
-	
+	@Override
+	public List<FrontPopupJtDTO> MainPopup(String lang){
+		return popupMapper.MainPopup(lang);
+	}
 }
