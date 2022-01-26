@@ -274,7 +274,7 @@
 		</if>
 
 		  FROM tb_jt_banner b 
-		 WHERE lang=#{lang}
+		 WHERE lang <![CDATA[ LIKE '%${lang}%' ]]> 
 		   AND gubun= 'MainBanner'
 		   AND isnt_yn = 'Y'
 		ORDER BY sort_idx DESC, seq DESC 

@@ -90,7 +90,7 @@
                         		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/></a>
                         	</c:when>
                         	<c:otherwise>
-                        		<img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/>
+                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/>
                         	</c:otherwise>
                         </c:choose>
                     </div>
@@ -136,7 +136,7 @@
                         		<a href="${mainBarndR.linkUrl}" <c:if test="${mainBarndR.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/></a>
                         	</c:when>
                         	<c:otherwise>
-                        		<img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/>
+                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/>
                         	</c:otherwise>
                         </c:choose>
                     </div>

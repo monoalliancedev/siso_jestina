@@ -176,9 +176,9 @@ function Jt_isntYN(seq,isntYN){
                                     <td>${list.lang}</td>
                                     <td>${list.museYear}</td>
                                     <td><a href="#" onclick="Jt_submit(${list.seq})" class="inBtn modify">
-	                                    <c:if test = "${fn:contains(list.lang, 'KR')}">${list.nameKr}</c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">${list.nameEn}</c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">${list.nameCn}</c:if></a>
+	                                    <c:if test = "${fn:contains(list.lang, 'KR')}">KR : ${list.nameKr} /</c:if>
+	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">EN : ${list.nameEn} /</c:if>
+	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">CN : ${list.nameCn} /</c:if></a>
                                     </td>
                                     <td><a href="#" onclick="Jt_isntYN('${list.seq}','${list.isntYn}')">
                                     	<span <c:if test="${list.isntYn eq 'Y'}"> class="colorBlue" </c:if>>${list.isntYn}</span></a>

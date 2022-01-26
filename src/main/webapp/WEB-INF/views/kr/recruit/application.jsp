@@ -100,7 +100,6 @@ function Jt_submit() {
         <script type="text/javascript" src="/scripts/recruit.js"></script>
         <script type="text/javascript" src="/scripts/jquery.MultiFile.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/recruit.css" />
-        
         <div id="container" class="sub recruit application">
             <!--Top Common-->
             <section class="subTop">
@@ -115,12 +114,9 @@ function Jt_submit() {
             </section>
             <!--//Top Common-->
             <section class="content">
-                
-                
-                
-                
-<form name="processForm" id="processForm" enctype="multipart/form-data"  method="post"> 
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+                <form name="processForm" id="processForm" enctype="multipart/form-data"  method="post"> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+
                     <table>
                         <tr>
                             <th>개인정보 수집 및<br/>이용 동의</th>
@@ -186,8 +182,8 @@ function Jt_submit() {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="checkBox"><input type="checkbox" id="terms1" checked/><i>&nbsp;</i><label for="terms1"><b>[선택]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
-                                <div class="checkBox"><input type="checkbox" id="terms2" checked/><i>&nbsp;</i><label for="terms2"><b>[선택]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
+                                <div class="checkBox"><input type="checkbox" id="terms1" /><i>&nbsp;</i><label for="terms1"><b>[선택]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
+                                <div class="checkBox"><input type="checkbox" id="terms2" /><i>&nbsp;</i><label for="terms2"><b>[선택]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
                             </td>
                         </tr>
                         <tr>
@@ -196,7 +192,7 @@ function Jt_submit() {
                                 <dl>
                                     <dt>모집부분<span>*</span></dt>
                                     <dd>
-                                    	<c:choose>
+                                        <c:choose>
 									    	<c:when test = "${recruitJobField ne ''}">
 									        	<select class="select" name="recruit">
 	                                            <option value="">모집분야 선택</option>
@@ -217,11 +213,11 @@ function Jt_submit() {
 									     </c:choose>
                                     </dd>
                                     <dt>이름<span>*</span></dt>
-                                    <dd><input type="text" name="name" value="김은정" class="enterField" placeholder="이름"/></dd>
+                                    <dd><input type="text" name="name" class="enterField" placeholder="이름"/></dd>
                                     <dt>핸드폰 번호<span>*</span></dt>
-                                    <dd><input type="text" name="hp" value="010-9264-6071" class="enterField" placeholder="ex) 000-0000-0000"/></dd>
+                                    <dd><input type="text" name="hp" class="enterField" placeholder="ex) 000-0000-0000"/></dd>
                                     <dt>이메일 주소<span>*</span></dt>
-                                    <dd><input type="text" name="email" value="kejgogogo@naver.com" class="enterField" placeholder="ex) email@email.com"/></dd>
+                                    <dd><input type="text" name="email" class="enterField" placeholder="ex) email@email.com"/></dd>
                                     <dt>첨부파일<span>*</span></dt>
                                     <dd class="addFile">
                                         <div class="addWrap">
@@ -235,7 +231,7 @@ function Jt_submit() {
                                         <p class="ment">※ 첨부파일은 워드, 엑셀, PPT, PDF 파일만 첨부 가능합니다.</p>
                                     </dd>
                                     <dt>지원사유</dt>
-                                    <dd><textarea placeholder="지원사유" name="contents">지원사유지원사유지원사유지원사유지원사유</textarea></dd>
+                                    <dd><textarea placeholder="지원사유" name="contents"></textarea></dd>
                                 </dl>
                             </td>
                         </tr>
@@ -248,3 +244,46 @@ function Jt_submit() {
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                
+                    
+                               
+                                 

@@ -1,7 +1,7 @@
 package com.jt.service.impl;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +20,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeUtility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,11 +40,9 @@ public class MailSenderServiceImpl implements MailSenderService {
 
 	@Value("${attach_upload_path}")
 	private String uploadRoot;
-
 	@Value("${attach_upload_url}")
 	private String uploadUrl;
 	
-
 	@Value("${send_mail_smtp_host}")
 	private String MailSmtpHost;
 	@Value("${send_mail_port}")
@@ -57,26 +56,20 @@ public class MailSenderServiceImpl implements MailSenderService {
 	@Value("${send_mail_recipients}")
 	private String MailRecipients;
 
-	
-	
-	
-	
-	
 	@Autowired
 	UploadFileService fileService;
-	
 	@Autowired
 	RecruitmentService recruitService;
 	
 	//메일셋팅후 메일 전송
 	@Override
-	public boolean SendMail(MailUploadDTO mailUpload) throws UnsupportedEncodingException {
+	public boolean SendMail(MailUploadDTO mailUpload) {
 		
 		//String sender = "recruit@jestina.com"; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
 		//String recipients = "kejgogogo@naver.com"; //받는 메일
 		String sender = MailSender; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
 		String recipients = MailRecipients; //받는 메일
-		String title = "입사신청서"; //메일제목
+		String title = "입사지원"; //메일제목
 		String mailText = ""; //메일내용(html)
 		
 		
@@ -87,13 +80,14 @@ public class MailSenderServiceImpl implements MailSenderService {
 			mailText += " 모집부분 : "  + recruit.getJobField() +"<br>";
 		}
 		
-		mailText += " 이름 : " + mailUpload.getName() +"<br>";
+		mailText += " 이 름 : " + mailUpload.getName() +"<br>";
 		mailText += " 핸드폰 : "+ mailUpload.getHp() +"<br>";
-		mailText += " 이메일 주소 : " + mailUpload.getEmail() +"<br>";
-		mailText += " 지원사유 : <br>" + mailUpload.getContents() +"<br>";	
+		mailText += " 이메일 : " + mailUpload.getEmail() +"<br>";
+		mailText += " --------------------------------------------------<br>";	
+		mailText += "" + mailUpload.getContents() +"<br>";	
 		
-		System.out.println("#### " + mailUpload.getUploadFile().get(0).getOriginalFilename());
-		System.out.println("#### " + mailUpload.getUploadFile().get(0).getOriginalFilename());
+		//System.out.println("#### " + mailUpload.getUploadFile().get(0).getOriginalFilename());
+		//System.out.println("#### " + mailUpload.getUploadFile().get(0).getOriginalFilename());
 		
 		//파일을 업로드하고 fileDB에 넣어준다 : return = seq배열.
 		int[] arrFileSeq = fileService.fileUploadMultiInsert("Email", mailUpload.getUploadFile(), mailUpload.getEmail()); //폴더명,List<MultipartFile>파일
@@ -112,10 +106,14 @@ public class MailSenderServiceImpl implements MailSenderService {
 		}
 		
 		System.out.println("########### 메일 보내기");
-		if (MailProc(sender, recipients, title, mailText, al_attach)) {
-               System.out.println("FAT = "+sender+" = message sent successfully...");
-               mailText = "";
-               return true;
+		if (MailProc(sender, recipients, title, mailText, al_attach, al_attach_name)) {
+			System.out.println("FAT = "+sender+" = message sent successfully...");
+
+			//첨부파일 삭제
+			for(int fileSeq : arrFileSeq) {
+				fileService.selectAndDelete(fileSeq);
+            }
+	        return true;
         }else {
         	System.out.println("########### 메일 보내기 실패");
         	return false;
@@ -126,7 +124,7 @@ public class MailSenderServiceImpl implements MailSenderService {
 	//메일전송
 	@Override
 	public boolean MailProc(String sender, String recipient, String title, String contents
-							, List<String> al_attach) throws UnsupportedEncodingException {
+							, List<String> al_attach, List<String> al_attach_name){
         
 		//프로퍼티를 생성한다.
         Properties prop = new Properties();
@@ -134,28 +132,15 @@ public class MailSenderServiceImpl implements MailSenderService {
         prop.put("mail.smtp.host", MailSmtpHost);
         prop.put("mail.smtp.port", MailPort);
         prop.put("mail.smtp.auth","true");
+        prop.put("mail.mime.charset","utf-8");
+        prop.put("mail.mime.encodefilname","true");
         
-        /*
-        prop.put("mail.smtp.host", "mail.jestina.com");
-        prop.put("mail.smtp.port", 25);
-        prop.put("mail.smtp.auth","true");
-        */
-        /*
-        prop.put("mail.smtp.host", "smtp.naver.com");
-        prop.put("mail.smtp.port", 587);
-        prop.put("mail.smtp.auth", "true");
-        */
-        //prop.put("mail.mime.charset","utf-8");
-        //prop.put("mail.mime.encodefilname","true");
-       
-        
+
         //세션 인스턴스를 생성한다.
         Session session = Session.getInstance(prop,  new Authenticator()
     	{
     		public PasswordAuthentication getPasswordAuthentication()
     		{
-    			//return new PasswordAuthentication("recruit@jestina.com", "jestina7547!!");
-    			//return new PasswordAuthentication("kejgogogo", "ab381016@#");
     			return new PasswordAuthentication(MailID, MailPW);
     		}
     	});
@@ -172,6 +157,7 @@ public class MailSenderServiceImpl implements MailSenderService {
         
         	msg.setFrom(new InternetAddress(sender));
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            //msg.setRecipient(Message.RecipientType.CC, new InternetAddress("메일주소"));//참조메일
             msg.setSentDate(new Date());
             msg.setSubject(title, "utf-8");  
             
@@ -183,18 +169,29 @@ public class MailSenderServiceImpl implements MailSenderService {
             if (!contents.isEmpty()) {
                 attachPart = new MimeBodyPart();
                 attachPart.setContent(contents, "text/html; charset=utf-8"); //내용(Text/Html) 첨부하기
-                //attachPart.setText(contents, "text/html; charset=utf-8"); //내용(Text/Html) 첨부하기
                 multipart.addBodyPart(attachPart);
             }
 
             // 파일 첨부하기
             if (! al_attach.isEmpty()) {
+                int i = 0;
                 for ( String filepass : al_attach ) {
-                    attachPart = new MimeBodyPart();
+                
+                	String fileName = al_attach_name.get(i);
+                	
+                	attachPart = new MimeBodyPart();
                     attachPart.setDataHandler(new DataHandler(new FileDataSource(new File(filepass))));
-                    //uploadRoot+real_filename
-                    System.out.println("##" + filepass);
+                    attachPart.attachFile(filepass);
+                    attachPart.setFileName(MimeUtility.encodeText(fileName, "utf-8","B"));
+                    attachPart.setHeader("Content-Type", ComUtils.getFileExt(fileName).toLowerCase() + "; name=" + attachPart.getFileName());
+                    
+                    System.out.println("filepass = ##" + filepass);
+                    System.out.println("filename = ##" + fileName);
+                    System.out.println("fileext = ##" + ComUtils.getFileExt(fileName).toLowerCase());
+                    
                     multipart.addBodyPart(attachPart);
+                    
+                    i++;
                 }
             }
             if (multipart.getCount() > 0) msg.setContent(multipart);
@@ -210,7 +207,11 @@ public class MailSenderServiceImpl implements MailSenderService {
         	System.out.println("######################### : 전송실패");
         	System.out.println(mex);
             return false;
-        }
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
     }
 }
 

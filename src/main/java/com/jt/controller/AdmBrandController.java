@@ -23,6 +23,7 @@ import com.jt.service.AdmJtAuthorityService;
 import com.jt.service.BrandBannerService;
 import com.jt.service.UploadFileService;
 import com.jt.util.ComUtils;
+import com.jt.util.Constants;
 import com.jt.util.ParameterMap;
 
 @Controller
@@ -63,14 +64,13 @@ public class AdmBrandController {
 		}
 				
 		List<BrandBannerDTO> banner = new ArrayList<BrandBannerDTO>();
-		String[] arrGubun = new String[]{"Jewerly","Bag","Romason"};
 		
 		BrandBannerDTO BB = new BrandBannerDTO();
 		BB.setLang(lang); //언어
 		
-		for(int i=0; i<arrGubun.length;i++) {
+		for(int i=0; i<Constants.arrGubun.length;i++) {
 			
-			BB.setGubun(arrGubun[i]); //카테고리
+			BB.setGubun(Constants.arrGubun[i]); //카테고리
 			
 			BrandBannerDTO bannerDto1 = new BrandBannerDTO(); //비어있는 bannerDTO
 			BrandBannerDTO bannerDto2 = brandBannerService.list(BB); //DB에서 받아온 bannerDTO 
@@ -82,7 +82,8 @@ public class AdmBrandController {
 			//System.out.println("############ " + banner.toString());
 		}
 				
-		mv.addObject("arrGubun", arrGubun);
+		mv.addObject("arrGubun", Constants.arrGubun);
+		mv.addObject("arrTitle", Constants.arrTitle);
 		mv.addObject("banner", banner);
 		mv.setViewName("/adm/brand/banner/list");
 		return mv;

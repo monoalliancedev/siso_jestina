@@ -177,9 +177,9 @@ function goRrows(obj) {
                                     <td>${page.total_rows - page.pg_start - status.count + 1}</td>
                                     <td>${list.lang}</td>
                                     <td class="tit alLeft"><a href="#" onclick="Jt_submit(${list.seq})">
-                                    	<c:if test = "${fn:contains(list.lang, 'KR')}">${list.titleKr}</c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">${list.titleEn}</c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">${list.titleCn}</c:if></a>
+                                    	<c:if test = "${fn:contains(list.lang, 'KR')}">KR : ${list.titleKr}</br></c:if>
+	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">EN : ${list.titleEn}</br></c:if>
+	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">CN : ${list.titleCn}</br></c:if></a>
 	                                </td>
 	                                <td><a href="#" onclick="Jt_isntYN('${list.seq}','${list.isntYn}')">
                                     	<span <c:if test="${list.isntYn eq 'Y'}"> class="colorBlue" </c:if>>${list.isntYn}</span></a>

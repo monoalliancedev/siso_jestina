@@ -288,7 +288,7 @@ public interface Constants {
 				
 	
 	
-	//지역
+	//지역(KR)
 	public static final String [][] _JtArea={
 			 {"Area1","서울"}							
 			,{"Area2","경기"}							
@@ -304,24 +304,81 @@ public interface Constants {
 			,{"Area12","울산"}
 			,{"Area13","대전"}
 	};	
-	//브랜드
-	public static final String [][] _JtBrand={
-				 {"jewerly","제이에스티나 주얼리"}							
+	//지역(CN)
+	public static final String [][] _JtCNArea={
+			 {"Area1","서울"}							
+			,{"Area2","경기"}							
+			,{"Area3","강원"}							
+			,{"Area4","충청"}							
+			,{"Area5","경상"}
+			,{"Area6","전라"}
+			,{"Area7","제주"}
+			,{"Area8","부산"}
+			,{"Area9","인천"}
+			,{"Area10","대구"}
+			,{"Area11","광주"}
+			,{"Area12","울산"}
+			,{"Area13","대전"}
+	};	
+	//지역(EN)
+	public static final String [][] _JtENArea={
+			 {"Area1","서울"}							
+			,{"Area2","경기"}							
+			,{"Area3","강원"}							
+			,{"Area4","충청"}							
+			,{"Area5","경상"}
+			,{"Area6","전라"}
+			,{"Area7","제주"}
+			,{"Area8","부산"}
+			,{"Area9","인천"}
+			,{"Area10","대구"}
+			,{"Area11","광주"}
+			,{"Area12","울산"}
+			,{"Area13","대전"}
+	};	
+	//브랜드(CN)
+	public static final String [][] _JtCNBrand={
+				 {"jewelry","제이에스티나 주얼리"}							
 				,{"bag","제이에스티나 핸드백"}							
-				,{"romason","로만손"}
+				,{"romanson","로만손"}
 	};
-	//{"jestina","제이에스티나"},
+	//브랜드(EN)
+	public static final String [][] _JtENBrand={
+				 {"jewelry","제이에스티나 주얼리"}							
+				,{"bag","제이에스티나 핸드백"}							
+				,{"romanson","로만손"}
+	};
+	//브랜드(KR)
+	public static final String [][] _JtBrand={
+				 {"jewelry","제이에스티나 주얼리"}							
+				,{"bag","제이에스티나 핸드백"}							
+				,{"romanson","로만손"}
+	};
 
 	
-	//브랜드구분
+	//브랜드구분(KR)
 	public static final String [][] _JtStoreGubun={
 			 {"department","백화점"}							
 			,{"outlet","아울렛"}							
 			,{"dutyfree","면세점"}							
 	};
+	//브랜드구분(EN)
+	public static final String [][] _JtStoreENGubun={
+			 {"department","백화점"}							
+			,{"outlet","아울렛"}							
+			,{"dutyfree","면세점"}							
+	};
+	
+	//브랜드구분(CN)
+	public static final String [][] _JtStoreCNGubun={
+			 {"department","百货商店"}							
+			,{"outlet","直销店"}							
+			,{"dutyfree","免税商店"}							
+	};
 	
 	
-	
+	public static final String[] arrGubun = new String[] { "Jewelry", "Bag", "Romanson" };
+	public static final String[] arrTitle = new String[] { "J.ESTINA Jewelry", "J.ESTINA Bag", "ROMANSON" };
 	
 	
 	

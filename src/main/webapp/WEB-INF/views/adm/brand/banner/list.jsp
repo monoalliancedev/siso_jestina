@@ -122,7 +122,7 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
             <!--J.ESTINA Jewerly-->
             <section class="topSubCntn">
                 <div class="infoText">
-                    <h3>J.ESTINA ${arrGubun[status.count-1]}</h3>
+                    <h3>${arrTitle[status.count-1]}</h3>
                     <span class="colorRed">*이미지 등록 사이즈 : PC 최소 (1920x1080) px / Mobile 최소 (1920x1080) px</span>
                 </div>
                 <a href="#" onclick="Jt_submit('${status.count}')" class="commBtn black">저장</a>

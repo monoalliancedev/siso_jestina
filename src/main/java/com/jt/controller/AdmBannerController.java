@@ -23,17 +23,13 @@ import com.jt.service.AdmJtAuthorityService;
 import com.jt.service.BannerService;
 import com.jt.service.UploadFileService;
 import com.jt.util.ComUtils;
+import com.jt.util.Constants;
 import com.jt.util.Paging;
 import com.jt.util.ParameterMap;
 
 @Controller
 public class AdmBannerController {
 
-	//@Value("${attach_upload_path}")
-	//private String uploadRoot;
-	//@Value("${attach_upload_url}")
-	//private String uploadUrl;
-	
 	// 권한키값(메인배너관리,메인브랜드배너관리),redirect
 	private static final String authorityKey1 = "Mbanner";
 	private static final String authorityKey2 = "MBbanner";
@@ -280,21 +276,12 @@ public class AdmBannerController {
 			return mv;
 		}
 
-		/*
-		 * String[] arrGubun = new
-		 * String[]{"JewerlyBig","JewerlySmall","BagBig","BagSmall","RomasonBig",
-		 * "RomasonSmall"}; String[] arrTitle = new
-		 * String[]{"J.ESTINA Jewerly - 대배너","J.ESTINA Jewerly - 소배너"
-		 * ,"J.ESTINA Bag - 대배너","J.ESTINA Bag - 소배너" ,"ROMASON - 대배너","ROMASON - 소배너"};
-		 */
-		String[] arrGubun = new String[] { "Jewerly", "Bag", "Romason" };
-		String[] arrTitle = new String[] { "J.ESTINA Jewerly", "J.ESTINA Bag", "ROMASON" };
 
 		List<BannerDTO> banner = new ArrayList<BannerDTO>();
 
-		for (int i = 0; i < arrGubun.length; i++) {
+		for (int i = 0; i < Constants.arrGubun.length; i++) {
 			BannerDTO bannerDto1 = new BannerDTO(); // 비어있는 bannerDTO
-			BannerDTO bannerDto2 = bannerService.selectGubun(arrGubun[i]); // DB에서 받아온 bannerDTO
+			BannerDTO bannerDto2 = bannerService.selectGubun(Constants.arrGubun[i]); // DB에서 받아온 bannerDTO
 			if (!ComUtils.isEmpty(bannerDto2)) {
 				bannerDto1 = bannerDto2; // DB내용이 있으면
 			}
@@ -302,8 +289,8 @@ public class AdmBannerController {
 			System.out.println("############ " + banner.toString());
 		}
 
-		mv.addObject("arrGubun", arrGubun);
-		mv.addObject("arrTitle", arrTitle);
+		mv.addObject("arrGubun", Constants.arrGubun);
+		mv.addObject("arrTitle", Constants.arrTitle);
 		mv.addObject("banner", banner);
 		mv.setViewName("/adm/basic/MBbanner/mainBrandBanner");
 		return mv;

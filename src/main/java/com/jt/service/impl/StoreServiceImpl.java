@@ -84,16 +84,33 @@ public class StoreServiceImpl implements StoreService {
 			Map<String, String> BrandMap = new HashMap<String, String>();
 			Map<String, String> StoreMap = new HashMap<String, String>();
 
-			for (int i = 0; i < Constants._JtArea.length; i++) {
-				String[] inArr = Constants._JtArea[i];
+			String [][] StoreGubun;
+			String [][] StoreArea;
+			String [][] StoreBrand;
+			if(search.getKeyIsnt().equals("CN")) {
+				StoreGubun = Constants._JtStoreCNGubun;
+				StoreArea = Constants._JtCNArea;
+				StoreBrand = Constants._JtCNBrand;
+			} else if(search.getKeyIsnt().equals("EN")) {
+				StoreGubun = Constants._JtStoreENGubun;
+				StoreArea = Constants._JtENArea;
+				StoreBrand = Constants._JtENBrand;
+			} else {
+				StoreGubun = Constants._JtStoreGubun;
+				StoreArea = Constants._JtArea;
+				StoreBrand = Constants._JtBrand;
+			}
+			
+			for (int i = 0; i < StoreArea.length; i++) {
+				String[] inArr = StoreArea[i];
 				AreaMap.put(inArr[0], inArr[1]);
 			}
-			for (int i = 0; i < Constants._JtBrand.length; i++) {
-				String[] inArr = Constants._JtBrand[i];
+			for (int i = 0; i < StoreBrand.length; i++) {
+				String[] inArr = StoreBrand[i];
 				BrandMap.put(inArr[0], inArr[1]);
 			}
-			for (int i = 0; i < Constants._JtStoreGubun.length; i++) {
-				String[] inArr = Constants._JtStoreGubun[i];
+			for (int i = 0; i < StoreGubun.length; i++) {
+				String[] inArr = StoreGubun[i];
 				StoreMap.put(inArr[0], inArr[1]);
 			}
 

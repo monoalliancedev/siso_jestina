@@ -72,7 +72,7 @@
                      <groupId>*</groupId>
                      <artifactId>*</artifactId>
                 </exclusion>
-           </exclusions>   <!-- --> 
+           </exclusions>    <!-- --> 
         </dependency>
         <dependency>
 		    <groupId>org.apache.commons</groupId>
