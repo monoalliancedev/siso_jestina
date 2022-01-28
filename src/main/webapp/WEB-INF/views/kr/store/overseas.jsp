@@ -93,7 +93,7 @@ function Jt_continent_change(obj) {
                         </select>
                         <div class="searchWord">
                             <input type="text" name="keyword" value="${page.keyword}" placeholder="검색어를 입력하세요"/>
-                            <button type="button"><img src="/images/common/icon_search_zoom.svg" alt="검색"/></button>
+                            <button type="submit"><img src="/images/common/icon_search_zoom.svg" alt="검색"/></button>
                         </div>
                     </form>
                 </article>

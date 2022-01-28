@@ -37,9 +37,13 @@
                     <div class="categoryWrap">
                         <ul class="slides">
                         	
-                           	<c:forEach var="file" items="${museAndFileList.get(muse.seq)}" varStatus="fileIdx">
+                           	<c:forEach var="file" items="${museAndFileList.get(muse.seq)}" varStatus="fileIdx"><!-- ${fileIdx.index} -->
                            	<!--for(이미지 루프)--> 
                            	<li>
+                                <c:if test="${muse.textLocation eq 'Left'}">
+                                </c:if>
+                                <c:if test="${muse.textLocation eq 'Right'}">
+                                </c:if>
                                 <div class="titleText">
                                     <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
                                     <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
@@ -47,15 +51,15 @@
                                 <c:if test="${file.save_filename ne ''}">
 			                        <c:if test="${muse.linkOutYn eq 'Y'}">
 				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
-				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forMobile"/></a>
+				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
 				                    </c:if>
 				        			<c:if test="${muse.linkOutYn eq 'C'}">
 				        			<a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
-				        		    <a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forMobile"/></a>
+				        		    <a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
 				        		    </c:if>
 				                    <c:if test="${muse.linkOutYn eq 'N'}">
 				        			<img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/>
-				        		    <img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forMobile"/>
+				        		    <img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/>
 				        		    </c:if>
 				                </c:if>
                             </li>

@@ -46,7 +46,7 @@
                 <a href="/" class="lang">KR</a>
                 <a href="/en/" class="lang">EN</a>
                 <a href="/cn/" class="lang on">CN</a>
-                <a href="#" class="mall">ONLINE SHOP</a>
+                <a href="https://www.jestina.co.kr/" class="mall">ONLINE SHOP</a>
             </div>
             <!--Mobile GNB-->
             <div class="mobileGNB">

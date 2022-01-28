@@ -183,7 +183,7 @@
                             </div>
                             <!--//VMD-->
                         </li>
-                        <li class="tabData" data-tab="FLATFORM/LOGISTIC">
+                        <li class="tabData" data-tab="PLATFORM/LOGISTIC">
                             <!--플랫폼 개발-->
                             <div class="subTabData">
                                 <!--Info Text-->

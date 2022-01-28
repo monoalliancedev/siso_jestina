@@ -53,7 +53,7 @@ public class MainController {
 		FrontBannerDTO mainBarndB = bannerService.MainBarndBanner(map);
 		map.put("gubun", Constants.arrGubun[2]);  //로만손
 		FrontBannerDTO mainBarndR = bannerService.MainBarndBanner(map);
-
+		
 		//메인팝업
 		List<FrontPopupJtDTO> MainPopupList = popupService.MainPopup(SiteLang) ;
 		
@@ -65,6 +65,7 @@ public class MainController {
 		mv.addObject("mainBarndR", mainBarndR);
 		mv.addObject("MainPopupList", MainPopupList);
 		
+		mv.addObject("SiteFolder", SiteFolder);
 		mv.setViewName("/"+SiteFolder+"/index");
 		return mv;
 	}

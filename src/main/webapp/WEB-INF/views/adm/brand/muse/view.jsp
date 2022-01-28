@@ -32,6 +32,9 @@ $(document).ready(function(){
 	loadAttachFiles('${pseq}','KR');
 	loadAttachFiles('${pseq}','EN');
 	loadAttachFiles('${pseq}','CN');
+	loadAttachFiles('${pseq}','MoKR');
+	loadAttachFiles('${pseq}','MoEN');
+	loadAttachFiles('${pseq}','MoCN');
 });
 </c:if>
 
@@ -323,6 +326,15 @@ function Jt_openFile(key){
                             <th>뮤즈 카테고리 (CN) <span class="colorRed">*</span></th>
                             <td><input type="text" name="cateCn" id="cateCN" value="${muse.cateCn}" class="enterText" placeholder="뮤즈 카테고리 (CN)를 입력해주세요."/></td>
                         </tr>
+                        <!-- 
+                        <tr>
+                            <th>텍스트 정렬</th>
+                            <td colspan=3>
+                            	<input type="radio" name="textLocation" id="textLocation" value="Left"  <c:if test="${muse.textLocation eq 'Left'}">checked</c:if>  /> 왼쪽
+                            	<input type="radio" name="textLocation" id="textLocation" value="Right" <c:if test="${muse.textLocation eq 'Right'}">checked</c:if> /> 오른쪽
+                            </td>
+                        </tr>
+                         -->
                         <tr id=linkTrKR>
                             <th>링크주소 (KR)</th>
                             <td class="url" colspan=3>
@@ -401,6 +413,60 @@ function Jt_openFile(key){
                                 </div>
                             </td>
                         </tr>
+                        
+                        
+                        <!--
+                        
+                        <tr id=MoFileTrKR>
+                            <th>MO 이미지 (KR) <span class="colorRed">*</span></th>
+                            <td class="file" colspan=3>
+                                <div class="fileField">
+	                                <a href="#" onclick="Jt_openFile('MoKR')" class="action">파일선택</a>
+	                                <input type="hidden" id="files_isKey_MoKR" value="">
+                                    <div id="files_panel_MoKR" class="addFile">
+										<div class="viewInfo">
+                                        <span class="name">첨부된 파일이 없습니다.</span> 
+                                        <span class="size"></span>
+                                        </div>	
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id=FileTrEN>
+                            <th>MO 이미지 (EN) <span class="colorRed">*</span></th>
+                            <td class="file" colspan=3>
+                                <div class="fileField">
+                                    <a href="#" onclick="Jt_openFile('MoEN')" class="action">파일선택</a>
+                                    <input type="hidden" id="files_isKey_MoEN" value="">
+                                    <div id="files_panel_MoEN" class="addFile">
+										<div class="viewInfo">
+                                        <span class="name">첨부된 파일이 없습니다.</span> 
+                                        <span class="size"></span>
+                                        </div>			
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id=FileTrCN>
+                            <th>MO 이미지 (CN) <span class="colorRed">*</span></th>
+                            <td class="file" colspan=3>
+                                <div class="fileField">
+                                    <a href="#" onclick="Jt_openFile('MoCN')" class="action">파일선택</a>
+                                    <input type="hidden" id="files_isKey_MoCN" value="">
+                                    <div id="files_panel_MoCN" class="addFile">
+										<div class="viewInfo">
+                                        <span class="name">첨부된 파일이 없습니다.</span> 
+                                        <span class="size"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                         -->
+                        
+                        
+                        
+                        
                     </table>
                 </article>
             </section>

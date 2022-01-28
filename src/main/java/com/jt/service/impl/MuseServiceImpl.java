@@ -124,6 +124,21 @@ public class MuseServiceImpl implements MuseService {
 				map.put("tmp_seq", tmp_seq+"-CN");
 				map.put("pseq", museSeq+"-CN");
 				fileService.update_pseq(map);
+				
+				//-- MoKR 파일 업데이트
+				map.put("tmp_seq", tmp_seq+"-MoKR");
+				map.put("pseq", museSeq+"-MoKR");
+				fileService.update_pseq(map);
+				
+				//-- MoEN 파일 업데이트
+				map.put("tmp_seq", tmp_seq+"-MoEN");
+				map.put("pseq", museSeq+"-MoEN");
+				fileService.update_pseq(map);
+				
+				//-- MoCN 파일 업데이트
+				map.put("tmp_seq", tmp_seq+"-MoCN");
+				map.put("pseq", museSeq+"-MoCN");
+				fileService.update_pseq(map);
 			}
 		
 		}

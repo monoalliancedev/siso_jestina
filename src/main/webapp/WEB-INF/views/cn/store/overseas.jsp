@@ -38,7 +38,7 @@ function Jt_continent_change(obj) {
 				const arrname = name.split(",");
 				
 				$("#SignCountry").empty();
-				$("#SignCountry").append("<option value=''>국가 전체</option>");
+				$("#SignCountry").append("<option value=''>选择地区</option>");
 				for(i=1; i<arrcode.length; i++) {
 					
 					$("#SignCountry").append("<option value='"+arrcode[i]+"'>"+arrname[i]+"</option>");
@@ -92,7 +92,7 @@ function Jt_continent_change(obj) {
                         </select>
                         <div class="searchWord">
                             <input type="text" name="keyword" value="${page.keyword}" placeholder="请输入搜索词"/>
-                            <button type="button"><img src="/images/common/icon_search_zoom.svg" alt="Search"/></button>
+                            <button type="submit"><img src="/images/common/icon_search_zoom.svg" alt="Search"/></button>
                         </div>
 </form>
                 </article>

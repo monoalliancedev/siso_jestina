@@ -13,6 +13,7 @@ public class FrontMuseDTO {
 	private String cate;
 	private String linkUrl;
 	private String linkOutYn;
+	private String textLocation;
 	
 	public int getSeq() {
 		return seq;
@@ -52,6 +53,12 @@ public class FrontMuseDTO {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getTextLocation() {
+		return textLocation;
+	}
+	public void setTextLocation(String textLocation) {
+		this.textLocation = textLocation;
 	}
 	
 		

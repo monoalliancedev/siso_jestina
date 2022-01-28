@@ -28,6 +28,8 @@ public class MuseDTO {
 	private String linkCn;
 	private String linkCnOutYn;
 	private String admId;
+	private String textLocation;
+	
 	
 	public int getSeq() {
 		return seq;
@@ -157,6 +159,12 @@ public class MuseDTO {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getTextLocation() {
+		return textLocation;
+	}
+	public void setTextLocation(String textLocation) {
+		this.textLocation = textLocation;
 	}
 	
 		

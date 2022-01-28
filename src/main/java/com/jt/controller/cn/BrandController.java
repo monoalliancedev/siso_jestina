@@ -52,7 +52,7 @@ public class BrandController {
 	@GetMapping(value="/"+SiteFolder+"/brand/jewelry")
 	public ModelAndView jewerly() throws Throwable{
 		
-		String gubun = Constants.arrGubun[0];
+		String gubun = Constants.arrGubun[0]; //jewelry
 		ParameterMap map = new ParameterMap();
 		map.put("lang", SiteLang); //언어
 		map.put("gubun", gubun);//카테고리
@@ -68,7 +68,7 @@ public class BrandController {
 	@GetMapping(value="/"+SiteFolder+"/brand/handbag")
 	public ModelAndView handbag() throws Throwable{
 		
-		String gubun = Constants.arrGubun[1];
+		String gubun = Constants.arrGubun[1]; //bag
 		ParameterMap map = new ParameterMap();
 		map.put("lang", SiteLang); //언어
 		map.put("gubun", gubun);//카테고리
@@ -84,9 +84,17 @@ public class BrandController {
 	@GetMapping(value="/"+SiteFolder+"/brand/romanson")
 	public ModelAndView romasonList(String cateCode) throws Throwable {
 		
+		String gubun = Constants.arrGubun[2]; //romanson
+		ParameterMap map = new ParameterMap();
+		map.put("lang", SiteLang); //언어
+		map.put("gubun", gubun);//카테고리
+
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("brandBanner", brandBannerService.FrontSelect(map));
+		mv.addObject("fileFolder", gubun);
 		mv.addObject("cateCode", ComUtils.StrToInt(cateCode)); //카테고리키값
 		mv.setViewName("/"+SiteFolder+"/brand/romansonList");
+		
 		return mv;
 	}
 	
@@ -179,6 +187,7 @@ public class BrandController {
 		ParameterMap map = new ParameterMap();  // request
 		HashMap<String,List<FrontMuseDTO>> museAndYearList = new HashMap<String,List<FrontMuseDTO>>();
 		HashMap<Integer,List<UploadFileDTO>> museAndFileList = new HashMap<Integer,List<UploadFileDTO>>();
+		HashMap<Integer,List<UploadFileDTO>> museAndMoFileList = new HashMap<Integer,List<UploadFileDTO>>();
 		
 		//뮤즈 정보가 있는 년도를 불러온다.
 		for(String year : museService.FrontYearlist(SiteLang)){
@@ -194,14 +203,24 @@ public class BrandController {
 				List<UploadFileDTO> fileList = ufService.list(map);
 				
 				museAndFileList.put(muse.getSeq(),fileList); //뮤즈코드별 이미지 리스트를 넣는다.
+				
+				//한 뮤즈에 Mo이미지 정보를 불러온다.
+				pseq = muse.getSeq() + "-Mo" + SiteLang;
+				map.put("pseq", pseq);
+				map.put("gubun", "muse");
+				List<UploadFileDTO> fileMoList = ufService.list(map);
+				
+				museAndMoFileList.put(muse.getSeq(),fileMoList); //뮤즈코드별 Mo이미지 리스트를 넣는다.
 			}
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("fileFolder", "muse"); //이미지폴더
+		mv.addObject("museAndMoFileList", museAndMoFileList);
 		mv.addObject("museAndFileList", museAndFileList);
 		mv.addObject("museAndYearList", museAndYearList);
 		mv.setViewName("/"+SiteFolder+"/brand/archive");
 		return mv;
+
 	}
 	
 }

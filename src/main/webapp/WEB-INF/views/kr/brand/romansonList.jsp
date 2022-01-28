@@ -33,7 +33,7 @@ function LoadingWithMask() {
     var loadingImg ='';
       
     loadingImg +="<div id='loadingImg'>";
-    loadingImg +=" <img src='/images/sample/Spinner.gif' style='position: relative; display: block; margin: 0px auto;'/>";
+    loadingImg +=" <img src='/images/loading.gif' style='position: relative; display: block; margin: 0px auto;'/>";
     loadingImg +="</div>"; 
 
     //화면에 레이어 추가
@@ -142,8 +142,28 @@ function jt_load(code) {
             <!--//Top Common-->
             <section class="topVisual">
                 <div class="commImgArea">
-                    <img src="/images/brand_romanson_visual.jpg" class="forPC"/>
-                    <img src="/images/brand_romanson_visual_mo.jpg" class="forMobile"/>   
+                    <c:if test="${brandBanner.imgUrl ne ''}">
+                        <c:if test="${brandBanner.linkOutYn eq 'Y'}">
+	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
+	                    </c:if>
+	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
+	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
+	        		    </c:if>
+	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
+	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
+	        		    </c:if>
+	                </c:if>
+	                <c:if test="${brandBanner.moimgUrl ne ''}">
+	                    <c:if test="${brandBanner.linkOutYn eq 'Y'}">
+	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
+	                    </c:if>
+	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
+	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
+	                    </c:if>
+	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
+	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
+	                    </c:if>
+	                </c:if> 
                 </div>
             </section>
             <section class="content">
@@ -156,9 +176,10 @@ function jt_load(code) {
 	                    </dd>
                     </dl>
                     <span class="text">
-                        시계로 유명한 스위스의 공업 도시인 로만시온 에서 영감을 받아 탄생한 ROMANSON은 명품 시계 브랜드들과 함께 명품관에<br/>
+                        ${brandBanner.contents}
+                        <!-- 시계로 유명한 스위스의 공업 도시인 로만시온 에서 영감을 받아 탄생한 ROMANSON은 명품 시계 브랜드들과 함께 명품관에<br/>
                         자리를 당당히 차지하고 있을 만큼 해외에서의 관심도가 높습니다.<br/>
-                        현재 전세계 70여 개국에 수출하며 Global 시계 브랜드로서 지속적인 성장하며 사랑을 받고 있습니다.
+                        현재 전세계 70여 개국에 수출하며 Global 시계 브랜드로서 지속적인 성장하며 사랑을 받고 있습니다. -->
                     </span>
                     <a href="#" class="mallLink">Online shop</a>
                 </article>
@@ -172,7 +193,6 @@ function jt_load(code) {
                     </div>
                 </article>
                 <!--//Controller-->
-                    
                 <!--Product List-->
                 <article class="productList">
                     <ul id='prolist'></ul>

@@ -3,7 +3,7 @@
         <footer>
             <article>
                 <div class="cmpyInfo">
-                    <a href="#" class="contact">Contact</a>
+                    <a href="/cn/company/contact" class="contact">Contact</a>
                     <ul>
                         <li class="adr"><span>(株)J.ESTINA</span><span>首尔特别市松坡区良才大路62街53，J.ESTINA大厦</span></li>
                         <li><span>法人代表 : 金侑美、张镐宣</span><span>电话号码  080-998-0077 </span></li>

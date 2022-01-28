@@ -74,20 +74,22 @@ function jt_list() {
                     <!--//내용-->
                     <!--다음/이전-->
                     <div class="ctrl">
-                        <dl>
-                            <dt>下一篇</dt>
-                            <dd>
-                            	<c:if test="${board.nextSeq <= 0}">下一篇 None</c:if>
-                            	<a href="#" onclick="jt_link(${board.nextSeq})">${board.nextTitle}</a><span>${board.preRegdate}</span>
-							</dd>
-                        </dl>
+                        <c:if test="${board.preSeq > 0}">
                         <dl>
                             <dt>上一篇</dt>
                             <dd>
-                            	<c:if test="${board.preSeq <= 0}">上一篇 None</c:if>
                             	<a href="#" onclick="jt_link(${board.preSeq})">${board.preTitle}</a><span>${board.preRegdate}</span>
-							</dd>
+                            </dd>
                         </dl>
+                        </c:if>
+                        <c:if test="${board.nextSeq > 0}">
+                        <dl>
+                            <dt>下一篇</dt>
+                            <dd>
+                            	<a href="#" onclick="jt_link(${board.nextSeq})">${board.nextTitle}</a><span>${board.preRegdate}</span>
+                            </dd>
+                        </dl>
+                        </c:if>
                     </div>
                     <!--//다음/이전-->
                     <div class="buttons">

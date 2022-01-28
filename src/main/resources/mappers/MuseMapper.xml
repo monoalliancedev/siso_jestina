@@ -25,6 +25,7 @@
 	<result property="linkCn" column="link_cn" />
 	<result property="linkCnOutYn" column="link_cn_out_yn" />
 	<result property="admId" column="adm_id" />
+	<result property="textLocation" column="text_location" />
 	</resultMap>
 	  
 	  
@@ -146,6 +147,7 @@
 	        ,link_cn = #{linkCn}
 	        ,link_cn_out_yn = #{linkCnOutYn}
 	        ,adm_id = #{admId}
+	        ,text_location = #{textLocation}
 	        <if test='seq>0'>
 			,seq = #{seq}
 			</if>
@@ -159,7 +161,7 @@
     
     <!-- Front 리스트 -->
 	<select id="Frontlist" parameterType="com.jt.util.ParameterMap"  resultType="com.jt.domain.FrontMuseDTO">
-		SELECT seq,muse_year as museYear  
+		SELECT seq,muse_year as museYear, text_location as textLocation  
 			<if test='lang== "KR"'>
 			 , name_kr as name, cate_kr as cate
 			 , link_kr as linkUrl, link_kr_out_yn as linkOutYn 

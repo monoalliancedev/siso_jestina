@@ -6,6 +6,13 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/views/kr/common/html.head.jsp" %>
+<script>
+//view 
+function Jt_submit(seq) {
+	window.open("https://dart.fss.or.kr/dsaf001/main.do?rcpNo=" + seq);
+	return false;
+}
+</script>
 </head>
 <body>
     <div id="wrap">
@@ -30,7 +37,7 @@
             <section class="content">
                 <article>
                     <form class="boardSearch">
-                        <span class="total">TOTAL <b>107</b></span>
+                        <span class="total">TOTAL <b><fmt:formatNumber value="${page.total_rows}" pattern="#,###" /></b></span>
                         <select class="select">
                             <option>전체</option>
                         </select>
@@ -59,25 +66,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <c:forEach var="list" items="${apiList}" varStatus="status">
+                            <fmt:parseDate value="${list.rcept_dt}" var="dataValue" pattern="yyyyMMdd"/>
                             <tr>
-                                <td class="no">10</td>
-                                <td class="cmpy"><span>제이에스티나</span></td>
-                                <td class="name alLeft"><a href="#">기타경영사항(자율공시) (자본시장과 금융투자업에 관한 법률위반에 대한 상고장 접수)</a></td>
-                                <td class="submit"><span>제이에스티나</span></td>
-                                <td class="dete">2021.10.15</td>
+                                <td class="no">${status.index+1}</td>
+                                <td class="cmpy"><span>${list.corp_name}</span></td>
+                                <td class="name alLeft"><a href="" onclick="Jt_submit(${list.rcept_no})">${list.report_nm}</a></td>
+                                <td class="submit"><span>${list.flr_nm}</span></td>
+                                <td class="dete"><fmt:formatDate value="${dataValue}" pattern="yyyy/MM/dd"/></td>
                             </tr>
+                            </c:forEach>	
                         </tbody>
                     </table>
-                    <div class="paging">
-                        <a href="#" title="첫 페이지"><img src="/images/common/icon_paging_first.svg"/></a>
-                        <a href="#" title="이전 페이지"><img src="/images/common/icon_paging_prev.svg"/></a>
-                        <ul>
-                            <li class="now"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                        </ul>
-                        <a href="#" title="다음 페이지"><img src="/images/common/icon_paging_next.svg"/></a>
-                        <a href="#" title="마지막 페이지"><img src="/images/common/icon_paging_last.svg"/></a>
-                    </div>
                 </article>
             </section>
         </div>

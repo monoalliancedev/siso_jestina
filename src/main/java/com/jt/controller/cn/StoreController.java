@@ -122,7 +122,7 @@ public class StoreController {
 					, "/images/common/icon_paging_last.svg"
 					, "goPage"));
 		mv.addObject("page", search);
-		mv.addObject("areaList", Constants._JtArea); // 지역
+		mv.addObject("areaList", Constants._JtCNArea); // 지역
 		mv.addObject("storeList", Constants._JtStoreCNGubun); // 매장구분(CN)
 		mv.setViewName("/"+SiteFolder+"/store/domestic"); // 국내
 		return mv;

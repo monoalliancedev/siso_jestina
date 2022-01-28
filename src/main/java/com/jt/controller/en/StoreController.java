@@ -29,7 +29,6 @@ public class StoreController {
 	
 	private static final String SiteLang= "EN";
 	private static final String SiteFolder= "en";
-	
 		
 	// ### 대륙에 해당하는 국가 List 를 가져온다.
 	@GetMapping(value = "/"+SiteFolder+"/store/Country")
@@ -122,8 +121,8 @@ public class StoreController {
 					, "/images/common/icon_paging_last.svg"
 					, "goPage"));
 		mv.addObject("page", search);
-		mv.addObject("areaList", Constants._JtArea); // 지역
-		mv.addObject("storeList", Constants._JtStoreGubun); // 매장구분
+		mv.addObject("areaList", Constants._JtENArea); // 지역
+		mv.addObject("storeList", Constants._JtStoreENGubun); // 매장구분(CN)
 		mv.setViewName("/"+SiteFolder+"/store/domestic"); // 국내
 		return mv;
 	}

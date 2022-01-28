@@ -182,8 +182,8 @@ function Jt_submit() {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="checkBox"><input type="checkbox" id="terms1" /><i>&nbsp;</i><label for="terms1"><b>[선택]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
-                                <div class="checkBox"><input type="checkbox" id="terms2" /><i>&nbsp;</i><label for="terms2"><b>[선택]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
+                                <div class="checkBox"><input type="checkbox" id="terms1" /><i>&nbsp;</i><label for="terms1"><b>[필수]</b> 개인정보의 수집 및 이용에 동의하십니까?</label></div>
+                                <div class="checkBox"><input type="checkbox" id="terms2" /><i>&nbsp;</i><label for="terms2"><b>[필수]</b> 인재채용을 위한 인재풀 등록에 동의하십니까?</label></div>
                             </td>
                         </tr>
                         <tr>

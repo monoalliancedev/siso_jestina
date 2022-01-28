@@ -104,9 +104,9 @@ LoadingWithMask();
                             <ul class="buttons">
                                 <li class="list"><a href="romanson?code=${cateCode}">List</a></li>
                                 <c:if test="${romason.preSeq > 0}"><li class="prev"><a href="romansonView?code=${romason.preSeq}&cateCode=${cateCode}">Prev</a></li></c:if>
-                                <c:if test="${romason.preSeq eq 0}"><li class="prev"><a href="#" onclick="alert('첫번째 입니다.')">Prev</a></li></c:if>
+                                <c:if test="${romason.preSeq eq 0}"><li class="prev"><a href="#" onclick="alert('First')">Prev</a></li></c:if>
                                 <c:if test="${romason.nextSeq > 0}"><li class="next"><a href="romansonView?code=${romason.nextSeq}&cateCode=${cateCode}">Next</a></li></c:if>
-                                <c:if test="${romason.nextSeq eq 0}"><li class="next"><a href="#" onclick="alert('마지막 입니다.')">Next</a></li></c:if>
+                                <c:if test="${romason.nextSeq eq 0}"><li class="next"><a href="#" onclick="alert('Finish')">Next</a></li></c:if>
                             </ul>
                         </div>
                 </article>

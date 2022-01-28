@@ -30,13 +30,15 @@
             <section class="content">
                 <!--실시간 시세-->
                 <article class="realTime">
-                    <h3>실시간 시세 <span class="date">2021/11/09 13:39:52 기준(장중)</span></h3>
+                    <c:set var="now" value="<%=new java.util.Date()%>" />
+                    <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set>
+                    <h3>실시간 시세 <span class="date"><fmt:formatDate value="${now}" pattern="yyyy/MM/dd hh:mm:ss" /> 기준</span></h3>
                     <ul>
                         <li>
                             <div class="box">
                                 <div>
                                     <h6>제이에스티나 현재가</h6>
-                                    <span><i>100000</i></span>
+                                    <span><i>${info.clpr}</i></span>
                                 </div>
                             </div>
                         </li>
@@ -44,8 +46,14 @@
                             <div class="box">
                                 <div>
                                     <h6>전일대비</h6>
-                                    <span class="lower"><i>500</i><b>- 0.29%</b></span>
-                                    <!--상한<span class="upper">500<b>+ 0.29%</b></span>-->
+                                    <c:choose>
+			                            <c:when test="${fn:contains(info.vs, '-')}">
+				                        	<span class="lower"><i>${info.vs}</i><b>${info.fltRt}%</b></span>    
+			                            </c:when>
+			                            <c:otherwise>
+			                            	<span class="upper"><i>${info.vs}</i><b>${info.fltRt}%</b></span>
+			                            </c:otherwise>
+	                            	</c:choose>
                                 </div>
                             </div>
                         </li>
@@ -53,7 +61,7 @@
                             <div class="box">
                                 <div>
                                     <h6>거래량</h6>
-                                    <span><i>14457</i></span>
+                                    <span><i>${info.trqu}</i></span>
                                 </div>
                             </div>
                         </li>
@@ -61,7 +69,7 @@
                             <div class="box">
                                 <div>
                                     <h6>거래대금</h6>
-                                    <span><i>2449991500</i></span>
+                                    <span>${info.trPrc}</i></span>
                                 </div>
                             </div>
                         </li>
@@ -70,80 +78,26 @@
                         <div>
                             <dl>
                                 <dt>시가</dt>
-                                <dd>170,000</dd>
-                            </dl>
-                            <dl>
-                                <dt>고가</dt>
-                                <dd><span class="red">172,500</span></dd>
-                            </dl>
-                            <dl>
-                                <dt>저가</dt>
-                                <dd><span class="blue">167,500</span></dd>
-                            </dl>
-                            <dl>
-                                <dt>PER</dt>
-                                <dd>23.70</dd>
+                                <dd><fmt:formatNumber value="${info.mkp}" pattern="#,###" /></dd>
                             </dl>
                             <dl>
                                 <dt>상장주식수</dt>
-                                <dd>7,140,000</dd>
+                                <dd><fmt:formatNumber value="${info.lstgStCnt}" pattern="#,###" /></dd>
                             </dl>
                         </div>
                         <div>
                             <dl>
-                                <dt>상한가</dt>
-                                <dd><span class="red">220,000</span></dd>
+                                <dt>고가</dt>
+                                <dd><span class="red"><fmt:formatNumber value="${info.hipr}" pattern="#,###" /></span></dd>
                             </dl>
                             <dl>
-                                <dt>하한가</dt>
-                                <dd><span class="blue">119,000</span></dd>
-                            </dl>
-                            <dl>
-                                <dt>액면가</dt>
-                                <dd>5,000</dd>
-                            </dl>
-                            <dl>
-                                <dt>52주 최고 (총가기준)</dt>
-                                <dd><span class="red">238,000</span></dd>
-                            </dl>
-                            <dl>
-                                <dt>52주 최저 (총가기준)</dt>
-                                <dd><span class="blue">147,000</span></dd>
+                                <dt>저가</dt>
+                                <dd><span class="blue"><fmt:formatNumber value="${info.lopr}" pattern="#,###" /></span></dd>
                             </dl>
                         </div>
                     </div>
                 </article>
                 <!--//실시간 시세-->
-                <!--호가-->
-                <article class="askingPrice">
-                    <h3>호가</h3>
-                    <div class="commBoardList">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>매도잔량</th>
-                                    <th>호가</th>
-                                    <th>매수잔량</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>170</td>
-                                    <td>171,000</td>
-                                    <td>285</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td>1,178</td>
-                                    <td>잔량합계</td>
-                                    <td>1,812</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </article>
-                <!--//호가-->
             </section>
         </div>
         <%@ include file="/WEB-INF/views/kr/common/html.footer.jsp" %>

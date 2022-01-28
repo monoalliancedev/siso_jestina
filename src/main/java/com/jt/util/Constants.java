@@ -338,15 +338,15 @@ public interface Constants {
 	};	
 	//브랜드(CN)
 	public static final String [][] _JtCNBrand={
-				 {"jewelry","제이에스티나 주얼리"}							
-				,{"bag","제이에스티나 핸드백"}							
-				,{"romanson","로만손"}
+				 {"jewelry","J.ESTINA JEWELRY"}							
+				,{"bag","J.ESTINA HANDBAG"}							
+				,{"romanson","ROMANSON"}
 	};
 	//브랜드(EN)
 	public static final String [][] _JtENBrand={
-				 {"jewelry","제이에스티나 주얼리"}							
-				,{"bag","제이에스티나 핸드백"}							
-				,{"romanson","로만손"}
+				 {"jewelry","J.ESTINA JEWELRY"}							
+				,{"bag","J.ESTINA HANDBAG"}							
+				,{"romanson","ROMANSON"}
 	};
 	//브랜드(KR)
 	public static final String [][] _JtBrand={
@@ -364,11 +364,10 @@ public interface Constants {
 	};
 	//브랜드구분(EN)
 	public static final String [][] _JtStoreENGubun={
-			 {"department","백화점"}							
-			,{"outlet","아울렛"}							
-			,{"dutyfree","면세점"}							
+			 {"department","Department Store"}							
+			,{"outlet","Outlet Store"}							
+			,{"dutyfree","Duty Free Shop"}							
 	};
-	
 	//브랜드구분(CN)
 	public static final String [][] _JtStoreCNGubun={
 			 {"department","百货商店"}							

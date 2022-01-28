@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller("ENCompanyController")
 public class CompanyController {
 
-	private static final String SiteLang= "EN";
+	//private static final String SiteLang= "EN";
 	private static final String SiteFolder= "en";
 	
 	//-- 회사 정보

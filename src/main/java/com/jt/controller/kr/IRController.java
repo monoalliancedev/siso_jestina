@@ -1,5 +1,7 @@
 package com.jt.controller.kr;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jt.domain.ApiDataGoKrDTO;
+import com.jt.domain.ApiOpendartDTO;
 import com.jt.domain.FrontBoardJtDTO;
 import com.jt.domain.SearchDTO;
 import com.jt.service.BoardJtService;
+import com.jt.util.ApiDataGoKr;
+import com.jt.util.ApiOpendart;
 import com.jt.util.ComUtils;
 import com.jt.util.Paging;
 import com.jt.util.ParameterMap;
@@ -30,15 +36,53 @@ public class IRController {
 	private static final String SiteLang= "KR";
 	private static final String SiteFolder= "kr";
 		
-	//IR : 주가정보 ///ir/infor1
+	//IR : 주가정보
 	@GetMapping(value="/ir/infor1")
-	public String infor1() {
-		return "/"+SiteFolder+"/ir/infor1";
+	public ModelAndView infor1() throws IOException {
+		
+		ApiDataGoKr api = new ApiDataGoKr();
+		List<ApiDataGoKrDTO> apiList = api.ApiProc();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("info", apiList.get(1));
+		mv.setViewName("/"+SiteFolder+"/ir/infor1");
+			
+		return mv;
 	}
-	//IR : 공시정보 ///ir/infor2
+
+	//IR : 공시정보
 	@GetMapping(value="/ir/infor2")
-	public String infor2() {
-		return "/"+SiteFolder+"/ir/infor2";
+	public ModelAndView infor2() throws UnsupportedEncodingException, IOException{
+		
+        String bgn_de = "20210201";
+        String end_de = "20220128";
+        int page_no = 1;
+        int page_rows = 50;
+        
+        ApiOpendart api = new ApiOpendart();
+        List<ApiOpendartDTO> apiList = api.ApiProc(bgn_de,end_de,page_no,page_rows);
+        
+        //List<ApiOpendartDTO> apiList = api.ApiProc(bgn_de,end_de,search.getCpage(),search.getPg_rows()); 
+		//search.setPg_rows(50);
+        //search.setTotal_rows(api.ApiInfo(bgn_de,end_de,search.getCpage(),search.getPg_rows()));
+        
+        ModelAndView mv = new ModelAndView();
+		mv.addObject("apiList", apiList);
+		/*
+		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()			// 전체 low수 
+				, ComUtils.objToIntDef(search.getPg_rows(),10)  // 페이지 당 레코드 수 => 없으면 10 
+				, ComUtils.objToIntDef(search.getCpage(),1)		// 현재 페이지 => 없으면 1 
+				, 10
+				, "/images/common/icon_paging_prev.svg"
+				, "/images/common/icon_paging_next.svg"
+				, "/images/common/icon_paging_first.svg"
+				, "/images/common/icon_paging_last.svg"
+				, "goPage"));
+		mv.addObject("page", search) ;
+		*/	
+		mv.setViewName("/"+SiteFolder+"/ir/infor2");
+		
+		return mv;
 	}
 
 	//IR : 공고 //notice

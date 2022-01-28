@@ -83,9 +83,7 @@ function goPage(cpage){
                             <td>
                                 <dl>
                                     <dt>${list.question}</dt>
-                                    <dd>
-                                       ${list.answer}
-                                    </dd>
+                                    <dd>${list.answer}</dd>
                                 </dl>
                             </td>
                         </tr>

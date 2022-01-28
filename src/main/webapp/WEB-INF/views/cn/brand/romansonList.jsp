@@ -141,8 +141,28 @@ function jt_load(code) {
 </script>            
             <section class="topVisual">
                 <div class="commImgArea">
-                    <img src="/images/brand_romanson_visual.jpg" class="forPC"/>
-                    <img src="/images/brand_romanson_visual_mo.jpg" class="forMobile"/>   
+                    <c:if test="${brandBanner.imgUrl ne ''}">
+                        <c:if test="${brandBanner.linkOutYn eq 'Y'}">
+	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
+	                    </c:if>
+	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
+	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
+	        		    </c:if>
+	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
+	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
+	        		    </c:if>
+	                </c:if>
+	                <c:if test="${brandBanner.moimgUrl ne ''}">
+	                    <c:if test="${brandBanner.linkOutYn eq 'Y'}">
+	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
+	                    </c:if>
+	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
+	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
+	                    </c:if>
+	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
+	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
+	                    </c:if>
+	                </c:if> 
                 </div>
             </section>
             <section class="content">
@@ -155,8 +175,9 @@ function jt_load(code) {
 	                    </dd>
                     </dl>
                     <span class="text">
-                        988年，从因手表而闻名的瑞士罗曼斯霍恩中获得灵感，诞生了ROMANSON这一品牌， <br/>
-                        该品牌自1997年起参加全球最大的钟表博览会“巴塞尔国际珠宝钟表展”，并在名品馆中进行展览。
+                        ${brandBanner.contents}
+                        <!-- 988年，从因手表而闻名的瑞士罗曼斯霍恩中获得灵感，诞生了ROMANSON这一品牌， <br/>
+                        该品牌自1997年起参加全球最大的钟表博览会“巴塞尔国际珠宝钟表展”，并在名品馆中进行展览。 -->
                     </span>
                     <a href="#" class="mallLink">Online shop</a>
                 </article>

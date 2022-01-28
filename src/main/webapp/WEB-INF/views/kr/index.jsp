@@ -171,14 +171,14 @@
                     <ul class="rescruit">
                         <li class="cate">Recruit</li>
                         <li class="tit"><a href="/recruit/recruitResources">제이에스티나 인재풀 등록</a></li>
-                        <li class="text"><a href="#">제이에스티나는 상시 지원할 수 있는 채용시스템을 운영하고 있습니다.</a></li>
-                        <li class="more"><a href="#">MORE</a></li>
+                        <li class="text"><a href="/recruit/recruitResources">제이에스티나는 상시 지원할 수 있는 채용시스템을 운영하고 있습니다.</a></li>
+                        <li class="more"><a href="/recruit/recruitResources">MORE</a></li>
                     </ul>
                     <ul class="ir">
                         <li class="cate">Store</li>
-                        <li class="tit"><a href="#">제이에스티나 오프라인 매장안내</a></li>
-                        <li class="text"><a href="#">제이에스티나의 국내 백화점, 아울렛, 면세점 매장 및 해외 매장 소개</a></li>
-                        <li class="more"><a href="#">MORE</a></li>
+                        <li class="tit"><a href="/store/domestic">제이에스티나 오프라인 매장안내</a></li>
+                        <li class="text"><a href="/store/domestic">제이에스티나의 국내 백화점, 아울렛, 면세점 매장 및 해외 매장 소개</a></li>
+                        <li class="more"><a href="/store/domestic">MORE</a></li>
                     </ul>
                 </article>
             </section>

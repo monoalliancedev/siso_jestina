@@ -3,7 +3,7 @@
         <footer>
             <article>
                 <div class="cmpyInfo">
-                    <a href="#" class="contact">Contact</a>
+                    <a href="/company/contact" class="contact">Contact</a>
                     <ul>
                         <li class="adr"><span>JESTINA Co., Ltd</span><span>Jestina Building, 53, Yangjae-daero 62-gil, Songpa-gu, Seoul</span></li>
                         <li><span>CEO : KIM YU MI, JANG HO SEON</span><span>CPO: JANG HO SEON</span></li>
