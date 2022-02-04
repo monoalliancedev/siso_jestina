@@ -45,6 +45,7 @@ $(document).ready(function () {
         $('.romanson .topText dt i').text(onListText);
     };
     romansonLoadFun();
+    /*
     function romansonThumbImg() {
         $('.romanson .productList .photo img').load(function () {
             $(this).each(function () {
@@ -68,6 +69,7 @@ $(document).ready(function () {
             });
         })
     });
+    */
     $('.romanson .topText dt').click(function () {
         $(this).toggleClass('on');
         $(this).next('dd').slideToggle();
@@ -119,7 +121,7 @@ $(document).ready(function () {
             $('.romanson .productDetail .thumb li img').parent('li').removeClass('active');
         }
     });
-
+    /*
     function productDetailPhoto() {
         setTimeout(function () {
             $('.romanson .productDetail .photo .slides li').each(function () {
@@ -136,6 +138,7 @@ $(document).ready(function () {
     $(window).resize(function () {
         productDetailPhoto();
     });
+    */
     /*----------Archive----------*/
     function archiveLoadFun() {
         var windowHT = $(window).height();
