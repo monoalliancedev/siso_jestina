@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("html, body").animate({ scrollTop: 0 }, "slow"); 
     /*----------Main Banner----------*/
     //배너영역 Size
     function mainBannerSize() {
@@ -189,22 +190,13 @@ $(document).ready(function () {
         };
     });
     /*----------Brand 소개----------*/
-    $('.brandIntro .imgPhoto img').load(function () {
-        // function brandIntroObjSize() {
-        //     $('.brandIntro article').each(function () {
-        //         var brandPhotoSize = $(this).find('.imgPhoto img').height();
-        //         $(this).css('height', brandPhotoSize);
-        //         $(this).find('.info ul').css('height', brandPhotoSize);
-        //     });
-        // }
-        function productFun() {
-            $('.brandIntro .imgPhoto').each(function () {
-                var prdImgSec = $(this).find('img').attr('src');
-                $(this).css('background-image', 'url(' + prdImgSec + ')');
-            });
-        };
-        productFun();
-    });
+    function productFun() {
+        $('.brandIntro .imgPhoto').each(function () {
+            var prdImgSec = $(this).find('img').attr('src');
+            $(this).css('background-image', 'url(' + prdImgSec + ')');
+        });
+    };
+    productFun();
     function brandMotion(){
         var brandJewelryPos = $('.brandIntro .jewelry').offset().top;
         var brandHandbagPos = $('.brandIntro .handbag').offset().top;
@@ -212,7 +204,7 @@ $(document).ready(function () {
         var aboutJestinaPos = $('.aboutJestina article').offset().top;
         var aboutJestinaParentPos = $('.aboutJestina').offset().top;
         var latestPos = $('.latestArea').offset().top;
-        var scroll = $(document).scrollTop();
+        var scroll = $(window).scrollTop();
         if (scroll > aboutJestinaPos) {
             $('.brandIntro .jewelry .imgPhoto .blind').stop().animate({ 'width': 0 });
             $('.brandIntro .jewelry .cate').stop().animate({ 'opacity': 1 });
