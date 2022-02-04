@@ -9,7 +9,7 @@
 .store .boardSearch select.area{width:154px;margin-left:6px}
 .store .commBoardList td.address{text-align:left}
 .store .commBoardList td.name span{display:none}
-.store .commBoardList td.name:hover{text-decoration:underline;cursor:pointer}
+.store.overseas .commBoardList td.name a:hover{text-decoration:underline}
 @media all and (max-width:812px) {
     .store .storeTab{margin-bottom:8rem}
     .store .storeTab li{margin:0 3rem}
