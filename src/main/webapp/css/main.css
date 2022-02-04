@@ -55,8 +55,8 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .brandIntro .imgPhoto{width:56.2%;overflow:hidden;background-repeat:no-repeat;background-size:cover;background-position:center center}
 .brandIntro .imgPhoto .blind{width:100%;height:100%;background:#fff;position:absolute}
 .brandIntro .imgPhoto img{width:100%}
-.brandIntro .info{height:100%;width:43.8%;vertical-align:top;position:relative}
-.brandIntro .info ul{width:100%;background:#fafafa;padding:60px 40px 0 40px}
+.brandIntro .info{height:100%;width:43.8%;vertical-align:top;position:absolute}
+.brandIntro .info ul{width:100%;background:#fafafa;padding:60px 40px 0 40px;height:100%}
 .brandIntro .info ul li{width:100%;display:inline-block}
 .brandIntro .info .cate{font-size:18px;color:#505050;margin-top:-30px;opacity:0}
 .brandIntro .info .name{font-size:28px;font-weight:500;margin-top:-23px;opacity:0}
@@ -65,14 +65,14 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .brandIntro .info .more{text-align:right;position:absolute;left:0;bottom:60px;padding:0 40px;opacity:0}
 .brandIntro .info .more a{font-weight:500;color:#767676;display:inline-block;padding-bottom:5px;border-bottom:1px solid #767676;margin-right:40px}
 .brandIntro .jewelry .imgPhoto{float:left}
-.brandIntro .jewelry .info{float:right;padding-left:10px}
+.brandIntro .jewelry .info{padding-left:10px;right:0}
 .brandIntro .jewelry .blind{left:0;top:0}
 .brandIntro .handbag{margin:10px 0}
 .brandIntro .handbag .imgPhoto{float:right}
-.brandIntro .handbag .info{float:left;padding-right:10px}
+.brandIntro .handbag .info{padding-right:10px;left:0}
 .brandIntro .romanson .imgPhoto{float:left}
 .brandIntro .romanson .blind{right:0;top:0}
-.brandIntro .romanson .info{float:right;padding-left:10px}
+.brandIntro .romanson .info{padding-left:10px;right:0}
 
 /*Latest*/
 .latestArea{padding:100px 150px}
@@ -238,7 +238,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
     .brandIntro article{height:auto!important}
     .brandIntro .imgPhoto{width:100%;height:42.5rem}
     .brandIntro .imgPhoto img{display:none}
-    .brandIntro .info{height:auto;width:100%;padding:0!important}
+    .brandIntro .info{height:auto;width:100%;padding:0!important;position:static}
     .brandIntro .info ul{height:auto!important;padding:0 4rem 4rem 4rem}
     .brandIntro .info .cate{opacity:1!important;font-size:2rem;margin-top:4rem}
     .brandIntro .info .name{opacity:1!important;font-size:3.2rem;margin:2rem 0 0 0!important}
