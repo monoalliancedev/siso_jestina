@@ -1,6 +1,6 @@
 $(document).ready(function () {
     /*----------Main Banner----------*/
-    //¹è³Ê¿µ¿ª Size
+    //ë°°ë„ˆì˜ì—­ Size
     function mainBannerSize() {
         var windowHT = $(window).height();
         var headerHT = $('header').outerHeight();
@@ -9,7 +9,7 @@ $(document).ready(function () {
         $('.mainBanner li.typeVideo .bg').css('height', windowHT - headerHT);
         $('.mainBanner li.typeImage .bg').css('height', windowHT - headerHT);
     };
-    //Å¸ÀÌÆ² À§Ä¡
+    //íƒ€ì´í‹€ ìœ„ì¹˜
     function bannerTitlePos() {
         $('.mainBanner li .tit').each(function () {
             var titleHT = $(this).outerHeight();
@@ -97,7 +97,7 @@ $(document).ready(function () {
         };
     }
     ctrlAction();
-    //ÄÁÆ®·Ñ·¯
+    //ì»¨íŠ¸ë¡¤ëŸ¬
     $('.mainBanner a.ctrlBtn.prev').click(function () {
         $('.mainBanner').flexslider('prev');
         return false;
@@ -106,7 +106,7 @@ $(document).ready(function () {
         $('.mainBanner').flexslider('next');
         return false;
     });
-    //¸ğ¹ÙÀÏ µ¿¿µ»óÁ¦°Å
+    //ëª¨ë°”ì¼ ë™ì˜ìƒì œê±°
     $('.mainBanner li.typeVideo video').each(function () {
         var videoRoot = $(this).find('source').attr('src');
         $(this).append('<input type="hidden" value="' + videoRoot + '"/>');
@@ -117,7 +117,7 @@ $(document).ready(function () {
             $(this).find('source').attr('src', hiddenValue);
         }
     });
-    //µ¿¿µ»ó ¸ğ¹ÙÀÏ¿ë ÀÌ¹ÌÁö
+    //ë™ì˜ìƒ ëª¨ë°”ì¼ìš© ì´ë¯¸ì§€
     function mainBannerVideoType() {
         $('.mainBanner li.typeVideo').each(function () {
             var objSRCmobile = $(this).find('img.forMobile').attr('src');
@@ -125,7 +125,7 @@ $(document).ready(function () {
         });
     };
     mainBannerVideoType();
-    //ÀÌ¹ÌÁö Å¸ÀÔ
+    //ì´ë¯¸ì§€ íƒ€ì…
     function mainBannerImageType() {
         $('.mainBanner li.typeImage').each(function () {
             var objSRCpc = $(this).find('img.forPC').attr('src');
@@ -151,7 +151,7 @@ $(document).ready(function () {
         });
         ctrlAction();
     });
-    /*----------About J¤ıESTINA----------*/
+    /*----------About Jã†ESTINA----------*/
     $(window).scroll(function () {
         var headerHT = $('header').outerHeight()
         var mainBannerPos = $('.mainBanner').offset().top;
@@ -188,15 +188,15 @@ $(document).ready(function () {
             $('.aboutJestina .textArea span').stop().animate({ 'opacity': 0 });
         };
     });
-    /*----------Brand ¼Ò°³----------*/
+    /*----------Brand ì†Œê°œ----------*/
     $('.brandIntro .imgPhoto img').load(function () {
-        function brandIntroObjSize() {
-            $('.brandIntro article').each(function () {
-                var brandPhotoSize = $(this).find('.imgPhoto img').height();
-                $(this).css('height', brandPhotoSize);
-                $(this).find('.info ul').css('height', brandPhotoSize);
-            });
-        }
+        // function brandIntroObjSize() {
+        //     $('.brandIntro article').each(function () {
+        //         var brandPhotoSize = $(this).find('.imgPhoto img').height();
+        //         $(this).css('height', brandPhotoSize);
+        //         $(this).find('.info ul').css('height', brandPhotoSize);
+        //     });
+        // }
         function productFun() {
             $('.brandIntro .imgPhoto').each(function () {
                 var prdImgSec = $(this).find('img').attr('src');
@@ -204,21 +204,15 @@ $(document).ready(function () {
             });
         };
         productFun();
-        $(window).resize(function () {
-            brandIntroObjSize();
-        });
-        setTimeout(function () {
-            brandIntroObjSize();
-        });
     });
-    $(window).scroll(function () {
+    function brandMotion(){
         var brandJewelryPos = $('.brandIntro .jewelry').offset().top;
         var brandHandbagPos = $('.brandIntro .handbag').offset().top;
         var brandRomansonPos = $('.brandIntro .romanson').offset().top;
         var aboutJestinaPos = $('.aboutJestina article').offset().top;
         var aboutJestinaParentPos = $('.aboutJestina').offset().top;
         var latestPos = $('.latestArea').offset().top;
-        var scroll = $(window).scrollTop();
+        var scroll = $(document).scrollTop();
         if (scroll > aboutJestinaPos) {
             $('.brandIntro .jewelry .imgPhoto .blind').stop().animate({ 'width': 0 });
             $('.brandIntro .jewelry .cate').stop().animate({ 'opacity': 1 });
@@ -265,8 +259,12 @@ $(document).ready(function () {
             $('.brandIntro .info .more').stop().animate({ 'opacity': 0});
             $('.brandIntro .info .more a').stop().animate({'margin-right': '40px' });
         };
+    }
+    brandMotion();
+    $(window).scroll(function () {
+        brandMotion()
     });
-    /*----------Brand ¼Ò°³(¸ğ¹ÙÀÏ)----------*/
+    /*----------Brand ì†Œê°œ(ëª¨ë°”ì¼)----------*/
     $('.moBrandIntro .imgPhoto img').load(function () {
         function mobileProductFun() {
             $('.moBrandIntro .prdPhoto').each(function () {
