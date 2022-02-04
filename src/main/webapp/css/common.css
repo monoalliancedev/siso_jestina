@@ -239,6 +239,8 @@ footer .social li a img{margin-right:5px}
     footer .social li::before{height:1.2rem}
     footer a.goTop{bottom:0;width:7.8rem;height:7.8rem;background-size:2.4rem}
     /*popup*/
+    .popupWrap .popupData{width:80%}
+    .popupWrap .imgArea img{width:100%}
     .popupWrap .ctrl{height:auto;padding:1.6rem}
     .popupWrap .checkBox{height:3.2rem}
     .popupWrap .checkBox i{width:3.2rem;height:3.2rem;top:0}

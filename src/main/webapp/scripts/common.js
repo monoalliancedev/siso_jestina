@@ -89,6 +89,8 @@ $(document).ready(function () {
             $('.popupWrap .popupData').eq(i).css('z-index' , i + 10)
         }
     }
+    popupZindex();
+    /*
     function popupDataSize() {
         if ($(window).width() <= 812) {
             var windowHT = $(window).height();
@@ -97,7 +99,6 @@ $(document).ready(function () {
             $('.popupWrap .imgArea a img').css('height', 'auto')
         }
     }
-    popupZindex();
     popupDataSize();
     $(window).resize(function () {
         if ($(window).width() <= 812) {
@@ -107,5 +108,5 @@ $(document).ready(function () {
             $('.popupWrap .imgArea a img').css('height', 'auto')
         }
     });
-    
+    */
 });
