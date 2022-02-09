@@ -46,8 +46,19 @@
                         	</c:otherwise>
                         </c:choose>
                         </div>
-                        <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
-                        <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        
+                        <c:choose>
+                        	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
+                        		<a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>
+                        		<c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                        		<c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        		</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                        		<c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        	</c:otherwise>
+                        </c:choose>
                         <div class="bg">&nbsp;</div>
                     </li>
                     </c:if>
@@ -86,14 +97,7 @@
                 <!--J.ESTINA JEWELRY-->
                 <article class="jewelry">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<c:choose>
-                        	<c:when test="${mainBarndJ.linkUrl ne '' && (mainBarndJ.linkOutYn eq 'Y' || mainBarndJ.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/></a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/>
-                        	</c:otherwise>
-                        </c:choose>
+                    	<a href="/en/brand/jewelry"><img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/></a>
                     </div>
                     <div class="info">
                         <ul>
@@ -101,7 +105,7 @@
                             <li class="name">J.ESTINA JEWELRY</li>
                             <li class="text pc">J. ESTINA was born based on the muse Princess Jovanna Estina, who was an actual princess of Italy and a queen of Bulgaria. The brand collection and story have been inspired from Princess Joanna’s lifestyle and reinterpreted with modern and trendy touch.</li>
                             <li class="text mo">J. ESTINA was born based on the muse Princess Jovanna Estina, who was an actual princess of Italy and a queen of Bulgaria. The brand collection and story have been inspired from Princess Joanna’s lifestyle and reinterpreted with modern and trendy touch.</li>
-                            <li class="more"><a href="#">MORE</a></li>
+                            <li class="more"><a href="/en/brand/jewelry">MORE</a></li>
                         </ul>
                     </div>
                 </article>
@@ -109,14 +113,7 @@
                 <!--J.ESTINA HANDBAG-->
                 <article class="handbag">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<c:choose>
-                        	<c:when test="${mainBarndB.linkUrl ne '' && (mainBarndB.linkOutYn eq 'Y' || mainBarndB.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndB.linkUrl}" <c:if test="${mainBarndB.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/>
-                        	</c:otherwise>
-                        </c:choose>
+                    	<a href="/en/brand/handbag"><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
                     </div>
                     <div class="info">
                         <ul>
@@ -124,7 +121,7 @@
                             <li class="name">J.ESTINA HANDBAG</li>
                             <li class="text pc">Followed by success of jewelry business, J.ESTINA handbag was launched in 2011 and it has been loved by women in their 20s and 30s with a design that reflects classic yet modern sensibility.</li>
                             <li class="text mo">Followed by success of jewelry business, J.ESTINA handbag was launched in 2011 and it has been loved by women in their 20s and 30s with a design that reflects classic yet modern sensibility.</li>
-                            <li class="more"><a href="#">MORE</a></li>
+                            <li class="more"><a href="/en/brand/handbag">MORE</a></li>
                         </ul>
                     </div>
                 </article>
@@ -132,14 +129,7 @@
                 <!--ROMANSON-->
                 <article class="romanson">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<c:choose>
-                        	<c:when test="${mainBarndR.linkUrl ne '' && (mainBarndR.linkOutYn eq 'Y' || mainBarndR.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndR.linkUrl}" <c:if test="${mainBarndR.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/></a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/>
-                        	</c:otherwise>
-                        </c:choose>
+                    	<a href="/en/brand/romanson"><img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/></a>
                     </div>
                     <div class="info">
                         <ul>
@@ -147,14 +137,14 @@
                             <li class="name">ROMANSON</li>
                             <li class="text pc">ROMANSON was established in 1988, inspired by the craftmanship of Switzerland's mechanical heartland, Romanshorn. ROMANSON is currently operating global business network in more than 70 countries, maintaining steady growth as one of the global leaders in watch industry.</li>
                             <li class="text mo">ROMANSON was established in 1988, inspired by the craftmanship of Switzerland's mechanical heartland, Romanshorn. ROMANSON is currently operating global business network in more than 70 countries, maintaining steady growth as one of the global leaders in watch industry.</li>
-                            <li class="more"><a href="#">MORE</a></li>
+                            <li class="more"><a href="/en/brand/romanson">MORE</a></li>
                         </ul>
                     </div>
                 </article>
                 <!--//ROMANSON-->
             </section>
             <!--//Brand소개-->
-            <!--Social Media-->
+            <!--Social Media
             <section class="socialMedia">
                 <article>
                     <h5>social media</h5>
@@ -166,7 +156,7 @@
                         <li><a href="#" target="_blank"><i><img src="/images/icon_main_social_insta.svg"/></i><img src="/images/sample/main_social_thumb_05.jpg" class="loadImg"/></a></li>
                     </ul>
                 </article>
-            </section>
+            </section>-->
             <!--//Social Media-->
             <!--Buttom Menu-->
             <section class="bottomMenu"></section>

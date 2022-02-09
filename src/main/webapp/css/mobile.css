@@ -1,0 +1,652 @@
+@media all and (max-width:840px) {
+    /*allMenuArea*/
+    .allMenuArea ul{padding:10rem 3rem 0 3rem;height:95%;overflow:hidden;overflow-y:auto}
+    .allMenuArea ul > li{margin:0 2.3%;display:block;}
+    .allMenuArea ul > li > a{background:url(/images/allmenu_arrow.png)no-repeat 93% center;}
+    .allMenuArea ul > li + li{margin:0 2.3%}
+    .allMenuArea ol{display:none}
+    .allMenuArea .copy{position:relative;bottom:0}
+    /*�ѱ����ڱ������� �Ұ� > �濵ö��*/
+    .Philosophy .cntn h4{font-size:27px;letter-spacing:-1.4px}
+    /*IR �������� > IR HOME*/
+    .IRHome .LtsDt .LtsBox{width:29%}
+    /*IR �������� > �ְ�����*/
+    .Stock section{background-size:75%}
+    /*��ȸ�� å�Ӱ濵 > �����濵 > ��������*/
+    .CodeEthics {background:none}
+    .CodeEthics .cdEth img{display:none}
+    /*.CodeEthics .cdEth div{width:100%;margin-left:0}*/
+    .CodeEthics .cdEth{background:none}
+    .Capital tbody th,.Capital tbody td{font-size:15px}
+}
+@media all and (max-width:812px){
+	.Subsidiary ul li a{height:7rem}
+	.Subsidiary ul li a img{width:95%}
+	.Subsidiary ul li img.kiara{width:55%}
+	.Subsidiary ul li:last-child a img{width:60%}
+    /*�ѱ����ڱ������� �Ұ� > �濵��*/
+    .Management .exctv li{width:50%}
+    /*�ѱ����ڱ������� �Ұ� > ����*/
+    .History .depth_tab a{font-size:1.4rem}
+    /*�ѱ����ڱ������� �Ұ� > �׷�� �Ұ� > ��ȸ��Ұ�*/
+    .Subcompany .subintro h4{font-size:2.7rem;padding:4rem 7rem 7rem 7rem}
+    .Subcompany .groupco>li{height:35rem}
+    .Subcompany .bizline .subtext br{display:none}
+    /*IR �������� >  �ְ�����*/
+    .Stock .commonTable dt{font-size:1.5rem}
+    .Stock .commonTable dd{font-size:2.1rem}
+    .Stock .commonTable ul{height:26rem;padding-top:7rem}
+    .Stock .commonTable ul li:nth-of-type(odd){font-size:1.7rem}
+    .Stock .commonTable ul li:nth-of-type(even){font-size:2.7rem}
+    .Stock .commonTable li .unit{font-size:3rem}
+    .Stock .commonTable ul li:nth-of-type(even){font-size:2.5rem}
+    .Stock .commonTable span.text{font-size:2rem}
+    .Stock .finace span:first-child{padding-right:3rem;margin-right:1rem}
+    .Stock .finace span:last-child{padding-right:3rem;margin-right:2rem}
+    .Stock .StockGraph .finace{width:35%;font-size:1.5rem;padding-left:1%}
+    .Stock .StockGraph .radioBtn{width:64%;padding-right:1%;font-size:1.5rem}
+    .Stock .StockGraph button{margin-left:2rem;width:14%;height:4.5rem}
+    /*��ȸ�� å�Ӱ濵 > �����濵 > ��������*/
+    .CodeEthics .promise h4{font-size:2.1rem}
+    .ESG h4{font-size:24px}
+    .ESG .commonTable tbody th, .commonTable tbody td{font-size:14px}
+}
+@media all and (max-width:720px) {
+    article{width:92.2%}
+    /*SelectBox*/
+    .selectbox{width:17rem;font-size:2.4rem}
+    .selectbox .view_text{padding:1.6rem 2rem;background-position: 13.4rem center;background-size:1.4rem}
+    .selectbox ul li{padding:0 2rem;line-height:4rem}
+    /*Header*/
+    header{padding:1.3rem 0}
+    header section{padding:1rem 2.8rem 0.9rem 2.8rem;width:100%!important}
+    header .logo{width:20rem}
+    header .logo a{height:3.4rem}
+    header .language{display:none;margin-left:2rem}
+    header .language .now{font-size:2.2rem;color:#767676;padding-left:2.5rem;border-left:0.1rem solid #fff;padding-right:2rem;background-size:0.8rem}
+    header .language ul{top:1.9rem;padding-top:0.5rem}
+    header .language li{font-size:2.2rem;line-height:3rem}
+    header .language ul a{font-size:2.2rem;line-height:3rem;padding-left:2.7rem}
+    header nav{right:2.8rem}
+    header nav > ul{display:none}
+    header nav a.allMenuBtn{width:4rem;line-height:4rem;margin:0.7rem 0 0 0}
+    header nav a.allMenuBtn img{width:2.4rem}
+    header nav a.allMenuBtn img.on{width:1.7rem}
+    header.InCntn.on::after{display:none}
+    header.InCntn .language.on{display:inline-block}
+    header.InCntn .language.on .now{color:#767676;border-left:0.1rem solid #767676;background-size:0.8rem}
+    header.InCntn a.allMenuBtn{background:#2144ca}
+    header.InCntn nav.on ol{display:none}
+    .Subsidiary ul li a img{width:85%}
+    /*allMenuArea*/
+    .allMenuArea ul{padding:12.6rem 0 0 0}
+    .allMenuArea ul > li{display:block;margin:0}
+    .allMenuArea ul > li + li{margin:0}
+    .allMenuArea ul > li > a{font-size:3.2rem;margin-bottom:5rem;padding-left:2.8rem}
+    .allMenuArea ul > li.on > a{padding-left:8.2rem;background:url(/images/common/mo_arrow_all_menu.png)no-repeat 2.8rem top;background-size:1.4rem}
+    .allMenuArea ol > li{font-size:2.6rem;margin-bottom:4rem}
+    .allMenuArea ol > li > a{padding-left:8.2rem;display:block}
+    .allMenuArea ol > li.dps2 > a{padding-right:0;display:block;margin-right:4.8rem;background:url(/images/common/arrow_down_mo.png)no-repeat right center;background-size: 2rem}
+    .allMenuArea ol > li.dps2.on > a{background:url(/images/common/arrow_up_mo.png)no-repeat right center;background-size:2rem}
+    .allMenuArea div.dps3{padding:4rem 0 4rem 10.2rem;margin-top:4rem;background-color:#f0f0f0}
+    .allMenuArea div.dps3 > a{font-size:2.4rem;margin-bottom:4rem}
+    .allMenuArea .copy{font-size:2rem;font-family:'NanumSquare'}
+    /*Layout(Index)*/
+    .MainBanner{height:74rem}
+    .MainBanner .pc{display:none}
+    .MainBanner .mobile{display:block}
+    .MainBanner .slides > li{height:74rem}
+    .MainBanner h4{display:block;font-size:4.4rem;padding: 0 0;line-height:6rem;transform:none;top:18rem}
+    .MainBanner .controls{bottom:4rem}
+    .MainBanner .controls ol{margin-left:4rem;width:auto}
+    .MainBanner .controls ol li{margin: 0 0.7rem}
+    .MainBanner .controls ol li:first-child a{width:3rem}
+    .MainBanner .controls ol li:last-child a{width:3rem}
+    .MainBanner a.btn{width:1rem;height:2rem}
+    .MainBanner .controls ol li a{width:5rem;height:3.4rem;font-size:1.8rem}
+    .MainBanner .play_stop{margin: 0 6rem}
+    .MainBanner .play_stop a img{height:2rem;width:1rem}
+    .DirectMenu{background: url(/images/direct_menu_mo_bg1.png) no-repeat right 35rem , url(/images/direct_menu_mo_bg2.png) no-repeat left bottom}
+    .DirectMenu article{padding:12rem 0 14rem 0;width:100%}
+    .DirectMenu h4{margin:0 4rem 10rem;font-size:4.4rem;letter-spacing:-0.5rem;line-height:5.2rem}
+    .DirectMenu ul li{width:62rem}
+    .DirectMenu ul li:nth-child(2){margin-top:5rem!important}
+    .DirectMenu ul li:nth-child(3){margin-top:5rem!important}
+    .DirectMenu ul li:nth-child(4){margin-top:5rem!important}
+    .DirectMenu ul div{padding-left:7rem;top:7.5rem}
+    .DirectMenu ul div h5{font-size:4.2rem}
+    .DirectMenu ul div h6{font-size:2.4rem;line-height:3.6rem;margin-top:2rem}
+    .PriceInfo{height:67rem;background-image: url(/images/m_price_info_bg.jpg.png)}
+    .PriceInfo article{padding:14rem 3.9%;height:67rem}
+    .PriceInfo h4.tit{position:static;transform: translateY(0);text-align:center;width:100%;padding-left:0;font-size:4.8rem}
+    .PriceInfo h4.tit span{font-size:2.4rem;margin-top:1.2rem}
+    .PriceInfo .motion{position:static;transform: translateY(0);display:inline-block;width:100%;margin-top:9rem}
+    .PriceInfo .motion ul{height:auto;padding:1rem 0}
+    .PriceInfo .motion li.tit{font-size:2.4rem}
+    .PriceInfo .motion li.num{font-size:6rem;margin:4rem 0}
+    .PriceInfo .motion li.count{font-size:2rem;margin-top:2rem}
+    .PriceInfo .motion li.count i{margin-right:2rem;width:1.8rem}
+    .PriceInfo .motion li.count i img{width:100%}
+    .Subsidiary{background:url(/images/m_subsidiary_bg1.png) no-repeat left top , url(/images/m_subsidiary_bg2.png) no-repeat right bottom;padding:14rem 0}
+    .Subsidiary article{width:100%;padding: 0 2.8rem}
+    .Subsidiary h4.tit{font-size:4.8rem;margin-bottom:8rem;line-height:4.8rem}
+    .Subsidiary h4.tit span{font-size:2.4rem;margin-top:2rem;line-height:1}
+    .Subsidiary ul{width:100%;display:inline-block}
+    .Subsidiary ul li{margin:2rem 0;padding:0;width:50%;float:left}
+    .Subsidiary ul li:nth-child(odd){padding-right:1.4rem}
+    .Subsidiary ul li:nth-child(even){padding-left:1.4rem}
+    .Subsidiary ul li a{display:block;height:13.5rem}
+    .LatestNews{padding-bottom:14rem}
+    .LatestNews article{padding:0 3.9rem}
+    .LatestNews h4.tit{margin:14rem 0 10rem;font-size:4.8rem}
+	.LatestNews ul{max-height:67rem}
+    .LatestNews ul li a{padding:3.4rem 0}
+    .LatestNews dt{width:14rem;font-size:2rem;text-align:left;padding-left:2rem}
+    .LatestNews dt span{font-size:3.5rem}
+    .LatestNews dd{padding-top:0}
+    .LatestNews dd h5{font-size:2.6rem;white-space:normal;text-overflow:initial;width:98%;line-height:3.2rem;padding-bottom:0;padding-left:2rem}
+    .LatestNews dd .text{display:none}
+    .LatestNews ul li:hover dd h5 span{border-bottom:none}
+    .LatestNews a.more{width:32rem;line-height:9rem;font-size:2.4rem}
+    .LatestNews a.more img{width:1rem;margin-left:3rem}
+    .BottomMenu ul{display:block;height:auto}
+    .BottomMenu li{display:block;width:100%;height:38rem}
+    .BottomMenu .text{position:absolute;top:50%;left:50%;transform: translate(-50%, -50%)}
+    .BottomMenu h6{font-size: 1.8rem;margin-bottom:2rem;letter-spacing:0.5rem}
+    .BottomMenu h5{font-size:4.2rem;letter-spacing:0.5rem;margin-bottom:3rem}
+    .BottomMenu a{font-size:2rem;line-height:6rem;width:18rem}
+    .BottomMenu a img{margin-left:2rem;width:0.8rem}
+    .BottomMenu li:hover{border:none;background-size:cover}
+    .BottomMenu li:hover::after{display:none}
+    .BottomMenu li:hover h6{color:#fff}
+    /*Layout(Sub - Common)*/
+    .Sub{padding-top:8rem;padding-bottom:14rem}
+    .Sub .ContainerBg{display:none}
+    .Sub .ContainerBgMo{display:block;width:83.3%}
+    .Sub .mo{display:inline-block}
+    .Sub .pc{display:none}
+    /*Layout(Sub - Common - Title)*/
+    h3.sub_tit{padding:13.5rem 0 9.7rem;font-size:4.8rem}
+    h3.sub_tit.has_tab{padding:13.5rem 0 6rem 0}
+    /*Layout(Sub - Common - Location)*/
+    .Location{padding: 3rem 0 0 0;background:#f6f6f6;width:100%}
+    .Location li .home{width:3.3rem}
+    .Location ul{background:#fff;padding: 2.5rem 0 2.6rem 2.4rem;border-bottom: 1px solid #e0e0e0}
+    .Location ul > li{font-size:2.4rem}
+    .Location ul > li.arrow{margin:0 3.8rem}
+    .Location ul > li.arrow img{width:0.8rem}
+    .Location a.home{width:3.2rem}
+    /*.Location ul > li a.home img.mo{display:block;width:100%}*/
+    .Location ul > li a.home img.pc{display:block;width:3.3rem}
+    .Location ul > li.now > div{background:url(/images/common/location_down_arrow_mo.png) no-repeat right center!important;background-size:1.4rem!important;padding-right:3rem;background-position: right 1rem}
+    .Location ul > li.now ol{left:50%;top:4rem;border:1px solid #e0e0e0;padding:2rem 0;transform:translateX(-50%)}
+    .Location ul > li.now ol li a{padding:2rem 2.4rem;line-height:2rem}
+    .Location ul > li.now ol li.on a{background:#f4f5f9;color:#2144ca}
+    .Location ul > li.now.hasdep + .arrow{display:none!important}
+    .Location ul > li.dep2_cate{display:none!important}
+    .Location a.share{display:none}
+    /*Layout(Sub - Common - table)*/
+	.commonTable table{position:relative}
+    .commonTable th,.commonTable td{height:8rem;padding:0}
+    .commonTable thead th{font-size:2.4rem;height:8rem}
+    .commonTable tbody th,.commonTable tbody td{font-size:2.4rem}
+    .commonTable td img{width:2.7rem}
+     .commonTable.Board{position:relative}
+     .commonTable.Board td{height:13.2rem;padding-left:2rem}/*padding-bottom:4rem; ��¥���̺� �������鼭 �е��� ����*/
+	.commonTable .contentTable,.commonTable .dateTable{display:table;float:none;width:100%}
+	.commonTable .dateTable{position:absolute;top:4rem;width:20%}
+    .commonTable .dateTable td{border-top:none;width:100%;font-size:2rem}
+    .commonTable .contentTable td:last-child{padding-right:0.9rem}
+    .commonTable .title{padding-left:0}
+    .commonTable .title a{max-width:32rem!important;vertical-align:text-top}
+    .commonTable .title .detail_btn{display:none}
+    .commonTable .magnifying{display: none}
+    .commonTable.Board .contentTable td:nth-of-type(1){display:none}
+    .commonTable.Board .title a.new{background-size:2rem;padding-right:3rem}
+    .searchArea img{width:2.9rem}
+    /*Layout(Sub - Common - read)*/
+    .read th{display:inline-block;padding:3rem 3rem 3rem 1.8rem;font-size:2.8rem}
+    .read .tit{padding-right:2.5rem;line-height:3.4rem}
+    .read .tit.new{background:url(../images/common/new_icon.png)no-repeat right 1.3rem;background-size:2rem}
+    .read h4{font-size:2.3rem}
+    .read .date{padding-top:1rem;font-size:2.3rem}
+    .read .date span, .file a{font-size:2.3rem}
+    .read .fileArea{padding:2.7rem 2rem;height:8rem}
+    .read .fileArea .fileNum{font-size:2.3rem;margin-right:0.4rem}
+    .read .fileArea .fileSize{font-size:2.3rem}
+    .fileLocation{position:absolute;right:8rem;top:50%;transform:translateY(-50%);font-size: 2rem}
+    .read .fileArea a{font-size:2.3rem;margin-left:2rem}
+    .read .fileSlide li{padding:2.35rem 2rem;position:relative}
+    .read .fileSlide a{width:32rem;margin-left:3%;padding: 0.2rem 0 0 4.6rem;min-height:3rem;line-height: 2.7rem;background-position:left 0.2rem;background-size:2.6rem;font-size:2.3rem;white-space: nowrap;text-overflow:ellipsis;overflow:hidden;position:absolute;top:50%;transform:translateY(-50%)}
+    .read.popupArea .fileSlide a{max-width:none}
+    .read .file{padding:1.6rem 0 1.6rem 2rem;line-height:3rem}
+    .read .file h4{vertical-align:top}
+    .read .file a{width:77%;margin-left:3%;padding: 0 0 0 5rem;background-position: left 0.2rem;background-size:3rem}
+    .read .cnt{padding: 3.5rem 1.8rem;font-size:2.4rem;line-height:3.2rem;min-height:25.4rem}
+    .read .pageControl{padding-bottom:8rem}
+    .read .pageControl dl{padding:3rem 7rem}
+    .read dt{text-align:left;font-size:2.4rem;width:13rem;padding-left:0}
+    .read dd a{font-size:2.4rem}
+    .read .pageControl .date{display:none}
+    .read .btnList{width:20rem;height:7rem;font-size:2.4rem}
+    /* Layout(Sub - Common - popupArea) */
+    .popupArea{padding: 0 4rem 10rem 3.8rem}
+    .popupArea .close{height:10rem}
+    .popupData .cnt{min-height: 25.6rem}
+    .popupArea .close img{margin-left:0;right:0;top:2.7rem;width:1.8rem}
+    .popupArea.read .fileArea{padding:2.35rem 2rem}
+    .popupArea.read .fileSlide a{margin-left:1.5rem}
+    .popupArea.read .fileLocation{right:1rem}
+    /*Layout(Sub - Common - paging)*/
+    .paging{padding-top:3.6rem}
+    .paging li{width:4.55rem}
+    .paging li:first-child{margin-right:0}
+    .paging li:last-child{margin-left:0}
+    .paging li a{font-size:2.4rem}
+    .paging li a img{width:0.8rem}
+    /*Layout(Sub - Common - searchArea)*/
+    .searchArea{padding-top:9rem}
+    .searchArea input{width:50rem;padding:0 0 1.3rem 1rem;font-size:2.4rem}
+    .searchArea input::placeholder{font-size:2.4rem}
+    .searchArea button{padding-bottom: 1rem;margin-left:-5rem}
+    /*�ѱ����ڱ������� �Ұ� > CEO �޼���*/
+    div.CEO{padding-bottom:0}
+    .CEO article{text-align:left}
+    .CEO .message{position:relative;padding:28rem 0 8rem 0;margin-top:36rem;background:url(/images/messagebg1.png) no-repeat -8rem 87rem,url(/images/messagebg2.png) no-repeat right 6.5rem #f4f5f9}
+    .CEO .message::after{right:0;top:-36rem;bottom:auto;width:87.5%;padding-top:56.7rem;background: url(/images/ceo_photo.png) no-repeat left top;background-size:cover}
+    .CEO .message h4{width:100%;font-size:4rem;line-height:4.8rem;padding:5.4rem 0 6.2rem 6.3rem;margin-left:0;background:url(/images/icon_quotation_left.png) no-repeat left top , url(/images/icon_quotation_right.png) no-repeat right bottom;background-size:8.9%}
+    .CEO .message ul{width:100%}
+    .CEO .message li{font-size:2.4rem;line-height:3.4rem;padding:0 6.8rem}
+    .CEO .message .text1{margin:3.3rem 0 3.4rem}
+    .CEO .message .sign{margin:6.3rem 0 0 0;padding:0;text-align:right}
+    .CEO .message .sign img{width:17.6rem;margin-left:2rem}
+    .CEO .ment1{margin:5.8rem 0 6.4rem}
+    .CEO .ment1 li{font-size:2.4rem;margin:3.4rem 0;line-height:3.4rem}
+    .CEO .ment1 li br.com{display:block}
+    .CEO .ment2{border-top:0.2rem solid #101010;border-bottom:0.1rem solid #e0e0e0;padding:35.5rem 0 7.4rem 0;position:relative}
+    .CEO .ment2 dl{display:block;margin-bottom:7.2rem}
+    .CEO .ment2 dl:last-child{margin-bottom:0}
+    .CEO .ment2 dt{width:30.2%;display:block;position:absolute;top:8rem}
+    .CEO .ment2 dl:nth-child(1) dt{left:0}
+    .CEO .ment2 dl:nth-child(2) dt{left:50%;transform:translate(-50%)}
+    .CEO .ment2 dl:nth-child(3) dt{right:0}
+    .CEO .ment2 dl:nth-child(3) dt::before{display:none}
+    .CEO .ment2 dl:nth-child(3) dt::after{display:none}
+    .CEO .ment2 dt::before,
+    .CEO .ment2 dt::after{content:'';position:absolute;top:50%;transform:translateY(-50%)}
+    .CEO .ment2 dt::before{right:-0.3rem;width:0.6rem;height:0.6rem}
+    .CEO .ment2 dt::after{right:-3.2rem;width:3.2rem;height:0.1rem;z-index:0}
+    .CEO .ment2 .round{width:20rem;height:20rem;padding:2.3rem;border:0.1rem solid #e0e0e0}
+    .CEO .ment2 .round::after{content:"";width:0.6rem;height:0.6rem;border-radius:100%;background:#767676;position:absolute;left:-0.4rem;top:50%;z-index:10;transform:translateY(-50%)}
+    .CEO .ment2 dl:nth-child(1) .round::after{display:none}
+    .CEO .ment2 .round > div{width:15.2rem;height:15.2rem;padding:1.6rem 0;box-shadow: 0.4rem 0.4rem 1.5rem rgba(0, 0, 0, 0.1)}
+    .CEO .ment2 .round span{width:100%}
+    .CEO .ment2 .round span img{width:26.9%;height:4.8rem}
+    .CEO .ment2 .round b{margin-top:1.5rem;font-size:2.2rem;line-height:2.5rem}
+    .CEO .ment2 dd{display:block;padding-left:0;position:static}
+    .CEO .ment2 dd::after{display:none}
+    .CEO .ment2 dd h6{font-size:2.4rem;line-height:3rem;margin-bottom:1.7rem;padding-left:4.7rem;background-position:left 0.8rem;background-size:1.9rem;letter-spacing:0}
+    .CEO .ment2 dd div{font-size:2.4rem;line-height:3.4rem;padding-left:4.7rem;letter-spacing:0}
+    .CEO .ment3{padding:9.3rem 0 10.2rem}
+    .CEO .ment3 li{font-size:2.4rem;line-height:3.4rem;margin:0 0 3.4rem 0}
+    /*�ѱ����ڱ������� �Ұ� > �濵ö��*/
+    .Philosophy .sub_tit .in_text{font-size:2rem;margin-top:2rem}
+    .Philosophy .cntn{padding:10rem 2.8rem}
+    .Philosophy .cntn h4{padding:4.5rem 5.8rem;font-size:3.9rem;line-height:4.8rem;text-align:center;letter-spacing:-0.1rem;background:url(/images/icon_quotation_left.png) no-repeat left top , url(/images/icon_quotation_right.png) no-repeat right bottom;background-size:5.7rem}
+    .Philosophy .cntn div{font-size:2rem;padding:0 1rem;margin-top:3rem;line-height:2.6rem}
+    .Philosophy .cntn h4 br{display:none}
+    .Philosophy .cntn article{text-align:center}
+    .Philosophy .cntn ul{margin-top:6rem;width:100%}
+    .Philosophy .cntn li{display:inline-block}
+    .Philosophy .cntn li img{height:10.6rem}
+    .Philosophy .cntn li span{font-size:2.4rem;line-height:3rem;margin-top:2.2rem}
+    .Philosophy .cntn li:first-child{position:absolute;left:0}
+    .Philosophy .cntn li:last-child{position:absolute;right:0}
+    .Philosophy .list{width:100%;margin:0;padding:4rem 2.8rem 8rem 2.8rem;display:block}
+    .Philosophy dl{border-bottom:0.1rem solid #e0e0e0;padding:5.6rem 0}
+    .Philosophy dt{display:inline-block;vertical-align:top;width:100%;font-size:2.6rem;font-weight:500;padding:0;line-height:1.2}
+    .Philosophy dt br{display:none}
+    .Philosophy dd{display:block;padding:0 0 0 4.8rem;margin-top:2rem;font-size:2.4rem;color:#505050;line-height:1.4;background-position:left 1rem;background-size:1.9rem}
+    .Philosophy dl:last-child{border-bottom:none}
+    /*�ѱ����ڱ������� �Ұ� > �濵��*/
+    .Management .drctrDeco{text-align:left}
+    .Management .exctv{padding:0 0 3rem 0}
+    .Management .exctv li{height:48rem}
+    .Management .exctv li img{width:21.6rem}
+    .Management .exctv dl{margin-top:1.7rem}
+    .Management .exctv dl dt{font-size:3.2rem;letter-spacing:-0.15rem}
+    .Management .exctv dl dt.space{letter-spacing:-0.2rem}
+    .Management .exctv dl dt > span{font-size:2.4rem}
+    .Management .exctv dl dt .name2{font-size:2rem;margin-top:1rem}
+    .Management .exctv dl dd{font-size:2.4rem;line-height:3rem;margin-top:1.9rem;letter-spacing:-0.1rem}
+    /*�ѱ����ڱ������� �Ұ� > �׷�� �Ұ�(common - tab)*/
+	.grpIntro .depth_tab{margin:0 auto 10rem;padding:0 2.8rem}
+	.grpIntro .depth_tab a{padding:2.4rem 0;font-size:2.4rem;display:block;border:0.1rem solid #e0e0e0}
+	.grpIntro .depth_tab a.on{padding:2.5rem 0}
+    /*�ѱ����ڱ������� �Ұ� > �׷�� �Ұ� > �۷ι� ��Ʈ��ũ*/
+    .Globalnetwork .local .map{background:url(../images/map_mo.png)no-repeat;width:100%;height:40rem;background-size:100%;padding-top:0}
+    .Globalnetwork .local article{padding-top:10.1rem}
+    .Globalnetwork .local h4{font-size:4rem;margin-bottom:10.3rem}
+    .Globalnetwork .local ol{width:92.1%}
+    .Globalnetwork .local ol > li{float:none;height:initial;border-bottom:none}
+    .Globalnetwork .local ul{display:block;border-bottom:0.1rem solid #e0e0e0;padding:0 0 3.9rem 4rem}
+    .Globalnetwork .local ul:nth-child(1){border-right:none}
+    .Globalnetwork .local ul li{display:block;font-size:2.4rem;background-size:2rem;margin-left:0;background-position:left 0.8rem}
+    .Globalnetwork .local li > div{display:none}
+    .Globalnetwork .local .country{font-size:2rem;border-radius:10rem;margin:4rem 0 1.6rem;padding:0.6rem 0.8rem}
+    .Globalnetwork .local .name{font-size:3.2rem}
+    .Globalnetwork .local .fullname{font-size:2.4rem;margin:1rem 0 0.7rem 0;line-height:2.9rem}
+    .Globalnetwork .local .address{padding:0.3rem 0 0 4.2rem;line-height:2.9rem;background-image:url(/images/icon_address_mo.png)}
+    .Globalnetwork .local .phone{padding:1.4rem 0 0 4rem;background-position-y:1.7rem;background-image:url(/images/icon_phone_mo.png);min-height:2.4rem}
+    /*�ѱ����ڱ������� �Ұ� > �׷�� �Ұ� > ��ȸ��Ұ�*/  
+    .Subcompany .subintro article{padding:10rem 0}
+    .Subcompany .subintro h4{width:100%;font-size:4rem;padding:7rem 0 10rem 0;background: url(/images/icon_quotation_left.png) no-repeat left top , url(/images/icon_quotation_right.png) no-repeat right 75%;background-size:6rem}
+    .Subcompany .subintro h4::after{width:0.2rem;height:5rem;top:29.7rem}
+    .Subcompany .subintro div p{font-size:2.4rem;line-height:3.4rem;margin-bottom:3.4rem}
+    .Subcompany .subintro div p br{display:none}
+    .Subcompany .bizline{background:none}
+    .Subcompany .bizline article{padding-top:10rem}
+    .Subcompany .bizline article h4{font-size:4rem}
+    .Subcompany .bizline .line.mo{display:block;margin-top:10rem;padding-left:8.6%;width:86%}
+    .Subcompany .groupco{margin:11.4rem 0 13.8rem 0}
+    .Subcompany .groupco>li{width:50%;height:36.8rem;margin-bottom:8rem;margin-right:0}
+    .Subcompany .groupco>li:nth-child(n+4){margin-top:0}
+    .Subcompany .groupco>li:last-child{margin-bottom:0}
+    .Subcompany .bizline .subtext br.com{display:block}
+    .Subcompany .bizline .subtext br.mo{display:block}
+    .Subcompany .groupco>li:nth-child(odd){padding-right:1.4rem}
+    .Subcompany .groupco>li:nth-child(even){padding-left:1.4rem}
+    .Subcompany .groupco ul{padding:0}
+    .Subcompany .subsidiaryimg img{height:15.6rem}
+    .Subcompany .sublogoimg img{width:81%;margin:2rem 0 2.2rem 0}
+    .Subcompany .bizline ol li{font-size:2.2rem}
+    .Subcompany .gobtn{bottom:1.6rem}
+    .Subcompany .gobtn a{font-size:2.2rem;padding-bottom:1.2rem;border-bottom:4px solid #2144ca}
+    .Subcompany .groupco>li:hover ul{padding:0}
+    .Subcompany .groupco>li.on:hover{box-shadow:none;border:1px solid transparent}
+    .Subcompany .groupco>li:hover .gobtn a.on{padding-bottom:1.2rem}
+    /*������豸�� > �̻�ȸ > �̻�ȸ ����*/
+    .Director section ol > li{float:none;width:100%;margin-top:17rem;height:auto;font-size:2.4rem}
+    .Director section ol > li:nth-child(2n){float:none}
+    .Director section ol > li div img{width:auto;height:24.6rem;z-index:1}
+    .Director .info1{position:relative;height:14.8rem;background-size:24rem}
+    .Director .info1 br{display:none}
+    .Director .info1 li{display:inline-block}
+    .Director .name{position:absolute;left:3rem;top:50%;transform:translateY(-50%);font-size:3.2rem;margin-bottom:0}
+    .Director .name span{font-size:2.4rem;margin-left:2rem}
+    .Director .info1 .roboto{display:block;font-size:2.4rem;margin-top:1.6rem;margin-left:0}
+    .Director .birth{position:absolute;left:47%;top:50%;transform:translateY(-50%);margin-top:0}
+    .Director .info2{padding: 2rem 3rem 0}
+    .Director .info2 br.pc{display:none}
+    .Director .info2 br{display:block}
+    .Director .info2 li{margin-bottom:0}
+    .Director .info2 li:first-child{margin-bottom:3rem}
+    .Director .info2 li.education{min-height: auto;margin-bottom:2.5rem}
+    .Director .info2 .title{margin-bottom:0.6rem}
+    .Director .info2 dl{margin-bottom:0.6rem}
+    .Director .info2 dt{width:14.7rem}
+    .Director .info2 dd{line-height:3rem;word-break:keep-all}
+    /*������豸�� > �̻�ȸ > �̻�ȸ ����*/
+    .Authority dl{display: block;padding:5rem 2rem;border-bottom: 1px solid #e0e0e0}
+    .Authority dt,.Authority dd{display: block;padding:0;border:none}
+    .Authority dt{width:100%;font-size:3.2rem;margin-bottom:4rem;line-height:1}
+    .Authority dt br{display:none}
+    .Authority dd li{font-size: 2.4rem;margin-bottom:2rem;line-height:3.2rem;text-indent:0;padding-left:0}
+    /*������豸�� > �̻�ȸ > ������ȸ*/
+    .Commission th:first-of-type{display: none}
+    .Commission col:first-of-type{display: none}
+    .Commission col:nth-of-type(2){width:37.6%}
+    .Commission td{padding: 4rem 0;padding-left:2rem}
+    .Commission section li{line-height:3rem}
+    .Commission section li.name{margin-bottom:1rem}
+    .Commission .goal li{padding-left:1.5rem;margin-left:1rem;text-indent:-1.5rem}
+    .Commission .goal li::before{bottom:0.8rem;width:0.6rem;height:0.6rem;margin-right:0.5rem}
+    .Commission section ol{padding-left:2.5rem;margin-top:2rem}
+    /*������豸�� > �̻�ȸ > ����*/
+    .Sub.Article{padding-bottom:14rem}
+	 /*�ѱ����ڱ������� �Ұ� > ����*/
+    .History .sub_tit{padding:13.5rem 0 10rem}
+    .History h3.sub_tit.has_tab{padding-bottom:10rem}
+    .History .mo_tab{display:block;margin-top:10rem;}
+    .History .mo_tab div{width:92.3%;padding:3rem 2.4%;border:1px solid #e0e0e0;text-align:left;background:url(/images/history_arrow_down.png)no-repeat 96% 50%;background-size:1.7rem}
+    .History .mo_tab div.on{background:url(/images/history_arrow.png)no-repeat 96% 50%;background-size:1.7rem}
+    .History .mo_tab div a{font-size:2.4rem}
+    .History .depth_tab{margin:0 auto 0rem;display:none;width:92.3%;border:1px solid#e0e0e0;border-top:none;}
+    .History .depth_tab li{display:block;width:auto;padding:3rem 3.3%;text-align:left;line-height:inherit;border-right:none;border-bottom:1px solid #e0e0e0;}
+    .History .depth_tab li:last-child{border-right:none;border-bottom:none;}
+    .History .depth_tab li a{font-size:2.4rem}
+    .History .depth_tab li.on{background:#f4f5f9}
+    .History .depth_tab li a.on{color:#2144ca}
+    .History .HistoryCon{margin-top:6rem}
+    .History .HistoryCon div{padding-top:1rem;display:block}
+    .History .HistoryCon dl{display:initial;border-bottom:#e0e0e0}
+    .History .HistoryCon dt, .History dd{display:block;border-bottom:none}
+    .History .HistoryCon dt{width:auto;padding-top:4.6rem;padding-left:2rem;font-size:3.6rem}
+    .History .HistoryCon dd{padding-left:2rem;padding:4rem 0 4.8rem 2rem;border-bottom:1px solid #e0e0e0}
+    .History .HistoryCon .mondt,.History .HistoryCon li{font-size:2.4rem}
+    .History .HistoryCon li br{display:block}
+    .History .HistoryCon li br.pc{display:none}
+    .History .HistoryCon .mondt{width:auto;padding-right:3rem}
+    .History .HistoryCon ol > li{margin-bottom:3.5rem;line-height:2.8rem;padding-right:2rem}
+    .History .HistoryCon ul li{margin-top:1.8rem;word-break:break-all}
+    .History .HistoryCon .small{font-size:2rem;line-height:2.3rem}
+    /*�ѱ����ڱ������� �Ұ� > ���� ������*/
+    .organi h3.sub_tit{padding-bottom:10rem}
+    .organi section .mo{display:inline-block}
+    .organi section{padding:12rem 0 14rem 0}
+    .organi section img{width:96.2%}
+    /*������豸�� > �̻�ȸ > ����*/
+    .Article .sub_tit{padding-bottom:10rem}
+    .Article .downBtn{height:6rem;line-height:6rem;padding:0 1.1rem;font-size:2.4rem}
+    .Article .scrollArea{height:70rem;padding: 6rem 2rem 0;font-size:2.4rem;margin-top:2rem}
+    .Article .scrollArea dl{padding-bottom:2rem}
+    .Article .scrollArea dt,.Article .scrollArea dd{font-size:2.4rem}
+    .Article .scrollArea dt{width:11rem}
+    .Article .scrollArea dd{line-height:2.8rem;word-break:break-all}
+    .Article .scrollArea dd br{display:none}
+    .Article .scrollArea h4{font-size:3.2rem;text-align: left;margin-top:9.2rem}
+    .Article .scrollArea h5{font-size:2.4rem;margin: 2.9rem 0 2rem}
+    .Article .scrollArea p{line-height:2.8rem}
+    .Article .scrollArea ol{margin-top:0rem}
+    .Article .scrollArea li{line-height:3.2rem}
+    .Article .scrollArea ul > li{margin-top:1rem}
+    /*������豸�� > ������ȸ > ������ȸ ��� ���*/
+    .Capital .sub_tit{padding-bottom:10rem}
+    .Capital .smallTitle{font-size:2rem;margin-bottom:2rem}
+    .Capital h4{font-size:3.2rem;margin-right:2rem}
+    .Capital h4 > span{font-size: 2rem}
+    .Capital table{margin-bottom:2rem}
+    .Capital .BtnBox a{padding:0 1.6rem;margin-right:1rem;line-height:6rem;height:6rem;font-size:2.4rem}
+    .Capital .BtnBox button{padding:0 2rem;height:6rem;font-size:2.4rem}
+    .Capital .commonTable tbody td{letter-spacing:-0.1rem}
+    .Capital .Dividend{margin-top:10rem}
+    .Capital .Dividend .scroll{overflow-y:hidden;overflow-x:auto;width:100%}
+    .Capital .Dividend table{width:128rem}
+    .Capital .Dividend h4{margin-bottom:2rem}
+    .Capital .Dividend > ol li{font-size:2rem;margin-bottom:1rem}
+    /*IR common*/
+    .IR .selectbox{width:22.5rem;margin-bottom:2rem}
+    .IR .selectbox .view_text{background-position:19rem center;padding:1.2rem 2rem}
+    /*IR �������� > IR HOME*/
+    .IRHome .PriceInfo{height:50rem}
+    .IRHome .PriceInfo article{height:50rem;padding:7rem 0}
+    .IRHome .PriceInfo h4.tit{font-size:4.8rem}
+    .IRHome .PriceInfo .motion{margin-top:10.5rem}
+    .IRHome .PriceInfo .motion li.count{font-size:2rem}
+    .IRHome .LtsInf{padding-top:10rem}
+    .IRHome h5{font-size:3.2rem}
+    .IRHome .LtsDt .LtsBox{display:inline-block;width:100%;text-align:left;padding:5rem 4rem;margin-right:0;margin-bottom:4rem}
+    .IRHome .LtsDt .LtsBox:last-child{margin-bottom:0}
+    .IRHome .LtsDt .LtsBox ul{display: inline-block;margin-top:1rem}
+    .IRHome .LtsDt .LtsBox ul li{display:inline-block;width:auto;vertical-align:middle}
+    .IRHome .LtsDt .LtsBox ul li img{margin-bottom:0;width:8.4rem}
+    .IRHome .LtsDt .LtsBox ul li.LtsTit{display:inline-block;margin-left:4.9rem;font-size:2rem}
+    .IRHome .LtsDt .LtsBox ul li.LtsTit h5{margin-bottom:2rem}
+    .IRHome .LtsDt .LtsBox div{float:right;margin-top:0;width:17.4rem;text-align:right}
+    .IRHome .LtsDt .LtsBox div .PdfDown{margin-right:0;width:100%;font-size:2rem;padding:1.4rem 0;background-position: 1.6rem center;background-size: 2rem;margin-bottom:1rem;text-indent:3rem}
+    .IRHome .LtsDt .LtsBox div a{width:100%;font-size:2rem;padding:1.2rem 0;text-align:center}
+    .IRHome .LtsDt .LtsBox div a:last-child{margin-top:1rem}
+    .IRHome .LtstNtc{padding: 9rem 0 10rem}
+    .IRHome .LtstNtcBox{width:100%;margin-bottom:4rem}
+    .IRHome .LtstNtcBox + .LtstNtcBox{margin-left:0;margin-bottom:0}
+    .IRHome .LtstNtcBox h5{margin-bottom:2rem}
+    .IRHome .LtstNtcBox .more{font-size:2.4rem;padding-right:1.6rem;background-size: 0.7rem;background-position: right center}
+    .IRHome .LtstNtcBox ul{padding: 4rem 1.6rem}
+    .IRHome .LtstNtcBox ul li{font-size:2.4rem;margin-bottom:3.4rem}
+    .IRHome .LtstNtcBox ul li:last-child{margin-bottom:0}
+    .IRHome .LtstNtcBox ul li a{padding-left:2rem;text-overflow:ellipsis;white-space:nowrap;width:50%;line-height:2.8rem}
+    .IRHome .LtstNtcBox ul li a::before{width: 0.6rem;height:0.6rem;left:0;top:1rem;transform:translateY(0)}
+    .IRHome .LtstNtcBox span{width:12.4rem;vertical-align:middle}
+    .IRHome .domestic{padding-bottom:0}
+	.IRHome .domestic thead th{font-size:2.4rem}
+	.IRHome .domestic thead,.IRHome .domestic tbody{width:100%}
+	.IRHome .domestic th{display:table-cell;width:25%}
+	.IRHome .domestic th:last-child{border-bottom:1px solid #e0e0e0}
+	.IRHome .domestic tbody th,.IRHome .domestic tbody td{border-bottom:1px solid #e0e0e0}
+	.IRHome .domestic th,.IRHome .domestic td{padding:2.7rem 0}
+	.IRHome .domestic tr:first-child td{color:#505050;font-weight:400}
+	.IRHome .domestic tbody td{color:#505050;font-weight:400}
+	.IRHome .domestic tbody tr td:first-child{line-height:2.7rem;color:#101010;font-weight:500}
+    /*IR �������� >  ����_read*/
+    .NewsList .popupData{overflow-x:scroll}
+    .NewsList .commonTable .title{padding-left:2rem}
+    .NewsList .read .cnt{margin-bottom:7.7rem}
+    .NewsList .read .tit{font-size:2.8rem!important}
+    .NewsList pre{font-size:2rem!important;max-width:128rem!important;line-height:2.9rem;padding:0}
+    .NewsList pre td{padding-left:0.5rem;font-size:1.3rem;}
+    .NewsList pre .title{font-size:2rem!important;margin-bottom:0}
+    .NewsList pre .news_img_caption{padding:1rem 0.5rem;font-size:1.7rem;line-height:2.3rem}
+    .xforms *{font-size:2rem!important}
+    .xforms{max-width:72rem!important;margin:0}
+    .xforms div{width:60.5rem}
+    .xforms span{font-size:1.8rem;min-width:14.5rem;width:100%!important;padding:0 1rem!important;line-height:2.2rem!important}
+    .xforms td{font-size:1.8rem;line-height:2.2rem!important}
+    /*IR �������� > �������� > ���ð���_read*/
+    .Irnotice .cnt img{width:100%}
+    /*IR �������� >  �ſ���*/
+    .Credit .domestic{padding-bottom:0;font-size:0}
+	.Credit .domestic thead,.Credit .domestic tbody{display:table;width:100%}
+	.Credit .domestic thead{width:100%;border-bottom:1px solid #e0e0e0}
+	.Credit .domestic tbody{width:100%}
+	.Credit .domestic th{display:revert;width:33.3%;border-bottom:none}
+	.Credit .domestic tbody tr{float:left;display:block;width:33.3%}
+	.Credit .domestic td{width:100%;color:#505050;display:block}
+	.Credit .domestic tr:last-child td{border-bottom:1px solid #e0e0e0}
+	.Credit .domestic tr td:last-child{border-bottom:none}
+	.Credit .domestic th,.Credit .domestic td{height:initial;padding:2.7rem 0}
+	.Credit .commonTable thead th{font-size:2.4rem}
+    /*IR �������� >  �ְ�����*/
+    .Stock h5{max-width:100%;width:95%;margin-bottom:2rem;padding-left:1rem;font-size:2.3rem}
+    .Stock section{background-size:100%;background:url(../images/stock_bg_mo.png)no-repeat left -10%}
+    .Stock h3.sub_tit{padding-bottom:6rem}
+    .Stock .depth_tab{margin-bottom:10rem}
+    .Stock .depth_tab li{margin:0 2rem}
+    .Stock .depth_tab a{font-size:2.6rem;padding-bottom:0.8rem;border-bottom:0.6rem solid transparent}
+    .Stock .depth_tab a.on{border-bottom:0.6rem solid #2144ca}
+    .Stock .commonTable,.StockGraph{width:100%}
+    .Stock .commonTable ul{width:43.1%;height:31rem;margin:0 0 4.2rem 0;padding:10.2rem 0 6.9rem 0}
+    .Stock .commonTable ul:nth-of-type(odd){margin-right:2rem}
+    .Stock .commonTable ul:nth-of-type(even){margin-left:2rem}
+    .Stock .commonTable ul li:nth-of-type(odd){font-size:2.4rem;padding-bottom:3.9rem}
+    .Stock .commonTable ul li:nth-of-type(even){font-size:4rem;padding-bottom:0.9rem}
+    .Stock .commonTable .degradation{background-size:1.2rem;background-position-y:1rem;padding-left:2.4rem}
+    .Stock .commonTable .increase{background-size:1.2rem;background-position-y:0.8rem;padding-left:2.4rem;font-size:2.4rem}
+    .Stock .commonTable span.text{font-size:3rem}
+    .Stock .StockGraph{padding-top:6rem}
+    .Stock .StockGraph p{font-size:2rem;margin-right:2.8rem}
+    .Stock .StockGraph ul{position:relative;width:92.2%;margin:2rem auto 5rem}
+    .Stock .StockGraph .radioBtn{width:100%;text-align:left;padding-top:4.5rem;padding-right:0;float:none;font-size:2.4rem}
+    .Stock .StockGraph input{margin-right:0;margin-left:6%;margin-top:0.3rem;width:2rem;height:2rem;vertical-align:top}
+    .Stock .StockGraph button{position:absolute;top:3rem;right:0;width:18%;height:6rem;font-size:2.4rem}
+    .Stock .StockGraph .finace{display:none}
+    .Stock .StockGraph .stockImg{padding:0}
+    .Stock .StockGraph .stockImg .mo{width:100%;padding-top:5.2rem}
+    /*��ȸ��å�Ӱ濵 > ESG�򰡵��*/
+    .ESG br{display:block}
+    .ESG h4{font-size:3.2rem;line-height:4rem;margin-bottom:1.8rem;word-break:keep-all}
+    .ESG table{margin-bottom:10rem;border-top:0}
+	.ESG .commonTable table.mo{width:100%;display:table;width:100%}
+    .ESG .commonTable table.mo td{width:50%}
+    .ESG .commonTable table.mo tbody{display:revert;}
+    .ESG table tbody{width:100%;border-top: 2px solid #101010}
+    .ESG table td{line-height:3rem}
+    /*��ȸ�� å�Ӱ濵 > �����濵 > ��������*/
+    .CodeEthics br.mo{display:block}
+    .CodeEthics .promise{padding:9.6rem 0 21rem 0}
+    .CodeEthics .promise::after{width:63rem;height:35rem;background:url(/images/promise_bg_mo.png)no-repeat left center;background-size:cover;top:50.4rem;transform:translateY(0)}
+    .CodeEthics .promise div{width:100%;padding:5.5rem 0;margin-left:0;text-align:center;background:url(/images/icon_quotation_left.png) no-repeat left 0.5rem, url(/images/icon_quotation_right.png) no-repeat right bottom;background-size:5.7rem}
+    .CodeEthics .promise img{width:60rem;box-shadow:-3rem 3rem rgba(223,227,241,1);top:50.5rem;transform:translateY(0)}
+    .CodeEthics .promise h4{font-size:4rem;letter-spacing:-0.1rem}
+    .CodeEthics .promise p{margin-top:3.5rem;padding:0;font-size:2.4rem;line-height:3.6rem;color:#101010;letter-spacing:-0.1rem}
+    .CodeEthics .cdEth article{padding-top:28.4rem}
+    .CodeEthics .cdEth div{width:100%;margin-left:0}
+    .CodeEthics .cdEth dl{border-top:1px solid #e0e0e0;padding:4.4rem 0 4.4rem 0}
+    .CodeEthics .cdEth dt{width:9rem;;font-size:2.6rem;line-height:3.6rem;padding-left:3rem;background-position:left 1.2rem;background-size:1.9rem}
+    .CodeEthics .cdEth dd{padding-left:2rem;font-size:2.3rem;line-height:3.4rem;vertical-align:top}
+    /*��ȸ��å�Ӱ濵 > ���Ӱ��ɰ濵 > ��ȸ����:����������*/
+    .Vision .cntn{padding:10rem 0 13rem 0}
+    .Vision h5{font-size:4rem}
+    .Vision .cntn h4{font-size:4rem;padding:5.5rem 8.5rem 6rem 8.7rem;background-size:5.9rem;background-position-y:1.4rem}
+    .Vision .cntn article{margin-top:0}
+    .Vision .cntn .pc{display:none}
+    .Vision .cntn .mo{display:block;width:94.1%}
+    .Vision .cntn article img{box-shadow:3rem 3rem rgba(223,227,241,1)}
+    .Vision .cntn article img{margin-left:2rem}
+    .Vision .list{padding-top:9.7rem;width:92.3%}
+    .Vision .list h5{margin-bottom:5rem}
+    .Vision dl{padding:4.5rem 0 4.1rem 0}
+    .Vision dt{font-size:2.6rem;margin-left:0;padding:0 0 2rem 4.3rem;background-position-y:25%;background-size:2rem}
+    .Vision dd{font-size:2.4rem;margin-left:0;padding-left:4.5rem;padding-right:2rem;line-height:3.5rem;word-break:initial}
+    /*��ȸ��å�Ӱ濵 > ���Ӱ��ɰ濵 > ��ȸ����:�ֿ� Ȱ�� ����*/
+    .Performance section{padding:14rem 0}
+    .Performance section img{width:80%;margin-bottom:5rem}
+    .Performance section dl{display:table;width:100%;vertical-align:top;border-bottom: 1px solid #e0e0e0;padding:5rem 0;text-align:left}
+    .Performance section dl:last-child{border-bottom:none;padding-bottom:0}
+    .Performance section dt{display:table-cell;width:38%;font-size:2.8rem;font-weight:500;line-height:3.2rem}
+    .Performance section dd{display: table-cell;font-size:2.4rem;color:#767676;text-indent:-1.4rem;padding-left:1.4rem}
+    .Performance section li{margin-bottom:1rem;line-height:2.6rem}
+    .Performance section div{margin-top:5.7rem;width:55.5rem;height:6.8rem;padding:2.2rem 0}
+    .Performance section div img.downloadBtn{width:2rem;margin-bottom:0;margin-left:2rem;vertical-align:middle}
+    .Performance section div a{font-size:2.4rem}
+	/*util �ſ�����ü��*/
+    .Private h3.sub_tit{font-size:4.8rem;padding:9.8rem}
+    .Sub.Private{padding-bottom:14rem}
+    .Private .Location ul > li.now > div{background:none!important}
+    .Private .Location ul > li.now ol{display:none!important}
+    /*���ô±�*/
+	.Contact .wtc div{margin-top:8.5rem}
+	.Contact .wtc dl{float:none;width:100%}
+	.Contact .wtc dt,.Contact .wtc dd{padding-left:3rem}
+	.Contact .wtc dt{width:27.9%;height:7.8rem;font-size:2.4rem}
+	.Contact .wtc dd{font-size:2.4rem}
+    /*Footer*/
+    footer{padding: 5rem 0}
+    footer article{width:86.8%}
+    footer .logo{display:block;width:100%}
+    footer .logo img{width:24rem}
+    footer .logo a{width:24rem}
+    footer .info{border-bottom:1px solid #e0e0e0;margin:6rem 0 3rem;padding-bottom:3rem}
+    footer .info li{font-size:2rem;margin-right:3.6rem}
+    footer .info li.line{display:none}
+    footer .info li.roboto{margin-right:0}
+    footer .menu{position:static;width:100%;padding-bottom:3rem;padding-top:0}
+    footer .menu li{float:none;display:inline-block;margin-bottom:1.4rem}
+    footer .menu li a{font-size:2rem}
+    footer .menu li.line{width:1px;height:1rem;margin:0 2rem;vertical-align:middle}
+    footer .menu li.line.mo{width:9.7rem;background:none}
+    footer .fSite .now{font-size:2.4rem;padding:1.2rem 2rem;padding-right:8rem;background-position: 90% center;background-size: 1.4rem;letter-spacing:0.1rem}
+    footer .fSite ul{padding: 0.5rem 0;bottom:5rem}
+    footer .fSite li a{font-size:2rem;padding:1rem 2rem;line-height:2.4rem}
+    footer .copy{position:static;font-size:2rem;letter-spacing:-0.03rem}
+    /*Error*/
+	.Error h2{font-size:3rem}
+	.Error ul{margin:3rem 0 5rem 0}
+	.Error li{font-size:1.7rem;line-height:2.2rem}
+	.Error li:last-child{margin-top:2rem}
+	.Error a{font-size:2rem;width:15rem;height:5rem;line-height:4.3rem}
+}
+@media all and (max-width:440px){
+    .Subcompany .subintro h4.mo br{display:none}
+    .Subcompany .bizline .subtext br, .Subcompany .bizline .subtext br.mo{display:none}
+}
+

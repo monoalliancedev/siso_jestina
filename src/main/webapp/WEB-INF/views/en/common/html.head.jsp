@@ -28,7 +28,8 @@
 	</script>
 
     <!-- favicon -->
-	<link rel="shortcut icon" href="/jtfavicon.ico">
+	<link href="/images/jtfavicon.ico" rel="icon" type="image/x-icon">
+	
 	
 	<!-- J.ESTINA -->
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />

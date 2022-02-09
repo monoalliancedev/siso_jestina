@@ -39,15 +39,25 @@
                         <div class="tit">
                         <c:choose>
                         	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
-                        		<a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>${mainBanner.contents}</a>
+                        		<a href="<c:if test="${not fn:contains(mainBanner.linkUrl,'http://') && not fn:contains(mainBanner.linkUrl,'https://')}">http://</c:if>${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>${mainBanner.contents}</a>
                         	</c:when>
                         	<c:otherwise>
                         		${mainBanner.contents}
                         	</c:otherwise>
                         </c:choose>
                         </div>
-                        <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
-                        <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        <c:choose>
+                        	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
+                        		<a href="<c:if test="${not fn:contains(mainBanner.linkUrl,'http://') && not fn:contains(mainBanner.linkUrl,'https://')}">http://</c:if>${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>
+                        		<c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                        		<c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        		</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                        		<c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        	</c:otherwise>
+                        </c:choose>
                         <div class="bg">&nbsp;</div>
                     </li>
                     </c:if>
@@ -85,14 +95,7 @@
                 <!--J.ESTINA JEWELRY-->
                 <article class="jewelry">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<c:choose>
-                        	<c:when test="${mainBarndJ.linkUrl ne '' && (mainBarndJ.linkOutYn eq 'Y' || mainBarndJ.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/></a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/>
-                        	</c:otherwise>
-                        </c:choose>
+                    	<a href="/cn/brand/jewelry"><img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/></a>
                     </div>
                     <div class="info">
                         <ul>
@@ -100,7 +103,7 @@
                             <li class="name">J.ESTINA JEWELRY</li>
                             <li class="text pc">J.ESTINA珠宝成立于2003年，是以曾是意大利公主、现为保加利亚王妃的吉奥瓦娜公主为形象而诞生的韩国首家平价珠宝首饰品牌。珠宝将象征公主的皇冠设计成品牌标识，得到了大众的关注，2019年更新品牌，推出了反映同时代年轻炫酷女性生活方式的感性珠宝。</li>
                             <li class="text mo">J.ESTINA珠宝成立于2003年，是以曾是意大利公主、现为保加利亚王妃的吉奥瓦娜公主为形象而诞生的韩国首家平价珠宝首饰品牌。珠宝将象征公主的皇冠设计成品牌标识，得到了大众的关注，2019年更新品牌，推出了反映同时代年轻炫酷女性生活方式的感性珠宝。</li>
-                            <li class="more"><a href="#">MORE</a></li>
+                            <li class="more"><a href="/cn/brand/jewelry">MORE</a></li>
                         </ul>
                     </div>
                 </article>
@@ -108,14 +111,7 @@
                 <!--J.ESTINA HANDBAG-->
                 <article class="handbag">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<c:choose>
-                        	<c:when test="${mainBarndB.linkUrl ne '' && (mainBarndB.linkOutYn eq 'Y' || mainBarndB.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndB.linkUrl}" <c:if test="${mainBarndB.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/>
-                        	</c:otherwise>
-                        </c:choose>
+                    	<a href="/cn/brand/handbag"><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
                     </div>
                     <div class="info">
                         <ul>
@@ -123,7 +119,7 @@
                             <li class="name">J.ESTINA HANDBAG</li>
                             <li class="text pc">J.ESTINA于2011年推出了J.ESTINA手提包，手提包采用优雅高贵的设计，并以皇冠标识作为亮点，深受人们的喜爱。2019年更新品牌后，以炫酷有魄力的同时代女商人JOELLE的名字首字母JJ为主题，推出了JOELLE系列的手提包，展现了充满感性和现代情怀的风格。</li>
                             <li class="text mo">J.ESTINA于2011年推出了J.ESTINA手提包，手提包采用优雅高贵的设计，并以皇冠标识作为亮点，深受人们的喜爱。2019年更新品牌后，以炫酷有魄力的同时代女商人JOELLE的名字首字母JJ为主题，推出了JOELLE系列的手提包，展现了充满感性和现代情怀的风格。</li>
-                            <li class="more"><a href="#">MORE</a></li>
+                            <li class="more"><a href="/cn/brand/handbag">MORE</a></li>
                         </ul>
                     </div>
                 </article>
@@ -131,14 +127,7 @@
                 <!--ROMANSON-->
                 <article class="romanson">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<c:choose>
-                        	<c:when test="${mainBarndR.linkUrl ne '' && (mainBarndR.linkOutYn eq 'Y' || mainBarndR.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndR.linkUrl}" <c:if test="${mainBarndR.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/></a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/>
-                        	</c:otherwise>
-                        </c:choose>
+                    	<a href="/cn/brand/romanson"><img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/></a>
                     </div>
                     <div class="info">
                         <ul>
@@ -146,14 +135,14 @@
                             <li class="name">ROMANSON</li>
                             <li class="text pc">1988年，从因手表而闻名的瑞士罗曼斯霍恩中获得灵感，诞生了ROMANSON这一品牌，该品牌自1997年起参加全球最大的钟表博览会“巴塞尔国际珠宝钟表展”，并在名品馆中进行展览。</li>
                             <li class="text mo">1988年，从因手表而闻名的瑞士罗曼斯霍恩中获得灵感，诞生了ROMANSON这一品牌，该品牌自1997年起参加全球最大的钟表博览会“巴塞尔国际珠宝钟表展”，并在名品馆中进行展览。</li>
-                            <li class="more"><a href="#">MORE</a></li>
+                            <li class="more"><a href="/cn/brand/romanson">MORE</a></li>
                         </ul>
                     </div>
                 </article>
                 <!--//ROMANSON-->
             </section>
             <!--//Brand소개-->
-            <!--Social Media-->
+            <!--Social Media
             <section class="socialMedia">
                 <article>
                     <h5>social media</h5>
@@ -165,7 +154,7 @@
                         <li><a href="#" target="_blank"><i><img src="/images/icon_main_social_insta.svg"/></i><img src="/images/sample/main_social_thumb_05.jpg" class="loadImg"/></a></li>
                     </ul>
                 </article>
-            </section>
+            </section>-->
             <!--//Social Media-->
             <!--Buttom Menu-->
             <section class="bottomMenu"></section>

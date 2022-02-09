@@ -17,60 +17,6 @@ import com.jt.domain.ApiOpendartDTO;
 
 public class ApiOpendart {
 
-	public int ApiInfo(String bgnDe,String endDe, int pageNo, int pageCount) throws UnsupportedEncodingException, IOException {
-		 
-		if(pageNo==0) pageNo=1;
-		StringBuilder urlBuilder = new StringBuilder("https://opendart.fss.or.kr/api/list.json"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("crtfc_key","UTF-8") + "=0261d39627725ac124a2a482980fb00e9f8f5eee"); /*API 인증키*/
-        urlBuilder.append("&corp_code=00120289"); /*고유번호*/
-        urlBuilder.append("&bgn_de="+bgnDe); //시작일
-        urlBuilder.append("&end_de="+endDe); //종료일
-        urlBuilder.append("&page_no="+pageNo); //페이지번호
-        urlBuilder.append("&page_count="+pageCount); //페이지별 건수
-        
-        URL url = new URL(urlBuilder.toString());
-      
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        
-        //System.out.println("Response code: " + conn.getResponseCode());
-        
-        BufferedReader rd;
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        rd.close();
-        conn.disconnect();
-        
-		JSONObject jsonObj = new JSONObject(sb.toString()); //sb String
-		/*
-		String status = jsonObj.getString("status");
-		String message = jsonObj.getString("message");
-		int page_no = jsonObj.getInt("page_no");
-		int page_count = jsonObj.getInt("page_count");
-		int total_page = jsonObj.getInt("total_page");
-		
-		System.out.println("status: " + status); //에러 및 정보 코드
-		System.out.println("message: " + message); //에러 및 정보 메시지
-		System.out.println("page_no: " + page_no); //페이지 번호
-		System.out.println("page_count: " + page_count); //페이지 별 건수
-		System.out.println("total_page: " + total_page); //총 페이지 수
-		*/
-		int total_count = jsonObj.getInt("total_count");
-		System.out.println("total_count: " + total_count); //총 건수
-		
-		return total_count;
-	}
-	
-	
 	//공시정보
 	public List<ApiOpendartDTO> ApiProc(String bgnDe,String endDe, int pageNo, int pageCount) throws UnsupportedEncodingException, IOException {
 			

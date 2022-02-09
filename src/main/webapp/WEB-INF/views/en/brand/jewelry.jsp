@@ -34,32 +34,19 @@
                             ${brandBanner.contents}
                             <!-- J.ESTINA Jewelry is South Korea’s first bridge jewelry brand created in 2003 with Princess Giovanna of Italy, who later became Queen of Bulgaria, as the brand muse. It gained public popularity with jewelries inspired by a tiara, the symbol of a princess. In 2019, the brand went through a renewal, and has been introducing stylish jewelry pieces that reflect the lifestyle of sophisticated contemporary women. -->
                         </span>
-                        <a href="#">ONLINE SHOP</a>
+                        <c:if test="${brandBanner.linkOutYn ne 'N'}">
+		                    <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+		                    ONLINE SHOP</a>
+	                    </c:if>
                     </div>
                 </article>
                 <div class="commImgArea">
                     <c:if test="${brandBanner.imgUrl ne ''}">
-                        <c:if test="${brandBanner.linkOutYn eq 'Y'}">
-	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
-	                    </c:if>
-	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
-	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
-	        		    </c:if>
-	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
-	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
-	        		    </c:if>
+                        <img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
 	                </c:if>
 	                <c:if test="${brandBanner.moimgUrl ne ''}">
-	                    <c:if test="${brandBanner.linkOutYn eq 'Y'}">
-	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
-	                    </c:if>
-	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
-	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
-	                    </c:if>
-	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
 	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
-	                    </c:if>
-	                </c:if> 
+	                </c:if>
                 </div>
             </section>
             <section class="moTextWrap"></section>

@@ -80,23 +80,22 @@ function jt_list() {
                     <!--//내용-->
                     <!--다음/이전-->
                     <div class="ctrl">
-                        <c:if test="${board.preSeq > 0}">
-                        <dl>
-                            <dt>이전글</dt>
-                            <dd>
-                            	<a href="#" onclick="jt_link(${board.preSeq})">${board.preTitle}</a><span>${board.preRegdate}</span>
-                            </dd>
-                        </dl>
-                        </c:if>
                         <c:if test="${board.nextSeq > 0}">
                         <dl>
-                            <dt>다음글</dt>
+                            <dt>이전글</dt>
                             <dd>
                             	<a href="#" onclick="jt_link(${board.nextSeq})">${board.nextTitle}</a><span>${board.preRegdate}</span>
                             </dd>
                         </dl>
                         </c:if>
-                        
+                        <c:if test="${board.preSeq > 0}">
+                        <dl>
+                            <dt>다음글</dt>
+                            <dd>
+                            	<a href="#" onclick="jt_link(${board.preSeq})">${board.preTitle}</a><span>${board.preRegdate}</span>
+                            </dd>
+                        </dl>
+                        </c:if>
                     </div>
                     <!--//다음/이전-->
                     <div class="buttons">

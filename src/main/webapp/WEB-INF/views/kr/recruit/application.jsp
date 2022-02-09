@@ -226,7 +226,7 @@ function Jt_submit() {
                                                 <button type="button">파일첨부</button>
                                             </div>
                                         </div>
-                                        <a href="#" class="docDown">입사지원서 다운로드</a>
+                                        <a href="/common/applicationDownload" class="docDown">입사지원서 다운로드</a>
                                         <div class="viewWrap"></div>
                                         <p class="ment">※ 첨부파일은 워드, 엑셀, PPT, PDF 파일만 첨부 가능합니다.</p>
                                     </dd>

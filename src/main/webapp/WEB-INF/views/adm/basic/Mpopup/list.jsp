@@ -35,6 +35,18 @@ function Jt_delete(seq){
 
 //게시여부
 function Jt_isntYN(seq,isntYN){
+
+	var f = document.moveForm;
+	if (isntYN==="N") {
+		f.isntYN.value = "Y";
+	} else {
+		f.isntYN.value = "N";
+	}
+	f.seq.value = seq;
+	f.action="IsntYN";
+	f.submit();
+	
+	/*
 	$.ajax({ //게시여부Y가 2개 이상인지 확인
         type : "GET",
         url : "IsntYCount",
@@ -58,6 +70,7 @@ function Jt_isntYN(seq,isntYN){
 			f.submit();
 		}
     });
+    */
 }
 
 //페이징 이동

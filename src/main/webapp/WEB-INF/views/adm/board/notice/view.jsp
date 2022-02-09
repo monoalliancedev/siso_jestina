@@ -170,7 +170,7 @@ function Jt_fileDelete(seq,key){
                 <c:if test="${processKey eq 'Insert'}">
                 <div class="infoText">
                     <h3>${gubun} 공고 등록</h3>
-                    <span class="colorRed">*이미지 등록 사이즈 : 최소 (1920x1080) px</span>
+                    <span class="colorRed">*이미지 등록 사이즈 : PC 최소 (290x200) px / Mobile 최소 (640x400) px</span>
                 </div>
                 <a href="#" onclick="Jt_submit()" class="commBtn black">등록</a>
                 </c:if>

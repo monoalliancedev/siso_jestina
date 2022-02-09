@@ -39,15 +39,27 @@
                         <div class="tit">
                         <c:choose>
                         	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
-                        		<a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>${mainBanner.contents}</a>
+                        		<a href="<c:if test="${not fn:contains(mainBanner.linkUrl,'http://') && not fn:contains(mainBanner.linkUrl,'https://')}">http://</c:if>${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>${mainBanner.contents}</a>
                         	</c:when>
                         	<c:otherwise>
                         		${mainBanner.contents}
                         	</c:otherwise>
                         </c:choose>
                         </div>
-                        <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
-                        <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        
+                        
+                        <c:choose>
+                        	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
+                        		<a href="<c:if test="${not fn:contains(mainBanner.linkUrl,'http://') && not fn:contains(mainBanner.linkUrl,'https://')}">http://</c:if>${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>
+                        		<c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                        		<c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        		</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                        		<c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                        	</c:otherwise>
+                        </c:choose>
                         <div class="bg">&nbsp;</div>
                     </li>
                     </c:if>
@@ -85,14 +97,18 @@
                 <!--J.ESTINA JEWELRY-->
                 <article class="jewelry">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
+                    	<a href="/brand/jewelry"><img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forPC"/></a>
+                    	<!-- ${mainBarndJ.moimgUrl}" class="forMobile"/> -->
+                    	<!-- 
                     	<c:choose>
                         	<c:when test="${mainBarndJ.linkUrl ne '' && (mainBarndJ.linkOutYn eq 'Y' || mainBarndJ.linkOutYn eq 'C')}">
-                        		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/></a>
+                        		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}" class="forPC"/></a>
                         	</c:when>
                         	<c:otherwise>
-                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/>
+                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forPC"/>
                         	</c:otherwise>
                         </c:choose>
+                        -->
                     </div>
                     <div class="info">
                         <ul>
@@ -108,6 +124,8 @@
                 <!--J.ESTINA HANDBAG-->
                 <article class="handbag">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
+                    	<a href="/brand/handbag"><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
+                    	<!-- 
                     	<c:choose>
                         	<c:when test="${mainBarndB.linkUrl ne '' && (mainBarndB.linkOutYn eq 'Y' || mainBarndB.linkOutYn eq 'C')}">
                         		<a href="${mainBarndB.linkUrl}" <c:if test="${mainBarndB.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
@@ -115,7 +133,7 @@
                         	<c:otherwise>
                         		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/>
                         	</c:otherwise>
-                        </c:choose>
+                        </c:choose> -->
                     </div>
                     <div class="info">
                         <ul>
@@ -131,6 +149,8 @@
                 <!--ROMANSON-->
                 <article class="romanson">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
+                    	<a href="/brand/romanson"><img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/></a>
+                    	<!--
                     	<c:choose>
                         	<c:when test="${mainBarndR.linkUrl ne '' && (mainBarndR.linkOutYn eq 'Y' || mainBarndR.linkOutYn eq 'C')}">
                         		<a href="${mainBarndR.linkUrl}" <c:if test="${mainBarndR.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/></a>
@@ -138,7 +158,7 @@
                         	<c:otherwise>
                         		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/>
                         	</c:otherwise>
-                        </c:choose>
+                        </c:choose>-->
                     </div>
                     <div class="info">
                         <ul>
@@ -157,7 +177,9 @@
             <section class="latestArea">
                 <article>
                     <ul class="notice">
-                        <li class="cate">News</li>
+                        <li class="cate">News 
+                        ${URL} <br> ${URI} 
+						</li>
                         <li class="tit"><a href="/news/newsView?seq=${mainNews.seq}">${mainNews.title}</a></li>
                         <li class="text"><a href="/news/newsView?seq=${mainNews.seq}">${mainNews.contentsMain}</a></li>
                         <li class="more"><a href="/news/news">MORE</a></li>
@@ -183,7 +205,7 @@
                 </article>
             </section>
             <!--//Latest-->
-            <!--Social Media-->
+            <!--Social Media
             <section class="socialMedia">
                 <article>
                     <h5>social media</h5>
@@ -195,7 +217,7 @@
                         <li><a href="#" target="_blank"><i><img src="/images/icon_main_social_insta.svg"/></i><img src="/images/sample/main_social_thumb_05.jpg" class="loadImg"/></a></li>
                     </ul>
                 </article>
-            </section>
+            </section>-->
             <!--//Social Media-->
             <!--Buttom Menu-->
             <section class="bottomMenu"></section>
@@ -203,7 +225,7 @@
         </div>
         <%@ include file="/WEB-INF/views/kr/common/html.footer.jsp" %>
     </div>
-  
+  ${MainPopupList.size()}
 <c:if test="${MainPopupList.size()>0}">    
 <script>
 //쿠키 가져오기 함수

@@ -36,31 +36,18 @@
                             2019년 브랜드 리뉴얼 이후에는 쿨하고 당당한 동시대 여성상인 조엘(JOELLE)의<br> 이니셜 JJ 모티브를 활용한 조엘 라인의 핸드백으로 감각적이고 현대적인 감성의<br> 스타일을 제안하고 있습니다.
                             -->
                         </span>
-                        <a href="#">ONLINE SHOP</a>
+                        <c:if test="${brandBanner.linkOutYn ne 'N'}">
+		                    <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+		                    ONLINE SHOP</a>
+	                    </c:if>
                     </div>
                 </article>
                 <div class="commImgArea">
                     <c:if test="${brandBanner.imgUrl ne ''}">
-                        <c:if test="${brandBanner.linkOutYn eq 'Y'}">
-	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
-	                    </c:if>
-	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
-	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
-	        		    </c:if>
-	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
-	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
-	        		    </c:if>
+                        <img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
 	                </c:if>
 	                <c:if test="${brandBanner.moimgUrl ne ''}">
-	                    <c:if test="${brandBanner.linkOutYn eq 'Y'}">
-	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
-	                    </c:if>
-	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
-	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
-	                    </c:if>
-	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
 	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
-	                    </c:if>
 	                </c:if>
                 </div>
             </section>

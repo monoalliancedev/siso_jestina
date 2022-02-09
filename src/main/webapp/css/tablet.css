@@ -1,0 +1,257 @@
+@media all and (max-width:1440px){
+    /*한국투자금융지주 소개 > CEO 메세지*/
+    .CEO .message h4{margin-left:0;font-size:38px;padding:30px 60px;background-size:8%}
+}
+@media all and (max-width:1280px){
+    article{max-width:100%;width:97%}
+    header .logo{width:150px}
+    header .logo a{width:100%;height:26px;background-size:100%}
+    header .language{margin-left:10px}
+    header .language .now{padding-left:15px;padding-right:18px;background-size:10px}
+    header .language ul a{padding-left:17px}
+    header nav > ul > li > a{font-size:14px;padding:19px 0 22px 0;margin:0 30px}
+    header.InCntn.on::after{top:68px;height:550px}
+    header.InCntn section{width:100%!important}
+    header.InCntn .logo a{background-size:100%}
+    header.InCntn nav ol > li > a{font-size:14px}
+    header nav > ul > li > a{margin:0 32px}
+    header.InCntn nav ol .dps3 a{margin-left:0;font-size:14px}
+    /*allMenuArea*/
+    .allMenuArea ul{padding-top:140px}
+    .allMenuArea ul > li + li{margin-left:4.5%}
+    .allMenuArea ul > li > a{font-size:20px;margin-bottom:35px}
+    .allMenuArea ol > li{font-size:16px;margin-bottom:25px}
+    .allMenuArea div.dps3{padding:25px 0 0 9px}
+    .allMenuArea div.dps3 > a{font-size:14px;margin-bottom:15px}
+    /*Layout(Index)*/
+    .MainBanner{height:340px}
+    .MainBanner .slides > li{height:340px}
+    .MainBanner h4{font-size:30px;line-height:1.3}
+    .MainBanner .controls ol{margin-left:3%;width:157px}
+    .MainBanner .controls ol li{margin: 0 6px}
+    .MainBanner .controls ol li a{height:24px;width:30px;font-size:14px}
+    .MainBanner .play_stop{margin:0 15px}
+    .DirectMenu article{width:100%;padding:80px 3%}
+    .DirectMenu h4{margin-bottom:80px;font-size:30px;line-height:40px}
+    .DirectMenu h4>span{font-size:18px}
+    .DirectMenu ul li{width:48%;height:auto}
+    .DirectMenu ul li::after{border:none}
+    .DirectMenu ul li a{height:auto}    
+    .DirectMenu ul li a img{width:100%!important;position:static!important}
+    .DirectMenu ul div{top:13%;padding-left:11.5%}    
+    .PriceInfo h4.tit{padding-left:5%;font-size:36px}
+    .PriceInfo h4.tit span{font-size:16px;margin-top:5px}
+    .PriceInfo .motion{position:absolute;float:initial;top:50%;right:0;transform:translateY(-50%)}
+    .PriceInfo .motion ul{height:150px}
+    .PriceInfo .motion li.tit{font-size:18px}
+    .PriceInfo .motion li.num{font-size:48px;margin:18px 0}
+    .PriceInfo .motion li.count{font-size:18px}
+    .Subsidiary{height:auto}
+    .Subsidiary h4.tit{font-size:36px;margin-bottom:50px}
+    .Subsidiary h4.tit span{font-size:16px;margin-top:5px}
+    .Subsidiary ul li{margin:20px 0;padding:0 1%}
+    .Subsidiary ul li a{width:100%;height:85px}
+    .Subsidiary ul li a img{width:90%}
+    .Subsidiary ul li img.kiara{width:50%}
+    .Subsidiary ul li:last-child a img{width:55%}
+    .LatestNews{min-height:auto!important}
+    .LatestNews article{width:100%;padding:0 1.5% 40px}
+    .LatestNews h4.tit{margin:80px 0;font-size:36px}
+    .LatestNews ul li a{padding:20px 0}
+    .LatestNews dt{font-size:16px}
+    .LatestNews dt span{font-size:30px}
+    .LatestNews dd h5{font-size:18px}
+    .LatestNews dd span.text{font-size:14px}
+    .BottomMenu td h6{font-size:12px}
+    .BottomMenu td h5{font-size:20px}
+    .BottomMenu td a{font-size:12px;width:40%}
+    /*Layout(Sub - Common)*/
+    .Sub{padding-top:70px;padding-bottom:100px}
+    .Sub .ContainerBg{width:100%!important}
+    /*Layout(Sub - Common - Location)*/
+    .Location{padding-top:24px}
+    /*Layout(Sub - Common - Title)*/
+    h3.sub_tit{padding:110px 0 80px;font-size:38px}
+    h3.sub_tit .tab{margin-top:50px}
+    h3.sub_tit .in_text{font-size:18px;margin-top:18px}
+    h3.sub_tit .tab a{font-size:20px;border-bottom-width:5px}
+    h3.sub_tit .tab a.on{border-bottom-width:5px}
+    /*한국투자금융지주 소개 > CEO 메세지*/
+    .CEO .message h4{font-size:33px;padding:30px 50px}
+    .CEO .message li{font-size:18px}
+    .CEO .message li br,.CEO .ment1 li br{display:none}
+    .CEO .message::after{background-size:750px;bottom:150px} 
+    .CEO .message .sign img{width:30%}  
+    .CEO .ment2 li .iconArea{width:230px;height:230px}
+    .CEO .ment2 li .iconArea span{width:170px;height:170px;line-height:170px;margin:30px 13%}
+    .CEO .ment2 li .txtArea{width:75%;padding-left:12%;background-position-x:13%}
+    .CEO .ment2 dd div br,.CEO .ment2 li .txtArea br{display:none}
+    .CEO .ment2 li .iconArea::after{width:40%}
+    .CEO .ment2 li h6{font-size:23px}
+    /*한국투자금융지주 소개 > 경영철학*/
+    .Philosophy .cntn{padding: 90px 0}
+    .Philosophy .cntn h4{font-size:34px;background-size: 50px;padding: 36px 86px 0 86px}
+	.Philosophy .cntn div br{display:none}
+    .Philosophy .cntn div{padding:0 130px;}
+    .Philosophy .cntn ul{margin-top:80px;width:85%}
+    .Philosophy .cntn li span{font-size:18px}
+    .Philosophy .list{padding:0;width:93%;margin-bottom:70px}
+    .Philosophy dt{padding: 50px 0 50px 20px;font-size:22px;width:216px}
+    .Philosophy dd{padding: 50px 0 50px 40px;font-size:16px;background-position:left 58px;background-size:18px}
+    /*한국투자금융지주 소개 > 경영진*/
+    .Management .drctrDeco img{width:100%}
+    .Management .exctv{padding:0 0 60px 0}
+    .Management .exctv dl dt{font-size:20px}
+    .Management .exctv dl dd{font-size:14px;line-height:18px;margin-top:9px}
+    /*한국투자금융지주 소개 > 지주 조직도*/
+    .organi section img{width:95%}
+    /*한국투자금융지주 소개 > 연혁*/
+    .History .mo_tab{margin-top:80px}
+    .History .tab li a{font-size:20px}
+    .History .HistoryCon li br{display:none}
+    /*한국투자금융지주 소개 > 그룹사 소개 > 자회사소개*/
+    .Subcompany .subintro h4{font-size:36px}
+    .Subcompany .bizline .line{width:100%}
+    .Subcompany .sublogoimg img{width:230px}
+    /*한국투자금융지주 소개 > 그룹사 소개 > 글로벌 네트워크*/
+    .Globalnetwork .local article{padding-top:80px}
+    .Globalnetwork .local h4{font-size:30px;margin-bottom:80px}
+    .Globalnetwork .local ul li{background-size: 13px;background-position: left 8px;font-size:14px}
+    .Globalnetwork .local .country{margin: 24px 0 14px;font-size:12px}
+    .Globalnetwork .local .name{font-size:18px}
+    .Globalnetwork .local .fullname{font-size:12px;line-height:14px}
+    .Globalnetwork .local .address br{display:none}
+    /*기업지배구조 > 이사회 > 이사회 구성*/
+    .Director section ol > li{margin-top:130px;height:440px}
+    .Director section ol > li div img{width:60%}
+    .Director .info1{padding:30px 22px;background-size: 60%;}    
+    .Director .info2{padding:14px 0 0 22px}
+    .Director .info2 br{display:none}
+    /*기업지배구조 > 이사회 > 이사회 권한*/
+    .Commission li br{display:none}
+    .Authority dt,.Authority dd{padding: 40px 0}
+    .Authority dt{font-size:20px;padding-left:16px;line-height:24px}
+    .Authority dd li{font-size: 16px;text-indent:-26px;padding-left:24px;margin-bottom:14px;line-height:20px}
+    .Authority dd li br{display:none}
+    /*IR 투자정보 > IR HOME*/
+    .IRHome .PriceInfo{height:260px}
+    .IRHome .PriceInfo article{height:260px;padding:50px 0}
+    .IRHome h5{font-size:18px;margin-bottom:10px}
+    .Sub.IRHome thead th{font-size:16px}
+    .IRHome .LtsDt .LtsBox{width:30%}
+    .IRHome .LtsDt .LtsBox ul li img{margin-bottom:30px;width:64px}
+    .IRHome .LtsDt .LtsBox ul li.LtsTit h5{margin-bottom:8px}
+    .IRHome .LtsDt .LtsBox div{margin-top:30px}
+    .IRHome .LtsDt .LtsBox div .PdfDown{font-size:12px;padding:8px 8px 10px 44px}
+    .IRHome .LtsDt .LtsBox div a{font-size:12px;padding: 8px 10px}
+    .IRHome .LtstNtcBox{width: 45%}
+    .IRHome .LtsInf{padding-top:80px}
+    .IRHome .LtstNtc{padding:70px 0}
+    .IRHome .LtsDt .LtsBox{padding:40px 0}
+    .IRHome .LtsDt .LtsBox ul li.LtsTit{font-size:16px}
+    .IRHome .LtstNtcBox .more{font-size:12px;background-size:6px;background-position: right 0}
+    .IRHome .LtstNtcBox ul{padding: 26px 10px 0 0}
+    .IRHome .LtstNtcBox ul li{margin-bottom:20px}
+    /*IR 투자정보 >  주가정보*/
+    .Stock h5{width:97%;}
+    .Stock .commonTable dl{width:13%}
+    .Stock .commonTable ul li:nth-of-type(even){font-size:30px}
+    .Stock .commonTable span.text{font-size:22px}
+    /*사회적 책임경영 > 윤리경영 > 윤리강령*/
+    .CodeEthics br{display:none}
+    .CodeEthics .promise div{width:50%}
+    .CodeEthics .promise h4{font-size:30px}
+    .CodeEthics .promise p{font-size:16px;line-height:20px;padding-right:20%}
+    .CodeEthics .cdEth img{width:35%}
+    .CodeEthics .cdEth div{width:85%}
+    .CodeEthics .cdEth dd{font-size:16px;line-height:20px}
+    /*사회적책임경영 > 지속가능경영 > 사회공헌:주요 활동 성과*/
+    .Performance img.pc{width:100%}
+    /*Footer*/
+    footer{padding:30px 0}
+    footer .logo{width:15%}
+    footer .logo img{width:100%}
+    footer .menu li.line{margin:7px 5px 0 5px;height:5px}
+    footer .copy{font-size:10px;letter-spacing:0}
+}
+@media all and (max-width:1024px){
+    /*한국투자금융지주 소개 > 경영진*/
+    .Management .exctv li{width:33.3%}
+    /*한국투자금융지주 소개 > 그룹사 소개 > 글로벌 네트워크*/
+    .Globalnetwork .local ul{padding-right:40px}
+    /*사회적 책임경영 > 윤리경영 > 윤리강령*/
+    .CodeEthics .promise{padding:60px 0}
+    .CodeEthics .promise::after{height:190px;background-size:cover}
+    .CodeEthics .promise div{background-size:45px}
+    .CodeEthics .promise p{padding-right:0}
+}
+@media all and (max-width:1000px){
+    header nav > ul{display:none!important}
+    header.InCntn.on::after{ background-color:transparent;box-shadow:none;border-top:none}
+    /*Layout(Sub - Common - Title)*/
+    h3.sub_tit .in_text{font-size:16px}
+    .Subsidiary ul li a{height:70px}
+    /*한국투자금융지주 소개 > CEO 메세지*/
+    .CEO .message{padding: 90px 0}
+    .CEO .message h4{font-size:30px;padding:30px 45px}
+    .CEO .message li{font-size:16px;line-height:22px}
+    .CEO .message .text1{margin: 20px 0}
+    .CEO .message::after{background-size:540px;bottom:103px}
+    .CEO .message .sign{margin-top:30px}
+    .CEO .ment2 dt{width:210px;vertical-align:middle}
+    .CEO .ment2 dt::before{width:7px;height:7px;right:-3px}
+    .CEO .ment2 dt::after{width:46px;right:-40px}
+    .CEO .ment2 .round{width:230px;height:230px}
+    .CEO .ment2 .round > div{width:170px;height:170px;padding:40px 0}
+    .CEO .ment2 .round span img{width:45px}
+    .CEO .ment2 .round b{margin-top:10px;font-size:17px}
+    .CEO .ment2 dd::after{height:70%;left:40px}
+    .CEO .ment2 dd{padding-left:70px}
+    .CEO .ment2 dd h6{padding-left:26px;line-height:24px;margin-bottom:14px;background-position:left 5px;font-size:21px;background-size: 16px}
+    .CEO .ment2 dd div{padding-left:26px;font-size:17px;}
+    .CEO .ment2 dd div br{display:none}
+    /*한국투자금융지주 소개 > 경영철학*/
+    .Philosophy .cntn h4{font-size:30px;background-size:45px;padding: 26px 60px 0 60px;line-height:35px}
+    /*.Philosophy dd br{display:none}*/
+    /*한국투자금융지주 소개 > 그룹사 소개 > 자회사소개*/
+    .Subcompany .subintro h4{font-size:30px;background-size:45px;padding:33px 70px 80px 70px}
+    .Subcompany .subintro h4::after{height:40px}
+    .Subcompany .subintro div p{font-size:16px;letter-spacing:-0.5px}
+    .Subcompany .bizline ol li{font-size:15px}    
+    .Subcompany .bizline td ul li br{display:none}
+    .Subcompany .bizline .subtext{word-break:keep-all}
+    .Subcompany .bizline article h4{font-size:30px}
+    .Subcompany .sublogoimg img{width:80%}
+    .Subcompany .groupco>li{height:400px}
+    .Subcompany .gobtn{bottom:55px}
+    /*한국투자금융지주 소개 > 연혁*/
+    .History h3.sub_tit a{font-size:16px}
+    .History .tab li a{font-size:17px}
+    .History .HistoryCon dt{padding-top:35px;font-size:20px}
+    .History .HistoryCon dd{padding: 36px 0}
+    .History .HistoryCon li{font-size: 14px}
+    .History .HistoryCon .mondt{font-size: 14px}
+    .History .HistoryCon ol > li{margin-bottom:12px;line-height:20px;padding-right:20px}
+    .History .HistoryCon ul li{margin-top:18px}
+    .History .HistoryCon .small{font-size:12px}
+    /*기업지배구조 > 이사회 > 이사회 구성*/
+    .DirectMenu h4 br{display:none}
+    .Director section ol > li{width: 45.7%;margin-right:0}
+    .Director section ol > li:nth-child(2n){float:right}
+    .Director section ol > li:last-child{display:none}
+    .Director section ol > li div img{width:50%}
+    .Director .info1{background-size:50%}
+    /*IR 투자정보 >  주가정보*/
+    .Stock .commonTable dt{font-size:16px}
+    .Stock .commonTable dd{font-size:22px}
+    .Stock .commonTable li .unit{font-size:27px}
+    .Stock .commonTable ul li:nth-of-type(even){font-size:27px}
+    .Stock .commonTable span.text{font-size:19px}
+    /*IR 투자정보 >  뉴스_read*/
+    .Irnews .read .content br{display:none}
+    .Stock section{background:url(/images/stock_top_bg.png)no-repeat left top,none}
+    /*사회적 책임경영 > 윤리경영 > 윤리강령*/
+    .CodeEthics .promise h4{font-size:24px}
+    .Performance section div{width:413px}
+    .Performance section div a{font-size:18px}
+}

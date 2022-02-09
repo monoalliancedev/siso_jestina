@@ -17,112 +17,26 @@
     <link rel="stylesheet" type="text/css" href="/css/lang/Chinese.css" />
     <script type="text/javascript" src="/scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/scripts/common.js"></script>
-<script>
-function LoadingWithMask() {
-    //화면의 높이와 너비를 구합니다.
-    var maskHeight = $(window).height();
-    var maskWidth = $(window).width();
-     
-    //화면에 출력할 마스크를 설정해줍니다.
-    var mask       ="<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
-    var loadingImg ='';
-      
-    loadingImg +="<div id='loadingImg'>";
-    loadingImg +=" <img src='/images/loading.gif' style='position: relative; display: block; margin: 0px auto;'/>";
-    loadingImg +="</div>"; 
-
-    //화면에 레이어 추가
-    $('body')
-        .append(mask)
-        .append(loadingImg)
-        
-    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채웁니다.
-    $('#mask').css({
-            'width' : maskWidth
-            ,'height': maskHeight
-            ,'opacity' :'0.3'
-    });
-  
-    //마스크 표시
-    $('#mask').show();  
-  
-    //로딩중 이미지 표시
-    $('#loadingImg').show();
-    alert("fdfsdf");
-}
-function closeLoadingWithMask() {
-    $('#mask, #loadingImg').hide();
-	$('#mask, #loadingImg').remove(); 
-}
-LoadingWithMask();
-</script>
 </head>
 <body>
+<script>
+        function loading_st() {
+            var ct_left = (parseInt(window.screen.width) - 450) / 2;
+            var ct_top = (parseInt(window.screen.height)) / 3;
+            layer_str = "<div id='loading_layer' style='position:absolute; background-color:; font-size:15px; left:" + ct_left + "px; top:" + ct_top + "px; width:400px; height:; padding:50px; text-align:center; vertical-align:middle; z-index:1000; font-weight: bold;'>로딩중입니다.</div>"
+            document.write(layer_str);
+        }
+        function loading_ed() {
+			alert("11111111");
+            var ta = document.getElementById('loading_layer');
+            ta.style.display = 'none';
+        }
+        loading_st();
+        window.onload = loading_ed;
+
+
+</script>
     <div id="wrap">
-        <!--Header-->
-        <header>
-            <h1 class="logo"><a href="/"><img src="/images/common/logo.svg"/></a></h1>
-            <!--GNB-->
-            <nav>
-                <div class="menuList">
-                    <dl>
-                        <dt><a href="#">公司简介</a></dt>
-                        <dd>
-                            <a href="#"><span>愿景</span></a>
-                            <a href="#"><span>沿革</span></a>
-                            <a href="#"><span>业务领域</span></a>
-                            <a href="#"><span>BI</span></a>
-                            <a href="#"><span>Contact</span></a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt><a href="#">品牌</a></dt>
-                        <dd>
-                            <a href="#"><span>J.ESTINA JEWELRY</span></a>
-                            <a href="#"><span>J.ESTINA HANDBAG</span></a>
-                            <a href="#"><span>ROMANSON</span></a>
-                            <a href="#"><span>ARCHIVE</span></a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt><a href="#">店铺简介</a></dt>
-                        <dd>
-                            <a href="#"><span>韩国国内</span></a>
-                            <a href="#"><span>海外</span></a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt><a href="#">新闻</a></dt>
-                        <dd>
-                            <a href="#"><span>公告事项</span></a>
-                            <a href="#"><span>新闻</span></a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="bgLine">&nbsp;</div>
-            </nav>
-            <!--//GNB-->
-            <div class="link">
-                <a href="#" class="lang">KR</a>
-                <a href="#" class="lang">EN</a>
-                <a href="#" class="lang on">CN</a>
-                <a href="#" class="mall">ONLINE SHOP</a>
-            </div>
-            <!--Mobile GNB-->
-            <div class="mobileGNB">
-                <div class="ctrl"><a href="#" class="mall">ONLINE SHOP</a><a href="#" class="menuClose"><img src="/images/common/icon_mobile_menu_close.svg"/></a></div>
-                <div class="moMenuList"></div>
-                <div class="lang">
-                    <a href="#" class="on">KR</a>
-                    <a href="#">EN</a>
-                    <a href="#">CN</a>
-                </div>
-            </div>
-            <!--//Mobile GNB-->
-            <div class="menuBG">&nbsp;</div>
-            <a href="#" class="moMenuopen"><img src="/images/common/icon_mobile_menu.svg"/></a>
-        </header>
-        <!--//Header-->
         <script type="text/javascript" src="/scripts/language/subCN.js"></script>
         <script type="text/javascript" src="/scripts/brand.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/brand.css" />
@@ -608,6 +522,5 @@ LoadingWithMask();
 </body>
 </html>
 <script>
-jt_load(0);
-closeLoadingWithMask();
+//closeLoadingWithMask();
 </script>

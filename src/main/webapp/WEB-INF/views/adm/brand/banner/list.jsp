@@ -123,7 +123,18 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
             <section class="topSubCntn">
                 <div class="infoText">
                     <h3>${arrTitle[status.count-1]}</h3>
-                    <span class="colorRed">*이미지 등록 사이즈 : PC 최소 (1920x1080) px / Mobile 최소 (1920x1080) px</span>
+                    <c:choose>
+	                    <c:when test="${status.count-1 > 1}"><!-- ROMANSON 일때 이미지 -->
+	                    	<span class="colorRed">*이미지 등록 사이즈 : PC 최소 (1920x400) px / Mobile 최소 (720x400) px</span>
+	                    </c:when>
+	                    <c:otherwise>
+		                	<span class="colorRed">*이미지 등록 사이즈 : PC 최소 (1920x990) px / Mobile 최소 (720x900) px</span>
+	                    </c:otherwise>
+                    </c:choose>
+                                        
+                                        
+                    	
+                    
                 </div>
                 <a href="#" onclick="Jt_submit('${status.count}')" class="commBtn black">저장</a>
             </section>

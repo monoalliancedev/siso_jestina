@@ -37,31 +37,21 @@
                             공주의 상징인 티아라를 심볼로 디자인한 주얼리가 대중적인 인기를 얻었으며,<br> 지난 2019년 브랜드 리뉴얼로 동시대의 젊고 쿨한 여성들의 라이프스타일을 반영한<br> 감각적인 주얼리를 선보이고 있습니다.
                              -->
                         </span>
-                        <a href="#">ONLINE SHOP</a>
+	                    <c:if test="${brandBanner.linkOutYn ne 'N'}">
+		                    <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+		                    ONLINE SHOP</a>
+	                    </c:if>
+	                    
+	                  
+	                    
                     </div>
                 </article>
                 <div class="commImgArea">
                     <c:if test="${brandBanner.imgUrl ne ''}">
-                        <c:if test="${brandBanner.linkOutYn eq 'Y'}">
-	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
-	                    </c:if>
-	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
-	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/></a>
-	        		    </c:if>
-	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
-	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
-	        		    </c:if>
+                        <img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
 	                </c:if>
 	                <c:if test="${brandBanner.moimgUrl ne ''}">
-	                    <c:if test="${brandBanner.linkOutYn eq 'Y'}">
-	                    <a href="${brandBanner.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
-	                    </c:if>
-	        			<c:if test="${brandBanner.linkOutYn eq 'C'}">
-	        			<a href="${brandBanner.linkUrl}"><img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/></a>
-	                    </c:if>
-	                    <c:if test="${brandBanner.linkOutYn eq 'N'}">
 	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
-	                    </c:if>
 	                </c:if>
                 </div>
             </section>

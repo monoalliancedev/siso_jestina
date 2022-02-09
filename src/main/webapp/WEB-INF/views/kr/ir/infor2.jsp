@@ -37,13 +37,8 @@ function Jt_submit(seq) {
             <section class="content">
                 <article>
                     <form class="boardSearch">
-                        <span class="total">TOTAL <b><fmt:formatNumber value="${page.total_rows}" pattern="#,###" /></b></span>
-                        <select class="select">
-                            <option>전체</option>
-                        </select>
+                        <span class="total">TOTAL <b><fmt:formatNumber value="${apiList.size()}" pattern="#,###" /></b></span>
                         <div class="searchWord">
-                            <input type="text" placeholder="검색어를 입력하세요"/>
-                            <button type="button"><img src="/images/common/icon_search_zoom.svg" alt="검색"/></button>
                         </div>
                     </form>
                 </article>
@@ -69,7 +64,7 @@ function Jt_submit(seq) {
                             <c:forEach var="list" items="${apiList}" varStatus="status">
                             <fmt:parseDate value="${list.rcept_dt}" var="dataValue" pattern="yyyyMMdd"/>
                             <tr>
-                                <td class="no">${status.index+1}</td>
+                                <td class="no">${apiList.size() - status.count + 1}</td>
                                 <td class="cmpy"><span>${list.corp_name}</span></td>
                                 <td class="name alLeft"><a href="" onclick="Jt_submit(${list.rcept_no})">${list.report_nm}</a></td>
                                 <td class="submit"><span>${list.flr_nm}</span></td>

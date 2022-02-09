@@ -14,6 +14,10 @@
     <link rel="stylesheet" type="text/css" href="/jtadm/css/font/NotoSansKR.css" />
     <link rel="stylesheet" type="text/css" href="/jtadm/css/jquery-ui-custom.css" />
     <link rel="stylesheet" type="text/css" href="/jtadm/css/admin/admin.css" />
+    
+    <!-- favicon -->
+	<link href="/images/jtfavicon.ico" rel="icon" type="image/x-icon">
+	
     <script type="text/javascript" src="/jtadm/scripts/jquery-1.10.2.min.js"></script>
     
     

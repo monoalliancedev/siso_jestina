@@ -1,0 +1,226 @@
+body{font-family: 'Roboto',Sans-serif}
+/*Header*/
+header section{padding:5px 1.5%}
+header .logo a{width:166px;height:44px;background-image:url(/images/en/logo_w.png)}
+header.InCntn .logo a{background:url(/images/en/logo.png) no-repeat}
+header nav  ul > li > a{padding:21px 0 30px 0}
+header.InCntn nav > ul > li:hover > a{letter-spacing:-0.07px}
+header.InCntn.on::after{top:80px}
+header.InCntn nav ol{margin-left:20%}
+header.InCntn nav ol .dps3 a{margin-left:2%}
+header nav ul > li > a{margin:0 55px}
+/*allMenuArea*/
+.allMenuArea ul > li:nth-child(3) > a{padding-right:5px}
+.allMenuArea ol > li{font-weight:400}
+.allMenuArea ol > li.dps2.on > a{font-weight:500}
+/*Layout(Index)*/
+.idx br.mo{display:none}
+.idx h4 span,.idx h4.tit span{text-transform:initial;font-weight:500}
+.DirectMenu h4>span{font-size:20px;display:block;color:#101010}
+.DirectMenu article{padding:100px 0 140px}
+.DirectMenu ul li{width:400px;height:485px}
+.DirectMenu ul li::after{width:398px;height:483px;left:-4.5px}
+.DirectMenu ul li:nth-child(2){float:left;margin-left:40px}
+.DirectMenu ul li:nth-child(3){float:right;margin-top:0!important}
+.DirectMenu ul li a img{height:100%;width:100%;position:static}
+.DirectMenu ul div{padding-left:40px}
+.DirectMenu ul div h5{line-height:36px;letter-spacing:1px}
+.DirectMenu ul div h6{margin-top:18px;letter-spacing:0.4px}
+.PriceInfo h4.tit span{font-family:'Roboto',Sans-serif;line-height:28px;color:#c9d9ff;text-transform:initial}
+.Subsidiary h4.tit{text-transform:none}
+.Subsidiary ul li a img.logo10{width:165px}
+.BottomMenu a{text-transform:uppercase;width:136px}
+/*Korea Investment Group >  CEO Message*/
+.CEO .message h4{margin-bottom:50px}
+.CEO .ment2 dd::after{height:186px}
+.CEO .message .sign{color:#505050;margin-top:30px}
+.CEO .ment2 .round{padding:30px}
+.CEO .ment2 .round > div{padding:25px 0}
+.CEO .ment2 .round span{padding-top:20px}
+.CEO .ment2 .round b{line-height:20px;margin-top:15px}
+.CEO .ment2 dd h6{line-height:29px}
+/*Korea Investment Group >  Corporate Philosophy*/
+.Philosophy .cntn h4{padding:33px 79px 0 79px}
+.Philosophy .cntn ul{margin-top:60px}
+.Philosophy .cntn li:first-child{left:-50px}
+.Philosophy .cntn li:last-child{right:-6px}
+.Philosophy dt{line-height:28px}
+.Philosophy dd{line-height:32px;padding:58px 0 54px 45px}
+/*Korea Investment Group > History*/
+.History h3.sub_tit{padding-bottom:60px}
+.History h3.sub_tit a{font-size:22px;line-height:26px;width:376px;padding-bottom:16px}
+.History .HistoryCon .mondt{width:11%}
+/*Korea Investment Group > Group Overview >  About Our Group*/
+.Subcompany.grpIntro .depth_tab{margin-bottom:100px}
+.Subcompany .subintro h4{padding:33px 110px 80px 110px}
+.Subcompany .subintro h4 br.pc{display:none}
+.Subcompany .groupco > li{height:516px}
+.Subcompany .groupco ul{padding:58px 7.8%}
+.Subcompany .gobtn{bottom:71px}
+.Subcompany .sublogoimg img{margin-bottom:20px}
+.Subcompany .kiara .sublogoimg img{margin-bottom:30px}
+.Subcompany .groupco ul li{text-align:center}
+/*Korea Investment Group > Group Overview > Group Overview*/
+.Globalnetwork .local ul > li br.mo{display:none}
+.Globalnetwork .local ol > li{height:241px}
+.Globalnetwork .local .country{margin:30px 0 12px;font-weight:400}
+.Globalnetwork .local .name{line-height:27px;margin-bottom:6px}
+.Globalnetwork .local .fullname{margin:5px 0 15px}
+.Globalnetwork .local .phone{padding-top:10px}
+.grpIntro .depth_tab{margin-bottom:70px}
+/*Investor Relations > IR HOME*/
+.PriceInfo h4.tit span{color:#c9d9ff;font-family:'Roboto',Sans-serif}
+/*CSR > Sustainability_vision*/
+.Vision .list ul{text-align:center;padding-top:46px}
+.Vision .list li{display:inline-block;font-size:24px;font-weight:500;padding-left:44px;background:url(/images/icon_list_check.png) no-repeat left}
+.Vision .list li:nth-of-type(2){margin:0 5.5%}
+.Vision .list li:nth-last-of-type(2){margin-top:90px}
+.Vision .list li:nth-last-of-type(1){margin-left:22%;margin-top:90px}
+/*Corporate Governance > BOD > BOD Members*/
+.Director .info2 dt{padding-right:0;width:120px}
+.Director section ol > li{width:29.5%}
+/*Corporate Governance > BOD > BOD by law*/
+.Authority section div{font-size:18px;font-weight:500;max-width:1280px;width:100%;margin:auto;text-align:left;padding:0 0 20px 20px}
+.Authority dt, .Authority dd{display:block;border-bottom:none}
+.Authority dt{width:100%;padding-bottom:40px}
+.Authority dd{padding:0 0 50px 20px;border-bottom:1px solid #e0e0e0}
+.Authority dt.text{border-bottom:1px solid #e0e0e0}
+/*Corporate Governance > BOD > BoD Committees*/
+.Commission th{line-height:24px}
+.Commission td{padding:0;height:163px}
+.Commission section .inline_text{display:table;}
+.Commission section .inline_text li{display:table-cell}
+.Commission section .inline_text li:first-child{width:77px}
+/*Corporate Governance > BOD > BoD Committees*/
+.Capital .bottomText{text-align:left;font-size:16px;color:#767676}
+.Capital .commonTable thead th{font-size:16px}
+/*CSR > Sustainabillty > Vision/Strategies*/
+.Vision.Sub{padding-bottom:0}
+.Vision .list li:nth-last-of-type(1),.Vision .list li:nth-last-of-type(2){margin-top:100px}
+.Vision .mainActvities{margin-top:100px;padding-bottom:140px;background:#fcfcfc}
+.Vision .mainActvities h5{padding:100px 0}
+.Vision .mainActvities>img{max-width:1280px;width:100%}
+.Vision .bottomBtn{width:516px;height:68px;padding:23px 0;background:#2144ca;border-radius:5px;margin:104px auto 0}
+.Vision .bottomBtn a{font-size:18px;color:#fff}
+.Vision .bottomBtn a>img{margin-left:20px}
+/*CSR > Sustainabillty > ESG*/
+.ESG table{width:100%}
+.ESG thead,.ESG tbody{display:inline-table}
+.ESG thead{width:26%}
+.ESG table:last-child tbody{width:74%}
+.ESG table tbody{width:74%}
+.ESG thead th,.ESG tbody td{height:initial;padding:22px 0}
+.ESG thead th{display:inline-block;width:100%;color:#505050;font-weight:400}
+.ESG thead th:first-child{border-bottom:1px solid #e0e0e0;color:#101010;font-weight:500}
+.ESG tbody tr:first-child td{border-top:none;color:#101010;font-weight:500}
+/*CSR > Sustainabillty > Code of Ethics*/
+.CodeEthics .cdEth dl{padding-left:20px}
+.CodeEthics .cdEth dt,.CodeEthics .cdEth dd{display:block}
+.CodeEthics .cdEth dt{width:auto;background-position-x:left;padding-left:40px}
+.CodeEthics .cdEth dd{padding-left:40px}
+.CodeEthics .promise div{width:50%}
+.IRHome .LtsDt .LtsBox div a:first-child{display:none}
+/*IR > Stock*/
+.Stock .finace span:first-child{color:#006fba}
+.Stock .commonTable li .unit{font-size:18px}
+.read .fileSlide a{max-width:420px}
+/*footer*/
+footer .info{margin-top:30px}
+/*���ô±�*/
+.Contact .wtc dl:last-child{width:100%}
+.Contact .wtc dl:last-child dt{width:14%}
+@media all and (max-width:1280px) {
+    header .logo a{width:100%;height:44px}
+    header.InCntn .logo a{width:100%;background-size:100%}
+    header nav  ul > li > a{padding:21px 0 32px 0;font-size:16px}
+    /*Layout(Index)*/
+    .DirectMenu article{width:97%}
+    .DirectMenu ul li{width:31.3%;height:368px}
+    .DirectMenu ul li:nth-child(2){margin-left:3%}
+    .DirectMenu ul li a{height:368px}
+    .DirectMenu ul div{padding-left:10%}
+    .DirectMenu ul div h6{padding-right:10%}
+    .DirectMenu ul div h6 br{display:none}
+    /*.Subsidiary ul li a img{width:110%!important}*/
+    .Subsidiary ul li a img.logo10{width:80%!important}
+    /*allMenuArea*/
+    .allMenuArea ul > li > a{padding-right:7px}
+    .allMenuArea ul > li:nth-child(3) > a{padding-right:33px}
+    /*Layout(Sub - Common)*/
+    .Sub{padding-top:81px}
+	/*Korea Investment Group >  Corporate Philosophy*/
+    .Philosophy .cntn h4{line-height:38px}
+    .Philosophy .cntn div br{display:block}
+    /*Korea Investment Group > History*/
+    .History h3.sub_tit a{line-height:24px;width:auto;font-size:20px}
+    /*Korea Investment Group > Group Overview >  About Our Group*/
+/*     .Subcompany .groupco .subtext br{display:none} */
+    /*CSR > Sustainability_vision*/
+    .Vision .list li{font-size:18px;padding-left:30px;background-size:14px}
+    .Vision .list li:nth-of-type(2){margin:0 6.3%}
+    .Vision .list li:nth-last-of-type(2){margin-top:80px}
+    .Vision .list li:nth-last-of-type(1){margin-top:80px;margin-left:10%}
+    /*CSR > Code of Ethics*/
+    .CodeEthics .promise p{padding-right:9%}
+    /*Corporate Governance > BOD > BOD Members*/
+    .Director section ol > li{height:500px}
+}
+@media all and (max-width:1200px){
+	header nav > ul{display:none!important}
+}
+@media all and (max-width:1024px) {
+	
+    /*allMenuArea*/
+    .allMenuArea ul > li + li{margin:0 0 0 2.5%}
+    /*Layout(Index)*/
+    .DirectMenu ul div h5{letter-spacing:0;font-size:24px;line-height:28px}
+    .DirectMenu ul div h6{letter-spacing:0;margin-top:10px;font-size:16px;line-height:20px}
+    /*Korea Investment Group > Group Overview > Group Overview*/
+    .Globalnetwork .local .name br{display:none}
+    /*Corporate Governance > BOD > BOD Members*/
+    .Director section ol > li{float:initial;display:inline-block;width:39%;margin-right:2.8%}
+    .Director section ol > li:nth-of-type(3n){margin-right:2.8%}
+    .Director section ol > li:last-child{display:none}
+}
+@media all and (max-width:1000px) {
+    /*Layout(Index)*/
+    .DirectMenu ul li{height:294px}
+    .DirectMenu ul li a{height:294px}
+    /*Korea Investment Group >  CEO Message*/
+    .CEO .message h4{margin-bottom:30px}
+    .CEO .ment2 .round{width:200px;height:200px;padding:30px}
+    .CEO .ment2 .round > div{width:138px;height:138px;padding:0}
+    .CEO .ment2 .round span{padding-top:25px}
+    .CEO .ment2 .round b{margin-top:9px;font-size:16px;line-height:17px}
+    .CEO .ment2 dt::before{right:8px}
+    /*Korea Investment Group >  subcompany*/
+    .Subcompany .bizline .subtext br{display:none}
+    /*Korea Investment Group >  Corporate Philosophy*/
+    .Philosophy dd{line-height:28px}
+    /*Korea Investment Group > History*/
+    .History h3.sub_tit{padding-bottom:40px}
+    .History h3.sub_tit a{line-height:18px;padding-bottom:10px;font-size:16px}
+    .History .HistoryCon dt{width:17.4%}
+    /*Korea Investment Group > Group Overview >  About Our Group*/
+    .Subcompany .subintro h4{padding:33px 90px 70px 90px}
+    .Subcompany .groupco > li{height:480px}
+    .Subcompany .bizline ol .imgsize img{width:100%}
+    /*Investor Relations > IR HOME*/
+    .PriceInfo h4.tit span br{display:none;}
+    /*CSR > Sustainability_vision*/
+    .Vision .list li{font-size:16px;padding-left:20px}
+    .Vision .list li:nth-of-type(2){margin:0 2.5%}
+    .Vision .list li:nth-last-of-type(2){margin-top:70px}
+    .Vision .list li:nth-last-of-type(1){margin-top:70px}
+    /*IR_home > Capital*/
+    .Capital .Location ul > li.dep2_cate > span{width:65%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+    .Capital .Location ul > li.dep2_cate > div{left:32%}
+    .Capital .Location ul > li.arrow{margin:0 4px}
+    /*IR > Stock*/
+    .Stock .commonTable ul{margin-right:2.9%}
+    .Stock .StockGraph .finace{float:none;width:100%;padding-top:35px}
+    .Stock .StockGraph .radioBtn{float:none;width:100%;padding-top:20px}
+    .Stock .StockGraph .stockImg{padding-top:45px}
+    /*footer*/
+    footer .info li{font-size:10px}
+}

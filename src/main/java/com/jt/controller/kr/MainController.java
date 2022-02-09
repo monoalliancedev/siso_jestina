@@ -2,6 +2,8 @@ package com.jt.controller.kr;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,17 +34,30 @@ public class MainController {
 	
 	private static final String SiteLang= "KR";
 	private static final String SiteFolder= "kr";
+
+	
 		
 	//-- 메인
 	@GetMapping(value="/")
-	public ModelAndView krIndex() throws Throwable{
+	public ModelAndView krIndex(HttpServletRequest request) throws Throwable {
+		
+		//System.out.println("getRequestURL ##############" + request.getRequestURL());
+		//System.out.println("getServerName ##############" + request.getServerName());
+		//if(request.getRequestURL().toString().equals("http://localhost.:8080/")) 
+		//if(request.getServerName().toString().equals("localhost."))
+		if(request.getServerName().toString().equals("romanson.com"))
+		{
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("redirect:/brand/romanson");
+			return mv;
+		} 
 		
 		ParameterMap map = new ParameterMap();
 		map.put("lang", SiteLang);
-		
+			
 		//NEWS 
 		FrontBoardJtDTO mainNews = boardJtService.MainNews(SiteLang);
-		
+			
 		//메인배너
 		List<FrontBannerDTO> mainBannerList = bannerService.MainBanner(SiteLang);
 
@@ -56,7 +71,8 @@ public class MainController {
 
 		//메인팝업
 		List<FrontPopupJtDTO> MainPopupList = popupService.MainPopup(SiteLang) ;
-		
+			
+			
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mainNews", mainNews);
 		mv.addObject("mainBannerList", mainBannerList);
@@ -64,10 +80,12 @@ public class MainController {
 		mv.addObject("mainBarndB", mainBarndB);
 		mv.addObject("mainBarndR", mainBarndR);
 		mv.addObject("MainPopupList", MainPopupList);
-		
 		mv.setViewName("/"+SiteFolder+"/index");
 		return mv;
+		
 	}
-	
-	
 }
+
+
+
+

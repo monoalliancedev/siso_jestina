@@ -114,7 +114,7 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
             <section class="topSubCntn">
                 <div class="infoText">
                     <h3>${arrTitle[status.count-1]}</h3>
-                    <span class="colorRed">*이미지 등록 사이즈 : PC 최소 (1920x1080) px / Mobile 최소 (1920x1080) px </span>
+                    <span class="colorRed">*이미지 등록 사이즈 : PC 최소 (910x446) px / Mobile 최소 (720x426) px </span>
                 </div>
                 <a href="#" onclick="Jt_submit('${status.count}')" class="commBtn black">저장</a>
             </section>
@@ -127,6 +127,7 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
                             <col width="214"/>
                             <col width="*"/>
                         </colgroup>
+                        <!-- 
                         <tr>
                             <th>링크주소 (KR)</th>
                             <td colspan="3" class="url">
@@ -160,7 +161,7 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
                                 <input type="text" name="linkCn" value="${banner.linkCn}" class="enterText" placeholder="링크주소(CN) URL을 입력해주세요."/>
                             </td>
                         </tr>
-                        
+                         -->
                         <c:forEach var="i" begin="0" end="4" step="2">
                         	
                         	<c:if test = "${i eq 0}"><c:set var="langName" value="KR" /></c:if>

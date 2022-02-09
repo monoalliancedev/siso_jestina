@@ -1,6 +1,6 @@
 $(document).ready(function () {
     /*----------Main Banner----------*/
-    //¹è³Ê¿µ¿ª Size
+    //ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ Size
     function mainBannerSize() {
         var windowHT = $(window).height();
         var headerHT = $('header').outerHeight();
@@ -9,7 +9,7 @@ $(document).ready(function () {
         $('.mainBanner li.typeVideo .bg').css('height', windowHT - headerHT);
         $('.mainBanner li.typeImage .bg').css('height', windowHT - headerHT);
     };
-    //Å¸ÀÌÆ² À§Ä¡
+    //Å¸ï¿½ï¿½Æ² ï¿½ï¿½Ä¡
     function bannerTitlePos() {
         $('.mainBanner li .tit').each(function () {
             var titleHT = $(this).outerHeight();
@@ -97,7 +97,7 @@ $(document).ready(function () {
         };
     }
     ctrlAction();
-    //ÄÁÆ®·Ñ·¯
+    //ï¿½ï¿½Æ®ï¿½Ñ·ï¿½
     $('.mainBanner a.ctrlBtn.prev').click(function () {
         $('.mainBanner').flexslider('prev');
         return false;
@@ -106,7 +106,7 @@ $(document).ready(function () {
         $('.mainBanner').flexslider('next');
         return false;
     });
-    //¸ð¹ÙÀÏ µ¿¿µ»óÁ¦°Å
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     $('.mainBanner li.typeVideo video').each(function () {
         var videoRoot = $(this).find('source').attr('src');
         $(this).append('<input type="hidden" value="' + videoRoot + '"/>');
@@ -117,7 +117,7 @@ $(document).ready(function () {
             $(this).find('source').attr('src', hiddenValue);
         }
     });
-    //µ¿¿µ»ó ¸ð¹ÙÀÏ¿ë ÀÌ¹ÌÁö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
     function mainBannerVideoType() {
         $('.mainBanner li.typeVideo').each(function () {
             var objSRCmobile = $(this).find('img.forMobile').attr('src');
@@ -125,7 +125,7 @@ $(document).ready(function () {
         });
     };
     mainBannerVideoType();
-    //ÀÌ¹ÌÁö Å¸ÀÔ
+    //ï¿½Ì¹ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
     function mainBannerImageType() {
         $('.mainBanner li.typeImage').each(function () {
             var objSRCpc = $(this).find('img.forPC').attr('src');
@@ -151,7 +151,7 @@ $(document).ready(function () {
         });
         ctrlAction();
     });
-    /*----------About J¤ýESTINA----------*/
+    /*----------About Jï¿½ï¿½ESTINA----------*/
     $(window).scroll(function () {
         var headerHT = $('header').outerHeight()
         var mainBannerPos = $('.mainBanner').offset().top;
@@ -188,7 +188,7 @@ $(document).ready(function () {
             $('.aboutJestina .textArea span').stop().animate({ 'opacity': 0 });
         };
     });
-    /*----------Brand ¼Ò°³----------*/
+    /*----------Brand ï¿½Ò°ï¿½----------*/
     $('.brandIntro .imgPhoto img').load(function () {
         function brandIntroObjSize() {
             $('.brandIntro article').each(function () {
@@ -217,7 +217,7 @@ $(document).ready(function () {
         var brandRomansonPos = $('.brandIntro .romanson').offset().top;
         var aboutJestinaPos = $('.aboutJestina article').offset().top;
         var aboutJestinaParentPos = $('.aboutJestina').offset().top;
-        var socialPos = $('.socialMedia').offset().top;
+        //var socialPos = $('.socialMedia').offset().top;
         var scroll = $(window).scrollTop();
         if (scroll > aboutJestinaPos) {
             $('.brandIntro .jewelry .imgPhoto .blind').stop().animate({ 'width': 0 });
@@ -257,7 +257,8 @@ $(document).ready(function () {
             $('.brandIntro .handbag .more').stop().animate({ 'opacity': 0});
             $('.brandIntro .handbag .more a').stop().animate({'margin-right': '40px' });
         };
-        if (scroll < aboutJestinaParentPos || scroll > socialPos) {
+        //if (scroll < aboutJestinaParentPos || scroll > socialPos) {
+          if (scroll < aboutJestinaParentPos) {
             $('.brandIntro .imgPhoto .blind').stop().animate({ 'width': '100%' });
             $('.brandIntro .info .cate').stop().animate({ 'opacity': 0 });
             $('.brandIntro .info .name').stop().animate({ 'margin-top': '-23px', 'opacity': 0 });
@@ -266,7 +267,7 @@ $(document).ready(function () {
             $('.brandIntro .info .more a').stop().animate({'margin-right': '40px' });
         };
     });
-    /*----------Brand ¼Ò°³(¸ð¹ÙÀÏ)----------*/
+    /*----------Brand ï¿½Ò°ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½)----------*/
     $('.moBrandIntro .imgPhoto img').load(function () {
         function mobileProductFun() {
             $('.moBrandIntro .prdPhoto').each(function () {

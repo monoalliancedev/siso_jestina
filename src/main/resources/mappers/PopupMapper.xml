@@ -155,7 +155,7 @@
 		     , (select save_filename from tb_files f1 where f1.seq=b.img_cn_seq) as imgUrl
 		    </if>
 		  FROM tb_jt_popup b
-		 WHERE lang = #{lang}
+		 WHERE lang <![CDATA[ LIKE '%${lang}%' ]]>   
 		   AND isnt_yn = 'Y'
 		   AND from_date <![CDATA[<]]> CURDATE() 
 		   AND to_date >= CURDATE()

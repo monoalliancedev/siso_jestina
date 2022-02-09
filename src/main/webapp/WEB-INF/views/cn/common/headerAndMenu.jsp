@@ -50,12 +50,12 @@
             </div>
             <!--Mobile GNB-->
             <div class="mobileGNB">
-                <div class="ctrl"><a href="#" class="mall">ONLINE SHOP</a><a href="#" class="menuClose"><img src="/images/common/icon_mobile_menu_close.svg"/></a></div>
+                <div class="ctrl"><a href="https://www.jestina.co.kr/" class="mall">ONLINE SHOP</a><a href="#" class="menuClose"><img src="/images/common/icon_mobile_menu_close.svg"/></a></div>
                 <div class="moMenuList"></div>
                 <div class="lang">
-                    <a href="/" class="on">KR</a>
+                    <a href="/">KR</a>
                     <a href="/en/">EN</a>
-                    <a href="/cn/">CN</a>
+                    <a href="/cn/" class="on">CN</a>
                 </div>
             </div>
             <!--//Mobile GNB-->

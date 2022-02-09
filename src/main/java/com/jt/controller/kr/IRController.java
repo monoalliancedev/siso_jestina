@@ -1,7 +1,10 @@
 package com.jt.controller.kr;
 
 import java.io.IOException;
+
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +46,17 @@ public class IRController {
 		ApiDataGoKr api = new ApiDataGoKr();
 		List<ApiDataGoKrDTO> apiList = api.ApiProc();
 		
+		Date now = new Date();
+		
+		//오늘이 토,일,월요일 일경우 금요일날짜를 구한다.
+		Calendar oCalendar = Calendar.getInstance( );  
+		if(oCalendar.get(Calendar.DAY_OF_WEEK)==1) now = ComUtils.AddDay(now, -2); //일요일 /이틀전
+		if(oCalendar.get(Calendar.DAY_OF_WEEK)==7) now = ComUtils.AddDay(now, -1); //토요일 /하루전
+		if(oCalendar.get(Calendar.DAY_OF_WEEK)==2) now = ComUtils.AddDay(now, -3); //월요일 /삼일전
+		
+		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("now", now);
 		mv.addObject("info", apiList.get(1));
 		mv.setViewName("/"+SiteFolder+"/ir/infor1");
 			
@@ -54,32 +67,17 @@ public class IRController {
 	@GetMapping(value="/ir/infor2")
 	public ModelAndView infor2() throws UnsupportedEncodingException, IOException{
 		
-        String bgn_de = "20210201";
-        String end_de = "20220128";
+        String bgn_de = "20210101";
+        String end_de = ComUtils.getCurDate("y")+ComUtils.getCurDate("m")+ComUtils.getCurDate("d"); //오늘날짜
+        
         int page_no = 1;
         int page_rows = 50;
         
         ApiOpendart api = new ApiOpendart();
         List<ApiOpendartDTO> apiList = api.ApiProc(bgn_de,end_de,page_no,page_rows);
         
-        //List<ApiOpendartDTO> apiList = api.ApiProc(bgn_de,end_de,search.getCpage(),search.getPg_rows()); 
-		//search.setPg_rows(50);
-        //search.setTotal_rows(api.ApiInfo(bgn_de,end_de,search.getCpage(),search.getPg_rows()));
-        
         ModelAndView mv = new ModelAndView();
 		mv.addObject("apiList", apiList);
-		/*
-		mv.addObject("paging", Paging.ShowPageBar(search.getTotal_rows()			// 전체 low수 
-				, ComUtils.objToIntDef(search.getPg_rows(),10)  // 페이지 당 레코드 수 => 없으면 10 
-				, ComUtils.objToIntDef(search.getCpage(),1)		// 현재 페이지 => 없으면 1 
-				, 10
-				, "/images/common/icon_paging_prev.svg"
-				, "/images/common/icon_paging_next.svg"
-				, "/images/common/icon_paging_first.svg"
-				, "/images/common/icon_paging_last.svg"
-				, "goPage"));
-		mv.addObject("page", search) ;
-		*/	
 		mv.setViewName("/"+SiteFolder+"/ir/infor2");
 		
 		return mv;

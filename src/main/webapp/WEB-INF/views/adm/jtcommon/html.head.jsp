@@ -13,3 +13,8 @@
     <script type="text/javascript" src="/jtadm/scripts/admin/admin.js"></script>
     <script type="text/javascript" src="/jtadm/scripts/common.js"></script>
     
+    
+    <!-- favicon -->
+	<link href="/images/jtfavicon.ico" rel="icon" type="image/x-icon">
+	
+	

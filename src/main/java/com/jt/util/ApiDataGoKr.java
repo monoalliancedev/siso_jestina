@@ -22,17 +22,24 @@ public class ApiDataGoKr {
 			
 		///getStockPriceInfo (주식시세)
 		StringBuilder urlBuilder = new StringBuilder("https://api.odcloud.kr/api/GetStockSecuritiesInfoService/v1/getStockPriceInfo"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=35JdWHo9DsWJLSUbabA6gXl73VtNR8u60lAyPCJQLf1KnrjHvCzX5yvs0leXxzaXtQ5oHTzG98NWtQ4cRqbxzA%3D%3D"); /*Service Key*/
+		
+		urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=35JdWHo9DsWJLSUbabA6gXl73VtNR8u60lAyPCJQLf1KnrjHvCzX5yvs0leXxzaXtQ5oHTzG98NWtQ4cRqbxzA%3D%3D"); /*Service Key*/
         //urlBuilder.append("&" + URLEncoder.encode("basDt","UTF-8") + "=" + URLEncoder.encode("20220126", "UTF-8")); /*1페이지 갯수*/
+		urlBuilder.append("&" + URLEncoder.encode("itmsNm","UTF-8") + "=" + URLEncoder.encode("제이에스티나", "UTF-8")); /*1페이지 갯수*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*1페이지 갯수*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재페이지*/
         urlBuilder.append("&" + URLEncoder.encode("resultType","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*resultType : json,xml */
-        	
+        
         URL url = new URL(urlBuilder.toString());
+        
+        System.out.println("URL : " + url);
+        
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
+        
         System.out.println("Response code: " + conn.getResponseCode());
+        
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
