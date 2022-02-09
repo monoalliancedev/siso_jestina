@@ -53,7 +53,7 @@
                     </c:if>
                 </c:forEach>    
                 </ul>
-                <div class="controller"><span class="activeNO"></span><span class="totalNO"></span></div>
+                <div class="controller"><span class="activeNO">01</span><span class="totalNO"></span></div>
 <c:if test="${mainBannerList.size()>1}">	
                 <a href="#" class="ctrlBtn prev"><img src="/images/icon_ban_arrow_left.svg"/></a>
                 <a href="#" class="ctrlBtn next"><img src="/images/icon_ban_arrow_right.svg"/></a>
@@ -90,7 +90,8 @@
                         		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/></a>
                         	</c:when>
                         	<c:otherwise>
-                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/>
+                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forPC"/>
+                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forMobile"/>
                         	</c:otherwise>
                         </c:choose>
                     </div>
@@ -113,7 +114,8 @@
                         		<a href="${mainBarndB.linkUrl}" <c:if test="${mainBarndB.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
                         	</c:when>
                         	<c:otherwise>
-                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/>
+                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}" class="forPC"/>
+                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}" class="forMobile"/>
                         	</c:otherwise>
                         </c:choose>
                     </div>
@@ -136,7 +138,8 @@
                         		<a href="${mainBarndR.linkUrl}" <c:if test="${mainBarndR.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/></a>
                         	</c:when>
                         	<c:otherwise>
-                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/>
+                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}" class="forPC"/>
+                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}" class="forMobile"/>
                         	</c:otherwise>
                         </c:choose>
                     </div>
