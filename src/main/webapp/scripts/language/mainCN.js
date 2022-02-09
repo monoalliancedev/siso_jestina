@@ -1,6 +1,6 @@
 $(document).ready(function () {
     /*----------Main Banner----------*/
-    //��ʿ��� Size
+    //배너영역 Size
     function mainBannerSize() {
         var windowHT = $(window).height();
         var headerHT = $('header').outerHeight();
@@ -9,7 +9,7 @@ $(document).ready(function () {
         $('.mainBanner li.typeVideo .bg').css('height', windowHT - headerHT);
         $('.mainBanner li.typeImage .bg').css('height', windowHT - headerHT);
     };
-    //Ÿ��Ʋ ��ġ
+    //타이틀 위치
     function bannerTitlePos() {
         $('.mainBanner li .tit').each(function () {
             var titleHT = $(this).outerHeight();
@@ -97,7 +97,8 @@ $(document).ready(function () {
         };
     }
     ctrlAction();
-    //��Ʈ�ѷ�
+    
+    //컨트롤러
     $('.mainBanner a.ctrlBtn.prev').click(function () {
         $('.mainBanner').flexslider('prev');
         return false;
@@ -106,7 +107,8 @@ $(document).ready(function () {
         $('.mainBanner').flexslider('next');
         return false;
     });
-    //����� ����������
+    
+    //모바일 동영상제거
     $('.mainBanner li.typeVideo video').each(function () {
         var videoRoot = $(this).find('source').attr('src');
         $(this).append('<input type="hidden" value="' + videoRoot + '"/>');
@@ -117,7 +119,8 @@ $(document).ready(function () {
             $(this).find('source').attr('src', hiddenValue);
         }
     });
-    //������ ����Ͽ� �̹���
+    
+    //동영상 모바일용 이미지
     function mainBannerVideoType() {
         $('.mainBanner li.typeVideo').each(function () {
             var objSRCmobile = $(this).find('img.forMobile').attr('src');
@@ -125,7 +128,8 @@ $(document).ready(function () {
         });
     };
     mainBannerVideoType();
-    //�̹��� Ÿ��
+    
+    //이미지 타입
     function mainBannerImageType() {
         $('.mainBanner li.typeImage').each(function () {
             var objSRCpc = $(this).find('img.forPC').attr('src');
@@ -151,7 +155,8 @@ $(document).ready(function () {
         });
         ctrlAction();
     });
-    /*----------About J��ESTINA----------*/
+
+    /*----------About JㆍESTINA----------*/
     $(window).scroll(function () {
         var headerHT = $('header').outerHeight()
         var mainBannerPos = $('.mainBanner').offset().top;
@@ -188,7 +193,8 @@ $(document).ready(function () {
             $('.aboutJestina .textArea span').stop().animate({ 'opacity': 0 });
         };
     });
-    /*----------Brand �Ұ�----------*/
+
+    /*----------Brand 소개----------*/
     $('.brandIntro .imgPhoto img').load(function () {
         function brandIntroObjSize() {
             $('.brandIntro article').each(function () {
@@ -267,7 +273,8 @@ $(document).ready(function () {
             $('.brandIntro .info .more a').stop().animate({'margin-right': '40px' });
         };
     });
-    /*----------Brand �Ұ�(�����)----------*/
+
+    /*----------Brand 소개(모바일)----------*/
     $('.moBrandIntro .imgPhoto img').load(function () {
         function mobileProductFun() {
             $('.moBrandIntro .prdPhoto').each(function () {
