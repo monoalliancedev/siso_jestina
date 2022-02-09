@@ -36,19 +36,22 @@
         			<c:if test="${mainBanner.fileType eq 'image'}">
 					<!--  메인베너 이미지 일때 -->
 					<li class="typeImage">
-                        <div class="tit">
                         <c:choose>
-                        	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
-                        		<a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>${mainBanner.contents}</a>
-                        	</c:when>
-                        	<c:otherwise>
-                        		${mainBanner.contents}
+                            <c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
+                                <a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>
+                                    <div class="tit">${mainBanner.contents}</div>
+                                    <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                                    <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                                    <div class="bg">&nbsp;</div>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                        		<div class="tit">${mainBanner.contents}</div>
+                                <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                                <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                                <div class="bg">&nbsp;</div>
                         	</c:otherwise>
                         </c:choose>
-                        </div>
-                        <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
-                        <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
-                        <div class="bg">&nbsp;</div>
                     </li>
                     </c:if>
                 </c:forEach>    

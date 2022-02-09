@@ -7,6 +7,7 @@ $(document).ready(function () {
         var headerHT = $('header').outerHeight();
         $('.mainBanner').css('height', windowHT - headerHT);
         $('.mainBanner .slides > li').css('height', windowHT - headerHT);
+        $('.mainBanner .slides > li > a').css('height', windowHT - headerHT);
         $('.mainBanner li.typeVideo .bg').css('height', windowHT - headerHT);
         $('.mainBanner li.typeImage .bg').css('height', windowHT - headerHT);
     };
