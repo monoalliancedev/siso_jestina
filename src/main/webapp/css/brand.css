@@ -113,6 +113,7 @@
 .archive .categoryWrap .slides > li > a{display:block;width:100%;height:100%;}
 .archive .categoryWrap .slides > li img.forPC{width:0;height:0;opacity:0}
 .archive .categoryWrap .slides > li img.forMobile{width:0;height:0;opacity:0}
+.archive .categoryWrap .slides > li > a.forMobileLink{display:none;}
 .archive .categoryWrap .titleText{position:absolute;top:50%;transform:translateY(-50%);text-align:center}
 .archive .categoryWrap h5{font-size:48px;font-weight:500;color:#fff}
 .archive .categoryWrap h5 span{margin-right:10px}
@@ -356,6 +357,8 @@
     .archive .flex-control-nav{bottom:6rem}
     .archive .flex-control-nav > li{width:1.6rem;height:1.6rem;margin:0 1.2rem}
     .archive .flex-control-nav > li a{height:1.6rem}
+    .archive .categoryWrap .slides > li > a.forMobileLink{display:block;}
+    .archive .categoryWrap .slides > li > a.forPCLink{display:none;}
     .archive .controller{height:11rem}
     .archive .prevYearList{display:none}
     .archive .nextYearList{display:none}
