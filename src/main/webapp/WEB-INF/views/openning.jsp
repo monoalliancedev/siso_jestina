@@ -1,16 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<jsp:useBean id="CurNow" class="java.util.Date" />
-<fmt:parseDate value="202202180000" pattern="yyyyMMddHHmm" var="openStartDate" />
-<fmt:parseDate value="202202202359" pattern="yyyyMMddHHmm" var="openEndDate" />
- 
-<fmt:formatDate value="${CurNow}" pattern="yyyyMMddhhmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
-<fmt:formatDate value="${openStartDate}" pattern="yyyyMMddHHmm" var="openDate"/>       <%-- 시작날짜 --%>
-<fmt:formatDate value="${openEndDate}" pattern="yyyyMMddHHmm" var="closeDate"/>        <%-- 마감날짜 --%>
-<c:if test="${openDate <= CurNowDate && closeDate >= CurNowDate}">
-    <c:redirect url="/openning"/>
-</c:if>
-
+<!DOCTYPE html>
+<html lang="ko">
+<head>
 <title>J.ESTINA</title>
 <meta charset="utf-8" />
 <meta name="description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
@@ -41,17 +31,18 @@
     <!-- favicon -->
 	<link href="/images/jtfavicon.ico" rel="icon" type="image/x-icon">
 	
-	
 	<!-- J.ESTINA -->
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="/css/rem.css" />
     <link rel="stylesheet" type="text/css" href="/css/font/NotoSansKR.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap">
     <link rel="stylesheet" type="text/css" href="/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="/css/lang/English.css" />
+    <link rel="stylesheet" type="text/css" href="/css/lang/Chinese.css" />
     <script type="text/javascript" src="/scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/scripts/common.js"></script>
-    
-    
-    
-    
-    
+</head>
+<body>
+<img src="/images/coming_soon.png"/>
+</body>
+</html>
+

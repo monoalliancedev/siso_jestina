@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<jsp:useBean id="CurNow" class="java.util.Date" />
+<fmt:parseDate value="202202180000" pattern="yyyyMMddHHmm" var="openStartDate" />
+<fmt:parseDate value="202202202359" pattern="yyyyMMddHHmm" var="openEndDate" />
+ 
+<fmt:formatDate value="${CurNow}" pattern="yyyyMMddhhmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
+<fmt:formatDate value="${openStartDate}" pattern="yyyyMMddHHmm" var="openDate"/>       <%-- 시작날짜 --%>
+<fmt:formatDate value="${openEndDate}" pattern="yyyyMMddHHmm" var="closeDate"/>        <%-- 마감날짜 --%>
+<c:if test="${openDate <= CurNowDate && closeDate >= CurNowDate}">
+    <c:redirect url="/openning"/>
+</c:if>
+
 <title>J.ESTINA</title>
 <meta charset="utf-8" />
 <meta name="description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">

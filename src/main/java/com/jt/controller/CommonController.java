@@ -41,6 +41,14 @@ public class CommonController {
 		return "error";
 	}
 	
+	@GetMapping(value="/openning")
+	public String openning() {
+		return "openning";
+	}
+	
+	
+	
+	
 	
 	@GetMapping("/common/fildDownload")	
 	public ResponseEntity<Resource> fildDownload(HttpServletRequest request, int seq, String Folder){

@@ -379,45 +379,7 @@ public interface Constants {
 	public static final String[] arrGubun = new String[] { "Jewelry", "Bag", "Romanson" };
 	public static final String[] arrTitle = new String[] { "J.ESTINA Jewelry", "J.ESTINA Bag", "ROMANSON" };
 	
-	
-	
-	
-	
-	
-	/*
-	public static final String [][] _BbsBcodeKrTitle={
-		{"disclosure","지배구조관련 공시"}
-		,{"notice","수시공시"}							
-		,{"record","사업보고서"}							
-		,{"inspect","감사보고서"}							
-		,{"manage","경영공시","/jtadm/board/manage/list"}							
-		,{"announcement","공고","/jtadm/board/announcement/list"}							
-		,{"presentation","실적분석보고서","/jtadm/board/presentation/list"}							
-		,{"fact_sheet","Fact Sheet","/jtadm/board/fact_sheet/list"}
-		,{"annualreport","Annual Report","/jtadm/board/annualreport/list"}							
-		,{"news","뉴스","/jtadm/board/news/list"}
-	};		
 
 	
-	public static final String [][] _BbsBcodeEnTitle={
-		{"inspect","Audit Report"}						
-		,{"presentation","Earnings Release"}							
-		,{"fact_sheet","FACT SHEET"}
-		,{"annualreport","ANNUAL REPORT"}							
-	};		
-		
-	public static final String [][]  _BannerGubun ={
-		{"A","메인비주울"}		
-	};
-	
-	public static final String [][]  _PopupGubun ={
-			{"A","일반"}			
-	};	
-		
-	public static final String []  _Cate ={
-		"카테고리1"
-		,"카테고리2"		
-	};	
-	*/
 	
 }
