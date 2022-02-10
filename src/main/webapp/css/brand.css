@@ -110,10 +110,11 @@
 .archive .yearWrap:first-child{display:block}
 .archive .categoryWrap{width:100%;position:relative} 
 .archive .categoryWrap .slides > li{background-position:center top;background-repeat:no-repeat;background-size:cover;position:relative}
+.archive .categoryWrap .slides > li > a{display:block;width:100%;height:100%;}
 .archive .categoryWrap .slides > li img.forPC{width:0;height:0;opacity:0}
 .archive .categoryWrap .slides > li img.forMobile{width:0;height:0;opacity:0}
 .archive .categoryWrap .titleText{position:absolute;top:50%;transform:translateY(-50%);text-align:center}
-.archive .categoryWrap h5{font-size:48px;font-weight:500;color:#fff;text-shadow:0px 0px 20px rgba(243,222,231,0.7)}
+.archive .categoryWrap h5{font-size:48px;font-weight:500;color:#fff}
 .archive .categoryWrap h5 span{margin-right:10px}
 .archive .categoryWrap h6{font-size:48px;color:#fff;margin-top:10px;font-weight:400}
 .archive .categoryWrap h6 span{margin-left:10px}
