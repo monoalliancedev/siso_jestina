@@ -199,9 +199,8 @@
             </section>
             <!--//Brand소개-->
             <!--Social Media-->
-             <!--  #### git에는 있는데 수정사항에서 빼달라고 한부분 
             <section class="socialMedia">
-                <article>
+                <article style="display: none;">
                     <h5>social media</h5>
                     <ul>
                         <li><a href="#" target="_blank"><i><img src="/images/icon_main_social_insta.svg"/></i><img src="/images/sample/main_social_thumb_01.jpg" class="loadImg"/></a></li>
@@ -212,7 +211,6 @@
                     </ul>
                 </article>
             </section>
-            -->
             <!--//Social Media-->
             <!--Buttom Menu-->
             <section class="bottomMenu"></section>

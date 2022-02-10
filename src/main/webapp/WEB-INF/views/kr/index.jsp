@@ -230,8 +230,7 @@
             </section>
             <!--//Latest-->
             <!--Social Media-->
-            <!--  #### git에는 있는데 수정사항에서 빼달라고 한부분 
-            <section class="socialMedia">
+            <section class="socialMedia" style="display:none;">
                 <article>
                     <h5>social media</h5>
                     <ul>
@@ -243,7 +242,6 @@
                     </ul>
                 </article>
             </section>
-            -->
             <!--//Social Media-->
             <!--Buttom Menu-->
             <section class="bottomMenu"></section>

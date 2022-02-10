@@ -32,12 +32,14 @@ $(document).ready(function () {
         pausePlay: true,
         start: function () {
             $('.mainBanner .slides > li:nth-child(2) video').get(0).play();
+            /*
             var activeNumber = $('.mainBanner .controller > ol > li a.flex-active span').html();
             if (activeNumber >= 10) {
                 $('.mainBanner .controller > span.activeNO').html(activeNumber);
             } else {
                 $('.mainBanner .controller > span.activeNO').html('0' + activeNumber);
             };
+            */
             $('.mainBanner .controller > ol > li a.flex-active span').stop().animate({ 'width': '100%' });
             function ctrlAction() {
                 var bannerEA = $('.mainBanner .slides > li').length - 2;
@@ -195,29 +197,14 @@ $(document).ready(function () {
     });
 
     /*----------Brand 소개----------*/
-    $('.brandIntro .imgPhoto img').load(function () {
-        function brandIntroObjSize() {
-            $('.brandIntro article').each(function () {
-                var brandPhotoSize = $(this).find('.imgPhoto img').height();
-                $(this).css('height', brandPhotoSize);
-                $(this).find('.info ul').css('height', brandPhotoSize);
-            });
-        }
-        function productFun() {
-            $('.brandIntro .imgPhoto').each(function () {
-                var prdImgSec = $(this).find('img').attr('src');
-                $(this).css('background-image', 'url(' + prdImgSec + ')');
-            });
-        };
-        productFun();
-        $(window).resize(function () {
-            brandIntroObjSize();
+    function productFun() {
+        $('.brandIntro .imgPhoto').each(function () {
+            var prdImgSec = $(this).find('img.forMobile').attr('src');
+            $(this).css('background-image', 'url(' + prdImgSec + ')');
         });
-        setTimeout(function () {
-            brandIntroObjSize();
-        });
-    });
-    $(window).scroll(function () {
+    };
+    productFun();
+    function brandMotion(){
         var brandJewelryPos = $('.brandIntro .jewelry').offset().top;
         var brandHandbagPos = $('.brandIntro .handbag').offset().top;
         var brandRomansonPos = $('.brandIntro .romanson').offset().top;
@@ -272,8 +259,11 @@ $(document).ready(function () {
             $('.brandIntro .info .more').stop().animate({ 'opacity': 0});
             $('.brandIntro .info .more a').stop().animate({'margin-right': '40px' });
         };
+    }
+    brandMotion();
+    $(window).scroll(function () {
+        brandMotion();
     });
-
     /*----------Brand 소개(모바일)----------*/
     $('.moBrandIntro .imgPhoto img').load(function () {
         function mobileProductFun() {

@@ -84,7 +84,7 @@ function jt_list() {
                         <dl>
                             <dt>上一篇</dt>
                             <dd>
-                            	<a href="#" onclick="jt_link(${board.nextSeq})">${board.nextTitle}</a><span>${board.preRegdate}</span>
+                            	<a href="#" onclick="jt_link(${board.nextSeq})">${board.nextTitle}</a><span>${board.nextRegdate}</span>
                             </dd>
                         </dl>
                         </c:if>

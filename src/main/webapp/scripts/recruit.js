@@ -22,46 +22,6 @@ $(document).ready(function () {
             }
         });
     });
-    /*----------직무소개----------*/
-    function dutyFun() {
-        $('.duty .tabDataWrap').flexslider({
-            animation: '',
-            directionNav: false,
-            animationLoop: false,
-            controlNav: true,
-            slideshow: false,
-            smoothHeight: true,
-            controlsContainer: '.duty .tabButton .buttons',
-            start: function () {
-                var tabEA = $('.tabDataWrap .tabData').length;
-                for (var i = 0; i < tabEA; i++) {
-                    var tabTitle = $('.tabDataWrap .tabData').eq(i).attr('data-tab');
-                    $('.tabButton ol li').eq(i).find('span').html(tabTitle);
-                }
-                $('.duty .tabButton ol li').each(function () {
-                    $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
-                });
-            },
-            after: function () {
-                var prevOffset = $('.duty .tabButton ol a.flex-active').parent('li').css('left');
-                $('.duty .tabButton .buttons ol').animate({ scrollLeft: prevOffset });
-            }
-        });
-    }
-    dutyFun();
-    $('.duty .tabButton > a.prev').click(function () {
-        $('.duty .tabDataWrap').flexslider('prev');
-        return false;
-    });
-    $('.duty .tabButton > a.next').click(function () {
-        $('.duty .tabDataWrap').flexslider('next');
-        return false;
-    });
-    $(window).resize(function () {
-        $('.duty .tabButton ol li').each(function () {
-            $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
-        })
-    });
     /*----------입사지원----------*/
     //첨부파일
     $('.application .addFile .fileField input').MultiFile({

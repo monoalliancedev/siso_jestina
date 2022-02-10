@@ -13,7 +13,49 @@
         <%@ include file="/WEB-INF/views/kr/common/headerAndMenu.jsp" %>
         <script type="text/javascript" src="/scripts/sub.js"></script>
         <script type="text/javascript" src="/scripts/jquery.flexslider.js"></script>
-        <script type="text/javascript" src="/scripts/recruit.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                function dutyFun() {
+                    $('.duty .tabDataWrap').flexslider({
+                        animation: '',
+                        directionNav: false,
+                        animationLoop: false,
+                        controlNav: true,
+                        slideshow: false,
+                        smoothHeight: true,
+                        controlsContainer: '.duty .tabButton .buttons',
+                        start: function () {
+                            var tabEA = $('.tabDataWrap .tabData').length;
+                            for (var i = 0; i < tabEA; i++) {
+                                var tabTitle = $('.tabDataWrap .tabData').eq(i).attr('data-tab');
+                                $('.tabButton ol li').eq(i).find('span').html(tabTitle);
+                            }
+                            $('.duty .tabButton ol li').each(function () {
+                                $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
+                            });
+                        },
+                        after: function () {
+                            var prevOffset = $('.duty .tabButton ol a.flex-active').parent('li').css('left');
+                            $('.duty .tabButton .buttons ol').animate({ scrollLeft: prevOffset });
+                        }
+                    });
+                }
+                dutyFun();
+                $('.duty .tabButton > a.prev').click(function () {
+                    $('.duty .tabDataWrap').flexslider('prev');
+                    return false;
+                });
+                $('.duty .tabButton > a.next').click(function () {
+                    $('.duty .tabDataWrap').flexslider('next');
+                    return false;
+                });
+                $(window).resize(function () {
+                    $('.duty .tabButton ol li').each(function () {
+                        $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
+                    })
+                });
+            });
+        </script>
         <link rel="stylesheet" type="text/css" href="/css/recruit.css" />
         <div id="container" class="sub recruit duty">
             <!--Top Common-->
