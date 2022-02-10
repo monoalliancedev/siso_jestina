@@ -283,6 +283,13 @@ function Jt_openFile(key){
                             </td>
                         </tr>
                         <tr>
+                            <th>텍스트 정렬</th>
+                            <td colspan=3>
+                            	<input type="radio" name="textLocation" id="textLocation" value="Left"  <c:if test="${muse.textLocation eq 'Left'}">checked</c:if>  /> 왼쪽
+                            	<input type="radio" name="textLocation" id="textLocation" value="Right" <c:if test="${muse.textLocation eq 'Right'}">checked</c:if> /> 오른쪽
+                            </td>
+                        </tr>
+                        <tr>
                             <th>뮤즈년도 <span class="colorRed">*</span></th>
                             <td>
                             	<select class="select year" name="museYear">
@@ -324,15 +331,6 @@ function Jt_openFile(key){
                             <th>뮤즈 카테고리 (CN) <span class="colorRed">*</span></th>
                             <td><input type="text" name="cateCn" id="cateCN" value="${muse.cateCn}" class="enterText" placeholder="뮤즈 카테고리 (CN)를 입력해주세요."/></td>
                         </tr>
-                        <!-- 
-                        <tr>
-                            <th>텍스트 정렬</th>
-                            <td colspan=3>
-                            	<input type="radio" name="textLocation" id="textLocation" value="Left"  <c:if test="${muse.textLocation eq 'Left'}">checked</c:if>  /> 왼쪽
-                            	<input type="radio" name="textLocation" id="textLocation" value="Right" <c:if test="${muse.textLocation eq 'Right'}">checked</c:if> /> 오른쪽
-                            </td>
-                        </tr>
-                         -->
                         <tr id=linkTrKR>
                             <th>링크주소 (KR)</th>
                             <td class="url" colspan=3>
@@ -411,10 +409,6 @@ function Jt_openFile(key){
                                 </div>
                             </td>
                         </tr>
-                        
-                        
-                        <!--
-                        
                         <tr id=MoFileTrKR>
                             <th>MO 이미지 (KR) <span class="colorRed">*</span></th>
                             <td class="file" colspan=3>
@@ -430,7 +424,7 @@ function Jt_openFile(key){
                                 </div>
                             </td>
                         </tr>
-                        <tr id=FileTrEN>
+                        <tr id=MoFileTrEN>
                             <th>MO 이미지 (EN) <span class="colorRed">*</span></th>
                             <td class="file" colspan=3>
                                 <div class="fileField">
@@ -445,7 +439,7 @@ function Jt_openFile(key){
                                 </div>
                             </td>
                         </tr>
-                        <tr id=FileTrCN>
+                        <tr id=MoFileTrCN>
                             <th>MO 이미지 (CN) <span class="colorRed">*</span></th>
                             <td class="file" colspan=3>
                                 <div class="fileField">
@@ -460,11 +454,6 @@ function Jt_openFile(key){
                                 </div>
                             </td>
                         </tr>
-                         -->
-                        
-                        
-                        
-                        
                     </table>
                 </article>
             </section>
@@ -485,11 +474,13 @@ function Jt_langCheck(key) {
 	if($('#lang'+key).is(':checked')){
 		$('#linkTr'+key).attr('style', "display:'';");  //나타내기
 		$('#FileTr'+key).attr('style', "display:'';");  //나타내기
+		$('#MoFileTr'+key).attr('style', "display:'';");  //나타내기
 		$('#nameTr'+key).attr('style', "display:'';");  //나타내기
 		
 	}else{
 		$('#linkTr'+key).attr('style', "display:none;");  //숨기기
 		$('#FileTr'+key).attr('style', "display:none;");  //숨기기
+		$('#MoFileTr'+key).attr('style', "display:none;");  //숨기기
 		$('#nameTr'+key).attr('style', "display:none;");  //숨기기
 	}
 }

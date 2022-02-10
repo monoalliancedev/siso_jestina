@@ -39,14 +39,21 @@
                            	<c:forEach var="file" items="${museAndFileList.get(muse.seq)}" varStatus="fileIdx"><!-- ${fileIdx.index} -->
                            	<!--for(이미지 루프)--> 
                            	<li>
-                                <c:if test="${muse.textLocation eq 'Left'}">
-                                </c:if>
-                                <c:if test="${muse.textLocation eq 'Right'}">
-                                </c:if>
-                                <div class="titleText">
-                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
-                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
-                                </div>
+                                <c:choose>
+		                        	<c:when test="${muse.textLocation eq 'Right'}">
+		                        		<div class="titleText">
+	                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
+	                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
+	                                	</div>
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<div class="titleText">
+	                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
+	                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
+	                                	</div>
+		                        	</c:otherwise>
+		                        </c:choose>
+
                                 <c:if test="${file.save_filename ne ''}">
 			                        <c:if test="${muse.linkOutYn eq 'Y'}">
 				                    <a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>

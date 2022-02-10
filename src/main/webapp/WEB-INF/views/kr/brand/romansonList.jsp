@@ -54,6 +54,8 @@ $(window).scroll(function () {
 <script>
 function jt_load(code) {
 
+	
+	
 	$.ajax({
 
 		type: "GET",
@@ -62,26 +64,15 @@ function jt_load(code) {
 		success:function(data){
 
 			var files_isKey = "";
-
-			//-- 상품리스트
-			$("#prolist").children().remove();
-			$.each(data.list, function(k,v) {
-				
-				var files_html = "";
-				files_html += "<a href='romansonView?code="+ v.seq + "&cateCode="+ data.cateCode + "'>";
-				files_html += "<div class='photo'><img src='/UploadFiles/"+ data.fileFolder + "/"+ v.fileViewName[0] + "'/></div>";
-				files_html += "<div class='name'>"+ v.proName + "</div>";
-				files_html += "<div class='cate'>"+ v.cateName + "</div>";
-				files_html += "</a>";
-				$("#prolist").append("<li>"+files_html+"</li>");
-			});
-
+			//alert("### Seq : " + data.Seq +"\n ### CateName : " + data.CateName +"\n PreSeq : "+ data.PreSeq +"\n ### PreCateName : "+ data.PreCateName +"\n ### NextSeq : "+ data.NextSeq +"\n ### NextCateName : "+ data.NextCateName);
+			
 			//-- 카테고리 리스트
 			$("#catelist").children().remove();
 			if(data.cateCode==0) 
 				var cate_html = "<a href='javascript:jt_load(0)' class='on'>NEW ARRIVALS</a>";
 			else
 				var cate_html = "<a href='javascript:jt_load(0)'>NEW ARRIVALS</a>";
+
 
 			$.each(data.categoryList, function(k,v) {
 				if(v.seq==data.cateCode) 
@@ -93,24 +84,36 @@ function jt_load(code) {
 			var onListText = $('.romanson .topText dd a.on').text(); //선택된 카테고리 view
 	        $('.romanson .topText dt i').text(onListText);
 
-	      	//-- 카테고리 이전/다음
+			//-- 카테고리 이전/다음 초기화
 	      	$('#catepre').html("");
 	      	$('#catecur').html("");
 	      	$('#catenex').html("");
+	      	//-- 카테고리 이전/다음
 	      	$('#catepre').html("<a href=\"javascript:jt_load('" + data.PreSeq + "')\" class='prevPrd'><span>" + data.PreCateName + "</span><img src='/images/icon_brand_romanson_prev.svg'/></a>");
 	      	$('#catecur').html("" + data.CateName + "");
 	      	$('#catenex').html("<a href=\"javascript:jt_load('" + data.NextSeq + "')\" class='nextPrd'><span>" + data.NextCateName + "</span><img src='/images/icon_brand_romanson_next.svg'/></a>");
+
+	      	//-- 상품리스트
+			$("#prolist").children().remove();
+			$.each(data.list, function(k,v) {
+				var files_html = "";
+				files_html += "<a href='romansonView?code="+ v.seq + "&cateCode="+ data.cateCode + "'>";
+				files_html += "<div class='photo'><img src='/UploadFiles/"+ data.fileFolder + "/"+ v.fileViewName[0] + "'/></div>";
+				files_html += "<div class='name'>"+ v.proName + "</div>";
+				files_html += "<div class='cate'>"+ v.cateName + "</div>";
+				files_html += "</a>";
+				$("#prolist").append("<li>"+files_html+"</li>");
+			});
 			
 		},
 		error:function(xhr, status, errorThrown){
 			//alert(status);
-			//alert("2222222222");
 		}
 	});
 	
 }
 </script>
-           
+           				
             <!--//Top Common-->
             <section class="topVisual">
                 <div class="commImgArea">

@@ -151,6 +151,14 @@ public class BrandController {
 		jsonData.put("NextSeq", frontCate.getNextSeq()); 
 		jsonData.put("NextCateName", frontCate.getNextCateName()); 
 
+		/*
+		System.out.println("### Seq : " + frontCate.getSeq()); 
+		System.out.println("### CateName : " + frontCate.getCateName());
+		System.out.println("### PreSeq : " + frontCate.getPreSeq());
+		System.out.println("### PreCateName" + frontCate.getPreCateName());
+		System.out.println("### NextSeq : " + frontCate.getNextSeq());
+		System.out.println("### NextCateName : " + frontCate.getNextCateName());
+		*/
 		return jsonData.toString();		
 		
 	}

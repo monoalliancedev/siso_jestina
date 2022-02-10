@@ -120,6 +120,7 @@ public class AdmMuseController {
 		if (seq.equals("0")) {
 			museDTO.setSeq(0);
 			museDTO.setIsntYn("N");
+			museDTO.setTextLocation("Left");
 			mv.addObject("processKey", "Insert");
 
 			// 임의에 상품키값을 가져온다.(상품 등록일때)
