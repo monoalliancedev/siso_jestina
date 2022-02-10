@@ -36,6 +36,25 @@
         			<c:if test="${mainBanner.fileType eq 'image'}">
 					<!--  메인베너 이미지 일때 -->
 					<li class="typeImage">
+                        <!-- #### git에 수정되어 있는 데이타   
+                        <c:choose>
+                            <c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
+                                <a href="${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>$
+                                    <div class="tit">${mainBanner.contents}</div>
+                                    <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                                    <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                                    <div class="bg">&nbsp;</div>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                        		<div class="tit">${mainBanner.contents}</div>
+                                <c:if test="${mainBanner.imgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.imgUrl}" class="forPC"/></c:if>
+                                <c:if test="${mainBanner.moimgUrl ne ''}"><img src="/UploadFiles/MainBanner/${mainBanner.moimgUrl}" class="forMobile"/></c:if>
+                                <div class="bg">&nbsp;</div>
+                        	</c:otherwise>
+                        </c:choose>
+                        -->
+                        <!-- #### 수정한 데이타-->
                         <c:choose>
                         	<c:when test="${mainBanner.linkUrl ne '' && (mainBanner.linkOutYn eq 'Y' || mainBanner.linkOutYn eq 'C')}">
                         		<a href="<c:if test="${not fn:contains(mainBanner.linkUrl,'http://') && not fn:contains(mainBanner.linkUrl,'https://')}">http://</c:if>${mainBanner.linkUrl}" <c:if test="${mainBanner.linkOutYn eq 'Y'}">target="_blank"</c:if>>
@@ -56,7 +75,7 @@
                     </c:if>
                 </c:forEach>    
                 </ul>
-                <div class="controller"><span class="activeNO"></span><span class="totalNO"></span></div>
+                <div class="controller"><span class="activeNO">01</span><span class="totalNO"></span></div>
 <c:if test="${mainBannerList.size()>1}">	
                 <a href="#" class="ctrlBtn prev"><img src="/images/icon_ban_arrow_left.svg"/></a>
                 <a href="#" class="ctrlBtn next"><img src="/images/icon_ban_arrow_right.svg"/></a>
@@ -88,7 +107,22 @@
                 <!--J.ESTINA JEWELRY-->
                 <article class="jewelry">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<a href="/cn/brand/jewelry"><img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}"/></a>
+                    	<!-- #### git에 수정되어 있는 데이타   
+                    	<c:choose>
+                        	<c:when test="${mainBarndJ.linkUrl ne '' && (mainBarndJ.linkOutYn eq 'Y' || mainBarndJ.linkOutYn eq 'C')}">
+                        		<a href="${mainBarndJ.linkUrl}" <c:if test="${mainBarndJ.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Jewerly/${mainBarndJ.imgUrl}"/></a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forPC"/>
+                        		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forMobile"/>
+                        	</c:otherwise>
+                        </c:choose>
+                        -->
+                        <!-- #### 수정한 데이타-->
+                        <a href="/cn/brand/jewelry">
+                    		<img src="/UploadFiles/Jewelry/${mainBarndJ.imgUrl}" class="forPC"/>
+                    		<img src="/UploadFiles/Jewelry/${mainBarndJ.moimgUrl}" class="forMobile"/>
+                    	</a>
                     </div>
                     <div class="info">
                         <ul>
@@ -104,7 +138,21 @@
                 <!--J.ESTINA HANDBAG-->
                 <article class="handbag">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<a href="/cn/brand/handbag"><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
+                    	<!-- #### git에 수정되어 있는 데이타
+                    	<c:choose>
+                        	<c:when test="${mainBarndB.linkUrl ne '' && (mainBarndB.linkOutYn eq 'Y' || mainBarndB.linkOutYn eq 'C')}">
+                        		<a href="${mainBarndB.linkUrl}" <c:if test="${mainBarndB.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Bag/${mainBarndB.imgUrl}"/></a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}" class="forPC"/>
+                        		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}" class="forMobile"/>
+                        	</c:otherwise>
+                        </c:choose>
+                        -->
+                        <a href="/cn/brand/handbag">
+                    		<img src="/UploadFiles/Bag/${mainBarndB.imgUrl}" class="forPC"/>
+                    		<img src="/UploadFiles/Bag/${mainBarndB.moimgUrl}" class="forMobile"/>
+                    	</a>
                     </div>
                     <div class="info">
                         <ul>
@@ -120,7 +168,22 @@
                 <!--ROMANSON-->
                 <article class="romanson">
                     <div class="imgPhoto"><div class="blind">&nbsp;</div>
-                    	<a href="/cn/brand/romanson"><img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}"/></a>
+                    	<!-- #### git에 수정되어 있는 데이타
+                    	<c:choose>
+                        	<c:when test="${mainBarndR.linkUrl ne '' && (mainBarndR.linkOutYn eq 'Y' || mainBarndR.linkOutYn eq 'C')}">
+                        		<a href="${mainBarndR.linkUrl}" <c:if test="${mainBarndR.linkOutYn eq 'Y'}">target="_blank"</c:if>><img src="/UploadFiles/Romason/${mainBarndR.imgUrl}"/></a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}" class="forPC"/>
+                        		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}" class="forMobile"/>
+                        	</c:otherwise>
+                        </c:choose>
+                        -->
+                        <!-- #### 수정한 데이타-->
+                        <a href="/cn/brand/romanson">
+                    		<img src="/UploadFiles/Romanson/${mainBarndR.imgUrl}" class="forPC"/>
+                    		<img src="/UploadFiles/Romanson/${mainBarndR.moimgUrl}" class="forMobile"/>
+                    	</a>
                     </div>
                     <div class="info">
                         <ul>
@@ -135,9 +198,9 @@
                 <!--//ROMANSON-->
             </section>
             <!--//Brand소개-->
-            <!--Social Media
+            <!--Social Media-->
             <section class="socialMedia">
-                <article>
+                <article style="display: none;">
                     <h5>social media</h5>
                     <ul>
                         <li><a href="#" target="_blank"><i><img src="/images/icon_main_social_insta.svg"/></i><img src="/images/sample/main_social_thumb_01.jpg" class="loadImg"/></a></li>
@@ -147,7 +210,7 @@
                         <li><a href="#" target="_blank"><i><img src="/images/icon_main_social_insta.svg"/></i><img src="/images/sample/main_social_thumb_05.jpg" class="loadImg"/></a></li>
                     </ul>
                 </article>
-            </section>-->
+            </section>
             <!--//Social Media-->
             <!--Buttom Menu-->
             <section class="bottomMenu"></section>
@@ -217,7 +280,6 @@ function setCookie( name, value, expiredays ){
 <!--//팝업-->
 <script></script>  
 <script>
-
 //팝업전체 div (모두 다시안보기일때 팝업div를 열지 않는다.) 
 var CookieIsCnt = 0;
 for (var i = 0; i < $('.popupWrap .popupData').length; i++) {
@@ -227,9 +289,6 @@ for (var i = 0; i < $('.popupWrap .popupData').length; i++) {
 if(CookieIsCnt<${MainPopupList.size()}) {
 	$('.popupWrap').show();	//팝업전체div
 }
-
-
-
 //개별 popup창 숨기기,보여주기
 for (var i = 0; i < $('.popupWrap .popupData').length; i++) {
 	var cookieID = getCookie("popup"+(i+1)+"YN");
@@ -239,10 +298,8 @@ for (var i = 0; i < $('.popupWrap .popupData').length; i++) {
 		$('.popupWrap .popupData').eq(i).show(); //i번째 보여줌
 	}
 }
-
 //닫기버튼을 누를때 다시보지않기 클릭한 팝업은 쿠키값을 넣어준다.
 $('.popupWrap .close').click(function () {
-
 	<c:forEach var="MainPopup" items="${MainPopupList}" varStatus="stat">
 	if($('input:checkbox[id="dayHide${stat.count}"]').is(":checked") == true) {
 		setCookie( "popup${stat.count}YN", "N" , 1 ); 
@@ -263,4 +320,3 @@ $('.popupWrap .close').click(function () {
 </c:if>
 </body>
 </html>
-           
