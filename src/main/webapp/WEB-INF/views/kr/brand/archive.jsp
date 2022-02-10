@@ -50,12 +50,12 @@
                                 </div>
                                 <c:if test="${file.save_filename ne ''}">
 			                        <c:if test="${muse.linkOutYn eq 'Y'}">
-				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
-				                    <a href="${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
+				                    <a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
+				                    <a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}" target="_blank"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
 				                    </c:if>
 				        			<c:if test="${muse.linkOutYn eq 'C'}">
-				        			<a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
-				        		    <a href="${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
+				        			<a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
+				        		    <a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
 				        		    </c:if>
 				                    <c:if test="${muse.linkOutYn eq 'N'}">
 				        			<img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/>
