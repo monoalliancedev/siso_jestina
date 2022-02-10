@@ -63,19 +63,7 @@ function jt_load(code) {
 
 			var files_isKey = "";
 
-			//-- 상품리스트
-			$("#prolist").children().remove();
-			$.each(data.list, function(k,v) {
-				
-				var files_html = "";
-				files_html += "<a href='romansonView?code="+ v.seq + "&cateCode="+ data.cateCode + "'>";
-				files_html += "<div class='photo'><img src='/UploadFiles/"+ data.fileFolder + "/"+ v.fileViewName[0] + "'/></div>";
-				files_html += "<div class='name'>"+ v.proName + "</div>";
-				files_html += "<div class='cate'>"+ v.cateName + "</div>";
-				files_html += "</a>";
-				$("#prolist").append("<li>"+files_html+"</li>");
-			});
-
+			
 			//-- 카테고리 리스트
 			$("#catelist").children().remove();
 			if(data.cateCode==0) 
@@ -93,13 +81,28 @@ function jt_load(code) {
 			var onListText = $('.romanson .topText dd a.on').text(); //선택된 카테고리 view
 	        $('.romanson .topText dt i').text(onListText);
 
-	      	//-- 카테고리 이전/다음
+	      	//-- 카테고리 이전/다음 초기화
 	      	$('#catepre').html("");
 	      	$('#catecur').html("");
 	      	$('#catenex').html("");
+	      	//-- 카테고리 이전/다음
 	      	$('#catepre').html("<a href=\"javascript:jt_load('" + data.PreSeq + "')\" class='prevPrd'><span>" + data.PreCateName + "</span><img src='/images/icon_brand_romanson_prev.svg'/></a>");
 	      	$('#catecur').html("" + data.CateName + "");
 	      	$('#catenex').html("<a href=\"javascript:jt_load('" + data.NextSeq + "')\" class='nextPrd'><span>" + data.NextCateName + "</span><img src='/images/icon_brand_romanson_next.svg'/></a>");
+
+	      	//-- 상품리스트
+			$("#prolist").children().remove();
+			$.each(data.list, function(k,v) {
+				
+				var files_html = "";
+				files_html += "<a href='romansonView?code="+ v.seq + "&cateCode="+ data.cateCode + "'>";
+				files_html += "<div class='photo'><img src='/UploadFiles/"+ data.fileFolder + "/"+ v.fileViewName[0] + "'/></div>";
+				files_html += "<div class='name'>"+ v.proName + "</div>";
+				files_html += "<div class='cate'>"+ v.cateName + "</div>";
+				files_html += "</a>";
+				$("#prolist").append("<li>"+files_html+"</li>");
+			});
+	      	
 			
 		},
 		error:function(xhr, status, errorThrown){
