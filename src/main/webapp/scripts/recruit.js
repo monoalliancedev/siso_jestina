@@ -1,4 +1,27 @@
 $(document).ready(function () {
+    /*----------채용공고----------*/
+    //FAQ
+    $('.recruit.jobOpening .faqWrap dt').click(function () {
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on');
+            $(this).next('dd').stop().slideUp();
+            $(this).next('dd').scrollTop(0);
+        } else {
+            $('.jobOpening .faqWrap dt').removeClass('on');
+            $('.jobOpening .faqWrap dd').stop().slideUp();
+            $(this).next('dd').stop().slideDown();
+            $(this).addClass('on');
+        }
+    });
+    //목록 제목
+    $('.recruit.jobOpening .listWrap li.tit').each(function () {
+        var length = 25;
+        $(this).each(function () {
+            if ($(this).text().length >= length) {
+                $(this).text($(this).text().substr(0, length) + '...');
+            }
+        });
+    });
     /*----------직무소개----------*/
     function dutyFun() {
         $('.duty .tabDataWrap').flexslider({
@@ -38,29 +61,6 @@ $(document).ready(function () {
         $('.duty .tabButton ol li').each(function () {
             $(this).next('li').css({ 'left': $(this).outerWidth() + parseInt($(this).css('left')) })
         })
-    })
-    /*----------채용공고----------*/
-    //목록 제목
-    $('.recruit.jobOpening .listWrap li.tit').each(function () {
-        var length = 25;
-        $(this).each(function () {
-            if ($(this).text().length >= length) {
-                $(this).text($(this).text().substr(0, length) + '...');
-            }
-        });
-    });
-    //FAQ
-    $('.recruit.jobOpening .faqWrap dt').click(function () {
-        if ($(this).hasClass('on')) {
-            $(this).removeClass('on');
-            $(this).next('dd').stop().slideUp();
-            $(this).next('dd').scrollTop(0);
-        } else {
-            $('.jobOpening .faqWrap dt').removeClass('on');
-            $('.jobOpening .faqWrap dd').stop().slideUp();
-            $(this).next('dd').stop().slideDown();
-            $(this).addClass('on');
-        }
     });
     /*----------입사지원----------*/
     //첨부파일
