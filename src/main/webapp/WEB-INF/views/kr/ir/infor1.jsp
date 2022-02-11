@@ -30,7 +30,7 @@
             <section class="content">
                 <!--실시간 시세-->
                 <article class="realTime">
-                    <h3><!-- 실시간 시세--> <span class="date"><fmt:formatDate value="${now}" pattern="yyyy/MM/dd hh:mm:ss" /> 기준</span></h3>
+                    <h3><!-- 실시간 시세--> <span class="date"><fmt:formatDate value="${now}" pattern="yyyy/MM/dd" /> (전일종가기준)</span></h3>
                     <ul>
                         <li>
                             <div class="box">
