@@ -19,13 +19,6 @@
                     $(this).hide();
                 }
             });
-            function fileSizeView(){
-                $('.fileField .addFile .viewInfo .size i').each(function(){
-                    var thisFileSize = parseInt($(this).text())
-                    $(this).text(Math.ceil(thisFileSize/1024).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-                })
-            }
-            fileSizeView();
         });
     </script>
     

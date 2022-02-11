@@ -355,6 +355,14 @@ $(document).ready(function () {
         $(this).parent('.fileField').find('.viewInfo').addClass('infile');
         $(this).parent('.fileField').find('.delBtn').show();
     });
+    //이미첨부된 파일용량
+    function addFileSizeView(){
+        $('.fileField .addFile .viewInfo .size i').each(function(){
+            var thisFileSize = parseInt($(this).text())
+            $(this).text(Math.ceil(thisFileSize/1024).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        })
+    }
+    addFileSizeView();
     //카테고리 추가
     $('.romansonMgmt.caegory .commBtn.black , .romansonMgmt.productReg td.cate button.cateBtn').click(function () {
         $('.layerPopup.categoryAdd').fadeIn();
