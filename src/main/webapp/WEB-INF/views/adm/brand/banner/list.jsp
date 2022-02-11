@@ -169,7 +169,7 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
                                         <c:when test="${banner.fileViewName[0] ne '' and banner.fileViewName[0] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName0${arrGubun[status.count-1]}"> ${banner.fileViewName[0]} </span> 
-	                                        <span class="size" id="SignSize0${arrGubun[status.count-1]}">(${banner.fileViewSize[0]} KB)</span>
+	                                        <span class="size" id="SignSize0${arrGubun[status.count-1]}">(<i>${banner.fileViewSize[0]}</i>KB)</span>
 	                                        <span class="seq" id="SignSeq0${arrGubun[status.count-1]}"><a href='#' onclick="Jt_fileDelete('${banner.seq}','${banner.fileViewSeq[0]}','0','${arrGubun[status.count-1]}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>
@@ -193,7 +193,7 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
                                         <c:when test="${banner.fileViewName[1] ne '' and banner.fileViewName[1] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName1${arrGubun[status.count-1]}"> ${banner.fileViewName[1]} </span> 
-	                                        <span class="size" id="SignSize1${arrGubun[status.count-1]}">(${banner.fileViewSize[1]} KB)</span>
+	                                        <span class="size" id="SignSize1${arrGubun[status.count-1]}">(<i>${banner.fileViewSize[1]}</i>KB)</span>
 	                                        <span class="seq" id="SignSeq1${arrGubun[status.count-1]}"><a href='#' onclick="Jt_fileDelete('${banner.seq}','${banner.fileViewSeq[1]}','1','${arrGubun[status.count-1]}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>

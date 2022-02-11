@@ -351,7 +351,7 @@ $(document).ready(function () {
         var fileSizeKB = fileSize / 1024
         var outputFileSize = Math.ceil(fileSizeKB)
         $(this).parent('.fileField').find('.viewInfo .name').html(addFileName);
-        $(this).parent('.fileField').find('.viewInfo .size').html('('+outputFileSize + 'KB)');
+        $(this).parent('.fileField').find('.viewInfo .size').html('('+(outputFileSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'KB)');
         $(this).parent('.fileField').find('.viewInfo').addClass('infile');
         $(this).parent('.fileField').find('.delBtn').show();
     });

@@ -185,8 +185,8 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 .hasTopTH .cellBody td a:hover{text-decoration:underline}
 .hasTopTH .cellBody td.alLeft{text-align:left}
 .hasTopTH .cellBody td.tit a{color:#727272}
-.hasTopTH .cellBody a.inBtn{margin:0 8px;position:relative;cursor:default}
-.hasTopTH .cellBody a.inBtn::after{display:none;position:absolute;font-size:12px;background:#101010;color:#fff;white-space:nowrap;width:30px;line-height:20px;border-radius:1px;left:50%;transform:translateX(-50%);top:25px}
+.hasTopTH .cellBody a.inBtn{margin:0 8px;position:relative;cursor:pointer}
+.hasTopTH .cellBody a.inBtn::after{display:none;position:absolute;font-size:12px;background:#101010;color:#fff;white-space:nowrap;width:30px;line-height:20px;border-radius:1px;left:50%;transform:translateX(-50%);top:25px;text-align:center;}
 .hasTopTH .cellBody a.inBtn:hover::after{display:block}
 .hasTopTH .cellBody a.inBtn.modify::after{content:'수정';}
 .hasTopTH .cellBody a.inBtn.del::after{content:'삭제';}
@@ -209,7 +209,7 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 .hasLeftTH td.url select.select{width:92px}
 .hasLeftTH td.url input.enterText{width:calc(100% - 102px);float:right}
 .hasLeftTH td.file .fileField{width:100%}
-.hasLeftTH td.editor{padding:0;height:auto}
+.hasLeftTH td.editor{padding:7px 28px 7px 10px;height:auto}
 .hasLeftTH tr.address th{vertical-align:top;padding-top:18px}
 .hasLeftTH tr.address td input.enterText:first-child{margin-bottom:6px}
 
@@ -302,6 +302,17 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 /*브랜드관리 > 매장관리*/
 .shopMgmt .order{height:34px;border:1px solid #101010;padding:0 10px;border-radius:2px;background:#fff;margin-right:6px}
 .shopMgmt .commBtn{margin-left:6px}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.name{padding:0 10px;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.name a{text-align:left;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;max-width:100%;display: block;line-height:1.6;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.name a:hover{text-decoration: underline;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.tit a{text-align:left;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;max-width:100%;display: block;line-height:1.6;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.tit a:hover{text-decoration: underline;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft a::after{content:'수정';position: absolute;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody{border-bottom:1px solid #f0f0f0;padding-bottom:0;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody table tr:last-child{border-bottom:none;}
+.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody table tr:last-child td{border-bottom:none;}
+
+
 
 /*기본설정 > 팝업관리 > 팝업등록*/
 .popupReg .topSubCntn .commBtn{margin-left:7px}
