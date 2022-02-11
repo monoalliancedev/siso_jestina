@@ -48,12 +48,11 @@ public class IRController {
 		
 		Date now = new Date();
 		
-		//오늘이 토,일,월요일 일경우 금요일날짜를 구한다.
+		//오늘이 일,월요일 일경우 금요일날짜를 구한다.//나머지는 하루전
 		Calendar oCalendar = Calendar.getInstance( );  
 		if(oCalendar.get(Calendar.DAY_OF_WEEK)==1) now = ComUtils.AddDay(now, -2); //일요일 /이틀전
-		if(oCalendar.get(Calendar.DAY_OF_WEEK)==7) now = ComUtils.AddDay(now, -1); //토요일 /하루전
-		if(oCalendar.get(Calendar.DAY_OF_WEEK)==2) now = ComUtils.AddDay(now, -3); //월요일 /삼일전
-		
+		else if(oCalendar.get(Calendar.DAY_OF_WEEK)==2) now = ComUtils.AddDay(now, -3); //월요일 /삼일전
+		else now = ComUtils.AddDay(now, -1); //화요일~토요일 /하루전
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("now", now);

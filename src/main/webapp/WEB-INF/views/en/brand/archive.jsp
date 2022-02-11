@@ -54,8 +54,21 @@
 		                        	</c:otherwise>
 		                        </c:choose>
 
-                                <c:if test="${file.save_filename ne ''}">
-			                        <c:if test="${muse.linkOutYn eq 'Y'}">
+                                <c:if test="${!empty file.save_filename}">
+			                        <c:choose>
+			                        	<c:when test="${muse.linkUrl ne '' && (muse.linkOutYn eq 'Y' || muse.linkOutYn eq 'C')}">
+			                        		<a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}" <c:if test="${muse.linkOutYn eq 'Y'}">target="_blank"</c:if>>
+			                        		<c:if test="${!empty file.save_filename}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></c:if>
+			                        		<c:if test="${!empty museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></c:if>
+			                        		</a>
+			                        	</c:when>
+			                        	<c:otherwise>
+			                        		<c:if test="${!empty file.save_filename}"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></c:if>
+			                        		<c:if test="${!empty museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></c:if>
+			                        	</c:otherwise>
+			                        </c:choose>
+		                        	<!-- 수정전 
+		                            <c:if test="${muse.linkOutYn eq 'Y'}">
 				                    <a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}" target="_blank" class="forPCLink"><img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/></a>
 				                    <a href="<c:if test="${not fn:contains(muse.linkUrl,'http://') && not fn:contains(muse.linkUrl,'https://')}">http://</c:if>${muse.linkUrl}" target="_blank" class="forMobileLink"><img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/></a>
 				                    </c:if>
@@ -67,6 +80,7 @@
 				        			<img src="/UploadFiles/${fileFolder}/${file.save_filename}" class="forPC"/>
 				        		    <img src="/UploadFiles/${fileFolder}/${museAndMoFileList.get(muse.seq)[fileIdx.index].save_filename}" class="forMobile"/>
 				        		    </c:if>
+				        		    -->
 				                </c:if>
                             </li>
                             <!--//for(이미지 루프)-->

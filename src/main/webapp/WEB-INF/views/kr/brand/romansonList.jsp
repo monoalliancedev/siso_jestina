@@ -117,10 +117,10 @@ function jt_load(code) {
             <!--//Top Common-->
             <section class="topVisual">
                 <div class="commImgArea">
-                    <c:if test="${brandBanner.imgUrl ne ''}">
+                    <c:if test="${!empty brandBanner.imgUrl}">
                         <img src="/UploadFiles/${fileFolder}/${brandBanner.imgUrl}" class="forPC"/>
 	                </c:if>
-	                <c:if test="${brandBanner.moimgUrl ne ''}">
+	                <c:if test="${!empty brandBanner.moimgUrl}">
 	        			<img src="/UploadFiles/${fileFolder}/${brandBanner.moimgUrl}" class="forMobile"/>
 	                </c:if>
                 </div>
