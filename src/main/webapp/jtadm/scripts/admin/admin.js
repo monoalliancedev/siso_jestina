@@ -347,7 +347,6 @@ $(document).ready(function () {
         $(this).parent('.fileField').find('.delBtn').show();
     });
     //카테고리 추가
-        
         $('.romansonMgmt.caegory viewNbtn a.commBtn black, .romansonMgmt.productReg td.cate button.cateBtn').click(function () {
         $('.layerPopup.categoryAdd').fadeIn();
         var popupSizeWD = $('.categoryAdd .popData').outerWidth();
@@ -361,7 +360,7 @@ $(document).ready(function () {
     $('.layerPopup.categoryAdd .close, .layerPopup.categoryAdd a.cancle').click(function () {
         $('.layerPopup.categoryAdd').fadeOut();
         return false;
-    });
+    }); 
 });
 //날짜입력패턴
 function directDate(obj) {

@@ -131,9 +131,10 @@ select.select.w100{width:100%;background:url(/jtadm/images/admin/icon_arrow_down
 .fileField{width:100%;display:inline-block;position:relative;height:34px;vertical-align:middle}
 .fileField .action{width:70px;height:34px;position:absolute;left:0;top:0;opacity:0;cursor:pointer;z-index:2}
 .fileField::after{content:'파일선택';width:70px;line-height:32px;float:left;border:1px solid #101010;border-radius:2px;background:#fff;color:#101010;text-align:center;cursor:pointer}
-.fileField .addFile{width:calc(100% - 80px);height:34px;float:right;background:#f5f5f5;position:relative;border-radius:2px}
-.fileField .addFile .viewInfo{width:calc(100% - 34px);padding:0 13px}
+.fileField .addFile{width:calc(100% - 80px);height:34px;float:right;background:#f5f5f5;position:relative;border-radius:2px;position:relative;}
+.fileField .addFile .viewInfo{width:calc(100% - 34px);padding:0 13px;}
 .fileField .addFile .viewInfo span{display:inline-block;vertical-align:middle;line-height:34px}
+.fileField .addFile .viewInfo span.seq{line-height:0;position: absolute;right:10px;top:50%;transform:translateY(-50%);}
 .fileField .addFile .viewInfo .name{max-width:calc(100% - 60px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#7e7e7e}
 .fileField .addFile .viewInfo .size{color:#505050;font-weight:500;text-transform:uppercase}
 .fileField .addFile .viewInfo.infile .name{color:#1063fc;font-weight:500}
@@ -287,6 +288,16 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 
 /*브랜드관리 > 뮤즈관리 등록*/
 .fileField .addFile .viewInfo .name{max-width: calc(100% - 150px);}
+
+/*뮤즈수정*/
+.brandMgmt.museReg{overflow-y:auto;}
+.brandMgmt.museReg td.file .fileField{height:auto;}
+.brandMgmt.museReg .fileField .addFile{height: auto;background:#fff;border-radius:0;}
+.brandMgmt.museReg .fileField .addFile > div{margin-bottom:7px;width:100%;position:relative;height:34px;background:#f5f5f5;position:relative;border-radius:2px;display:inline-block;padding:0 10px;}
+.brandMgmt.museReg .fileField .addFile > div:last-child{margin-bottom:0;}
+.brandMgmt.museReg .fileField .addFile .seq{position:absolute;right:10px;top:50%;transform:translateY(-50%);}
+.brandMgmt.museReg .fileField .addFile .name{line-height:34px;color:#1428a0;font-weight:500;}
+.brandMgmt.museReg .fileField .addFile .size{display:inline-block;line-height:34px;color:#505050;font-weight:500;margin-left:5px;}
 
 /*브랜드관리 > 매장관리*/
 .shopMgmt .order{height:34px;border:1px solid #101010;padding:0 10px;border-radius:2px;background:#fff;margin-right:6px}

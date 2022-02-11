@@ -19,6 +19,13 @@
                     $(this).hide();
                 }
             });
+            function fileSizeView(){
+                $('.fileField .addFile .viewInfo .size i').each(function(){
+                    var thisFileSize = parseInt($(this).text())
+                    $(this).text(Math.ceil(thisFileSize/1024).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+                })
+            }
+            fileSizeView();
         });
     </script>
     
@@ -301,7 +308,7 @@ function Jt_fileDelete(seq,key){
                                         <c:when test="${banner.fileViewName[i] ne '' and banner.fileViewName[i] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName${i}"> ${banner.fileViewName[i]} </span> 
-	                                        <span class="size" id="SignSize${i}">(${banner.fileViewSize[i]} KB)</span>
+	                                        <span class="size" id="SignSize${i}">(<i>${banner.fileViewSize[i]}</i> KB)</span>
 	                                        <span class="seq" id="SignSeq${i}"><a href='#' onclick="Jt_fileDelete('${banner.fileViewSeq[i]}','${i}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>
@@ -325,7 +332,7 @@ function Jt_fileDelete(seq,key){
                                         <c:when test="${banner.fileViewName[i+1] ne '' and banner.fileViewName[i+1] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName${i+1}"> ${banner.fileViewName[i+1]} </span> 
-	                                        <span class="size" id="SignSize${i+1}">(${banner.fileViewSize[i+1]} KB)</span>
+	                                        <span class="size" id="SignSize${i+1}">(<i>${banner.fileViewSize[i+1]}</i> KB)</span>
 	                                        <span class="seq" id="SignSeq${i+1}"><a href='#' onclick="Jt_fileDelete('${banner.fileViewSeq[i+1]}','${i+1}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>
