@@ -120,8 +120,8 @@
 .archive .categoryWrap h6{font-size:48px;color:#fff;margin-top:10px;font-weight:400}
 .archive .categoryWrap h6 span{margin-left:10px}
 .archive .categoryWrap h6 img{margin:-5px 20px 0 20px}
-.archive .categoryWrap:nth-child(even) .titleText{left:12%}
-.archive .categoryWrap:nth-child(odd) .titleText{right:calc(100% - 88%)}
+.archive .categoryWrap .titleText.alLeft{left:12%}
+.archive .categoryWrap .titleText.alRight{right:calc(100% - 88%)}
 .archive .categoryWrap .scroll{width:19px;position:absolute;color:#fff;right:70px;z-index:10;text-align:center;font-weight:300;letter-spacing:2px;font-family:'Malgun Gothic';line-height:1;cursor:pointer;text-transform:capitalize}
 .archive .categoryWrap .scroll.next{bottom:40px;background:url(/images/icon_ban_arrow_scroll.svg) no-repeat center bottom;padding-bottom:65px}
 .archive .categoryWrap .scroll.next i{transform:rotate(-90deg);display:inline-block;width:0;height:0;margin-left:-15px}
@@ -349,14 +349,15 @@
     .archive .flex-direction-nav{display:none}
     .archive .categoryWrap .scroll{display:none}
     .archive .categoryWrap .titleText{width:100%;top:inherit;transform:none;bottom:11.5rem}
-    .archive .categoryWrap:nth-child(even) .titleText{left:inherit}
-    .archive .categoryWrap:nth-child(odd) .titleText{right:inherit}
+    .archive .categoryWrap .titleText.alLeft{left:inherit}
+    .archive .categoryWrap .titleText.alRight{right:inherit}
     .archive .categoryWrap h5{font-size:4.8rem}
     .archive .categoryWrap h6{font-size:4.8rem;margin-top:1rem}
     .archive .categoryWrap h6 img{height:2.6rem;margin:-1rem 2rem 0 2rem}
     .archive .flex-control-nav{bottom:6rem}
     .archive .flex-control-nav > li{width:1.6rem;height:1.6rem;margin:0 1.2rem}
     .archive .flex-control-nav > li a{height:1.6rem}
+    .archive .flex-direction-nav{padding:0 4rem;}
     .archive .categoryWrap .slides > li > a.forMobileLink{display:block;}
     .archive .categoryWrap .slides > li > a.forPCLink{display:none;}
     .archive .controller{height:11rem}

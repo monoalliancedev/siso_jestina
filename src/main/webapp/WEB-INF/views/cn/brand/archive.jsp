@@ -41,13 +41,13 @@
                            	<li>
                                 <c:choose>
 		                        	<c:when test="${muse.textLocation eq 'Right'}">
-		                        		<div class="titleText">
+		                        		<div class="titleText alRight">
 	                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
 	                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
 	                                	</div>
 		                        	</c:when>
 		                        	<c:otherwise>
-		                        		<div class="titleText">
+		                        		<div class="titleText alLeft">
 	                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
 	                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
 	                                	</div>
@@ -112,55 +112,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <section class="content">
-            	
-				
-                
-            </section>

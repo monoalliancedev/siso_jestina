@@ -42,13 +42,13 @@
                            	<li>
                                 <c:choose>
 		                        	<c:when test="${muse.textLocation eq 'Right'}">
-		                        		<div class="titleText"><!-- 오른쪽 정렬 -->
+		                        		<div class="titleText alRight"><!-- 오른쪽 정렬 -->
 	                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
 	                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
 	                                	</div>
 		                        	</c:when>
 		                        	<c:otherwise>
-		                        		<div class="titleText"><!-- 왼쪽 정렬 -->
+		                        		<div class="titleText alLeft"><!-- 왼쪽 정렬 -->
 	                                    <h5><span>${list.key}</span>BRAND ARCHIVE</h5>
 	                                    <h6>J.ESTINA<span>${muse.cate}</span><img src="/images/icon_archive_x.svg"/>${muse.name}</h6>
 	                                	</div>
