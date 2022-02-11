@@ -287,10 +287,10 @@
     /*J.ESTINA JEWELRY*/
     .jewelry .brandVisual{background-position:center center}
     /*J.ESTINA HANDBAG*/
-    .handbag .brandVisual{background-image: url(/images/brand_visual_handbag_mo.jpg);background-position:center center}
+    .handbag .brandVisual{background-position:center center}
     /*ROMANSON*/
     .romanson .content{padding-bottom:0}
-    .romanson .topVisual{height:40rem;background:url(/images/brand_romanson_visual_mo.jpg) no-repeat center center;background-size:cover}
+    .romanson .topVisual{height:40rem;background-repeat: no-repeat;background-position:center center;background-size:cover}
     .romanson .topText{padding:18rem 4rem 7.8rem 4rem;margin-top:-1px}
     .romanson .topText h5{margin-bottom:3rem;font-size:2.8rem;margin-top:0}
     .romanson .topText span.text{font-size:2.4rem;margin-top:0}
