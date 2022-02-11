@@ -169,7 +169,7 @@ public class RecruitController {
 			}
 			
 			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/"+SiteFolder+"/recruit/recruitResources");
+			mv.setViewName("redirect:/recruit/recruitResources");
 			//mv.setViewName("redirect:/recruit/application");
 			
 			return mv;
