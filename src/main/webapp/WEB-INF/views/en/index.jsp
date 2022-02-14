@@ -97,7 +97,7 @@
                                 and a wrist watch business through the brand ROMANSON,<br/>
                                 with our goal of becoming a total fashion brand.
                             </span>
-                            <a href="#" class="more">MORE</a>
+                            <a href="/en/company/business" class="more">MORE</a>
                         </div>
                     </div>
                 </article>

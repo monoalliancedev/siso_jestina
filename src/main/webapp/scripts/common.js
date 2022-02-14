@@ -47,7 +47,7 @@ $(document).ready(function () {
         $('header .menuBG').stop().fadeIn();
         return false;
     });
-    $('header .mobileGNB .ctrl a , header .menuBG').click(function () {
+    $('header .mobileGNB .ctrl a.menuClose , header .menuBG').click(function () {
         $('header .mobileGNB').stop().animate({ 'right': '-100%' });
         $('header .menuBG').stop().fadeOut();
         $('header .mobileGNB dt a').removeClass('on');

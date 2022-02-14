@@ -96,7 +96,7 @@
                                 당사는 J.ESTINA 브랜드로 주얼리와 핸드백 , ROMANSON 브랜드로<br/>
                                 손목시계 사업을 진행하고 있으며 토탈 패션 브랜드 사업을 목표로 하고 있습니다
                             </span>
-                            <a href="#" class="more">MORE</a>
+                            <a href="/company/business" class="more">MORE</a>
                         </div>
                     </div>
                 </article>

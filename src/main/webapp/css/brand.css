@@ -149,10 +149,10 @@
 .archive .yearList .list{display:inline-block;margin:0 auto;height:75px;overflow:hidden}
 .archive .yearList .list a{text-align:center;cursor:pointer;font-size:18px;color:#fff;line-height:75px;float:left;width:106px}
 .archive .yearList .list a.on span{color:#ffb2b8;border-bottom:2px solid #ffb2b8}
-.archive .prevYearList{width:100px;position:absolute;left:0;top:50%;transform:translateY(-50%);overflow:hidden;text-align:right;white-space:nowrap}
+.archive .prevYearList{width:100px;position:absolute;left:0;top:50%;transform:translateY(-50%);overflow:hidden;text-align:right;white-space:nowrap;display:none;}
 .archive .prevYearList b{font-size:14px;color:#505050;font-weight:400;margin-right:16px}
 .archive .prevYearList::before{content:'';height:20px;width:100%;position:absolute;left:0;top:0;background:linear-gradient(-90deg,transparent,#292929 90%)}
-.archive .nextYearList{width:100px;position:absolute;right:0;top:50%;transform:translateY(-50%);overflow:hidden;text-align:left;white-space:nowrap}
+.archive .nextYearList{width:100px;position:absolute;right:0;top:50%;transform:translateY(-50%);overflow:hidden;text-align:left;white-space:nowrap;display:none}
 .archive .nextYearList b{font-size:14px;color:#505050;font-weight:400;margin-left:16px}
 .archive .nextYearList::before{content:'';height:20px;width:100%;position:absolute;left:0;top:0;background:linear-gradient(90deg,transparent,#292929 90%)}
 .archive .controller a.moTop{display:none}

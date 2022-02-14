@@ -64,11 +64,11 @@
                 <a href="/" class="lang on">KR</a>
                 <a href="/en/" class="lang">EN</a>
                 <a href="/cn/" class="lang">CN</a>
-                <a href="https://www.jestina.co.kr/" class="mall">ONLINE SHOP</a>
+                <a href="https://www.jestina.co.kr/" class="mall" target="_blank">ONLINE SHOP</a>
             </div>
             <!--Mobile GNB-->
             <div class="mobileGNB">
-                <div class="ctrl"><a href="https://www.jestina.co.kr/" class="mall">ONLINE SHOP</a><a href="#" class="menuClose"><img src="/images/common/icon_mobile_menu_close.svg"/></a></div>
+                <div class="ctrl"><a href="https://www.jestina.co.kr/" class="mall" target="_blank">ONLINE SHOP</a><a href="#" class="menuClose"><img src="/images/common/icon_mobile_menu_close.svg"/></a></div>
                 <div class="moMenuList"></div>
                 <div class="lang">
                     <a href="/" class="on">KR</a>

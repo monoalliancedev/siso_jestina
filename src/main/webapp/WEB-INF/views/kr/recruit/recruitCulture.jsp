@@ -126,7 +126,7 @@
                         <li>
                             <ol>
                                 <li class="icon"><img src="/images/recruit_culture_welfare_08.png"/></li>
-                                <li class="text">단체상해보험가입</li>
+                                <li class="text">콘도미니엄 운영</li>
                             </ol>
                         </li>
                         <li>

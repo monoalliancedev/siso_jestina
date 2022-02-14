@@ -78,7 +78,7 @@
                         <table>
                             <tr>
                                 <th>MAR</th>
-                                <td>Inaugurated the president [CEO Kim Yu-mi, CEO Jang Ho-seon]</td>
+                                <td>Inaugurated the president [CEO KIM YOO MI, CEO Jang Ho-seon]</td>
                                 <th>DEC</th>
                                 <td>Romanson Online Women's Brand R launched</td>
                             </tr>
@@ -205,7 +205,7 @@
                     <table>
                         <tr>
                             <th>JUN</th>
-                            <td>2014 JUN President Kim Ki-suk was selected as the Influential CEO in the Korean Economy in the global management category</td>
+                            <td>President Kim Ki-suk was selected as the Influential CEO in the Korean Economy in the global management category</td>
                             <th>JUL</th>
                             <td>Launched J.ESTINA RED</td>
                         </tr>

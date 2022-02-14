@@ -11,10 +11,10 @@
                 </div>
                 <div class="copyright">
                     <ul class="social">
-                        <li><a href="#"><img src="/images/common/icon_footer_insta.svg"/>Jewelry</a></li>
-                        <li><a href="#"><img src="/images/common/icon_footer_insta.svg"/>Handbag</a></li>
-                        <li><a href="#"><img src="/images/common/icon_footer_youtube.svg"/>Youtube</a></li>
-                        <li><a href="#"><img src="/images/common/icon_footer_facebook.svg"/>Facebook</a></li>
+                        <li><a href="https://www.instagram.com/j.estina_official/" target="_blank"><img src="/images/common/icon_footer_insta.svg"/>Jewelry</a></li>
+                        <li><a href="https://www.instagram.com/j.estinabag_official/" target="_blank"><img src="/images/common/icon_footer_insta.svg"/>Handbag</a></li>
+                        <li><a href="https://www.youtube.com/user/jestinacom" target="_blank"><img src="/images/common/icon_footer_youtube.svg"/>Youtube</a></li>
+                        <li><a href="https://www.facebook.com/LOVEJ.ESTINA" target="_blank"><img src="/images/common/icon_footer_facebook.svg"/>Facebook</a></li>
                     </ul>
                     COPYRIGHT © J.ESTINA RESERVED.
                 </div>

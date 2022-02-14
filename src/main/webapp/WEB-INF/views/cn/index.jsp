@@ -96,7 +96,7 @@
                                 本公司有主营珠宝&手提包的J.ESTINA和主营手表的ROMANSON品牌，<br/>
                                 目的在于打造综合时尚品牌。
                             </span>
-                            <a href="#" class="more">MORE</a>
+                            <a href="/cn/company/business" class="more">MORE</a>
                         </div>
                     </div>
                 </article>
