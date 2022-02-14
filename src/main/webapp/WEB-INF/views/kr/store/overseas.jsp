@@ -79,6 +79,7 @@ function Jt_continent_change(obj) {
 <input type="hidden" name="cpage" value="1" />
 
                         <span class="total">TOTAL <b><fmt:formatNumber value="${totalCount}" pattern="#,###" /></b></span>
+                        <!-- 
                         <select class="select shop" name="keyValue1" onchange="Jt_continent_change(this)">
                             <option value="">대륙 전체</option>
 	                        <c:forEach var="continent" items="${continentList}">
@@ -91,6 +92,7 @@ function Jt_continent_change(obj) {
 							<option value="${country}" <c:if test="${page.keyValue2 eq country}">selected</c:if>>${countryNameList[status.index]}</option>
 							</c:forEach>
                         </select>
+                         -->
                         <div class="searchWord">
                             <input type="text" name="keyword" value="${page.keyword}" placeholder="검색어를 입력하세요"/>
                             <button type="submit"><img src="/images/common/icon_search_zoom.svg" alt="검색"/></button>
@@ -107,7 +109,7 @@ function Jt_continent_change(obj) {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>대륙</th>
+                                <th>No</th>
                                 <th>국가</th>
                                 <th>매장명</th>
                                 <th>주소</th>
@@ -116,7 +118,8 @@ function Jt_continent_change(obj) {
                         <tbody>
                             <c:forEach var="list" items="${list}" varStatus="status">
                             <tr>
-                                <td class="area">${list.value1}</td>
+                                <!-- <td class="area">${list.value1}</td> -->
+                                <td class="no">${page.total_rows - page.pg_start - status.count + 1}</td>
                                 <td class="nation">${list.value2}</td>
                                 <td class="name">
                                 	<c:choose>

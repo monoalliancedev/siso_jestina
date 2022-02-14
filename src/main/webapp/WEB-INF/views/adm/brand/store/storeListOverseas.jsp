@@ -115,6 +115,7 @@ function Jt_continent_change(obj) {
                         <option value="EN" <c:if test="${page.keyIsnt eq 'EN'}">selected</c:if>>EN</option>
                         <option value="CN" <c:if test="${page.keyIsnt eq 'CN'}">selected</c:if>>CN</option>
                     </select>
+                    <!-- 
                     <select class="select" name="keyValue1" onchange="Jt_continent_change(this)">
                         <option value="">대륙 전체</option>
                         <c:forEach var="continent" items="${continentList}">
@@ -127,6 +128,7 @@ function Jt_continent_change(obj) {
 						<option value="${country}" <c:if test="${page.keyValue2 eq country}">selected</c:if>>${countryNameList[status.index]}</option>
 						</c:forEach>
                     </select>
+                     -->
                     <fieldset class="searchText">
                         <input type="text" name="keyword" value="${page.keyword}" />
                         <button type="submit">검색</button>
@@ -160,7 +162,6 @@ function Jt_continent_change(obj) {
                             <colgroup>
                                 <col width="60">
                                 <col width="9%">
-                                <col width="5%">
                                 <col width="10%">
                                 <col width="15%">
                                 <col width="*">
@@ -172,7 +173,6 @@ function Jt_continent_change(obj) {
                                 <tr>
                                     <th>선택</th>
                                     <th>언어</th>
-                                    <th>대륙</th>
                                     <th>국가</th>
                                     <th>매장명</th> 
                                     <th>주소</th>
@@ -197,7 +197,7 @@ function Jt_continent_change(obj) {
 				       					var mf = document.moveForm;
 				       				 	mf.changeSeq.value = $("#researchList input:checked").val(); //현재 선택된 값
 				       				 	mf.changeKey.value = "Up";
-				       				 	mf.action = "sortProcEN";
+				       				 	mf.action = "sortProcOverseas";
 				       				 	mf.submit();
 			       					}    
 		       				        return false;
@@ -217,7 +217,7 @@ function Jt_continent_change(obj) {
 			       				        var mf = document.moveForm;
 			       				 		mf.changeSeq.value = $("#researchList input:checked").val(); //현재 선택된 값
 			       				 		mf.changeKey.value = "Down";
-			       				 		mf.action = "sortProcEN";
+			       				 		mf.action = "sortProcOverseas";
 			       				 		mf.submit();
 		       				        }
 		       				       	return false;
@@ -235,7 +235,7 @@ function Jt_continent_change(obj) {
                                         </div>
                                     </td>
                                     <td>${list.lang}</td>
-                                    <td>${list.value1}</td>
+                                    <!-- <td>${list.value1}</td> -->
                                     <td>${list.value2}</td>
                                     <td class="tit alLeft">
                                     	<a href="#" onclick="Jt_submit(${list.seq})" class="inBtn modify">

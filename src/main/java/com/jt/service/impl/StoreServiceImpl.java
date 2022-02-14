@@ -187,6 +187,9 @@ public class StoreServiceImpl implements StoreService {
 				sotre = storeMapper.DownSelect(param);
 			}
 			
+			System.out.println("########## changeSeq :" + changeSeq);
+			System.out.println("########## sotre.getSeq() :" + sotre.getSeq());
+			
 			//CHANGE
 			param.put("seq", changeSeq);
 			param.put("sortIdx", sotre.getSortIdx());

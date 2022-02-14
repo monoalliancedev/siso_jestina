@@ -30,11 +30,40 @@
 	<sql id="search">
 		<if test='keyword != null and !keyword.equals("")'>
 			AND (
-				store_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR 
-				store_en <![CDATA[ LIKE '%${keyword}%' ]]> OR 
-				store_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+				<choose>
+			        <when test='keyIsnt.equals("KR")'>
+				        store_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR 
+						addr1_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr2_kr <![CDATA[ LIKE '%${keyword}%' ]]>
+			        </when>
+			        <when test='keyIsnt.equals("EN")'>
+					    store_en <![CDATA[ LIKE '%${keyword}%' ]]> OR 
+						addr1_en <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr2_en <![CDATA[ LIKE '%${keyword}%' ]]>
+					</when>
+			        <when test='keyIsnt.equals("CN")'>
+				        store_cn <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr1_cn <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr2_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			        </when>
+			        <otherwise>
+			        	store_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR 
+						addr1_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr2_kr <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						store_en <![CDATA[ LIKE '%${keyword}%' ]]> OR 
+						addr1_en <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr2_en <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						store_cn <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr1_cn <![CDATA[ LIKE '%${keyword}%' ]]> OR
+						addr2_cn <![CDATA[ LIKE '%${keyword}%' ]]>
+			        </otherwise>
+		        </choose>
+		        <if test='keyGubun.equals("Overseas")'>
+		        	 OR value2 <![CDATA[ LIKE '%${keyword}%' ]]>
+		        </if>
 			)
 		</if>
+		
 		<if test='keyIsnt != null and !keyIsnt.equals("")'>
 			AND lang <![CDATA[ LIKE '%${keyIsnt}%' ]]>
 		</if>

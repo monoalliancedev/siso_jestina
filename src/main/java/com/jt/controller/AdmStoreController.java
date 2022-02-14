@@ -107,8 +107,9 @@ public class AdmStoreController {
 			mv.addObject("areaList", Constants._JtArea); // 지역
 			mv.addObject("brandList", Constants._JtBrand); // 브랜드
 			mv.addObject("storeList", Constants._JtStoreGubun); // 매장구분
-			// 해외검색
+		// 해외검색
 		} else {
+			/*
 			mv.addObject("continentList", Constants._JtContinent); // 지역
 
 			// 검색어 대륙 정보에 따른 국가 리스트를 불러온다.
@@ -130,6 +131,7 @@ public class AdmStoreController {
 				mv.addObject("countryCodeList", tempCountryCodeList); // 국가
 				mv.addObject("countryNameList", tempCountryNameList); // 국가
 			}
+			*/
 		}
 		
 		//System.out.println("########" + gubun);
@@ -296,6 +298,8 @@ public class AdmStoreController {
 		map.put("keyValue2", search.getKeyValue2());
 		map.put("keyValue3", search.getKeyValue3());
 		map.put("gubun", gubun);
+		System.out.println("########### gubun : " + gubun);
+		
 		storeService.sortChange(map);
 
 		ra.addFlashAttribute("search", search);

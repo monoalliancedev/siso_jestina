@@ -174,7 +174,7 @@ function goRrows(obj) {
 				       					var mf = document.moveForm;
 				       				 	mf.changeSeq.value = $("#researchList input:checked").val(); //현재 선택된 값
 				       				 	mf.changeKey.value = "Up";
-				       				 	mf.action = "sortProcKR";
+				       				 	mf.action = "sortProcDomestic";
 				       				 	mf.submit();
 			       					}    
 		       				        return false;
@@ -194,7 +194,7 @@ function goRrows(obj) {
 			       				        var mf = document.moveForm;
 			       				 		mf.changeSeq.value = $("#researchList input:checked").val(); //현재 선택된 값
 			       				 		mf.changeKey.value = "Down";
-				       				 	mf.action = "sortProcKR";
+				       				 	mf.action = "sortProcDomestic";
 			       				 		mf.submit();
 		       				        }
 		       				       	return false;

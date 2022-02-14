@@ -21,13 +21,15 @@ function isBlank(input) {
 //수정,등록 Proc
 function Jt_submit() { 
 	var f = document.processForm;
+	/*
 	if(isBlank(f.value1)) {
 		alert( "대륙을 설정해주세요.");
 		f.value1.focus();
 		return;
 	}
+	*/
 	if(isBlank(f.value2)) {
-		alert( "국가를 설정해 주세요.");
+		alert( "국가를 입력해 주세요.");
 		f.value2.focus();
 		return;
 	}
@@ -188,6 +190,15 @@ function Jt_continent_change(obj) {
                             </td>
                         </tr>
                         <tr>
+                            <th>국가 <span class="colorRed">*</span></th>
+                            <td>
+                               <input type="text" name="value2" value="${store.value2}" class="enterText" placeholder="국가를 입력해주세요."/> 
+                            </td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                        <!-- 
+                        <tr>
                             <th>대륙 <span class="colorRed">*</span></th>
                             <td>
                                 <select class="select w100" name="value1" onchange="Jt_continent_change(this)">
@@ -208,6 +219,7 @@ function Jt_continent_change(obj) {
 								</select>
                             </td>
                         </tr>
+                         -->
                         <tr>
                             <th>이메일 <span class="colorRed">*</span></th>
                             <td><input type="text" name="value3" value="${store.value3}" class="enterText" placeholder="이메일"/></td>
