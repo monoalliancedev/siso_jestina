@@ -176,26 +176,23 @@ public class StoreServiceImpl implements StoreService {
 		StoreDTO sotre = storeMapper.select(Integer.parseInt(changeSeq));
 		String sortIdx = sotre.getSortIdx();
 		
-		System.out.println("########## changeSeq :" + changeSeq); //이동할키
-		System.out.println("########## changeKey :" + changeKey); //위,아래이동
-		System.out.println("########## sortIdx :" + sortIdx); //정렬값
-		System.out.println("########## gubun :" + gubun); //해외,국내구분
+		//System.out.println("########## changeSeq :" + changeSeq); //이동할키
+		//System.out.println("########## changeKey :" + changeKey); //위,아래이동
+		//System.out.println("########## sortIdx :" + sortIdx); //정렬값
+		//System.out.println("########## gubun :" + gubun); //해외,국내구분
 		
 		if(changeKey.equals("Up") || changeKey.equals("Down")) {
 			
 			//CHANGE 할 데이타 구함
 			param.put("sortIdx", sortIdx);
-			param.put("gubun", gubun);
+			param.put("keyGubun", gubun);
+			
 			if(changeKey.equals("Up")) {
 				sotre = storeMapper.UpSelect(param);
 			}else{
 				sotre = storeMapper.DownSelect(param);
 			}
-			
-			
-			System.out.println("########## changeSeq :" + changeSeq);
-			System.out.println("########## sotre.getSeq() :" + sotre.getSeq());
-			
+
 			//CHANGE
 			param.put("seq", changeSeq);
 			param.put("sortIdx", sotre.getSortIdx());

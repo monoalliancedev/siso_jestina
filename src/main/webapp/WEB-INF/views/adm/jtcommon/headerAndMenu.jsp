@@ -71,6 +71,17 @@ function top_close() {
 	$('.layerPopup.infoChange').fadeOut();
 	return false;
 }
+
+function headerDeleteHtml(htmlTxt)
+{
+	htmlTxt = htmlTxt.replace(/<img/ig, "img"); // <img 를 img로 변경 //이미지만 제외
+	htmlTxt = htmlTxt.replace(/(<([^>]+)>)/ig,"");
+    htmlTxt = htmlTxt.replace(/&nbsp;/gi,"");//공백제거
+    htmlTxt = htmlTxt.replace(/ /gi,"");//공백제거
+    //alert("내용 :#####" + htmlTxt +"######");
+    //alert("길이 : " + htmlTxt.length);
+    return  htmlTxt;
+}
 </script>		
 <!--Header-->
         <header>

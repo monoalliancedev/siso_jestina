@@ -284,6 +284,7 @@ public class AdmStoreController {
 		// ** 권한 여부에 따른 페이지 이동
 		ModelAndView mv = new ModelAndView();
 		
+		
 		if (admJtAuthService.getIsnt(authorityKey) == 0) { // 권한 없음
 			ra.addFlashAttribute("msg", "authorityKeyFalse");
 			mv.setViewName(authorityHome);
@@ -297,6 +298,7 @@ public class AdmStoreController {
 		map.put("keyValue2", search.getKeyValue2());
 		map.put("keyValue3", search.getKeyValue3());
 		map.put("gubun", gubun);
+		
 		
 		storeService.sortChange(map);
 

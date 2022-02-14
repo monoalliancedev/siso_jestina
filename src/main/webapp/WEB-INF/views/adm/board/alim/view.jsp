@@ -47,12 +47,12 @@ function isBlank(input) {
 }  
 function deleteHtml(htmlTxt)
 {
-	//이미지만 제외하고 
-	htmlTxt =  htmlTxt.replace(/<img/ig, "img"); // <img 를 img로 변경
-    // HTML 태그제거 정규표현식 사용
-    htmlTxt =  htmlTxt.replace(/<(\/)?([a-zA-Z0-9]*)(\s[a-zA-Z0-9]*=[^>]*)?(\s)*(\/)?>/ig, "");
-   	return  htmlTxt;
-} 
+	htmlTxt = htmlTxt.replace(/<img/ig, "img"); // <img 를 img로 변경 //이미지만 제외
+	htmlTxt = htmlTxt.replace(/(<([^>]+)>)/ig,"");
+    htmlTxt = htmlTxt.replace(/&nbsp;/gi,"");//공백제거
+	return  htmlTxt;
+}
+
 //게시여부 체크후에 폼전송한다. 
 function Jt_submit(){
 	$.ajax({ //게시여부Y가 2개 이상인지 확인
@@ -100,7 +100,7 @@ function Jt_submit2() {
 			return false;
 		}
 
-     	newText = deleteHtml($("#ir"+langKey).val())
+     	newText = headerDeleteHtml($("#ir"+langKey).val())
 		if(newText.length<=0) {
 			alert( langKey + " 내용을 입력해주세요.");
 			ck = false;

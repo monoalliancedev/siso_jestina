@@ -164,14 +164,14 @@
     <!-- 위로 이동 키값 -->
     <select id="UpSelect" parameterType="com.jt.util.ParameterMap"  resultMap="StoreMap">
         SELECT seq, sort_idx FROM tb_jt_store 
-         WHERE sort_idx > #{sortIdx} and gubun=#{gubun}
+         WHERE sort_idx > #{sortIdx} and gubun=#{keyGubun}
          <include refid="search" />
          ORDER BY sort_idx ASC,seq ASC LIMIT 1;
     </select>
     <!-- 아래로 이동 키값 -->
     <select id="DownSelect" parameterType="com.jt.util.ParameterMap"  resultMap="StoreMap">
         SELECT seq, sort_idx FROM tb_jt_store 
-         WHERE sort_idx <![CDATA[<]]> #{sortIdx}  and gubun=#{gubun}
+         WHERE sort_idx <![CDATA[<]]> #{sortIdx}  and gubun=#{keyGubun}
          <include refid="search" />
          ORDER BY sort_idx DESC,seq DESC LIMIT 1;
     </select>

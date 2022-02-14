@@ -30,14 +30,7 @@ function isBlank(input) {
 	}
 	return false;
 }  
-function deleteHtml(htmlTxt)
-{
-	//이미지만 제외하고 
-	htmlTxt =  htmlTxt.replace(/<img/ig, "img"); // <img 를 img로 변경
-    // HTML 태그제거 정규표현식 사용
-    htmlTxt =  htmlTxt.replace(/<(\/)?([a-zA-Z0-9]*)(\s[a-zA-Z0-9]*=[^>]*)?(\s)*(\/)?>/ig, "");
-   	return  htmlTxt;
-}
+
 //폼전송
 function Jt_submit() { 
 	var f = document.processForm;

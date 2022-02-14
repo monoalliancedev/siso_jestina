@@ -29,8 +29,7 @@ public class AdmComonController {
 		if (admJtAuthService.getIsnt("MBbanner") == 0) { // 권한 없음
 			return "/adm/index_jt";
 		}else {
-			return "redirect:/jtadm/brand/store/listOverseas?seq=&cpage=1&keyIsnt=&keyword=ia&pg_rows=10";
-			//return "redirect:/jtadm/basic/Mbanner/list";
+			return "redirect:/jtadm/basic/Mbanner/list";
 		}
 		
 		//return "/adm/basic/Mbanner/list";

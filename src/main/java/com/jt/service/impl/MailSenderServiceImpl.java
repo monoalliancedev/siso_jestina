@@ -65,26 +65,25 @@ public class MailSenderServiceImpl implements MailSenderService {
 	@Override
 	public boolean SendMail(MailUploadDTO mailUpload) {
 		
-		//String sender = "recruit@jestina.com"; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
-		//String recipients = "kejgogogo@naver.com"; //받는 메일
 		String sender = MailSender; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
-		String recipients = MailRecipients; //받는 메일
+		String recipient = ""; //받는 메일
+		String recipientCC = ""; //받는 참조 메일
 		String title = "입사지원"; //메일제목
 		String mailText = ""; //메일내용(html)
-		
-		
 		
 		if(mailUpload.getRecruit()!=null && mailUpload.getRecruit()!="") {
 			RecruitmentDTO recruit = recruitService.select(Integer.parseInt(mailUpload.getRecruit()));
 			title += " ("  + recruit.getJobField() +")" ;
 			mailText += " 모집부분 : "  + recruit.getJobField() +"<br>";
+			recipient = recruit.getManagerEmail1(); //받는메일
+			recipientCC = recruit.getManagerEmail2(); //받는참조메일
 		}
 		
 		mailText += " 이 름 : " + mailUpload.getName() +"<br>";
 		mailText += " 핸드폰 : "+ mailUpload.getHp() +"<br>";
 		mailText += " 이메일 : " + mailUpload.getEmail() +"<br>";
 		mailText += " --------------------------------------------------<br>";	
-		mailText += "" + mailUpload.getContents() +"<br>";	
+		mailText += "" + mailUpload.getContents().replace("\r\n","<br>") +"<br>";	
 		
 		//System.out.println("#### " + mailUpload.getUploadFile().get(0).getOriginalFilename());
 		//System.out.println("#### " + mailUpload.getUploadFile().get(0).getOriginalFilename());
@@ -106,7 +105,8 @@ public class MailSenderServiceImpl implements MailSenderService {
 		}
 		
 		System.out.println("########### 메일 보내기");
-		if (MailProc(sender, recipients, title, mailText, al_attach, al_attach_name)) {
+		
+		if (MailProc(sender, recipient, recipientCC, title, mailText, al_attach, al_attach_name)) {
 			System.out.println("FAT = "+sender+" = message sent successfully...");
 
 			//첨부파일 삭제
@@ -123,7 +123,7 @@ public class MailSenderServiceImpl implements MailSenderService {
 	
 	//메일전송
 	@Override
-	public boolean MailProc(String sender, String recipient, String title, String contents
+	public boolean MailProc(String sender, String recipient, String recipientCC, String title, String contents
 							, List<String> al_attach, List<String> al_attach_name){
         
 		//프로퍼티를 생성한다.
@@ -160,9 +160,17 @@ public class MailSenderServiceImpl implements MailSenderService {
         	System.out.println("title : " + title);
         
         	msg.setFrom(new InternetAddress(sender));
-            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-            //msg.setRecipient(Message.RecipientType.CC, new InternetAddress("메일주소"));//참조메일
-            msg.setRecipient(Message.RecipientType.CC, new InternetAddress("kejgogogo@naver.com"));//참조메일
+        	if(!recipient.isEmpty()) {
+        		msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));//받는메일
+        		if(!recipientCC.isEmpty()) {
+                	msg.setRecipient(Message.RecipientType.CC, new InternetAddress(recipientCC));//참조메일
+        		}	
+        	}else if(!recipientCC.isEmpty()) {
+                msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientCC));//받는메일
+        	}
+        		
+            
+            
             msg.setSentDate(new Date()); 
             msg.setSubject(title, "utf-8");  
             
