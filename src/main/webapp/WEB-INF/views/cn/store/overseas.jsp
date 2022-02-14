@@ -78,6 +78,7 @@ function Jt_continent_change(obj) {
 <input type="hidden" name="seq" />
 <input type="hidden" name="cpage" value="1" />
                         <span class="total">全部的 <b><fmt:formatNumber value="${totalCount}" pattern="#,###" /></b></span>
+                        <!--
                         <select class="select shop" name="keyValue1" onchange="Jt_continent_change(this)">
                             <option value="">店铺分类</option>
                             <c:forEach var="continent" items="${continentList}">
@@ -90,6 +91,7 @@ function Jt_continent_change(obj) {
 							<option value="${country}" <c:if test="${page.keyValue2 eq country}">selected</c:if>>${countryNameList[status.index]}</option>
 							</c:forEach>
                         </select>
+                        -->
                         <div class="searchWord">
                             <input type="text" name="keyword" value="${page.keyword}" placeholder="请输入搜索词"/>
                             <button type="submit"><img src="/images/common/icon_search_zoom.svg" alt="Search"/></button>
@@ -106,7 +108,7 @@ function Jt_continent_change(obj) {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>大陆</th>
+                                <th>No</th>
                                 <th>国家</th>
                                 <th>店铺 名</th>
                                 <th>地址</th>
@@ -115,7 +117,8 @@ function Jt_continent_change(obj) {
                         <tbody>
                             <c:forEach var="list" items="${list}" varStatus="status">
                             <tr>
-                                <td class="area">${list.value1}</td>
+                                <!-- <td class="area">${list.value1}</td> -->
+                                <td class="no">${page.total_rows - page.pg_start - status.count + 1}</td>
                                 <td class="nation">${list.value2}</td>
                                 <td class="name">
                                 	<c:choose>

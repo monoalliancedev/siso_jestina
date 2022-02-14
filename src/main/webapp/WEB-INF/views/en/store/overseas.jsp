@@ -78,6 +78,7 @@ function Jt_continent_change(obj) {
 <input type="hidden" name="seq" />
 <input type="hidden" name="cpage" value="1" />
                         <span class="total">TOTAL <b><fmt:formatNumber value="${totalCount}" pattern="#,###" /></b></span>
+                        <!-- 
                         <select class="select shop" name="keyValue1" onchange="Jt_continent_change(this)">
                             <option value="">Store type</option>
                             <c:forEach var="continent" items="${continentList}">
@@ -90,6 +91,7 @@ function Jt_continent_change(obj) {
 							<option value="${country}" <c:if test="${page.keyValue2 eq country}">selected</c:if>>${countryNameList[status.index]}</option>
 							</c:forEach>
                         </select>
+                        -->
                         <div class="searchWord">
                             <input type="text" name="keyword" value="${page.keyword}" placeholder="Enter search word"/>
                             <button type="submit"><img src="/images/common/icon_search_zoom.svg" alt="Search"/></button>
@@ -106,7 +108,7 @@ function Jt_continent_change(obj) {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>Continent</th>
+                                <th>No</th>
                                 <th>Country</th>
                                 <th>Branch</th>
                                 <th>Address</th>
@@ -115,7 +117,8 @@ function Jt_continent_change(obj) {
                         <tbody>
                             <c:forEach var="list" items="${list}" varStatus="status">
                             <tr>
-                                <td class="area">${list.value1}</td>
+                                <!-- <td class="area">${list.value1}</td>-->
+                                <td class="no">${page.total_rows - page.pg_start - status.count + 1}</td>
                                 <td class="nation">${list.value2}</td>
                                 <td class="name">
                                 	<c:choose>

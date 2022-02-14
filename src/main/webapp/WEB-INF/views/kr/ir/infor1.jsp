@@ -67,7 +67,7 @@
                             <div class="box">
                                 <div>
                                     <h6>거래대금</h6>
-                                    <span>${info.trPrc}</i></span>
+                                    <span><fmt:formatNumber value="${info.trPrc}" pattern="#,###" /></span></i></span>
                                 </div>
                             </div>
                         </li>
