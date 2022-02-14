@@ -9,10 +9,10 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .mainBanner li.typeVideo img{opacity:0;width:0;height:0}
 .mainBanner li.typeVideo{background-position:center center;background-size:cover;background-repeat:no-repeat}
 .mainBanner li.typeImage{background-position:center center;background-size:cover;background-repeat:no-repeat}
-.mainBanner li.typeImage .bg{width:100%;position:absolute;left:0;top:0;z-index:5;background:rgba(0,0,0,0.4)}
+.mainBanner li.typeImage .bg{width:100%;position:absolute;left:0;top:0;z-index:5;background:rgba(0,0,0,0.4);display:none;}
 .mainBanner li.typeImage > a{display: block;}
 .mainBanner li.typeImage img{opacity:0;width:0;height:0}
-.mainBanner li .tit{position:absolute;left:13%;top:50%;z-index:6;line-height:58px;font-weight:500;font-size:48px;color:#fff;letter-spacing:5px;}
+.mainBanner li .tit{position:absolute;left:13%;top:50%;z-index:6;line-height:58px;font-weight:500;font-size:48px;color:#fff;letter-spacing:5px;text-shadow:2px 2px 5px rgba(0,0,0,0.5);}
 .mainBanner li .tit a{line-height:58px;font-weight:500;font-size:48px;color:#fff;letter-spacing:5px;display:inline-block}
 .mainBanner a.ctrlBtn{position:absolute;top:50%;transform:translateY(-50%);z-index:7}
 .mainBanner a.ctrlBtn.prev{left:70px}
