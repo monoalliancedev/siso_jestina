@@ -134,8 +134,12 @@ public class MailSenderServiceImpl implements MailSenderService {
         prop.put("mail.smtp.auth","true");
         prop.put("mail.mime.charset","utf-8");
         prop.put("mail.mime.encodefilname","true");
+        //-- 구글 추가
+        prop.put("mail.smtp.ssl.enable", "true"); 
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         
-
+        
+        
         //세션 인스턴스를 생성한다.
         Session session = Session.getInstance(prop,  new Authenticator()
     	{
@@ -158,7 +162,8 @@ public class MailSenderServiceImpl implements MailSenderService {
         	msg.setFrom(new InternetAddress(sender));
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             //msg.setRecipient(Message.RecipientType.CC, new InternetAddress("메일주소"));//참조메일
-            msg.setSentDate(new Date());
+            msg.setRecipient(Message.RecipientType.CC, new InternetAddress("kejgogogo@naver.com"));//참조메일
+            msg.setSentDate(new Date()); 
             msg.setSubject(title, "utf-8");  
             
             // 내용(Text/Html) + 파일 Multipart 전송
