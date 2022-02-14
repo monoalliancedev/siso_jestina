@@ -199,15 +199,15 @@ $(document).ready(function () {
     };
     productFun();
     function brandMotion(){
-        var brandJewelryPos = $('.brandIntro .jewelry').offset().top;
-        var brandHandbagPos = $('.brandIntro .handbag').offset().top;
-        var brandRomansonPos = $('.brandIntro .romanson').offset().top;
-        var aboutJestinaPos = $('.aboutJestina article').offset().top;
-        var aboutJestinaParentPos = $('.aboutJestina').offset().top;
+        var brandJewelryPos = $('.brandIntro .jewelry').offset().top - 200;
+        var brandHandbagPos = $('.brandIntro .handbag').offset().top - 200;
+        var brandRomansonPos = $('.brandIntro .romanson').offset().top - 200;
+        var aboutJestinaPos = $('.aboutJestina article').offset().top - 200;
+        var aboutJestinaParentPos = $('.aboutJestina').offset().top - 200;
         //var socialPos = $('.socialMedia').offset().top;
         var scroll = $(window).scrollTop();
         if (scroll > aboutJestinaPos) {
-            $('.brandIntro .jewelry .imgPhoto .blind').stop().animate({ 'width': 0 });
+            $('.brandIntro .jewelry .imgPhoto .blind').addClass('showObj');
             $('.brandIntro .jewelry .cate').stop().animate({ 'opacity': 1 });
             $('.brandIntro .jewelry .name').stop().animate({ 'margin-top': '23px', 'opacity': 1});
             $('.brandIntro .jewelry .text').stop().animate({ 'margin-top': '37px', 'opacity': 1 });
@@ -215,7 +215,7 @@ $(document).ready(function () {
             $('.brandIntro .jewelry .more a').stop().animate({'margin-right' : 0 });
         };
         if (scroll > brandJewelryPos) {
-            $('.brandIntro .handbag .imgPhoto .blind').stop().animate({ 'width': 0 });
+            $('.brandIntro .handbag .imgPhoto .blind').addClass('showObj');
             $('.brandIntro .handbag .cate').stop().animate({ 'opacity': 1 });
             $('.brandIntro .handbag .name').stop().animate({ 'margin-top': '23px', 'opacity': 1 });
             $('.brandIntro .handbag .text').stop().animate({ 'margin-top': '37px', 'opacity': 1 });
@@ -223,13 +223,13 @@ $(document).ready(function () {
             $('.brandIntro .handbag .more a').stop().animate({'margin-right': 0  });
         };
         if (scroll > brandHandbagPos) {
-            $('.brandIntro .romanson .imgPhoto .blind').stop().animate({ 'width': 0 });
+            $('.brandIntro .romanson .imgPhoto .blind').addClass('showObj');
             $('.brandIntro .romanson .cate').stop().animate({ 'opacity': 1 });
             $('.brandIntro .romanson .name').stop().animate({ 'margin-top': '23px', 'opacity': 1 });
             $('.brandIntro .romanson .text').stop().animate({ 'margin-top': '37px', 'opacity': 1 });
             $('.brandIntro .romanson .more').stop().animate({ 'opacity': 1});
             $('.brandIntro .romanson .more a').stop().animate({'margin-right': 0  });
-            $('.brandIntro .jewelry .imgPhoto .blind').stop().animate({ 'width': '100%' });
+            $('.brandIntro .jewelry .imgPhoto .blind').removeClass('showObj');
             $('.brandIntro .jewelry .cate').stop().animate({ 'opacity': 0 });
             $('.brandIntro .jewelry .name').stop().animate({ 'margin-top': '-23px', 'opacity': 0 });
             $('.brandIntro .jewelry .text').stop().animate({ 'margin-top': '-37px', 'opacity': 0 });
@@ -237,7 +237,7 @@ $(document).ready(function () {
             $('.brandIntro .jewelry .more a').stop().animate({'margin-right': '40px'  });
         };
         if (scroll > brandRomansonPos) {
-            $('.brandIntro .handbag .imgPhoto .blind').stop().animate({ 'width': '100%' });
+            $('.brandIntro .handbag .imgPhoto .blind').removeClass('showObj');
             $('.brandIntro .handbag .cate').stop().animate({ 'opacity': 0 });
             $('.brandIntro .handbag .name').stop().animate({ 'margin-top': '-23px', 'opacity': 0 });
             $('.brandIntro .handbag .text').stop().animate({ 'margin-top': '-37px', 'opacity': 0 });
@@ -246,7 +246,7 @@ $(document).ready(function () {
         };
         //if (scroll < aboutJestinaParentPos || scroll > socialPos) {
           if (scroll < aboutJestinaParentPos) {
-            $('.brandIntro .imgPhoto .blind').stop().animate({ 'width': '100%' });
+            $('.brandIntro .imgPhoto .blind').removeClass('showObj');
             $('.brandIntro .info .cate').stop().animate({ 'opacity': 0 });
             $('.brandIntro .info .name').stop().animate({ 'margin-top': '-23px', 'opacity': 0 });
             $('.brandIntro .info .text').stop().animate({ 'margin-top': '-37px', 'opacity': 0 });

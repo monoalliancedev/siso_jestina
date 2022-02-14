@@ -54,7 +54,8 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .brandIntro article{overflow:hidden;width:100%;display:inline-block}
 .brandIntro article > div{display:inline-block;overflow:hidden;height:100%}
 .brandIntro .imgPhoto{width:56.2%;overflow:hidden;background-repeat:no-repeat;background-size:cover;background-position:center center}
-.brandIntro .imgPhoto .blind{width:100%;height:100%;background:#fff;position:absolute}
+.brandIntro .imgPhoto .blind{width:100%;height:100%;background:#fff;position:absolute;transition:all .5s;-webkit-transition:all .5s;}
+.brandIntro .imgPhoto .blind.showObj{width:0;}
 .brandIntro .imgPhoto img{width:100%}
 .brandIntro .imgPhoto img.forMobile{width:0;height:0;position: absolute;left:0;top:0;opacity:0}
 .brandIntro .info{height:100%;width:43.8%;vertical-align:top;position:absolute}
@@ -68,7 +69,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .brandIntro .info .more a{font-weight:500;color:#767676;display:inline-block;padding-bottom:5px;border-bottom:1px solid #767676;margin-right:40px}
 .brandIntro .jewelry .imgPhoto{float:left}
 .brandIntro .jewelry .info{padding-left:10px;right:0}
-.brandIntro .jewelry .blind{left:0;top:0}
+.brandIntro .jewelry .blind{right:0;top:0}
 .brandIntro .handbag{margin:10px 0}
 .brandIntro .handbag .imgPhoto{float:right}
 .brandIntro .handbag .info{padding-right:10px;left:0}
@@ -241,7 +242,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
     /*Brand소개*/
     .brandIntro{padding:0}
     .brandIntro article{height:auto!important}
-    .brandIntro .imgPhoto{width:100%;height:42.5rem}
+    .brandIntro .imgPhoto{width:100%;height:42.6rem}
     .brandIntro .imgPhoto img{display:none}
     .brandIntro .info{height:auto;width:100%;padding:0!important;position:static}
     .brandIntro .info ul{height:auto!important;padding:0 4rem 4rem 4rem}
@@ -251,7 +252,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
     .brandIntro .info .text.pc{display:none}
     .brandIntro .info .text.mo{display:block}
     .brandIntro .info .more{padding:0;position:static;margin-top:2.5rem}
-    .brandIntro .info .more a{font-size:2rem;padding-bottom:0.5rem}
+    .brandIntro .info .more a{font-size:2rem;padding-bottom:0.5rem;margin-right:0!important;}
     .brandIntro .handbag{margin:0}
 
     /*Latest*/
