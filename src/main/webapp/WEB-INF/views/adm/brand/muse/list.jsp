@@ -172,7 +172,7 @@ function Jt_isntYN(seq,isntYN){
                                 
                                 <c:forEach var="list" items="${list}" varStatus="status">
                                 <tr>
-                                    <td>1</td>
+                                    <td>${page.total_rows - page.pg_start - status.count + 1}</td>
                                     <td>${list.lang}</td>
                                     <td>${list.museYear}</td>
                                     <td><a href="#" onclick="Jt_submit(${list.seq})" class="inBtn modify">
