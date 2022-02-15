@@ -171,7 +171,7 @@ function loadAttachFiles(pseq,key)
 			$.each(data.list, function(k,v) {
 				files_html += '<div id="viewInfo">';
 				files_html += '<span class="name">' + v.filename + '</span>';
-				files_html += '<span class="size">(' + Math.ceil(v.file_size/1024).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'KB)</span>';
+				files_html += '<span class="size">(' + v.file_size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'byte)</span>';
 				files_html += '<span class="seq"><a href="#" onclick="Jt_fileDelete('+v.seq+',&quot;'+key+'&quot;)"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>';
 				files_html += '</div>';
 				files_isKey = "fileIsOK";

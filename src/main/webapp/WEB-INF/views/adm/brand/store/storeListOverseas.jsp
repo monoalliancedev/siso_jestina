@@ -237,19 +237,17 @@ function Jt_continent_change(obj) {
                                     <td>${list.lang}</td>
                                     <!-- <td>${list.value1}</td> -->
                                     <td>${list.value2}</td>
-                                    <td class="tit alLeft">
-                                    	<a href="#" onclick="Jt_submit(${list.seq})" class="inBtn modify">
-                                    	<c:if test = "${fn:contains(list.lang, 'KR')}">KR : ${list.storeKr}</br></c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">EN : ${list.storeEn}</br></c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">CN : ${list.storeCn}</br></c:if>
-	                                    </a>
+                                    <td class="name alLeft">
+                                    	<a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'KR')}">[KR]${list.storeKr}</c:if></a>
+	                                    <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'EN')}">[EN]${list.storeEn}</c:if></a>
+	                                    <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'CN')}">[CN]${list.storeCn}</c:if></a>
+	                                    
                                     </td>
                                     <td class="tit alLeft">
-                                    	<a href="#" onclick="Jt_submit(${list.seq})" class="inBtn modify">
-                                    	<c:if test = "${fn:contains(list.lang, 'KR')}">KR : ${list.addr1Kr} ${list.addr2Kr}</br></c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">EN : ${list.addr1En} ${list.addr2En}</br></c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">CN : ${list.addr1Cn} ${list.addr2Cn}</br></c:if>
-	                                    </a>
+                                    	<a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'KR')}">[KR]${list.addr1Kr} ${list.addr2Kr}</c:if></a>
+	                                    <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'EN')}">[EN]${list.addr1En} ${list.addr2En}</c:if></a>
+	                                    <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'CN')}">[CN]${list.addr1Cn} ${list.addr2Cn}</c:if></a>
+	                                    
                                     </td>
                                     <td>${list.value3}</td>
                                     <td>${list.tel}</td>

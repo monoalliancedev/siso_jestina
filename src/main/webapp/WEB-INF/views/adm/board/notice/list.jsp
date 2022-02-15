@@ -173,10 +173,11 @@ function goRrows(obj) {
                                 <tr>
                                     <td>${page.total_rows - page.pg_start - status.count + 1}</td>
                                     <td>${list.lang}</td>
-                                    <td class="tit alLeft"><a href="#" onclick="Jt_submit(${list.seq})">
-                                    	<c:if test = "${fn:contains(list.lang, 'KR')}">KR : ${list.titleKr}</br></c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">EN : ${list.titleEn}</br></c:if>
-	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">CN : ${list.titleCn}</br></c:if></a>
+                                    <td class="tit alLeft">
+                                        <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'KR')}">[KR]${list.titleKr}</c:if></a>
+	                                    <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'EN')}">[EN]${list.titleEn}</c:if></a>
+	                                    <a href="#" onclick="Jt_submit(${list.seq})"><c:if test = "${fn:contains(list.lang, 'CN')}">[CN]${list.titleCn}</c:if></a>
+                                    
 	                                </td>
 	                                <td><a href="#" onclick="Jt_isntYN('${list.seq}','${list.isntYn}')">
                                     	<span <c:if test="${list.isntYn eq 'Y'}"> class="colorBlue" </c:if>>${list.isntYn}</span></a>

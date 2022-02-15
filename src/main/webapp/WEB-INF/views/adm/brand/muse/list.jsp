@@ -175,7 +175,7 @@ function Jt_isntYN(seq,isntYN){
                                     <td>${page.total_rows - page.pg_start - status.count + 1}</td>
                                     <td>${list.lang}</td>
                                     <td>${list.museYear}</td>
-                                    <td><a href="#" onclick="Jt_submit(${list.seq})" class="inBtn modify">
+                                    <td><a href="#" onclick="Jt_submit(${list.seq})">
 	                                    <c:if test = "${fn:contains(list.lang, 'KR')}">KR : ${list.nameKr} /</c:if>
 	                                    <c:if test = "${fn:contains(list.lang, 'EN')}">EN : ${list.nameEn} /</c:if>
 	                                    <c:if test = "${fn:contains(list.lang, 'CN')}">CN : ${list.nameCn} /</c:if></a>

@@ -105,8 +105,8 @@ input.enterText::placeholder{color:#ccc}
 
 /*Common - Select*/
 select.select{height:34px;border:1px solid #e0e0e0;border-radius:2px;appearance:none;background:url(/jtadm/images/admin/icon_arrow_down.svg) no-repeat 90% center;padding-left:10px;padding-right:28px;vertical-align:middle}
-select.select::-ms-expand{display: none}
-select.select.w100{width:100%;background:url(/jtadm/images/admin/icon_arrow_down.svg) no-repeat 98% center;}
+select.select::-ms-expand{display:none}
+select.select.w100{width:100%;background:url(/jtadm/images/admin/icon_arrow_down.svg) no-repeat 98% center}
 
 /*Common - Button*/
 .commBtn{display:inline-block;line-height:32px;height:34px;padding:0 10px;border:none;background:none;vertical-align:middle;border-radius:2px;min-width:68px;text-align:center}
@@ -131,12 +131,12 @@ select.select.w100{width:100%;background:url(/jtadm/images/admin/icon_arrow_down
 .fileField{width:100%;display:inline-block;position:relative;height:34px;vertical-align:middle}
 .fileField .action{width:70px;height:34px;position:absolute;left:0;top:0;opacity:0;cursor:pointer;z-index:2}
 .fileField::after{content:'파일선택';width:70px;line-height:32px;float:left;border:1px solid #101010;border-radius:2px;background:#fff;color:#101010;text-align:center;cursor:pointer}
-.fileField .addFile{width:calc(100% - 80px);height:34px;float:right;background:#f5f5f5;position:relative;border-radius:2px;position:relative;}
-.fileField .addFile .viewInfo{width:calc(100% - 34px);padding:0 13px;}
+.fileField .addFile{width:calc(100% - 80px);height:34px;float:right;background:#f5f5f5;position:relative;border-radius:2px;position:relative}
+.fileField .addFile .viewInfo{width:calc(100% - 34px);padding:0 13px}
 .fileField .addFile .viewInfo span{display:inline-block;vertical-align:middle;line-height:34px}
-.fileField .addFile .viewInfo span.seq{line-height:0;position: absolute;right:10px;top:50%;transform:translateY(-50%);}
+.fileField .addFile .viewInfo span.seq{line-height:0;position:absolute;right:10px;top:50%;transform:translateY(-50%)}
 .fileField .addFile .viewInfo .name{max-width:calc(100% - 60px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#7e7e7e}
-.fileField .addFile .viewInfo .size{color:#505050;font-weight:500;text-transform:uppercase}
+.fileField .addFile .viewInfo .size{color:#505050;font-weight:500}
 .fileField .addFile .viewInfo.infile .name{color:#1063fc;font-weight:500}
 .fileField .addFile .delBtn{width:34px;height:34px;position:absolute;right:0;top:0;background:url(/jtadm/images/admin/icon_file_del.svg) no-repeat center center;border:none;text-indent:-9999px;display:none}
 
@@ -154,7 +154,7 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 .topCntn{width:100%;display:inline-block;position:relative;padding:17px 28px;border-bottom:1px solid #e0e0e0}
 .topCntn .result{display:inline-block;vertical-align:middle;margin-top:8px}
 .topCntn .result li{display:inline-block;padding-right:12px;margin-right:8px;font-size:16px;position:relative}
-.topCntn .result li::after{content:'';width:1px;height:10px;background:#e0e0e0;position:absolute;right:0;top:4px;}
+.topCntn .result li::after{content:'';width:1px;height:10px;background:#e0e0e0;position:absolute;right:0;top:4px}
 .topCntn .result li:last-child::after{display:none}
 .topCntn .result li span{color:#ff5a4e;font-weight:500}
 .topCntn .searchWrap{float:right}
@@ -186,10 +186,10 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 .hasTopTH .cellBody td.alLeft{text-align:left}
 .hasTopTH .cellBody td.tit a{color:#727272}
 .hasTopTH .cellBody a.inBtn{margin:0 8px;position:relative;cursor:pointer}
-.hasTopTH .cellBody a.inBtn::after{display:none;position:absolute;font-size:12px;background:#101010;color:#fff;white-space:nowrap;width:30px;line-height:20px;border-radius:1px;left:50%;transform:translateX(-50%);top:25px;text-align:center;}
+.hasTopTH .cellBody a.inBtn::after{display:none;position:absolute;font-size:12px;background:#101010;color:#fff;white-space:nowrap;width:30px;line-height:20px;border-radius:1px;left:50%;transform:translateX(-50%);top:25px;text-align:center}
 .hasTopTH .cellBody a.inBtn:hover::after{display:block}
-.hasTopTH .cellBody a.inBtn.modify::after{content:'수정';}
-.hasTopTH .cellBody a.inBtn.del::after{content:'삭제';}
+.hasTopTH .cellBody a.inBtn.modify::after{content:'수정'}
+.hasTopTH .cellBody a.inBtn.del::after{content:'삭제'}
 .hasTopTH .cellBody::-webkit-scrollbar{width:7px}
 .hasTopTH .cellBody::-webkit-scrollbar-track{background:#ccc;border-radius:5px}
 .hasTopTH .cellBody::-webkit-scrollbar-thumb{background:#b7b7b7;border-radius:5px}
@@ -287,32 +287,27 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 .romansonMgmt.productReg td.cate button.cateBtn{float:right;width:100px;height:34px;border:1px solid #101010;color:#101010;background:#fff;border-radius:2px}
 
 /*브랜드관리 > 뮤즈관리 등록*/
-.fileField .addFile .viewInfo .name{max-width: calc(100% - 150px);}
+.fileField .addFile .viewInfo .name{max-width:calc(100% - 150px)}
 
 /*뮤즈수정*/
-.brandMgmt.museReg{overflow-y:auto;}
-.brandMgmt.museReg td.file .fileField{height:auto;}
-.brandMgmt.museReg .fileField .addFile{height: auto;background:#fff;border-radius:0;}
-.brandMgmt.museReg .fileField .addFile > div{margin-bottom:7px;width:100%;position:relative;height:34px;background:#f5f5f5;position:relative;border-radius:2px;display:inline-block;padding:0 10px;}
-.brandMgmt.museReg .fileField .addFile > div:last-child{margin-bottom:0;}
-.brandMgmt.museReg .fileField .addFile .seq{position:absolute;right:10px;top:50%;transform:translateY(-50%);}
-.brandMgmt.museReg .fileField .addFile .name{line-height:34px;color:#1428a0;font-weight:500;}
-.brandMgmt.museReg .fileField .addFile .size{display:inline-block;line-height:34px;color:#505050;font-weight:500;margin-left:5px;}
+.brandMgmt.museReg{overflow-y:auto}
+.brandMgmt.museReg td.file .fileField{height:auto}
+.brandMgmt.museReg .fileField .addFile{height:auto;background:#fff;border-radius:0}
+.brandMgmt.museReg .fileField .addFile > div{margin-bottom:7px;width:100%;position:relative;height:34px;background:#f5f5f5;position:relative;border-radius:2px;display:inline-block;padding:0 10px}
+.brandMgmt.museReg .fileField .addFile > div:last-child{margin-bottom:0}
+.brandMgmt.museReg .fileField .addFile .seq{position:absolute;right:10px;top:50%;transform:translateY(-50%)}
+.brandMgmt.museReg .fileField .addFile .name{line-height:34px;color:#1428a0;font-weight:500}
+.brandMgmt.museReg .fileField .addFile .size{display:inline-block;line-height:34px;color:#505050;font-weight:500;margin-left:5px}
 
 /*브랜드관리 > 매장관리*/
 .shopMgmt .order{height:34px;border:1px solid #101010;padding:0 10px;border-radius:2px;background:#fff;margin-right:6px}
 .shopMgmt .commBtn{margin-left:6px}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.name{padding:0 10px;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.name a{text-align:left;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;max-width:100%;display: block;line-height:1.6;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.name a:hover{text-decoration: underline;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.tit a{text-align:left;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;max-width:100%;display: block;line-height:1.6;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft.tit a:hover{text-decoration: underline;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody td.alLeft a::after{content:'수정';position: absolute;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody{border-bottom:1px solid #f0f0f0;padding-bottom:0;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody table tr:last-child{border-bottom:none;}
-.brandMgmt.shopMgmt.domestic .hasTopTH .cellBody table tr:last-child td{border-bottom:none;}
-
-
+.brandMgmt.shopMgmt .hasTopTH .cellBody td.alLeft.name{padding:10px}
+.brandMgmt.shopMgmt .hasTopTH .cellBody td.alLeft.tit{padding:10px}
+.brandMgmt.shopMgmt .hasTopTH .cellBody td.alLeft a{text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:block;line-height:1.8;position:relative}
+.brandMgmt.shopMgmt .hasTopTH .cellBody{border-bottom:1px solid #f0f0f0;padding-bottom:0}
+.brandMgmt.shopMgmt .hasTopTH .cellBody table tr:last-child{border-bottom:none}
+.brandMgmt.shopMgmt .hasTopTH .cellBody table tr:last-child td{border-bottom:none}
 
 /*기본설정 > 팝업관리 > 팝업등록*/
 .popupReg .topSubCntn .commBtn{margin-left:7px}
@@ -322,14 +317,24 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 .popupReg .autoDateBtn a.commBtn:hover{background:#ff5a4e;border-color:#ff5a4e;color:#fff}
 .popupReg .autoDateBtn a.commBtn.on{background:#ff5a4e;border-color:#ff5a4e;color:#fff}
 
-/*게시판관리 > 공고 > 등록*/
+/*게시판관리 > 목록*/
+.bbsMgmt .hasTopTH .cellBody td.alLeft.tit{padding:10px}
+.bbsMgmt .hasTopTH .cellBody td.alLeft a{text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:block;line-height:1.8;position:relative}
+.bbsMgmt .hasTopTH .cellBody{border-bottom:1px solid #f0f0f0;padding-bottom:0}
+.bbsMgmt .hasTopTH .cellBody table tr:last-child{border-bottom:none}
+.bbsMgmt .hasTopTH .cellBody table tr:last-child td{border-bottom:none}
+
+/*게시판관리 > 공고*/
 .bbsMgmt.notifReg td.file div.fileField{margin-bottom:6px}
 .bbsMgmt.notifReg td.file div.fileField:last-child{margin-bottom:0}
+.bbsMgmt.notifMgmt td.file div.fileField{margin-bottom:6px}
+.bbsMgmt.notifMgmt td.file div.fileField:last-child{margin-bottom:0}
 
 /*게시판관리 > 공지사항 > 등록*/
 .bbsMgmt.noticeReg td.file div.fileField{margin-bottom:6px}
 .bbsMgmt.noticeReg td.file div.fileField:last-child{margin-bottom:0}
-
+.bbsMgmt.notifMgmt td.file div.fileField{margin-bottom:6px}
+.bbsMgmt.notifMgmt td.file div.fileField:last-child{margin-bottom:0}
 /*게시판관리 > 뉴스 > 등록*/
 .bbsMgmt.newsReg td.file div.fileField{margin-bottom:6px}
 .bbsMgmt.newsReg td.file div.fileField:last-child{margin-bottom:0}

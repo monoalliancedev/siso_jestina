@@ -339,12 +339,16 @@ $(document).ready(function () {
             var addFileName = $(this).val().split('/').pop().split('\\').pop();
         }
         var fileSize = this.files[0].size;
-        var fileSizeKB = fileSize / 1024
-        var outputFileSize = Math.ceil(fileSizeKB)
+        //var fileSizeKB = fileSize / 1024
+        var outputFileSize = Math.ceil(fileSize)
         $(this).parent('.fileField').find('.viewInfo .name').html(addFileName);
-        $(this).parent('.fileField').find('.viewInfo .size').html('('+outputFileSize + 'KB)');
+        $(this).parent('.fileField').find('.viewInfo .size').html('('+(outputFileSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'byte)');
         $(this).parent('.fileField').find('.viewInfo').addClass('infile');
         $(this).parent('.fileField').find('.delBtn').show();
+    });
+    $('.fileField .addFile .viewInfo .size i').each(function(){
+        var thisSize = parseInt($(this).text())
+        $(this).html(thisSize.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
     });
     //카테고리 추가
         $('.romansonMgmt.caegory viewNbtn a.commBtn black, .romansonMgmt.productReg td.cate button.cateBtn').click(function () {
