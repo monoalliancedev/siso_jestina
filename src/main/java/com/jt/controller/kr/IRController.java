@@ -1,8 +1,8 @@
 package com.jt.controller.kr;
 
 import java.io.IOException;
-
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -43,10 +43,8 @@ public class IRController {
 	@GetMapping(value="/ir/infor1")
 	public ModelAndView infor1() throws IOException {
 		
-		ApiDataGoKr api = new ApiDataGoKr();
-		List<ApiDataGoKrDTO> apiList = api.ApiProc();
-		
 		Date now = new Date();
+		System.out.println("###########" + now);
 		
 		//오늘이 일,월요일 일경우 금요일날짜를 구한다.//나머지는 하루전
 		Calendar oCalendar = Calendar.getInstance( );  
@@ -54,9 +52,17 @@ public class IRController {
 		else if(oCalendar.get(Calendar.DAY_OF_WEEK)==2) now = ComUtils.AddDay(now, -3); //월요일 /삼일전
 		else now = ComUtils.AddDay(now, -1); //화요일~토요일 /하루전
 		
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd"); //원하는 데이터 포맷 지정 
+		String strNowDate = simpleDateFormat.format(now); 
+		
+		ApiDataGoKr api = new ApiDataGoKr();
+		ApiDataGoKrDTO apiList = (ApiDataGoKrDTO)api.ApiProc(strNowDate);
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("now", now);
-		mv.addObject("info", apiList.get(1));
+		mv.addObject("info", apiList);
 		mv.setViewName("/"+SiteFolder+"/ir/infor1");
 			
 		return mv;

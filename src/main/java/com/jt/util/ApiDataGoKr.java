@@ -7,8 +7,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,13 +16,13 @@ import com.jt.domain.ApiDataGoKrDTO;
 public class ApiDataGoKr {
 
 	//주가정보
-	public List<ApiDataGoKrDTO> ApiProc() throws UnsupportedEncodingException, IOException {
+	public ApiDataGoKrDTO ApiProc(String strNowDate) throws UnsupportedEncodingException, IOException {
 			
 		///getStockPriceInfo (주식시세)
 		StringBuilder urlBuilder = new StringBuilder("https://api.odcloud.kr/api/GetStockSecuritiesInfoService/v1/getStockPriceInfo"); /*URL*/
 		
 		urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=35JdWHo9DsWJLSUbabA6gXl73VtNR8u60lAyPCJQLf1KnrjHvCzX5yvs0leXxzaXtQ5oHTzG98NWtQ4cRqbxzA%3D%3D"); /*Service Key*/
-        //urlBuilder.append("&" + URLEncoder.encode("basDt","UTF-8") + "=" + URLEncoder.encode("20220126", "UTF-8")); /*1페이지 갯수*/
+		urlBuilder.append("&" + URLEncoder.encode("basDt","UTF-8") + "=" + URLEncoder.encode(strNowDate, "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("itmsNm","UTF-8") + "=" + URLEncoder.encode("제이에스티나", "UTF-8")); /*1페이지 갯수*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*1페이지 갯수*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재페이지*/
@@ -75,14 +73,22 @@ public class ApiDataGoKr {
         JSONObject items = (JSONObject)body.get("items");
         JSONArray itemList = (JSONArray)items.getJSONArray("item");
         
-        List<ApiDataGoKrDTO> dtoList = new ArrayList<ApiDataGoKrDTO>();
+        System.out.println("######## itemList.length()  : " + itemList.length());
+        
+        ApiDataGoKrDTO dto = new ApiDataGoKrDTO();
         
         for(int i=0; i < itemList.length(); i++) { 
-			//System.out.println("======== 주가정보 list : " + i + " ========"); 
-			JSONObject listObject = itemList.getJSONObject(i);
 			
-			ApiDataGoKrDTO dto = new ApiDataGoKrDTO();
-			dto.setBasDt(listObject.getString("basDt")); //기준일자 
+        	System.out.println("======== 주가정보 list : " + i + " ========"); 
+        	
+        	JSONObject listObject = itemList.getJSONObject(i);
+        	
+        	System.out.println("######## basDt  : " + listObject.getString("basDt"));
+			System.out.println("######## clpr  : " + listObject.getInt("clpr"));
+			System.out.println("######## vs  : " + listObject.getInt("vs"));
+			
+			
+        	dto.setBasDt(listObject.getString("basDt")); //기준일자 
 			dto.setClpr(String.valueOf(listObject.getInt("clpr"))); //제이에스티나 현재가
 			dto.setVs(String.valueOf(listObject.getInt("vs"))); //전일대비
 			dto.setFltRt(String.valueOf(listObject.get("fltRt"))); //전일대비
@@ -92,12 +98,11 @@ public class ApiDataGoKr {
 			dto.setHipr(String.valueOf(listObject.getInt("hipr"))); //고가
 			dto.setLstgStCnt(String.valueOf(listObject.getInt("lstgStCnt"))); //상장주식수
 			dto.setLopr(String.valueOf(listObject.getInt("lopr"))); //저가
-			
-			dtoList.add(dto);
+			System.out.println("=========================================");
 		}
         
-        System.out.println(dtoList.size());
-        return  dtoList;
+        //System.out.println(dtoList.size());
+        return  dto;
         
 	}
 

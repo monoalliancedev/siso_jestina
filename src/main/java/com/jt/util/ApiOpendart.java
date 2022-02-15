@@ -25,6 +25,7 @@ public class ApiOpendart {
 		StringBuilder urlBuilder = new StringBuilder("https://opendart.fss.or.kr/api/list.json"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("crtfc_key","UTF-8") + "=0261d39627725ac124a2a482980fb00e9f8f5eee"); /*API 인증키*/
         urlBuilder.append("&corp_code=00120289"); /*고유번호*/
+        urlBuilder.append("&last_reprt_at=Y"); /*최종보고서만 검색*/
         urlBuilder.append("&bgn_de="+bgnDe); //시작일
         urlBuilder.append("&end_de="+endDe); //종료일
         urlBuilder.append("&page_no="+pageNo); //페이지번호
