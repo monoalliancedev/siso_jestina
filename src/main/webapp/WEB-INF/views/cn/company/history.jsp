@@ -137,7 +137,7 @@
                             <th>02</th>
                             <td>推出第二个珠宝品牌 'ERGHE'</td>
                             <th>04</th>
-                            <td>推出 'JESTINA Beauty'</td>
+                            <td>推出 'J.ESTINA Beauty'</td>
                         </tr>
                         <tr>
                             <th>05</th>
@@ -626,7 +626,7 @@
                 <!--1988-->
                 <article class="yearData yy1988">
                     <div class="yearInfo">
-                        <h5><b>1988</b><i class="next">&nbsp;</i></h5>
+                        <h5><b>1988</b><i class="next">&nbsp;</i><span><p>- 从因手表而闻名的瑞士罗曼斯霍恩中获得灵感</p></span></h5>
                         <div class="nextYear"><span>1989</span><span>1990</span></div>
                     </div>
                     <table>

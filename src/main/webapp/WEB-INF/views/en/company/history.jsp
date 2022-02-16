@@ -138,7 +138,7 @@
                             <th>FEB</th>
                             <td>Launched a second jewelry brand ‘ERGHE’</td>
                             <th>APR</th>
-                            <td>Launched ‘JESTINA Beauty’</td>
+                            <td>Launched ‘J.ESTINA Beauty’</td>
                         </tr>
                         <tr>
                             <th>MAY</th>
@@ -443,7 +443,7 @@
                     <table>
                         <tr>
                             <th>MAR</th>
-                            <td>Became the first South Korean brand to be invited to the luxury hall at Baselworld Watch and Jewellery Show, Switzerland</td>
+                            <td>Became the first South Korean brand to be invited to the luxury hall at Baselworld Watch and Jewelery Show, Switzerland</td>
                             <th>MAR</th>
                             <td>Won the Minister of Trade, Industry, and Energy Commendation at the South Korea Management Productivity Awards in the future management category</td>
                         </tr>
@@ -542,7 +542,7 @@
                     <table>
                         <tr>
                             <th>MAR</th>
-                            <td>Participated in Baselworld Watch and Jewellery Show, Switzerland</td>
+                            <td>Participated in Baselworld Watch and Jewelery Show, Switzerland</td>
                         </tr>
                     </table>
                 </article>

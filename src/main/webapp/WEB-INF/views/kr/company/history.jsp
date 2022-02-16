@@ -120,7 +120,7 @@
                             <th>10</th>
                             <td>제이에스티나 핸드백 Kid’s컬렉션 론칭</td>
                             <th>10</th>
-                            <td>‘Hong Kong jewellery & Gem Fair(올해의 기업상)수상</td>
+                            <td>‘Hong Kong jewelery &amp; Gem Fair(올해의 기업상)수상</td>
                         </tr>
                     </table>
                 </article>
@@ -137,7 +137,7 @@
                             <th>02</th>
                             <td>주얼리세컨브랜드‘ERGHE’Launching</td>
                             <th>04</th>
-                            <td>‘JESTINA Beauty’Launching</td>
+                            <td>‘J.ESTINA Beauty’Launching</td>
                         </tr>
                         <tr>
                             <th>05</th>
