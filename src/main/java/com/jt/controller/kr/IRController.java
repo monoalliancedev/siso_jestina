@@ -44,7 +44,6 @@ public class IRController {
 	public ModelAndView infor1() throws IOException {
 		
 		Date now = new Date();
-		System.out.println("###########" + now);
 		
 		//오늘이 일,월요일 일경우 금요일날짜를 구한다.//나머지는 하루전
 		Calendar oCalendar = Calendar.getInstance( );  
@@ -72,10 +71,15 @@ public class IRController {
 	@GetMapping(value="/ir/infor2")
 	public ModelAndView infor2() throws UnsupportedEncodingException, IOException{
 		
-        String bgn_de = "20210101";
-        String end_de = ComUtils.getCurDate("y")+ComUtils.getCurDate("m")+ComUtils.getCurDate("d"); //오늘날짜
-        
-        int page_no = 1;
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd"); //원하는 데이터 포맷 지정 
+
+		Date now = new Date(); //오늘날짜
+		String end_de = simpleDateFormat.format(now); 
+		
+		now = ComUtils.AddYear(now, -1); //1년전
+		String bgn_de = simpleDateFormat.format(now);  
+		
+		int page_no = 1;
         int page_rows = 50;
         
         ApiOpendart api = new ApiOpendart();

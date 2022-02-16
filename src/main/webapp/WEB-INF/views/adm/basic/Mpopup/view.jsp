@@ -212,6 +212,7 @@ function Jt_fileDelete(seq,key){
                 <c:if test="${processKey eq 'Update'}">
                 <div class="infoText">
                     <h3>레이어 팝업 수정</h3>
+                    <span class="colorRed">*이미지 등록 사이즈 : 최소 (500x500) px</span>
                 </div>
                 <a href="#" onclick="Jt_delete()" class="commBtn white"><img src="/jtadm/images/admin/icon_btn_del.svg"/>삭제</a>
                 <a href="#" onclick="javascript:history.back()" class="commBtn white">목록</a>
