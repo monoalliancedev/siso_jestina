@@ -66,7 +66,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>버스</th>
+                                <th>BUS</th>
                                 <td>
                                     <ul class="bus">
                                         <li><span>Get off at National Police Hospital Station</span></li>
