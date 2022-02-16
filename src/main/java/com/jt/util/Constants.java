@@ -306,35 +306,35 @@ public interface Constants {
 	};	
 	//지역(CN)
 	public static final String [][] _JtCNArea={
-			 {"Area1","서울"}							
-			,{"Area2","경기"}							
-			,{"Area3","강원"}							
-			,{"Area4","충청"}							
-			,{"Area5","경상"}
-			,{"Area6","전라"}
-			,{"Area7","제주"}
-			,{"Area8","부산"}
-			,{"Area9","인천"}
-			,{"Area10","대구"}
-			,{"Area11","광주"}
-			,{"Area12","울산"}
-			,{"Area13","대전"}
+			 {"Area1","首尔"}							
+			,{"Area2","京畿"}							
+			,{"Area3","江原"}							
+			,{"Area4","忠清"}							
+			,{"Area5","庆尚"}
+			,{"Area6","全罗"}
+			,{"Area7","济州"}
+			,{"Area8","釜山"}
+			,{"Area9","仁川"}
+			,{"Area10","大邱"}
+			,{"Area11","光州"}
+			,{"Area12","蔚山"}
+			,{"Area13","大田"}
 	};	
 	//지역(EN)
 	public static final String [][] _JtENArea={
-			 {"Area1","서울"}							
-			,{"Area2","경기"}							
-			,{"Area3","강원"}							
-			,{"Area4","충청"}							
-			,{"Area5","경상"}
-			,{"Area6","전라"}
-			,{"Area7","제주"}
-			,{"Area8","부산"}
-			,{"Area9","인천"}
-			,{"Area10","대구"}
-			,{"Area11","광주"}
-			,{"Area12","울산"}
-			,{"Area13","대전"}
+			 {"Area1","Seoul"}							
+			,{"Area2","Gyeonggi"}							
+			,{"Area3","Gangwon"}							
+			,{"Area4","Chungcheong"}							
+			,{"Area5","Gyeongsang"}
+			,{"Area6","Jeolla"}
+			,{"Area7","Jeju"}
+			,{"Area8","Busan"}
+			,{"Area9","Incheon"}
+			,{"Area10","Daegu"}
+			,{"Area11","Gwangju"}
+			,{"Area12","Ulsan"}
+			,{"Area13","Daejeon"}
 	};	
 	//브랜드(CN)
 	public static final String [][] _JtCNBrand={
