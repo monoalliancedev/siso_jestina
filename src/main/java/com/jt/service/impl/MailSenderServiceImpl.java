@@ -53,8 +53,8 @@ public class MailSenderServiceImpl implements MailSenderService {
 	private String MailPW;
 	@Value("${send_mail_sender}")
 	private String MailSender;
-	@Value("${send_mail_recipients}")
-	private String MailRecipients;
+	@Value("${send_mail_recipient}")
+	private String MailRecipient;
 
 	@Autowired
 	UploadFileService fileService;
@@ -66,18 +66,26 @@ public class MailSenderServiceImpl implements MailSenderService {
 	public boolean SendMail(MailUploadDTO mailUpload) {
 		
 		String sender = MailSender; //보내는 메일(네이비 메일계정을 쓸때는 네이버 메일을 입력해야한다.) 
-		String recipient = ""; //받는 메일
+		String recipient = MailRecipient ; //받는 메일
 		String recipientCC = ""; //받는 참조 메일
 		String title = "입사지원"; //메일제목
 		String mailText = ""; //메일내용(html)
 		
-		if(mailUpload.getRecruit()!=null && mailUpload.getRecruit()!="") {
-			RecruitmentDTO recruit = recruitService.select(Integer.parseInt(mailUpload.getRecruit()));
-			title += " ("  + recruit.getJobField() +")" ;
-			mailText += " 모집부분 : "  + recruit.getJobField() +"<br>";
-			recipient = recruit.getManagerEmail1(); //받는메일
-			recipientCC = recruit.getManagerEmail2(); //받는참조메일
+		//채용에서 지원
+		if(mailUpload.getRecruitKey().equals("R")) { 
+			if(mailUpload.getRecruit()!=null && mailUpload.getRecruit()!="") {
+				RecruitmentDTO recruit = recruitService.select(Integer.parseInt(mailUpload.getRecruit()));
+				title += " ("  + recruit.getJobField() +")" ; //입사지원 제목
+				mailText += " 모집부분 : "  + recruit.getJobField() +"<br>";
+				recipient = recruit.getManagerEmail1(); //받는메일
+				recipientCC = recruit.getManagerEmail2(); //받는참조메일
+			}	
+		
+		} else { //인터플에서 지원
+			title += " ("  + mailUpload.getRecruit() +")" ; //입사지원 제목
+			mailText += " 모집부분 : "  + mailUpload.getRecruit() +"<br>";
 		}
+		
 		
 		mailText += " 이 름 : " + mailUpload.getName() +"<br>";
 		mailText += " 핸드폰 : "+ mailUpload.getHp() +"<br>";

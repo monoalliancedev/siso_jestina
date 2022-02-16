@@ -169,7 +169,7 @@ function goRrows(obj) {
                             <tbody>
                                 <c:forEach var="list" items="${list}" varStatus="status">
                                 <tr>
-                                    <td>${status.count}</td>
+                                    <td>${page.pg_rows*(page.cpage-1)+status.count}</td>
                                     <td>${list.cateName}</td>
                                     <td><a href="#" onclick="Jt_submit(${list.seq})">${list.proName}</a></td>
                                     <td><a href="#" onclick="Jt_isntYN('${list.seq}','${list.isntYn}')">

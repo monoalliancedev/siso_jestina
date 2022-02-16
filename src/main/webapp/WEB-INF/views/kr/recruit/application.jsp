@@ -187,20 +187,34 @@ function Jt_submit() {
                                     <dd>
                                         <c:choose>
 									    	<c:when test = "${recruitJobField ne ''}">
+									        	<input type="hidden" name="recruitKey" value="R">
 									        	<select class="select" name="recruit">
-	                                            <option value="">모집분야 선택</option>
+	                                            <!-- <option value="">모집분야 선택</option> -->
 	                                            <option value="${code}" selected>${recruitJobField}</option>
 	                                            </select>
-	                                        	
-									        </c:when>
+	                                        </c:when>
 									        <c:otherwise>
+									        	<input type="hidden" name="recruitKey" value="I">
 									        	<select class="select" name="recruit">
 	                                            <option value="">모집분야 선택</option>
+	                                            <option value="디자인">디자인</option>
+	                                            <option value="영업">영업</option>
+	                                            <option value="마케팅">마케팅</option>
+	                                            <option value="MD">MD</option>
+	                                            <option value="기획">기획</option>
+	                                            <option value="IT개발">IT개발</option>
+	                                            <option value="물류">물류</option>
+	                                            <option value="재경">재경</option>
+	                                            <option value="법무">법무</option>
+	                                            <option value="인사">인사</option>
+	                                            <option value="총무">총무</option>
+	                                            <%-- 
 	                                            <c:forEach var="list" items="${recruitList}" varStatus="status">
 	                                            	<c:if test="${(list.recruitEnd eq 'checked') || (toDay<=list.recruitToDate)}">
 	                                            		<option value="${list.seq}">${list.jobField}</option>
 	                                            	</c:if>
 	                                            </c:forEach>
+	                                            --%>
 	                                        	</select>
 									        </c:otherwise>
 									     </c:choose>

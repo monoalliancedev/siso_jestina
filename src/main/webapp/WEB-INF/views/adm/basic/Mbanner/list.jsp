@@ -218,7 +218,7 @@ function Jt_delete(seq){
                                             <input name=sortKey type="checkbox" value="${list.seq}"/><i>&nbsp;</i>
                                         </div>
                                     </td>
-                                    <td>${status.count}</td>
+                                    <td>${page.pg_rows*(page.cpage-1)+status.count}</td>
                                     <td>${list.lang}</td>
                                     <td class="tit alLeft"><a href="#" onclick="Jt_submit(${list.seq})">${list.title}</a></td>
                                     <td><a href="#" onclick="Jt_isntYN('${list.seq}','${list.isntYn}')">

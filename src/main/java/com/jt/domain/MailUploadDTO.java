@@ -11,6 +11,7 @@ public class MailUploadDTO {
 	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
 	private String recruit;
+	private String recruitKey; //채용에서(R), 인터플에서(I)
 	private String name;
 	private String hp;
 	private String email;
@@ -75,6 +76,12 @@ public class MailUploadDTO {
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	public String getRecruitKey() {
+		return recruitKey;
+	}
+	public void setRecruitKey(String recruitKey) {
+		this.recruitKey = recruitKey;
 	}
 	
 	
