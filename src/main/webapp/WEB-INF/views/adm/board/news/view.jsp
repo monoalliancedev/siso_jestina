@@ -268,7 +268,7 @@ function Jt_fileDelete(seq,key){
                                         <c:when test="${board.fileViewName[0] ne '' and board.fileViewName[0] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName${0}"> ${board.fileViewName[0]} </span> 
-	                                        <span class="size" id="SignSize${0}">(<i>${board.fileViewSize[0]}</i>byte)</span>
+	                                        <span class="size" id="SignSize${0}">(<i>${board.fileViewSize[0]}</i>KB)</span>
 	                                        <span class="seq" id="SignSeq${0}"><a href='#' onclick="Jt_fileDelete('${board.fileViewSeq[0]}','0')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>
@@ -295,7 +295,7 @@ function Jt_fileDelete(seq,key){
                                         <c:when test="${board.fileViewName[i] ne '' and board.fileViewName[i] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName${i}"> ${board.fileViewName[i]} </span> 
-	                                        <span class="size" id="SignSize${i}">(<i>${board.fileViewSize[i]}</i>byte)</span>
+	                                        <span class="size" id="SignSize${i}">(<i>${board.fileViewSize[i]}</i>KB)</span>
 	                                        <span class="seq" id="SignSeq${i}"><a href='#' onclick="Jt_fileDelete('${board.fileViewSeq[i]}','${i}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>

@@ -339,15 +339,15 @@ $(document).ready(function () {
             var addFileName = $(this).val().split('/').pop().split('\\').pop();
         }
         var fileSize = this.files[0].size;
-        //var fileSizeKB = fileSize / 1024
-        var outputFileSize = Math.ceil(fileSize)
+        var fileSizeKB = fileSize / 1024
+        var outputFileSize = Math.ceil(fileSizeKB)
         $(this).parent('.fileField').find('.viewInfo .name').html(addFileName);
-        $(this).parent('.fileField').find('.viewInfo .size').html('('+(outputFileSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'byte)');
+        $(this).parent('.fileField').find('.viewInfo .size').html('('+(outputFileSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'KB)');
         $(this).parent('.fileField').find('.viewInfo').addClass('infile');
         $(this).parent('.fileField').find('.delBtn').show();
     });
     $('.fileField .addFile .viewInfo .size i').each(function(){
-        var thisSize = parseInt($(this).text())
+        var thisSize = parseInt($(this).text() / 1024)
         $(this).html(thisSize.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
     });
     //카테고리 추가

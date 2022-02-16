@@ -372,7 +372,7 @@ function Jt_fileDelete(seq,key){
                                         <c:when test="${popup.fileViewName[i] ne '' and popup.fileViewName[i] ne null}">
                                         	<div class="viewInfo">
 	                                        <span class="name" id="SignName${i}"> ${popup.fileViewName[i]} </span> 
-	                                        <span class="size" id="SignSize${i}">(<i>${popup.fileViewSize[i]}</i>byte)</span>
+	                                        <span class="size" id="SignSize${i}">(<i>${popup.fileViewSize[i]}</i>KB)</span>
 	                                        <span class="seq" id="SignSeq${i}"><a href='#' onclick="Jt_fileDelete('${popup.fileViewSeq[i]}','${i}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 	                                        </div>
 	                                    </c:when>

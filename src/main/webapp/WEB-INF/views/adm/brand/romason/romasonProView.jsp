@@ -290,7 +290,7 @@ function Jt_cateProc(){
 		                                	<c:when test="${romason.fileViewName[i] ne '' and romason.fileViewName[i] ne null}">
 		                                    	<div class="viewInfo">
 			                                        <span class="name" id="SignName${i}"> ${romason.fileViewName[i]} </span> 
-			                                        <span class="size" id="SignSize${i}">(<i>${romason.fileViewSize[i]}</i>byte)</span>
+			                                        <span class="size" id="SignSize${i}">(<i>${romason.fileViewSize[i]}</i>KB)</span>
 			                                        <span class="seq" id="SignSeq${i}"><a href='#' onclick="Jt_fileDelete('${romason.fileViewSeq[i]}','${i}')"><img src="/jtadm/images/admin/icon_file_del.svg" title="첨부파일 삭제"></a></span>
 			                                    </div>
 			                                </c:when>
