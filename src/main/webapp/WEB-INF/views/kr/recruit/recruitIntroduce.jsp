@@ -137,7 +137,7 @@
                                 </dd>
                             </dl>
                         </li>
-                        <li class="tabData" data-tab="MAKETING">
+                        <li class="tabData" data-tab="MARKETING">
                             <!--Info Text-->
                             <div class="infoText">
                                 <h5>MARKETING</h5>
