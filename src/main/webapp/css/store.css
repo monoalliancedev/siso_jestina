@@ -32,6 +32,7 @@
     .domestic .commBoardList td.shop,
     .domestic .commBoardList td.tel{display:none}
     /*해외*/
-    .overseas .commBoardList td.nation{width:100%;text-align:left;font-size:2.8rem;font-weight:500;color:#101010;margin:3.5rem 0 1.5rem 0}
+    .overseas .commBoardList td.no{margin:3.5rem 0 1.5rem 0;width:auto;vertical-align:middle;}
+    .overseas .commBoardList td.nation{text-align:left;font-size:2.8rem;font-weight:500;color:#101010;margin:3.5rem 0 1.5rem 0;display:inline-block;}
     .overseas .commBoardList td.area{display:none}
 }

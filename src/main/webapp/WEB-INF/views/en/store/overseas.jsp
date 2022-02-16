@@ -101,7 +101,7 @@ function Jt_continent_change(obj) {
                 <article class="commBoardList">
                     <table>
                         <colgroup>
-                            <col width="14.4%">
+                            <col width="12%">
                             <col width="18.9%">
                             <col width="26.3%">
                             <col width="*">
