@@ -90,7 +90,7 @@
                     <div class="textArea">
                         <div>
                             <h6>公司简介</h6>
-                            <h5>Global luxury brand<br/>J.ESTINA</h5>
+                            <h5>GLOBAL LIFESTYLE CREATOR<br/>J.ESTINA</h5>
                             <span>
                                 J.ESTINA是韩国代表性珠宝&手提包品牌。<br/>
                                 本公司有主营珠宝&手提包的J.ESTINA和主营手表的ROMANSON品牌，<br/>
