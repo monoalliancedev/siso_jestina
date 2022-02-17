@@ -155,8 +155,8 @@ function Jt_fileDelete(bseq,fseq,key,gubun){
                                     <option value="C" <c:if test="${banner.linkKrOutYn eq 'C'}">selected</c:if>>현재창</option>
                                     <option value="Y" <c:if test="${banner.linkKrOutYn eq 'Y'}">selected</c:if>>새창</option>
                                 </select>
-                                <div class="forPC"><input type="text" name="linkKr" value="${banner.linkKr}" class="enterText" placeholder="링크주소 URL을 입력해주세요."/></div>
-                                <div class="forMobile"><input type="text" name="linkKr" value="" class="enterText" placeholder="링크주소 URL을 입력해주세요."/></div>
+                                <div class="forPC"><input type="text" name="linkKr" value="${banner.linkKr}" class="enterText" placeholder="PC 링크주소 URL을 입력해주세요."/></div>
+                                <div class="forMobile"><input type="text" name="linkKr" value="" class="enterText" placeholder="Mobile 링크주소 URL을 입력해주세요."/></div>
                             </td>
                         </tr>
                         <tr>
