@@ -5,7 +5,7 @@
                 <div class="cmpyInfo">
                     <a href="/company/contact" class="contact">Contact</a>
                     <ul>
-                        <li class="adr"><span>JESTINA Co., Ltd</span><span>Jestina Building, 53, Yangjae-daero 62-gil, Songpa-gu, Seoul</span></li>
+                        <li class="adr"><span>J.ESTINA Co., Ltd</span><span>Jestina Building, 53, Yangjae-daero 62-gil, Songpa-gu, Seoul</span></li>
                         <li><span>CEO : KIM YOO MI, JANG HO SEON</span><span>CPO: JANG HO SEON</span></li>
                         <li><span>No. 215-81-03705</span><span>Customer Center : 080-998-0077</span></li>
                     </ul>
