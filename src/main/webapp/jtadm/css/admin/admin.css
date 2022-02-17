@@ -279,6 +279,16 @@ textarea.textArea{width:100%;border:1px solid #e0e0e0;border-radius:2px;padding:
 
 /*브랜드관리 > 브랜드 배너관리*/
 .brandBannerMgmt.KR{padding-bottom:80px;height:auto!important}
+.brandBannerMgmt .hasLeftTH td.url > div{position:relative;vertical-align: middle;}
+.brandBannerMgmt .hasLeftTH td.url div.forPC{width:calc(50% - 102px);display:inline-block;}
+.brandBannerMgmt .hasLeftTH td.url div.forPC::before{content:'PC URL : ';position: absolute;left:10px;top:50%;transform:translateY(-50%);}
+.brandBannerMgmt .hasLeftTH td.url div.forPC input.enterText{padding-left: 71px;}
+.brandBannerMgmt .hasLeftTH td.url div.forMobile{width:50%;float:right;}
+.brandBannerMgmt .hasLeftTH td.url div.forMobile::before{content:'Mobile URL : ';position: absolute;left:10px;top:50%;transform:translateY(-50%);}
+.brandBannerMgmt .hasLeftTH td.url div.forMobile input.enterText{padding-left: 98px;}
+.brandBannerMgmt .hasLeftTH td.url input.enterText{width:100%}
+
+
 
 /*브랜드관리 > 로만손 제품 관리*/
 .romansonMgmt .order{height:34px;border:1px solid #101010;padding:0 10px;border-radius:2px;background:#fff;margin-right:6px}
