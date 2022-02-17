@@ -5,7 +5,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .mainBanner .flex-viewport{overflow:hidden}
 .mainBanner .slides > li{position:relative;overflow:hidden}
 .mainBanner li.typeVideo video{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4}
-.mainBanner li.typeVideo .bg{width:100%;position:absolute;left:0;top:0;z-index:5;background:rgba(0,0,0,0.4)}
+.mainBanner li.typeVideo .bg{width:100%;position:absolute;left:0;top:0;z-index:5;background:rgba(0,0,0,0.4);display:none;}
 .mainBanner li.typeVideo img{opacity:0;width:0;height:0}
 .mainBanner li.typeVideo{background-position:center center;background-size:cover;background-repeat:no-repeat}
 .mainBanner li.typeImage{background-position:center center;background-size:cover;background-repeat:no-repeat}
@@ -106,7 +106,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .bottomMenu{height:378px;background:#f9f9f9;padding-top:85px;text-align:center}
 .bottomMenu dl{display:inline-block;vertical-align:top;margin:0 80px}
 .bottomMenu dt{display:block;margin-bottom:25px}
-.bottomMenu dt a{display:block;font-weight:500;color:#000}
+.bottomMenu dt a{display:block;font-weight:500;color:#000;cursor: default;}
 .bottomMenu dd a{display:block;margin:6px 0;padding:5px 0;color:#505050}
 .bottomMenu dd a:hover{text-decoration:underline}
 

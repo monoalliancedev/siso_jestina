@@ -285,4 +285,5 @@ $(document).ready(function () {
         $('.bottomMenu').prepend(navTags);
     };
     buttomMenufun();
+    $('.bottomMenu dt a').removeAttr('href');
 });
