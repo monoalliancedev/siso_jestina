@@ -143,6 +143,8 @@ function jt_load(code) {
                     <c:if test="${brandBanner.linkOutYn ne 'N'}">
 		            	<a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>  class="mallLink">
 		                Online shop</a>
+		                <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>  class="mallLink">
+		                Online shop</a>
 	                </c:if>
                 </article>
                 <!--//Top Text-->
