@@ -73,7 +73,7 @@
 .romanson .productList li:nth-child(3n+3){text-align:right}
 .romanson .productList li a{width:400px;display:inline-block;text-align:center;background:#fff;transition:all .3s;-webkit-transition:all .3s;}
 .romanson .productList li a:hover{box-shadow:10px 10px 15px rgba(0,0,0,.15);}
-.romanson .productList .photo{height:400px;position:relative;background:#fafafa;overflow:hidden}
+.romanson .productList .photo{height:400px;position:relative;overflow:hidden}
 .romanson .productList .photo img{position:absolute;left:50%;top:50%;transform:translate(-50% , -50%);height:80%}
 .romanson .productList .name{font-size:18px;font-weight:500;margin:36px 0 19px 0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
 .romanson .productList .cate{font-size:16px;color:#767676;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-bottom:39px}
