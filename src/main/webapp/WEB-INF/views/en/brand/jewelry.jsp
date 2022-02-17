@@ -35,8 +35,10 @@
                             <!-- J.ESTINA Jewelry is South Korea’s first bridge jewelry brand created in 2003 with Princess Giovanna of Italy, who later became Queen of Bulgaria, as the brand muse. It gained public popularity with jewelries inspired by a tiara, the symbol of a princess. In 2019, the brand went through a renewal, and has been introducing stylish jewelry pieces that reflect the lifestyle of sophisticated contemporary women. -->
                         </span>
                         <c:if test="${brandBanner.linkOutYn ne 'N'}">
-		                    <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+		                    <a class="forPC" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
 		                    ONLINE SHOP</a>
+                            <a class="forMobile" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+                            ONLINE SHOP</a>
 	                    </c:if>
                     </div>
                 </article>

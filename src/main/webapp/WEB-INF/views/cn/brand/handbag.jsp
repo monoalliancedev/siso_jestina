@@ -35,8 +35,10 @@
                             并以皇冠标识作为亮点，深受人们的喜爱。2019年更新品牌后，以炫酷有魄力的同时代女商人JOELLE的名字首字母JJ为主题，推出了JOELLE系列的手提包，展现了充满感性和现代情怀的风格。 -->
                         </span>
                         <c:if test="${brandBanner.linkOutYn ne 'N'}">
-		                    <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+		                    <a class="forPC" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
 		                    ONLINE SHOP</a>
+                            <a class="forMobile" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+                            ONLINE SHOP</a>
 	                    </c:if>
                     </div>
                 </article>

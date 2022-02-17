@@ -33,8 +33,10 @@
                         <!-- In 2011, J.ESTINA launched the J.ESTINA handbag line that promotes elegant and luxurious designs highlighted by the signature tiara symbol, and received love from the public. Since the brand renewal in 2019, the brand has been proposing a sensual and modern style through the JOELLE handbag line, which is inspired by the sophisticated and confident image of contemporary women highlighted by the JJ motif.-->
                         </span>
                         <c:if test="${brandBanner.linkOutYn ne 'N'}">
-		                    <a href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+		                    <a class="forPC" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
 		                    ONLINE SHOP</a>
+                            <a class="forMobile" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+                            ONLINE SHOP</a>
 	                    </c:if>
                     </div>
                 </article>
