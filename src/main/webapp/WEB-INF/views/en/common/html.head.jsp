@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<%-- 오픈준비중 화면으로 이동  --%>
 <jsp:useBean id="CurNow" class="java.util.Date" />
-<fmt:parseDate value="202202180000" pattern="yyyyMMddHHmm" var="openStartDate" />
+<fmt:parseDate value="202202181300" pattern="yyyyMMddHHmm" var="openStartDate" />
 <fmt:parseDate value="202202202359" pattern="yyyyMMddHHmm" var="openEndDate" />
- 
 <fmt:formatDate value="${CurNow}" pattern="yyyyMMddhhmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
 <fmt:formatDate value="${openStartDate}" pattern="yyyyMMddHHmm" var="openDate"/>       <%-- 시작날짜 --%>
 <fmt:formatDate value="${openEndDate}" pattern="yyyyMMddHHmm" var="closeDate"/>        <%-- 마감날짜 --%>
@@ -11,23 +14,33 @@
     <c:redirect url="/openning"/>
 </c:if>
 
+<%-- 도메인 주소받아욤  --%>
+<c:set var="url">${pageContext.request.requestURL}</c:set>
+<c:set var="Domain" value="${fn:replace(url, fn:substring(pageContext.request.requestURI, 0, fn:length(pageContext.request.requestURI)), pageContext.request.contextPath)}" />
+
+
 <title>J.ESTINA</title>
 <meta charset="utf-8" />
-<meta name="description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+	<meta name="title" content="J.ESTINA OFFICIAL" />
+    <meta name="description" content="GLOBAL LIFESTYLE CREATOR J.ESTINA" />
+    <meta name="keywords" content="J.ESTINA OFFICIAL" />
+    <meta name="keyword" content="J.ESTINA OFFICIAL" />
+    <meta name="image" content="${Domain}/images/common/logo.svg" />
+    <meta name="author" content="J.ESTINA OFFICIAL">
     
     <!-- 오픈 그래프 -->
-	<meta property="og:type" content="website"> 
-	<meta property="og:title" content="J.ESTINA">
-	<meta property="og:description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
-	<meta property="og:image" content="http://romanson12.cafe24.com/myimage.jpg">
-	<meta property="og:url" content="http://romanson12.cafe24.com">
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="J.ESTINA">
-	<meta name="twitter:description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
-	<meta name="twitter:image" content="http://romanson12.cafe24.com/myimage.jpg">
-	<meta name="twitter:domain" content="http://romanson12.cafe24.com">
+	<meta property="og:url" content="http://www.jestina.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="J.ESTINA OFFICIAL" />
+    <meta property="og:description" content="GLOBAL LIFESTYLE CREATOR J.ESTINA" />
+    <meta property="og:image" content="${Domain}/images/common/logo.svg" />
+    <meta property="og:site_name" content="J.ESTINA OFFICIAL" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="product:image" content="${Domain}/images/common/logo.svg" />
+	
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-VNFFPD6DLT"></script>
