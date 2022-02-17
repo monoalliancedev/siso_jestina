@@ -124,12 +124,22 @@ $(document).ready(function () {
     
     //동영상 모바일용 이미지
     function mainBannerVideoType() {
-        $('.mainBanner li.typeVideo').each(function () {
-            var objSRCmobile = $(this).find('img.forMobile').attr('src');
-            $(this).css('background-image', 'url(' + objSRCmobile + ')');
-        });
+        if ($(window).width() <= 812) {
+            $('.mainBanner li.typeVideo').each(function () {
+                var objSRCmobile = $(this).find('img.forMobile').attr('src');
+                $(this).css('background-image', 'url(' + objSRCmobile + ')');
+            });
+        } else {;
+            $('.mainBanner li.typeVideo').each(function () {
+                var objSRCmobile = $(this).find('img.forMobile').attr('src');
+                $(this).css('background-image', 'none');
+            });
+        }
     };
     mainBannerVideoType();
+    $(window).resize(function(){
+        mainBannerVideoType();
+    })
     
     //이미지 타입
     function mainBannerImageType() {

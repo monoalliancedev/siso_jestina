@@ -4,6 +4,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .mainBanner{background:#000}
 .mainBanner .flex-viewport{overflow:hidden}
 .mainBanner .slides > li{position:relative;overflow:hidden}
+.mainBanner li.typeVideo{background-color:#000;}
 .mainBanner li.typeVideo video{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4}
 .mainBanner li.typeVideo .bg{width:100%;position:absolute;left:0;top:0;z-index:5;background:rgba(0,0,0,0.4);display:none;}
 .mainBanner li.typeVideo img{opacity:0;width:0;height:0}
