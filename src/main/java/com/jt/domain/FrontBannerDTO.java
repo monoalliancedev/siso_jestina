@@ -10,6 +10,7 @@ public class FrontBannerDTO {
 		private int seq;
 		private String title;
 		private String contents;
+		private String molinkUrl;
 		private String linkUrl;
 		private String linkOutYn;
 		private String imgUrl;
@@ -39,6 +40,12 @@ public class FrontBannerDTO {
 		}
 		public void setLinkUrl(String linkUrl) {
 			this.linkUrl = linkUrl;
+		}
+		public String getMolinkUrl() {
+			return molinkUrl;
+		}
+		public void setMolinkUrl(String molinkUrl) {
+			this.molinkUrl = molinkUrl;
 		}
 		public String getLinkOutYn() {
 			return linkOutYn;

@@ -35,7 +35,7 @@
                         <c:if test="${brandBanner.linkOutYn ne 'N'}">
 		                    <a class="forPC" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
 		                    ONLINE SHOP</a>
-                            <a class="forMobile" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
+                            <a class="forMobile" href="<c:if test="${not fn:contains(brandBanner.molinkUrl,'http://') && not fn:contains(brandBanner.molinkUrl,'https://')}">http://</c:if>${brandBanner.molinkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>>
                             ONLINE SHOP</a>
 	                    </c:if>
                     </div>

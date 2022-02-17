@@ -8,6 +8,7 @@
 	<result property="lang" column="lang" />
 	<result property="contents" column="contents" />
 	<result property="linkKr" column="link_kr" />
+	<result property="molinkKr" column="molink_kr" />
 	<result property="linkKrOutYn" column="link_kr_out_yn" />
 	<result property="imgKrSeq" column="img_kr_seq" />
 	<result property="moimgKrSeq" column="moimg_kr_seq" />
@@ -39,6 +40,7 @@
         REPLACE INTO tb_jt_brand_banner 
 		SET  gubun = #{gubun} 
 	        ,link_kr = #{linkKr} 
+	        ,molink_kr = #{molinkKr}
 	        ,link_kr_out_yn = #{linkKrOutYn} 
 	        ,img_kr_seq = #{imgKrSeq}
 	        ,moimg_kr_seq = #{moimgKrSeq}
@@ -57,7 +59,9 @@
 	
 	<select id="FrontSelect" parameterType="com.jt.util.ParameterMap" resultType="com.jt.domain.FrontBannerDTO">
     SELECT seq, contents
-    	 , link_kr as linkUrl, link_kr_out_yn as linkOutYn
+    	 , link_kr as linkUrl
+    	 , molink_kr as molinkUrl
+    	 , link_kr_out_yn as linkOutYn
     	 , (select save_filename from tb_files f1 where f1.seq=b.img_kr_seq) as imgUrl
 		 , (select save_filename from tb_files f2 where f2.seq=b.moimg_kr_seq) as moimgUrl
 	  FROM tb_jt_brand_banner b 

@@ -16,6 +16,7 @@ public class BrandBannerDTO {
 	private String gubun; /* "Jewerly","Bag","Romason" */
 	private String lang;  /* KR/EN/CN */
 	private String linkKr;
+	private String molinkKr;
 	private String linkKrOutYn;
 	private int imgKrSeq;
 	private int moimgKrSeq;
@@ -79,6 +80,12 @@ public class BrandBannerDTO {
 	}
 	public void setLinkKr(String linkKr) {
 		this.linkKr = linkKr;
+	}
+	public String getMolinkKr() {
+		return molinkKr;
+	}
+	public void setMolinkKr(String molinkKr) {
+		this.molinkKr = molinkKr;
 	}
 	public String getLinkKrOutYn() {
 		return linkKrOutYn;

@@ -143,7 +143,7 @@ function jt_load(code) {
                     <c:if test="${brandBanner.linkOutYn ne 'N'}">
 		            	<a class="forPC mallLink" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>  class="mallLink">
 		                Online shop</a>
-		                <a class="forMobile mallLink" href="<c:if test="${not fn:contains(brandBanner.linkUrl,'http://') && not fn:contains(brandBanner.linkUrl,'https://')}">http://</c:if>${brandBanner.linkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>  class="mallLink">
+		                <a class="forMobile mallLink" href="<c:if test="${not fn:contains(brandBanner.molinkUrl,'http://') && not fn:contains(brandBanner.molinkUrl,'https://')}">http://</c:if>${brandBanner.molinkUrl}" <c:if test="${brandBanner.linkOutYn eq 'Y'}"> target="_blank" </c:if>  class="mallLink">
 		                Online shop</a>
 	                </c:if>
                 </article>
