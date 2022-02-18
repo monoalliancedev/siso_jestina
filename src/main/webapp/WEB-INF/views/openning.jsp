@@ -3,21 +3,25 @@
 <head>
 <title>J.ESTINA</title>
 <meta charset="utf-8" />
-<meta name="description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+	<meta name="title" content="J.ESTINA OFFICIAL" />
+    <meta name="description" content="GLOBAL LIFESTYLE CREATOR J.ESTINA" />
+    <meta name="keywords" content="J.ESTINA OFFICIAL" />
+    <meta name="keyword" content="J.ESTINA OFFICIAL" />
+    <meta name="image" content="http://jestina.com/images/common/logo.svg" />
+    <meta name="author" content="J.ESTINA OFFICIAL">
     
     <!-- 오픈 그래프 -->
-	<meta property="og:type" content="website"> 
-	<meta property="og:title" content="J.ESTINA">
-	<meta property="og:description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
-	<meta property="og:image" content="http://romanson12.cafe24.com/myimage.jpg">
-	<meta property="og:url" content="http://romanson12.cafe24.com">
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="J.ESTINA">
-	<meta name="twitter:description" content="뮤즈 아이유가 선택한 로맨틱 무드 윈터 주얼리">
-	<meta name="twitter:image" content="http://romanson12.cafe24.com/myimage.jpg">
-	<meta name="twitter:domain" content="http://romanson12.cafe24.com">
+	<meta property="og:url" content="http://www.jestina.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="J.ESTINA OFFICIAL" />
+    <meta property="og:description" content="GLOBAL LIFESTYLE CREATOR J.ESTINA" />
+    <meta property="og:image" content="http://www.jestina.com/images/common/logo.svg" />
+    <meta property="og:site_name" content="J.ESTINA OFFICIAL" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="product:image" content="http://www.jestina.com/images/common/logo.svg" />
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-VNFFPD6DLT"></script>

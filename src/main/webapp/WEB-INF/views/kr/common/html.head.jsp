@@ -5,12 +5,12 @@
 
 <%-- 오픈준비중 화면으로 이동  --%>
 <jsp:useBean id="CurNow" class="java.util.Date" />
-<fmt:parseDate value="202202181300" pattern="yyyyMMddHHmm" var="openStartDate" />
-<fmt:parseDate value="202202202359" pattern="yyyyMMddHHmm" var="openEndDate" />
- 
-<fmt:formatDate value="${CurNow}" pattern="yyyyMMddhhmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
+<fmt:parseDate value="202202181100" pattern="yyyyMMddHHmm" var="openStartDate" />
+<fmt:parseDate value="202202211000" pattern="yyyyMMddHHmm" var="openEndDate" />
+<fmt:formatDate value="${CurNow}" pattern="yyyyMMddHHmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
 <fmt:formatDate value="${openStartDate}" pattern="yyyyMMddHHmm" var="openDate"/>       <%-- 시작날짜 --%>
 <fmt:formatDate value="${openEndDate}" pattern="yyyyMMddHHmm" var="closeDate"/>        <%-- 마감날짜 --%>
+
 <c:if test="${openDate <= CurNowDate && closeDate >= CurNowDate}">
     <c:redirect url="/openning"/>
 </c:if>

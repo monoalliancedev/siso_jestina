@@ -5,11 +5,12 @@
 
 <%-- 오픈준비중 화면으로 이동  --%>
 <jsp:useBean id="CurNow" class="java.util.Date" />
-<fmt:parseDate value="202202181300" pattern="yyyyMMddHHmm" var="openStartDate" />
-<fmt:parseDate value="202202202359" pattern="yyyyMMddHHmm" var="openEndDate" />
-<fmt:formatDate value="${CurNow}" pattern="yyyyMMddhhmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
+<fmt:parseDate value="202202181100" pattern="yyyyMMddHHmm" var="openStartDate" />
+<fmt:parseDate value="202202211000" pattern="yyyyMMddHHmm" var="openEndDate" />
+<fmt:formatDate value="${CurNow}" pattern="yyyyMMddHHmm" var="CurNowDate" />           <%-- 오늘날짜 --%>
 <fmt:formatDate value="${openStartDate}" pattern="yyyyMMddHHmm" var="openDate"/>       <%-- 시작날짜 --%>
 <fmt:formatDate value="${openEndDate}" pattern="yyyyMMddHHmm" var="closeDate"/>        <%-- 마감날짜 --%>
+
 <c:if test="${openDate <= CurNowDate && closeDate >= CurNowDate}">
     <c:redirect url="/openning"/>
 </c:if>
@@ -18,7 +19,7 @@
 <c:set var="url">${pageContext.request.requestURL}</c:set>
 <c:set var="Domain" value="${fn:replace(url, fn:substring(pageContext.request.requestURI, 0, fn:length(pageContext.request.requestURI)), pageContext.request.contextPath)}" />
 
-<title>J.ESTINA ${Domain}</title>
+<title>J.ESTINA</title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
