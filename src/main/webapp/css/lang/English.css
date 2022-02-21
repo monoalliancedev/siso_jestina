@@ -22,7 +22,7 @@ nav dl{padding:0 15px;float:inherit;display:inline-block;vertical-align:top}
 .commBoardView .ctrl dt{text-align:left!important;padding-left:30px!important;width:110px!important}
 @media all and (max-width:1280px){
     /*Main*/
-    .brandIntro article{height:300px}
+    .brandIntro article{height:320px}
     .brandIntro .imgPhoto img{opacity:0}
     .main .bottomMenu dl{margin:0 6.6%}
 }
