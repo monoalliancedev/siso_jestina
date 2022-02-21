@@ -9,7 +9,7 @@
 <script>
 //view 
 function Jt_submit(seq) {
-	window.open("https://dart.fss.or.kr/dsaf001/main.do?rcpNo=" + seq);
+	window.open("https://dart.fss.or.kr/dsaf001/main.do?rcpNo=" + seq );
 	return false;
 }
 </script>
@@ -66,7 +66,7 @@ function Jt_submit(seq) {
                             <tr>
                                 <td class="no">${apiList.size() - status.count + 1}</td>
                                 <td class="cmpy"><span>${list.corp_name}</span></td>
-                                <td class="name alLeft"><a href="" onclick="Jt_submit(${list.rcept_no})">${list.report_nm}</a></td>
+                                <td class="name alLeft"><a href="#" onclick="Jt_submit(${list.rcept_no})">${list.report_nm}</a></td>
                                 <td class="submit"><span>${list.flr_nm}</span></td>
                                 <td class="dete"><fmt:formatDate value="${dataValue}" pattern="yyyy/MM/dd"/></td>
                             </tr>
