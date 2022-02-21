@@ -30,6 +30,15 @@ nav dd a span::after{height:1px}
 .company.contact .data th{font-family:'Noto Sans SC', sans-serif}
 /*Brand*/
 .brand.romanson .productDetail .info th{font-family:'Noto Sans SC', sans-serif}
+@media all and (max-width:1280px) {
+    /*Main*/
+    .main .bottomMenu dl{margin:0 6.6%}
+}
+@media all and (max-width:1110px) {
+    /*Main*/
+    .brandIntro .info .text{margin-top:17px!important}
+    .brandIntro .info .more{bottom:15px}
+}
 @media all and (max-width:812px) {
     /*Main*/
     .main .socialMedia{padding:0 0 10rem 4rem}

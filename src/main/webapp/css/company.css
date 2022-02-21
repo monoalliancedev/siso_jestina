@@ -129,12 +129,12 @@
 }
 @media all and (max-width:1320px){
     /*사업영역*/
-    .business .content{padding:0 2%}
+    .business .content{padding:0 2% 200px}
     .business .content > article{width:100%;padding:8.5rem 0 0 0}
     .business .brand ul > li{width:32%}
     .business .brand ol li img{width:100%}
     /*BI*/
-    .identity .content{padding:0 2%}
+    .identity .content{padding:0 2% 200px}
     .identity .content > article{width:100%}
     .identity .biInfo .symbol{left:6.8%}
     .identity .biInfo .logo{left:inherit;right:6.8%}

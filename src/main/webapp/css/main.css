@@ -162,14 +162,15 @@ article{width:100%;display:inline-block;position:relative;padding:0}
     .mainBanner li .tit{font-size:40px;line-height:50px}
     .mainBanner li .tit a{font-size:40px;line-height:50px}
     /*About J.ESTINA*/
-    .aboutJestina .textArea h5{font-size:35px}
+    .aboutJestina .textArea h5{font-size:30px}
+    .aboutJestina a.more{margin-top:20px}
     /*Brand소개*/
     .brandIntro .info ul{padding:30px 30px 0 30px}
     .brandIntro .info .more{bottom:30px}
     /*Social Media*/
     .socialMedia li a{height:230px}
     /*Bottom Menu*/
-    .bottomMenu dl{margin:0 50px}
+    .bottomMenu dl{margin:0 45px}
 }
 /*Media Query(for Tablet)*/
 @media all and (max-width:1024px){
@@ -185,11 +186,11 @@ article{width:100%;display:inline-block;position:relative;padding:0}
     .brandIntro .info ul{padding:20px 20px 0 20px}
     .brandIntro .info .cate{font-size:12px}
     .brandIntro .info .name{font-size:16px;margin:10px 0 15px 0}
-    .brandIntro .info .text{font-size:12px}
+    .brandIntro .info .text{font-size:12px;margin-top:15px!important}
     .brandIntro .info .more a{font-size:12px}
     .brandIntro .info .more{bottom:20px}
     .aboutJestina .textArea h6{font-size:16px}
-    .aboutJestina .textArea h5{font-size:32px;margin:30px 40px!important}
+    .aboutJestina .textArea h5{font-size:25px;margin:30px 40px!important}
     .aboutJestina .textArea span{padding-top:20px;font-size:12px}
     .aboutJestina a.more{margin-top:30px}
     /*Latest*/
@@ -234,7 +235,7 @@ article{width:100%;display:inline-block;position:relative;padding:0}
     .aboutJestina .visual img{width:auto;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
     .aboutJestina .textArea > div{position:static;top:0!important;transform:none;text-align:left}
     .aboutJestina .textArea h6{opacity:1!important;font-size:2rem;margin:3.5rem 0 2.5rem 0}
-    .aboutJestina .textArea h5{opacity:1!important;margin:0!important;font-size:3.2rem}
+    .aboutJestina .textArea h5{opacity:1!important;margin:0!important;font-size:3.2rem;line-height:3.5rem}
     .aboutJestina .textArea h5 br{display:none}
     .aboutJestina .textArea span{opacity:1!important;font-size:2.4rem;padding-top:3rem}
     .aboutJestina .textArea span::before{display:none}

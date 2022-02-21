@@ -240,6 +240,8 @@
     .talent .diagram li dl:first-child{margin-bottom:80px}
     .talent .diagram li dl:nth-child(2){margin-bottom:80px}
     .talent .diagram li dl:nth-child(2n){float:right;margin-right:0}
+    /*직무소개*/
+    .duty .tabButton ol li{margin:0 10px}
     /*기업문화/복리후생*/
     .culture .life ol{width:95%}
     /*채용공고(목록)*/
@@ -263,6 +265,7 @@
     /*직무소개*/
     .duty .tab ul{width:812px}
     .duty .tab ul li{margin:0 0.8%}
+    .duty .tabButton ol a{font-size:18px}
     .duty .tabData li.text br.pc{display:none}
     .duty .tabData li.tit span br.pc{display:none}
     .duty .tabData dt{width:47%}

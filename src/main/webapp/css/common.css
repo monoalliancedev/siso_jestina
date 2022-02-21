@@ -157,7 +157,7 @@ footer .social li a img{margin-right:5px}
     header a.lang::after{top:4px}
     /*Menu*/
     nav{height:60px}
-    nav dt a{font-size:12px;line-height:60px}
+    nav dt a{font-size:12px;line-height:60px;padding:0 13px}
     nav dd{padding-top:28px}
     nav dd a{font-size:12px}
     nav dd a:last-child{margin-bottom:0}
