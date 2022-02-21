@@ -45,10 +45,10 @@ public class MainController {
 		//System.out.println("getServerName ##############" + request.getServerName());
 		//if(request.getRequestURL().toString().equals("http://localhost.:8080/")) 
 		//if(request.getServerName().toString().equals("localhost."))
-		if(request.getServerName().toString().equals("romanson.com"))
+		if(request.getServerName().toString().contains("romanson.com"))
 		{
 			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/brand/romanson");
+			mv.setViewName("redirect:http://www.jestina.com/brand/romanson");
 			return mv;
 		} 
 		
