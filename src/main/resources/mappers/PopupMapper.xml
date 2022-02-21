@@ -157,7 +157,7 @@
 		  FROM tb_jt_popup b
 		 WHERE lang <![CDATA[ LIKE '%${lang}%' ]]>   
 		   AND isnt_yn = 'Y'
-		   AND from_date <![CDATA[<]]> CURDATE() 
+		   AND from_date <![CDATA[<=]]> CURDATE() 
 		   AND to_date >= CURDATE()
 		 ORDER BY seq DESC 
 	</select>
