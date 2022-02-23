@@ -21,7 +21,7 @@
                             <a href="/brand/jewelry"><span>J.ESTINA JEWELRY</span></a>
                             <a href="/brand/handbag"><span>J.ESTINA HANDBAG</span></a>
                             <a href="/brand/romanson"><span>ROMANSON</span></a>
-                            <a href="/brand/archive"><span>ARCHIVE</span></a>
+                            <a href="/brand/archive"><span>BRAND ARCHIVE</span></a>
                         </dd>
                     </dl>
                     <dl>

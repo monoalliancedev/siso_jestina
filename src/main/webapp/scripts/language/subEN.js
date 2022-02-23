@@ -84,7 +84,7 @@ $(document).ready(function () {
             $('header .mobileGNB .moMenuList dl:nth-child(2) dd a:nth-child(3)').addClass('inPage');
         };
         if ($('#container').hasClass('brand archive')) {
-            $('.location .now').text('ARCHIVE');
+            $('.location .now').text('BRAND ARCHIVE');
             $('.location li .dep2List a').eq(3).addClass('on');
             $('nav .menuList dl:nth-child(2) dd a:nth-child(4)').addClass('inPage');
             $('header .mobileGNB .moMenuList dl:nth-child(2) dd a:nth-child(4)').addClass('inPage');
