@@ -40,8 +40,8 @@ article{width:100%;display:inline-block;position:relative;padding:0}
 .aboutJestina article > div{display:table-cell}
 .aboutJestina .visual{width:45.5%}
 .aboutJestina .visual img{width:100%}
-.aboutJestina .textArea{position:relative}
-.aboutJestina .textArea > div{width:100%;position:absolute;left:0;top:35%;transform:translateY(-50%);text-align:center}
+.aboutJestina .textArea{position:relative;vertical-align: middle;}
+.aboutJestina .textArea > div{width:100%;text-align:center;position: relative;}
 .aboutJestina .textArea h6{font-size:18px;color:#505050;font-weight:400;opacity:0}
 .aboutJestina .textArea h5{font-size:48px;color:#101010;font-weight:500;text-transform:uppercase;opacity:0}
 .aboutJestina .textArea span{display:block;font-size:16px;color:#767676;line-height:1.6;padding-top:45px;position:relative;opacity:0}

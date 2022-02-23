@@ -71,9 +71,9 @@
 .business .brand li img.mo{display:none}
 .business .info{display:table}
 .business .info > div{display:table-cell}
-.business .info .logo{position:relative;width:462px;background:#ffb2b8}
-.business .info .logo img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.business .info .table{padding-left:88px}
+.business .info .logo{position:relative;width:462px;height:320px;background:#ffb2b8;float: left;}
+.business .info .logo img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%)}
+.business .info .table{width:calc(100% - 462px);;padding-left:88px;float:right;}
 .business .info table{border-top:1px solid #101010}
 .business .info th{width:180px;height:64px;text-align:left;border-bottom:1px solid #e0e0e0;font-size:16px;font-weight:500;padding-left:30px}
 .business .info td{border-bottom:1px solid #e0e0e0;font-size:16px;color:#505050}
@@ -261,7 +261,7 @@
     .business .content > .info{display:block;padding:0}
     .business .info > div{display:block}
     .business .info .logo{display:none}
-    .business .info .table{padding-left:0}
+    .business .info .table{padding-left:0;width:100%;}
     .business .info tr{width:100%;display:block;border-bottom:1px solid #e0e0e0;padding:4.1rem 0 4.3rem 0}
     .business .info th{width:100%;height:auto;display:block;border-bottom:none;font-size:2.4rem;margin-bottom:1rem;padding:0 3rem}
     .business .info td{border-bottom:none;font-size:2.4rem;color:#505050;display:block;padding:0 3rem}
