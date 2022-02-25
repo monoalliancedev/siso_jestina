@@ -114,7 +114,7 @@ function Jt_submit2() {
     
 	if(ck) {
 		f.action = "Proc${processKey}";
-		//f.submit();
+		f.submit();
 	}
 }  
 //삭제 

@@ -89,6 +89,7 @@ public class AdmFileController {
 					String ext = ComUtils.getFileExt(aFile.getOriginalFilename()).toLowerCase();
 	        		String save_filename = UploadBase+"/Up_"+String.valueOf(adm.getAdm_id())+"_"+String.valueOf(idx)+"_"+ComUtils.getCurDate("timestamp")+"."+ext;
 	        		
+	        		System.out.println("############# save_filename : " + save_filename);
 	        		File file = new File(uploadRoot+"/"+gubun, save_filename);
 	        		long file_size = aFile.getSize();
 					aFile.transferTo(file);

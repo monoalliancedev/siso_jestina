@@ -136,6 +136,8 @@ public class UploadFileServiceImpl implements UploadFileService {
 			
 			int seq=0 ;
 			
+			System.out.println("############# kkkk : " + aFile.getOriginalFilename());
+			
 			if (!aFile.getOriginalFilename().equals("")) {
 				try{
 					//-- 파일 업로드
@@ -146,6 +148,8 @@ public class UploadFileServiceImpl implements UploadFileService {
 			   		File file = new File(uploadRoot+"/"+UploadFolder, save_filename);
 			   		long file_size = aFile.getSize();
 					aFile.transferTo(file);
+					
+					System.out.println("############# save_filename : " + save_filename);
 					
 					//-- 파일DTO 셋팅	
 					UploadFileDTO uploadFileDto = new UploadFileDTO();
