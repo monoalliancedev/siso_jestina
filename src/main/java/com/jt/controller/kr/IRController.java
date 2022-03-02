@@ -51,29 +51,41 @@ public class IRController {
 		else if(oCalendar.get(Calendar.DAY_OF_WEEK)==2) now = ComUtils.AddDay(now, -3); //월요일 /삼일전
 		else now = ComUtils.AddDay(now, -1); //화요일~토요일 /하루전
 		
-		//임시날짜
-		Date preNow = ComUtils.AddDay(now, -1); //데이타가 없을경우 쓸 하루전 데이타
-		
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd"); //원하는 데이터 포맷 지정 
 		String strNowDate = simpleDateFormat.format(now);
-		String strPreNowDate = simpleDateFormat.format(preNow); 
+		 
 		
 		//System.out.println("구하는 날짜 : " + strNowDate);
 		//System.out.println("구하는 이전 날짜 : " + strPreNowDate);
 		
-		
 		ApiDataGoKr api = new ApiDataGoKr();
 		ApiDataGoKrDTO apiList = (ApiDataGoKrDTO)api.ApiProc(strNowDate);
-		//System.out.println("1. 구하는 날짜 : " + apiList.getBasDt());
 		  
-		//데이타가 없을경우 하루전 데이타를 받아온다.
-		if(ComUtils.isEmpty(apiList.getBasDt())) {
-			apiList = (ApiDataGoKrDTO)api.ApiProc(strPreNowDate);
-			//System.out.println("2. 이전 구하는 날짜 : " + apiList.getBasDt());
+		boolean loopCheck = true;
+		//주가정보가 있을경우
+		if(!ComUtils.isEmpty(apiList.getBasDt())) { //null값이 아니면 
+			loopCheck = false;
+			System.out.println("성공" + apiList.getBasDt());
 		}
 		
 
+		//주가정보가 없을경우 loop
+		while(loopCheck) {
+			//임시날짜
+			now = ComUtils.AddDay(now, -1); //데이타가 없을경우 쓸 하루전 데이타
+			strNowDate = simpleDateFormat.format(now);
+			
+			//데이타가 없을경우 하루전 데이타를 받아온다.
+			apiList = (ApiDataGoKrDTO)api.ApiProc(strNowDate);
+
+			//System.out.println("2. 이전 구하는 날짜 : " + apiList.getBasDt());
+			if(!ComUtils.isEmpty(apiList.getBasDt())) {
+				loopCheck = false;
+				break;
+			}
+		}
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("now", now);
 		mv.addObject("info", apiList);
