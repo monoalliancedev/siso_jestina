@@ -61,6 +61,7 @@
 .paging li{width:20px;line-height:20px;display:inline-block;margin:0 5px;position:relative;text-align:center}
 .paging li span.now{font-weight:700;}
 .paging li a{display:block}
+.paging li.now{font-weight:700;}
 .paging li.now span{display:inline-block;position:relative}
 .paging li.now span::after{content:'';width:100%;height:2px;background:#101010;position:absolute;left:0;bottom:-2px}
 

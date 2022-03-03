@@ -90,7 +90,7 @@
                     <div class="textArea">
                         <div>
                             <h6>About JㆍESTINA</h6>
-                            <h5>빛나는 모든 순간을 함께하는<br/>GLOBAL LIFESTYLE CREATOR<br/>J.ESTINA</h5>
+                            <h5>빛나는 모든 순간을 함께하는<br/>GLOBAL LIFESTYLE CREATOR <br/>J.ESTINA</h5>
                             <span>
                                 한국을 대표하는 주얼리 & 핸드백 브랜드, 제이에스티나<br/>
                                 당사는 J.ESTINA 브랜드로 주얼리와 핸드백 , ROMANSON 브랜드로<br/>

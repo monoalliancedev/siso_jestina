@@ -286,6 +286,10 @@
     .jobOpening .listWrap li.part{font-size:16px}
     .jobOpening .listWrap span.date{font-size:16px}
 }
+@media all and (max-width:890px) {
+    .duty .tabButton ol a{font-size:17px;}
+}
+
 @media all and (max-width:812px) {
     /*인재상*/
     .talent .content > article{margin-top:10rem}

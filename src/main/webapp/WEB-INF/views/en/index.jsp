@@ -90,7 +90,7 @@
                     <div class="textArea">
                         <div>
                             <h6>About JㆍESTINA</h6>
-                            <h5>GLOBAL LIFESTYLE CREATOR<br/>J.ESTINA</h5>
+                            <h5>GLOBAL LIFESTYLE CREATOR <br/>J.ESTINA</h5>
                             <span>
                                 J.ESTINA, a jewelry and handbag brand that represents South Korea<br/>
                                 We operate jewelry and handbag business through the brand J.ESTINA,<br/>
