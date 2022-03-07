@@ -44,7 +44,7 @@
                     <dl>
                         <dt><a href="#">IR</a></dt>
                         <dd>
-                            <a href="/ir/infor1"><span>주가정보</span></a>
+                            <!-- <a href="/ir/infor1"><span>주가정보</span></a> -->
                             <a href="/ir/infor2"><span>공시정보</span></a>
                             <a href="/ir/notice"><span>공고</span></a>
                         </dd>
