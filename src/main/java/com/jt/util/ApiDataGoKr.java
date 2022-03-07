@@ -16,7 +16,7 @@ import com.jt.domain.ApiDataGoKrDTO;
 public class ApiDataGoKr {
 
 	//주가정보
-	public ApiDataGoKrDTO ApiProc(String strNowDate) throws UnsupportedEncodingException, IOException {
+	public ApiDataGoKrDTO ApiProc(String strNowDate) throws Exception {
 			
 		///getStockPriceInfo (주식시세)
 		StringBuilder urlBuilder = new StringBuilder("https://api.odcloud.kr/api/GetStockSecuritiesInfoService/v1/getStockPriceInfo"); /*URL*/
@@ -36,7 +36,7 @@ public class ApiDataGoKr {
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
         
-        System.out.println("Response code: " + conn.getResponseCode());
+        //System.out.println("Response code: " + conn.getResponseCode());
         
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
